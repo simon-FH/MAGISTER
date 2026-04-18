@@ -4,7 +4,7 @@
 \numberwithin{equation}{section}
 
 \NewDocumentCommand{\caja}{ m O{gray!40} O{gray!10} m }{
-	\begin{figure}[h]
+	\begin{figure}[h!]
 		\centering
 		\begin{tikzpicture}
 			\node[anchor=text, text width=\columnwidth-1.2cm, draw, rounded corners, line width=1pt, fill=#3, inner sep=5mm] (big) {\\#4};
@@ -16,6 +16,9 @@
 \newcommand{\deriv}[3]{\left(\frac{\partial #1}{\partial #2} \right)_{#3}}
 
 \newcommand{\dderiv}[3]{\left(\dfrac{\partial #1}{\partial #2} \right)_{#3}}
+
+\newcommand{\pd}[2]{\dfrac{\partial #1}{\partial #2}}
+\newcommand{\td}[2]{\dfrac{d #1}{d #2}}
 
 %opening
 \title{Física Estadística Avanzada}
@@ -652,6 +655,7 @@ y derivadas parciales:
 	\begin{matrix}
 		\dderiv{F}{T}{V,N} = -S,\ \ \ & \dderiv{F}{V}{T,N} = -p,\ \ \ & \dderiv{F}{N}{T,V} = \mu
 	\end{matrix}
+	\label{relaciones_F}
 \end{equation}
 
 Conceptualmente, \(F\) representa la máxima energía disponible por un sistema para ejercer trabajo sobre el exterior.
@@ -1083,7 +1087,7 @@ Para construir el elemento volumétrico infinitesimal partimos de la noción cl�
 \end{equation*}
 con dos correcciones: un factor \(1/N!\), para considerar la indistinguibilidad de las partículas idénticas; y otro factor \(1/h^{3N}\), para cuantizar las celdas más pequeñas del espacio. Tendremos entonces:
 \begin{equation}
-	d\Gamma = \frac{1}{N!h^{3N}}d^{3N}q d^{3N}p
+	d\Gamma = \frac{1}{N!h^{3N}}d^{3N}q d^{3N}p\label{dGamma}
 \end{equation}
 donde \(h\) es la constante de Planck.
 
@@ -1210,7 +1214,10 @@ entonces
 en la capa de energía, y cero fuera de ella.
 
 \subsubsection{Ensamble microcanónico}
-Un conjunto estadístico de sistemas aislados se denomina \textbf{ensamble microcanónico}. Es decir, sistemas que mantienen \(E,V,N\) fijos.
+Un conjunto estadístico de sistemas \textbf{aislados} se denomina \textbf{ensamble microcanónico}. Es decir, sistemas que mantienen fijas a las variables
+\begin{equation*}
+	E, V, N
+\end{equation*}
 
 En el ensamble microcanónico, \(\Omega(E,V,N)\) representa la \textbf{densidad de estados}:
 \begin{equation}
@@ -1352,7 +1359,7 @@ Para \(N\) grande, \(\Omega(E)\propto E^{3N/2 - 1}\). La densidad de estados cre
 Tomando la \textbf{aproximación de Stirling}:
 \begin{equation}
 	\ln{N!} \approx N\ln{N} - N
-	\label{eqn:stirling}
+	\label{stirling}
 \end{equation}
 Aplicando la fórmula de Boltzmann \(S(E,V,N) = k_B \ln{\Omega(E,V,N)}\) y sustituyendo \(\Omega\):
 \begin{equation}
@@ -1370,7 +1377,7 @@ S es extensiva y proporcional a \(N\) cuando \(V/N\). \(\lambda\propto T^{-1/2}\
 \subsubsection{Longitud de onda térmica \(\lambda\)}
 La longitud de onda térmica es definida como:
 \begin{equation}
-	\lambda = \dfrac{h}{\sqrt{2\pi m k_B T}}
+	\lambda = \dfrac{h}{\sqrt{2\pi m k_B T}}\label{lambda_onda_termica}
 \end{equation}
 Representa la longitud de onda de De Broglie promedio de una partícula con energía térmica \(k_B T\). La aproximación clásica es válida cuando la longitud de onda térmica es mucho menor que la separación media entre partículas:
 \begin{equation}
@@ -1393,22 +1400,368 @@ Esto se cumple para:
 \end{itemize}
 
 \subsection{Ensamble canónico}
+El ensamble canónico se utilizará en contextos donde tenemos un sistema en equilibrio térmico con un reservorio mucho mayor, con el cual intercambia energía, pero no partículas ni volumen. Es decir, tendremos fijas a las variables:
+\begin{equation*}
+	T, V, N
+\end{equation*}
+
+En una definición más formal, un ensamble canónico es una colección de réplicas idénticas del sistema, todas con el mismo \(T, V, N\), pero en diferentes microestados cuánticos \(r\) con energías \(E_r\). Cada réplica está en contacto térmico con el mismo reservorio a temperatura \(T\). La probabilidad de cada microestado \(r\) vendrá dada por:
+\begin{equation}
+	P_r = \frac{e^{-\beta E_r}}{Z}\label{prob_can}
+\end{equation}
+donde \(Z\) es la función de partición
+\begin{equation}
+	Z = \sum_{r} e^{-\beta E_r}\label{Z}
+\end{equation}
+O, en variables continuas:
+\begin{align}
+	Z(T,V,N) &= \frac{1}{N! h^{3N}}\int e^{-\beta H(\Gamma)}d\Gamma\\
+	\rho_C(\Gamma) &= \frac{e^{-\beta H(\Gamma)}}{Z}
+\end{align}
+donde \(\beta\) es
+\begin{equation}
+	\beta = \frac{1}{k_B T}\label{beta}
+\end{equation}
+
+\subsubsection{Contado de Microestados y Probabilidad Promedio}
+
+\begin{figure}[h!]
+	\centering
+	\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+		%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+		
+		%Shape: Rectangle [id:dp8605785346375806] 
+		\draw  [draw opacity=0][fill={rgb, 255:red, 189; green, 16; blue, 224 }  ,fill opacity=0.15 ][line width=3]  (280,40) -- (360,40) -- (360,200) -- (280,200) -- cycle ;
+		%Shape: Rectangle [id:dp2995390944931985] 
+		\draw  [draw opacity=0][fill={rgb, 255:red, 184; green, 233; blue, 134 }  ,fill opacity=0.25 ][line width=3]  (120,120) -- (280,120) -- (280,200) -- (120,200) -- cycle ;
+		%Shape: Rectangle [id:dp5609094814814146] 
+		\draw  [draw opacity=0][fill={rgb, 255:red, 245; green, 166; blue, 35 }  ,fill opacity=0.25 ][line width=3]  (40,120) -- (120,120) -- (120,200) -- (40,200) -- cycle ;
+		%Shape: Rectangle [id:dp44494510693657596] 
+		\draw  [draw opacity=0][fill={rgb, 255:red, 80; green, 227; blue, 194 }  ,fill opacity=0.2 ][line width=3]  (40,40) -- (280,40) -- (280,120) -- (40,120) -- cycle ;
+		%Straight Lines [id:da20488796103242224] 
+		\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=0.5 ]   (200,40) -- (200,200) ;
+		%Straight Lines [id:da6789235502982928] 
+		\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=0.5 ]   (40,120) -- (99.51,120) -- (360,120) ;
+		%Straight Lines [id:da6611265889918468] 
+		\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=0.5 ]   (120,40) -- (120,200) ;
+		%Straight Lines [id:da5593434501085895] 
+		\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=0.5 ]   (80,40) -- (80,200) ;
+		%Straight Lines [id:da23579787464264057] 
+		\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=0.5 ]   (60,40) -- (60,200) ;
+		%Straight Lines [id:da40855026611489376] 
+		\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=0.5 ]   (50,40) -- (50,200) ;
+		%Straight Lines [id:da2653506459399576] 
+		\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=0.5 ]   (280,40) -- (280,200) ;
+		%Straight Lines [id:da1166874787220108] 
+		\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=0.5 ]   (320,40) -- (320,200) ;
+		%Straight Lines [id:da41641472275388014] 
+		\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=0.5 ]   (340,40) -- (340,200) ;
+		%Straight Lines [id:da4125594529842953] 
+		\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=0.5 ]   (350,40) -- (350,200) ;
+		%Straight Lines [id:da9449424519023246] 
+		\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=0.5 ]   (40,80) -- (360,80) ;
+		%Straight Lines [id:da4238854404595084] 
+		\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=0.5 ]   (40,160) -- (360,160) ;
+		%Straight Lines [id:da526107769205578] 
+		\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=0.5 ]   (40,180) -- (360,180) ;
+		%Straight Lines [id:da6794969224011643] 
+		\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=0.5 ]   (40,190) -- (360,190) ;
+		%Straight Lines [id:da18661138933913668] 
+		\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=0.5 ]   (40,60) -- (360,60) ;
+		%Straight Lines [id:da8888060821276098] 
+		\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=0.5 ]   (40,50) -- (360,50) ;
+		%Shape: Rectangle [id:dp8469287972476239] 
+		\draw  [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=3]  (40,40) -- (360,40) -- (360,200) -- (40,200) -- cycle ;
+		%Straight Lines [id:da11397100723822173] 
+		\draw    (385,75) -- (346.51,108.68) ;
+		\draw [shift={(345,110)}, rotate = 318.81] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		%Straight Lines [id:da6768043594989444] 
+		\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=0.5 ]   (45,40) -- (45,200) ;
+		%Straight Lines [id:da14474962454880158] 
+		\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=0.5 ]   (355,40) -- (355,200) ;
+		%Straight Lines [id:da7319977017351067] 
+		\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=0.5 ]   (40,45) -- (360,45) ;
+		%Straight Lines [id:da1607966861797231] 
+		\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=0.5 ]   (40,195) -- (360,195) ;
+		
+		% Text Node
+		\draw (136,19) node [anchor=north west][inner sep=0.75pt]  [font=\normalsize] [align=left] {$\displaystyle \mathcal{A}$ sistemas $\displaystyle \left(\mathcal{A}\rightarrow \infty \right)$, $\displaystyle \mathcal{E}$ energía total};
+		% Text Node
+		\draw (141,64) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle a_{1} ,E_{1}$};
+		% Text Node
+		\draw (61,144) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle a_{2} ,E_{2}$};
+		% Text Node
+		\draw (181,144) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle a_{3} ,E_{3}$};
+		% Text Node
+		\draw (296,104) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle a_{\mathcal{A}} ,E_{\mathcal{A}}$};
+		% Text Node
+		\draw (387,57) node [anchor=north west][inner sep=0.75pt]   [align=left] {Subgrupo de $\displaystyle a_{\mathcal{A}}$\\sistemas que tienen\\en común una\\energía igual a $\displaystyle E_{\mathcal{A}}$};
+	\end{tikzpicture}
+\end{figure}
+Consideremos un ensamble canónico de \(\mathcal{A}\) sistemas idénticos \((\mathcal{A}\rightarrow\infty)\), cada uno con el mismo \(T, V, N\). La energía del ensamble total (\(\mathcal{E})\) es fija. Sea \(a_j\) el número de sistemas en el estado cuántico \(j\) (con energía \(E_j\)). Una distribución \(\left\{a_j\right\}\) debe cumplir:
+\begin{equation}
+	\begin{matrix}
+		\sum_{j} a_j = \mathcal{A}, &~~\sum_{j}a_j E_j = \mathcal{E}
+	\end{matrix}
+\end{equation}
+El número de formas de realizar esta distribución (microestados del \textit{meta-ensamble}) es:
+\begin{equation}
+	W\left(\left\{a_j\right\}\right) = \frac{\mathcal{A}!}{\prod_{j}a_{j}!}
+\end{equation}
+La probabilidad promedio de encontrar un sistema en el estado \(j\) es:
+\begin{equation}
+	P_j = \frac{\left\langle a_j\right\rangle }{\mathcal{A}} = \frac{1}{\mathcal{A}}\frac{\sum_{\left\{a_j\right\}} W(\left\{a_j\right\}) a_j}{\sum_{\left\{a_j\right\}} W(\left\{a_j\right\})}
+\end{equation}
+En el límite \(\mathcal{A}\rightarrow\infty\), esta probabilidad está \textbf{dominada por la distribución más probable} \((a^{*}_{j})\), que maximiza \(W\).
+
+Buscamos maximizar \(\ln W\) (monótono con \(W \)). Usando Stirling (ec. \ref{stirling}):
+\begin{equation}
+	\ln W \approx \mathcal{A}\ln\mathcal{A} - \sum_{j} a_j \ln a_j
+\end{equation}
+Obtenemos que, la distribución más probable y su probabilidad son:
+\begin{align}
+	a^{*}_{j} &= \mathcal{A}\frac{e^{-\beta E_j}}{Z}\\
+	P_J &= \frac{e^{-\beta E_j}}{Z}
+\end{align}
+
+\subsubsection{Partición y Termodinámica}
+Podemos usar la función de partición \(Z\) para obtener expresiones termodinámicas:
+\begin{equation}
+	\begin{matrix}
+		U = - \pd{\ln Z}{\beta}, &~~~ p =\dfrac{1}{\beta}\dderiv{\ln Z}{V}{N,\beta},
+	\end{matrix}
+\end{equation}
+\begin{equation}
+	-p = \dderiv{E}{V}{\beta,N} + \beta\dderiv{p}{\beta}{V,N}
+\end{equation}
+\begin{equation}
+	\begin{matrix}
+		S = \dfrac{U}{T} + k_B \ln Z, &~~~ F = -k_B T \ln Z,
+	\end{matrix}
+\end{equation}
+donde \(F\) es la Energía libre de Helmholtz, para la cuál luego podemos usar las ecuaciones \ref{relaciones_F} y obtener
+\begin{equation}
+	C_V = \deriv{\left\langle E\right\rangle}{T}{V,N}
+\end{equation}
+\subsubsection{Procesos espontáneos y Leyes termodinámicas}
+Todo proceso espontáneo puede entenderse como la remoción de una restricción que permite al sistema acceder a un mayor número de estados cuánticos. Esto es válido en sistemas aislados. \textit{Ejemplo}: un gas ideal expandiéndose luego de la remoción de una barrera.
+
+La disminución de la energía libre de Helmholtz (\(-\Delta F\)) es \textbf{igual al máximo trabajo que se puede obtener de un sistema en un proceso espontáneo a temperatura constante}. Por esta razón, \(F\) recibe el nombre de energía libre: es la máxima energía utilizable (disponible para realizar trabajo) en condiciones isotérmicas.
+
+\caja{Segunda Ley en forma estadística}{Un proceso espontáneo isotérmico será posible sí y solo sí \[\Delta F < 0\]}
+
+Considerando la entropía estadística del ensamble canónico como
+\begin{equation}
+	S = \frac{\left< E \right>}{T} + k \ln Z + C
+\end{equation}
+donde \(C\) es una constante, tendremos que, en límite \(T\rightarrow 0\)
+\begin{equation}
+	\lim_{T\rightarrow 0} S = k \ln n
+\end{equation}
+donde \(n\) es la degeneración del estado fundamental.
+
+\caja{Tercera Ley en forma estadística}{Adoptamos la convención de \[C = 0\] lo que hará que la mayoría de los sistemas (aquellos con estado fundamental no degenerado) cumplan con \(S = 0\) cuando \(T\rightarrow 0\).}
+
+\subsubsection{Interpretación molecular del trabajo y el calor}
+La variación de la energía interna \(dU\) se puede entender desde la perspectiva del ensamble:
+\begin{equation}
+	dU = d\left(\sum_{j}P_j E_j\right) = \underbrace{\sum_{j}P_j dE_j}_{\mathrm{Trabajo}} + \underbrace{\sum_{j}E_j dP_j}_{\mathrm{Calor}}
+\end{equation}
+\begin{itemize}
+	\item \textbf{Trabajo} \(\left(\sum_{j}P_j dE_j\right)\): Cambio en la energía de los niveles cuánticos debido a una modificación de los parámetros externos (ej. \(dV\)), manteniendo la probabilidad de ocupación 	fija. Este es el trabajo realizado sobre el sistema.
+	\item \textbf{Calor} \(\left(\sum_{j}E_j dP_j\right)\): Cambio en la energía debido a una redistribución de las probabilidades de ocupación entre los niveles cuánticos (a \(E_j\) fijos). Esto representa el calor absorbido por el sistema.
+\end{itemize}
+
+\subsubsection{Fluctuaciones de energía}
+La varianza de la energía es
+\begin{align}
+	\langle\left(\Delta E\right)^2\rangle  &= \langle E^2\rangle - \langle E \rangle^2\nonumber\\
+	\langle\left(\Delta E\right)^2\rangle &= k_B T^2 C_V
+\end{align}
+Si \(C_V \propto N\), entonces
+\begin{equation}
+	\frac{\sqrt{\langle\left(\Delta E\right)^2\rangle}}{\langle E\rangle} \sim N^{-1/2}
+\end{equation}
+Las fluctuaciones relativas desaparecen en el límite termodinámico.
+
+\subsubsection{Distribución de probabilidad de la energía}
+La probabilidad de que el sistema tenga una energía \(E\) en el ensamble canónico es:
+\begin{equation}
+	P(E) = \frac{\Omega(E)e^{-\beta E}}{Z}
+\end{equation}
+donde \(\Omega(E)\) es la densidad de estados.
+
+Para sistemas macroscópicos, \(\Omega(E)\) crece muy rápidamente con \(E\), mientras que \(e^{-\beta E}\) decrece exponencialmente. El producto tiene un máximo muy pronunciado en \(E = U\).
+
+Realizando una aproximación gaussiana alrededor de \(P(E = U)\):
+\begin{equation}
+	P(E) \approx P(U) \exp\left(-\frac{(E - U)^2}{2 k_B T^2 C_V}\right)
+\end{equation}
+Esta es una distribución gaussiana con media \(U\) y varianza \(\sigma_E^2 = k_B T^2 C_V\), consistente con el resultado de fluctuaciones.
+
+\subsubsection{Gas ideal}
+Para el gas ideal clásico, la función de partición canónica
+\begin{equation}
+	Z_N = \dfrac{1}{N!}\left(\dfrac{V}{\lambda^3}\right)^N
+\end{equation}
+donde \(\lambda\) es la longitud de onda térmica dada por la ec. \ref{lambda_onda_termica}. A partir de \( Z_N\) , podemos derivar todas las propiedades termodinámicas:
+
+A partir de \(Z_N\) podemos derivar todas las propiedades termodinámicas:
+\begin{itemize}
+	\item \textbf{Energía libre de Helmholtz}
+	\begin{equation*}
+		F = -k_B T \ln Z_N = -k_B T \left[N\ln\left(\dfrac{V}{\lambda^3}\right) - \ln N!\right]
+	\end{equation*}
+	usando la aproximación de Stirling (ec. \ref{stirling})
+	\begin{equation}
+		F \approx -N k_B T \left[\ln\left(\dfrac{V}{N\lambda^3}\right) + 1\right]
+	\end{equation}
+	\item \textbf{Energía interna}
+	\begin{equation}
+		U = - \pd{\ln Z_N}{\beta} = \frac{3}{2} N k_B T
+	\end{equation}
+	\item \textbf{Presión}
+	\begin{equation}
+	p = k_B T \pd{\ln Z_N}{V} = \frac{ N k_B T}{V}
+	\end{equation}
+	\item \textbf{Entropía}
+	\begin{equation}
+	S = \frac{U - F}{T} = N k_B \left[\ln\left(\frac{V}{N \lambda^3}\right) + \frac{5}{2}\right]
+	\end{equation}
+	donde esta última es la ecuación de Sackur–Tetrode, idéntica a la obtenida en el ensamble microcanónico, demostrando la equivalencia en el límite termodinámico.
+\end{itemize}
+
+\subsubsection{Teorema de equipartición de la energía}
+Sea \(H = \epsilon_i(p_i) + H'(p_j, q_k)\), \(\epsilon_i(p_i) = b p_i^2\), entonces:
+\begin{equation}
+	\left\langle \epsilon_i\right\rangle = \frac{\int\epsilon_i e^{-\beta \epsilon_i} e^{-\beta H'} d\Gamma}{\int e^{-\beta \epsilon_i} e^{-\beta H'} d\Gamma} = \frac{1}{2}k_B T
+\end{equation}
+Es decir, la energía interna de un sistema vendrá dada por:
+\begin{equation}
+	U = \frac{\nu}{2}N k_B T
+\end{equation}
+donde \(N\) es la cantidad de partículas y \(\nu\) son los \textbf{grados de libertad} de cada partícula.
+
+Esta ecuación falla a bajas temperaturas, donde los efectos cuánticos (congelamiento de grados de libertad) son importantes. Tampoco se aplica directamente a sistemas con interacciones no cuadráticas (pero puede generalizarse con el teorema del virial).
+
+\subsubsection{Espacio de fase y probabilidad de una sola partícula}
+De la ec. \ref{dGamma} teníamos el espacio de fase de un sistema entero con partículas indistinguibles. En el caso de una sola partícula tendremos:
+\begin{align}
+	d\Gamma &= \frac{d^3xd^3p}{(2\pi\hbar)^3} = \frac{Vd^3p}{(2\pi\hbar)^3}\nonumber\\
+	&= \frac{4\pi V m^3 v^2}{(2\pi\hbar)^3}dv
+\end{align}
+
+Para un gas ideal en equilibrio, la probabilidad de encontrar una partícula en un elemento de volumen del espacio fase es proporcional al factor de Boltzmann \(e^{-\beta\epsilon}\), así:
+\begin{equation*}
+	dP = C e^{-\beta m v^2/2} \frac{4\pi V m^3 v^2}{(2\pi\hbar)^3}dv
+\end{equation*}
+podemos encontrar la constante \(C\) a través de la normalización \(\int_{0}^{\infty}dP = 1\), dándonos
+\begin{equation}
+	dP = \frac{4}{\sqrt{\pi}}\left(\frac{\beta m}{2}\right)^{3/2} v^2 e^{-\beta m v^2/2} dv
+\end{equation}
+
+\subsubsection{Distribución de velocidades}
+Para un sistema de \(n\) partículas independientes, el número de partículas con rapidez entre \(v\) y \(v + dv\) es
+\begin{equation*}
+	dn = n dP
+\end{equation*}
+Luego, la densidad de probabilidad (o función de distribución) de que la partícula tenga velocidad \(v\) es la \textbf{distribución de Maxwell}:
+\begin{equation}
+	F(v) = \frac{dP}{dv} = \frac{4}{\sqrt{\pi}}\left(\frac{\beta m}{2}\right)^{3/2} v^2 e^{-\beta m v^2/2}
+\end{equation}
+De aquí, \(e^{-\beta m v^2/2}\) penaliza energías cinéticas altas; \(v^2\) crece con el número de direcciones/estados disponibles para ese módulo de la velocidad. La competencia entre ambos produce el máximo de la curva.
+
+Si el gas contiene \(N\) moléculas, el número esperado de partículas cuyas velocidades están entre \(v_1\) y \(v_2\) es
+\begin{equation}
+	N(v_1,v_2) = N \int_{v_1}^{v_2} F(v) dv
+\end{equation}
+Si el intervalo es pequeño, \(dv = v_2 - v_1\), puede aproximarse por
+\begin{equation}
+	\Delta N \approx NF(v)\Delta v
+\end{equation}
+
+La velocidad más probable \(v_p\) es aquella donde \(F (v)\) alcanza su máximo. Utilizando
+\begin{equation*}
+	\td{F}{v} = 0
+\end{equation*}
+obtenemos
+\begin{equation}
+	v_p = \sqrt{\frac{2 k_B T}{m}}
+\end{equation}
+
+La velocidad media \(\left\langle v\right\rangle \) se define por
+\begin{equation*}
+	\left\langle v\right\rangle = \int_{0}^{\infty}vF(v)dv
+\end{equation*}
+Con lo cual obtenemos
+\begin{equation}
+	\left\langle v\right\rangle = \sqrt{\frac{8 k_B T}{\pi m}}
+\end{equation}
+
+La velocidad cuadrática media \(v_\mathrm{rms} = \sqrt{\left\langle v^2 \right\rangle}\) puede calcularse directamente considerando que la energía cinética media es \(\left\langle m v^2/2 \right\rangle = 3k_B T/2\):
+\begin{align*}
+	\left\langle v^2 \right\rangle &= \left\langle v_x^2 \right\rangle + \left\langle v_y^2 \right\rangle + \left\langle v_z^2 \right\rangle\\
+	&= 3\frac{k_B T}{m}
+\end{align*}
+Finalmente
+\begin{equation}
+	v_\mathrm{rms} = \sqrt{\left\langle v^2 \right\rangle} = \sqrt{\frac{3 k_B T}{m}}
+\end{equation}
+
+En el caso de la \(i\)-ésima componente de la velocidad de una partícula, estará descrita por una curva gaussiana en la forma:
+\begin{equation}
+	f_i(v_i) = \sqrt{\frac{\beta m}{2\pi}} e^{-\beta m v_i^2/2}
+\end{equation}
+Donde
+\begin{equation}
+	F(v) = f_x(v_x)\cdot f_y(v_y)\cdot f_z(v_z)
+\end{equation}
+
+\subsubsection{Camino libre medio en un gas ideal}
+El camino libre medio \(\ell\) es la distancia promedio que recorre una molécula entre colisiones con otras moléculas. Vendrá definido por
+\begin{equation}
+	\ell = \frac{1}{\sqrt{2} \pi d^2 n}
+\end{equation}
+donde \(d\) es el diámetro de la partícula en consideración y \(n = N/V\) su densidad numérica.
+
+\subsection{Distribución de Boltzmann}
+
+\subsection{Ensamble Gran Canónico}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \end{document}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
