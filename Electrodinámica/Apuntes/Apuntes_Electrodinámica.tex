@@ -28,17 +28,22 @@
 \newcommand{\di}{\nabla\cdot}
 \newcommand{\ro}{\nabla\times}
 \newcommand{\la}{\nabla^2}
-\newcommand{\xhat}{\hat{\mathbf{x}}}
-\newcommand{\yhat}{\hat{\mathbf{y}}}
-\newcommand{\zhat}{\hat{\mathbf{z}}}
-\newcommand{\rhat}{\hat{\mathbf{r}}}
+\newcommand{\rv}{\mathbf{r}}
+\newcommand{\xv}{\mathbf{x}}
+\newcommand{\yv}{\mathbf{x}}
+\newcommand{\zv}{\mathbf{x}}
+\newcommand{\xhat}{\hat{\xv}}
+\newcommand{\yhat}{\hat{\yv}}
+\newcommand{\zhat}{\hat{\zv}}
+\newcommand{\rhat}{\hat{\rv}}
 \newcommand{\that}{\hat{\mathbf{\theta}}}
 \newcommand{\phat}{\hat{\mathbf{\varphi}}}
 \newcommand{\rhhat}{\hat{\mathbf{\rho}}}
 \newcommand{\eo}{\epsilon_0}
 \newcommand{\ke}{\frac{1}{4\pi\eo}}
-\newcommand{\rv}{\mathbf{r}}
 \newcommand{\rdif}{\rv - \rv'}
+\newcommand{\pd}[2]{\dfrac{\partial #1}{\partial #2}}
+\newcommand{\td}[2]{\dfrac{d #1}{d #2}}
 %opening
 \title{Electrodinámica Avanzada}
 \author{Simon Fonseca}
@@ -142,7 +147,7 @@ Si \(S(V)\) es la superficie cerrada que delimita el volumen \(V\), entonces
 \subsubsection{Teorema de Stokes}
 Si \(S\) es una superficie orientada cuya frontera es la curva cerrada \(C = \partial S\), entonces
 \begin{equation}
-	\iint_S (\ro\mathbf{A})\cdot d\mathbf{S} = \oint_{C}\mathbf{A}\cdot d\mathbf{r}
+	\iint_S (\ro\mathbf{A})\cdot d\mathbf{S} = \oint_{C}\mathbf{A}\cdot d\rv
 	\label{teo_sto}
 \end{equation}
 
@@ -166,25 +171,25 @@ Cuando la simetría del problema lo sugiere, conviene abandonar las coordenadas 
 
 La posición se describe mediante
 \begin{equation}
-	\mathbf{r} = \mathbf{r}(u_1, u_2, u_3)
+	\rv = \rv(u_1, u_2, u_3)
 \end{equation}
 El desplazamiento diferencial es
 \begin{equation}
-	d\mathbf{r} = \frac{\partial\mathbf{r}}{\partial u_i}du_i
+	d\rv = \frac{\partial\rv}{\partial u_i}du_i
 \end{equation}
 Definimos los factores de escala \(h_i\) y los vectores locales \(\ei\) por
 \begin{equation}
 	\begin{matrix}
-		\dfrac{\partial\mathbf{r}}{\partial u_i} = h_i\ei, & \mathbf{r} \equiv \dfrac{1}{h_i}\dfrac{\partial\mathbf{r}}{\partial u_i}
+		\dfrac{\partial\rv}{\partial u_i} = h_i\ei, & \rv \equiv \dfrac{1}{h_i}\dfrac{\partial\rv}{\partial u_i}
 	\end{matrix}
 \end{equation}
 Así,
 \begin{equation}
-	d\mathbf{r} = h_i du_i \ei
+	d\rv = h_i du_i \ei
 \end{equation}
 Y la métrica:
 \begin{equation}
-	ds^2 = d\mathbf{r}\cdot d\mathbf{r} = g_{ij}du^idu^j
+	ds^2 = d\rv\cdot d\rv = g_{ij}du^idu^j
 \end{equation}
 En un sistema ortogonal (sin términos cruzados),
 \begin{equation}
@@ -280,24 +285,24 @@ y los factores de escala:
 \subsection{Ley de Coulomb y campo eléctrico}
 La \textbf{ley de Coulomb} define la interacción entre cargas puntuales:
 \begin{equation}
-	\mathbf{F}_{12} = \ke\frac{q_1q_2}{|\mathbf{r}_1 - \mathbf{r}_2|^3}(\mathbf{r}_1 - \mathbf{r}_2)
+	\mathbf{F}_{12} = \ke\frac{q_1q_2}{|\rv_1 - \rv_2|^3}(\rv_1 - \rv_2)
 \end{equation}
 
-Si definimos el campo eléctrico como fuerza eléctrica por unidad de carga ejercida por una carga puntual \(q\) en posición \(\mathbf{r}_0\):
+Si definimos el campo eléctrico como fuerza eléctrica por unidad de carga ejercida por una carga puntual \(q\) en posición \(\rv_0\):
 \begin{equation}
-	\mathbf{E}(\mathbf{r}) = \ke q\frac{\mathbf{r} - \mathbf{r}_0}{|\mathbf{r} - \mathbf{r}_0|^3}
+	\mathbf{E}(\rv) = \ke q\frac{\rv - \rv_0}{|\rv - \rv_0|^3}
 \end{equation}
 
-Para varias cargas discretas \(q_i\) en posiciones \(\mathbf{r}_i\):
+Para varias cargas discretas \(q_i\) en posiciones \(\rv_i\):
 \begin{equation}
-	\mathbf{E}(\mathbf{r}) = \ke \sum_{i}q_i\frac{\mathbf{r} - \mathbf{r}_i}{|\mathbf{r} - \mathbf{r}_i|^3}
+	\mathbf{E}(\rv) = \ke \sum_{i}q_i\frac{\rv - \rv_i}{|\rv - \rv_i|^3}
 \end{equation}
 
 En el caso de densidades de carga lineal (\(\lambda\)), superficial (\(\sigma\)) y volumétrica (\(\rho\)), tendremos las expresiones:
 \begin{align}
-	\mathbf{E}(\mathbf{r}) &= \ke \int dl'\lambda(\mathbf{r}')\frac{\mathbf{r} - \mathbf{r}'}{|\mathbf{r} - \mathbf{r}'|^3}\\
-	\mathbf{E}(\mathbf{r}) &= \ke \iint da'\sigma(\mathbf{r}')\frac{\mathbf{r} - \mathbf{r}'}{|\mathbf{r} - \mathbf{r}'|^3}\\
-	\mathbf{E}(\mathbf{r}) &= \ke \iiint d^3r'\rho(\mathbf{r}')\frac{\mathbf{r} - \mathbf{r}'}{|\mathbf{r} - \mathbf{r}'|^3}
+	\mathbf{E}(\rv) &= \ke \int dl'\lambda(\rv')\frac{\rv - \rv'}{|\rv - \rv'|^3}\\
+	\mathbf{E}(\rv) &= \ke \iint da'\sigma(\rv')\frac{\rv - \rv'}{|\rv - \rv'|^3}\\
+	\mathbf{E}(\rv) &= \ke \iiint d^3r'\rho(\rv')\frac{\rv - \rv'}{|\rv - \rv'|^3}
 \end{align}
 
 \subsection{Ley de Gauss}
@@ -307,7 +312,7 @@ La \textbf{ley de Gauss} afirma que para cualquier superficie cerrada \(S\)
 \end{equation}
 donde \(Q_{\text{enc}}\) es la carga total encerrada. Si la carga es continua,
 \begin{equation*}
-	Q_{\text{enc}} = \iiint_{V(S)} \rho(\mathbf{r}) d^3r
+	Q_{\text{enc}} = \iiint_{V(S)} \rho(\rv) d^3r
 \end{equation*}
 
 En forma diferencial:
@@ -316,7 +321,7 @@ En forma diferencial:
 \end{equation}
 
 \subsection{Potencial electrostático}
-La fuerza y, por ende, el campo eléctrico son campos conservativos, por lo que podemos escribir un potencial escalar \(\Phi(\mathbf{r})\) tal que:
+La fuerza y, por ende, el campo eléctrico son campos conservativos, por lo que podemos escribir un potencial escalar \(\Phi(\rv)\) tal que:
 \begin{align}
 	\mathbf{E} &= -\gr\Phi\\
 	\Rightarrow \Delta\Phi &= -\int_{A}^{B} \mathbf{E}\cdot d\mathbf{l}
@@ -324,7 +329,7 @@ La fuerza y, por ende, el campo eléctrico son campos conservativos, por lo que 
 
 Si fijamos el potencial en el infinito como nulo \(\Phi(\infty) = 0\), tendremos:
 \begin{equation}
-	\Phi(\mathbf{r}) = \ke\frac{q}{r}
+	\Phi(\rv) = \ke\frac{q}{r}
 \end{equation}
 
 Como \(\mathbf{E}\) es conservativo, también tendremos que su rotacional es nulo:
@@ -335,11 +340,11 @@ Como \(\mathbf{E}\) es conservativo, también tendremos que su rotacional es nul
 
 Y la \textbf{energía potencial} para cargas discretas:
 \begin{equation}
-	U=\frac{1}{2}\sum_{i}q_i\Phi(\mathbf{r}_i)
+	U=\frac{1}{2}\sum_{i}q_i\Phi(\rv_i)
 \end{equation}
 y para una distribución continua:
 \begin{equation}
-	U = \frac{1}{2}\int\rho(\mathbf{r})\Phi(\mathbf{r})d^3r
+	U = \frac{1}{2}\int\rho(\rv)\Phi(\rv)d^3r
 \end{equation}
 
 \subsection{Condiciones de borde}
@@ -390,7 +395,7 @@ Las soluciones de Laplace se llaman funciones armónicas.
 
 La solución de la ecuación de Poisson en el espacio libre:
 \begin{equation}
-	\Phi(\mathbf{r}) = \ke\int d^3\mathbf{r}'\frac{\rho(\mathbf{r}')}{|\mathbf{r}-\mathbf{r}'|}
+	\Phi(\rv) = \ke\int d^3\rv'\frac{\rho(\rv')}{|\rv-\rv'|}
 \end{equation}
 
 \subsection{Identidades y funciones de Green}
@@ -418,9 +423,9 @@ Si ahora intercambiamos \(\phi\leftrightarrow\varphi\) y restamos la expresión 
 	\label{2_id_green}
 \end{equation}
 
-Buscamos una función \(G(\mathbf{r}, \mathbf{r}')\) tal que, considerada como función de \(\mathbf{r}'\) para \(\mathbf{r}\) fijo, satisfaga
+Buscamos una función \(G(\rv, \rv')\) tal que, considerada como función de \(\rv'\) para \(\rv\) fijo, satisfaga
 \begin{equation}
-	\nabla'^2 G(\mathbf{r}, \mathbf{r}') = -4\pi\delta(\rdif)
+	\nabla'^2 G(\rv, \rv') = -4\pi\delta(\rdif)\label{lap_G}
 \end{equation}
 en el volumen de interés, junto con condiciones de borde adecuadas en la superficie \(S\). El símbolo \(\nabla'^2\) indica que el laplaciano actúa sobre la variable fuente \(\rv'\). En espacio libre la elección más simple es
 \begin{equation}
@@ -439,7 +444,7 @@ Partiendo de la segunda identidad de Green y considerando:
 Usando ahora
 \begin{equation*}
 	\begin{matrix}
-		\nabla'^2 G(\mathbf{r}, \mathbf{r}') = -4\pi\delta(\rdif),& \la\Phi(\rv') = - \dfrac{\rho(\rv')}{\eo}
+		\nabla'^2 G(\rv, \rv') = -4\pi\delta(\rdif),& \la\Phi(\rv') = - \dfrac{\rho(\rv')}{\eo}
 	\end{matrix}
 \end{equation*}
 obtenemos
@@ -460,14 +465,15 @@ Cuando \(\rho = 0\), la ecuación de Poisson se reduce a la de Laplace y la fór
 \end{equation}
 
 Si tenemos un potencial conocido en la frontera (como en el caso cuando la superficie es conductora y se conoce el potencial sobre ella), conviene elegir una función de Green de Dirichlet que satisfaga
-\begin{equation*}
+\begin{equation}
 	\begin{matrix}
 		G_D(\rv,\rv') = 0,& \rv'\in S
 	\end{matrix}
-\end{equation*}
+	\label{dirichlet}
+\end{equation}
 Entonces el primer término de superficie en la ecuación \ref{poisson_sol_green} desaparece y queda
 \begin{equation}
-	\Phi(\rv) = \frac{1}{4\pi\eo}\int_{V}G_D\rho d^3r' - \frac{1}{4\pi}\oint_{S}\Phi\frac{\partial G_D}{\partial n'} dS'
+	\Phi(\rv) = \frac{1}{4\pi\eo}\int_{V}G_D\rho d^3r' - \frac{1}{4\pi}\oint_{S}\Phi\frac{\partial G_D}{\partial n'} dS'\label{green_dirichlet}
 \end{equation}
 
 Bajo hipótesis estándar y para condiciones de borde apropiadas, la función de Green satisface una propiedad de reciprocidad:
@@ -477,10 +483,13 @@ Bajo hipótesis estándar y para condiciones de borde apropiadas, la función de
 
 La función de Green puede interpretarse como el potencial en el punto \(\rv\) producido por una carga puntual unitaria situada en \(\rv'\), en presencia de las fronteras del problema. Incorpora simultáneamente la ley local de interacción (laplaciano en volumen) y la geometría global de la región (condiciones de borde).
 
+
+\section{Métodos de resolución de problemas electrostáticos}
+
 \subsection{Método de las imágenes}
 El método de imágenes puede entenderse como una manera ingeniosa de construir funciones de Green en ciertas geometrías simples. En lugar de resolver el problema de contorno de manera abstracta, se reemplaza la presencia de la frontera por cargas ficticias situadas fuera de la región física.
 
-\subsubsection{Ejemplo 1}
+\subsubsection{Ejemplo 1: Placa plana}
 Considérese una carga puntual \(q\) en el punto \((0, 0, a)\), con \(a > 0\), frente a un plano conductor infinito ubicado en \(z = 0\) y conectado a tierra. En la región \(z > 0\) se desea resolver
 \begin{equation*}
 	\begin{matrix}
@@ -554,10 +563,10 @@ La solución se obtiene colocando una carga imagen \(-q\) en \((0, 0, -a)\). El 
 	\end{tikzpicture}
 \end{figure}
 
-\subsubsection{Ejemplo 2}
-Intentemos resolver el caso de una esfera conductora conectada a tierra de radio \(a\) y una carga \(q\) a una distancia \(\mathbf{x}\) del centro. Por simetría la carga virtual \(q'\) debe ubicarse dentro de la esfera, en la dirección de descrita por \(\mathbf{x}\). Es decir, buscamos un potencial:
+\subsubsection{Ejemplo 2: Cascarón esférico}
+Intentemos resolver el caso de una esfera conductora conectada a tierra de radio \(a\) y una carga \(q\) a una distancia \(\xv\) del centro. Por simetría la carga virtual \(q'\) debe ubicarse dentro de la esfera, en la dirección de descrita por \(\xv\). Es decir, buscamos un potencial:
 \begin{equation*}
-	\Phi(\mathbf{r}) = \ke\frac{q}{|\rv - \mathbf{x}|} + \ke\frac{q'}{|\rv - \mathbf{x}'|}
+	\Phi(\rv) = \ke\frac{q}{|\rv - \xv|} + \ke\frac{q'}{|\rv - \xv'|}
 \end{equation*}
 tal que
 \begin{equation*}
@@ -642,17 +651,21 @@ tal que
 \end{figure}
 
 Desarrollando,
-\begin{align*}
-	\Phi(\mathbf{r}) &= \ke\frac{q}{|r\rhat - x\xhat|} + \ke\frac{q'}{\left|r\rhat - x'\xhat\right|}\\
-	\Rightarrow\Phi(\mathbf{r}) &= \ke\frac{q}{r\left|\rhat - \dfrac{x}{r}\xhat\right|} + \ke\frac{q'}{x'\left|\dfrac{r}{x'}\rhat - \xhat\right|}\\
-	\Rightarrow\Phi(\mathbf{r} = a) &= \ke\frac{q/a}{\left|\rhat - \dfrac{x}{a}\xhat\right|} + \ke\frac{q'/x'}{\left|\xhat - \dfrac{a}{x'}\rhat\right|} = 0
-\end{align*}
+\begin{align}
+	\Phi(\rv) &= \ke\frac{q}{|r\rhat - x\xhat|} + \ke\frac{q'}{\left|r\rhat - x'\xhat\right|}\label{pot_ej2_1}\\
+	\Rightarrow\Phi(\rv) &= \ke\frac{q}{r\left|\rhat - \dfrac{x}{r}\xhat\right|} + \ke\frac{q'}{x'\left|\dfrac{r}{x'}\rhat - \xhat\right|}\nonumber\\
+	\Rightarrow\Phi(\rv = a) &= \ke\frac{q/a}{\left|\rhat - \dfrac{x}{a}\xhat\right|} + \ke\frac{q'/x'}{\left|\xhat - \dfrac{a}{x'}\rhat\right|} = 0
+\end{align}
 Recordando que la magnitud de la suma de dos vectores es:
 \begin{align}
 	|A\hat{\mathbf{a}} + B\hat{\mathbf{b}}| &= \sqrt{A^2\hat{\mathbf{a}}\cdot\hat{\mathbf{a}} - 2AB\hat{\mathbf{a}}\cdot\hat{\mathbf{b}} + B^2\hat{\mathbf{b}}\cdot\hat{\mathbf{b}}}\nonumber\\
-	|A\hat{\mathbf{a}} + B\hat{\mathbf{b}}| &= \sqrt{A + B + 2AB\hat{\mathbf{a}}\cdot\hat{\mathbf{b}}}\\
+	|A\hat{\mathbf{a}} + B\hat{\mathbf{b}}| &= \sqrt{A + B + 2AB\hat{\mathbf{a}}\cdot\hat{\mathbf{b}}}\nonumber\\
 	\Rightarrow |A\hat{\mathbf{a}} + B\hat{\mathbf{b}}| &= |B\hat{\mathbf{a}} + A\hat{\mathbf{b}}|
 \end{align}
+Por lo tanto:
+\begin{equation*}
+	\left|\xhat - \dfrac{a}{x'}\rhat\right| = \left|\rhat - \dfrac{a}{x'}\xhat\right|
+\end{equation*}
 Por lo que podemos identificar que
 \begin{equation*}
 	\begin{matrix}
@@ -660,9 +673,10 @@ Por lo que podemos identificar que
 		\Rightarrow& q' = -\dfrac{a}{x}q, & x' = \dfrac{a^2}{x}
 	\end{matrix}
 \end{equation*}
-\begin{equation*}
-	\Rightarrow\Phi(\mathbf{r}) = \ke\left( \frac{q}{|\rv - \mathbf{x}|} - \frac{a}{x}\frac{q}{\left|\rv -  \frac{a^2}{x}\mathbf{x}\right|}\right) 
-\end{equation*}
+Luego, utilizando la ec. \ref{pot_ej2_1}
+\begin{equation}
+	\Rightarrow\Phi(\rv) = \ke\left( \frac{q}{|\rv - \xv|} - \frac{a}{x}\frac{q}{\left|\rv -  \dfrac{a^2}{x^2}\xv\right|}\right) \label{pot_ej2_2}
+\end{equation}
 
 La carga inducida sobre la superficie de la esfera vendrá dada por la carga superficial, obtenida a partir del campo normal justo afuera del conductor:
 \begin{equation}
@@ -672,16 +686,490 @@ por lo que, para nuestro caso:
 \begin{equation*}
 	\sigma(\theta) = -\frac{q}{4\pi a^2}\left(\frac{a}{x}\right) \frac{1 - \dfrac{a^2}{x^2}}{\left(1 + \dfrac{a^2}{x^2} - 2\dfrac{a}{x}\cos\theta\right)^{3/2}}
 \end{equation*}
-donde \(\theta\) es el ángulo entre \(\mathbf{r}\) y \(\mathbf{x}\) (o el ángulo polar, si rotamos el sistema para que \(\xhat\) coincida con el eje \(z\)).
+donde \(\theta\) es el ángulo entre \(\rv\) y \(\xv\) (o el ángulo polar, si rotamos el sistema para que \(\xhat\) coincida con el eje \(z\)).
 
 La energía potencial puede describirse por el potencial generado por la carga virtual sobre la carga real:
 \begin{equation}
-	U = \frac{1}{2}q\Phi_\text{virtual}(\mathbf{r})
+	U = \frac{1}{2}q\Phi_\text{virtual}(\rv)
 \end{equation}
 en nuestro caso:
 \begin{equation*}
 	U = \frac{1}{2} q \ke \frac{q'}{|x\xhat - x'\xhat|} = -\frac{a}{8\pi\eo}\frac{q^2}{(x^2 - a^2)}
 \end{equation*}
+
+\subsection{Función de Green}
+Recordando la fórmula general del potencial usando funciones de Green, descrita por la ec. \ref{poisson_sol_green}
+\begin{equation*}
+	\Phi(\rv) = \frac{1}{4\pi\eo}\int_{V}G\rho d^3r' + \frac{1}{4\pi}\oint_{S}\left( G\frac{\partial\Phi}{\partial n'} - \Phi\frac{\partial G}{\partial n'} \right)dS'
+\end{equation*}
+Y el caso en que \(\rho = 0\), descrito por la ec. \ref{laplace_sol_green}
+\begin{equation*}
+	\Phi(\rv) = \frac{1}{4\pi}\oint_{S}\left( G\frac{\partial\Phi}{\partial n'} - \Phi\frac{\partial G}{\partial n'} \right)dS'
+\end{equation*}
+donde \(G\) es una función que debe satisfacer la ec. \ref{lap_G}
+\begin{equation*}
+	\nabla'^2 G(\rv, \rv') = -4\pi\delta(\rdif)
+\end{equation*}
+y, si conocemos el potencial en alguna frontera \(S\), la condición de Dirichlet descrita por la ec. \ref{dirichlet}
+\begin{equation*}
+	\begin{matrix}
+		G_D(\rv,\rv') = 0,& \rv'\in S
+	\end{matrix}
+\end{equation*}
+nos permite simplificar esta expresión a la descrita por la ec. \ref{green_dirichlet}
+\begin{equation*}
+	\Phi(\rv) = \frac{1}{4\pi\eo}\int_{V}G_D\rho d^3r' - \frac{1}{4\pi}\oint_{S}\Phi\frac{\partial G_D}{\partial n'} dS'
+\end{equation*}
+
+\subsubsection{Ejemplo 1: Solución general para la esfera}
+Consideremos el caso de una esfera conductora de radio \(a\) y una carga \textit{unitaria} \(\eo\) (tal que los términos \(\ke q\rightarrow \frac{1}{4\pi}\)) a una distancia \(\xv'\) del centro.
+\begin{figure}[h!]
+	\centering
+	\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+		%uncomment if require: \path (0,409); %set diagram left start at 0, and has height of 409
+		
+		%Straight Lines [id:da2781038642653664] 
+		\draw [color={rgb, 255:red, 74; green, 74; blue, 74 }  ,draw opacity=1 ] [dash pattern={on 0.84pt off 2.51pt}]  (75,50) -- (75,195) ;
+		%Straight Lines [id:da5612054779517611] 
+		\draw  [dash pattern={on 4.5pt off 4.5pt}]  (88,144) -- (155,130) ;
+		%Straight Lines [id:da8136926248982909] 
+		\draw  [dash pattern={on 4.5pt off 4.5pt}]  (155,130) -- (155,55) ;
+		%Straight Lines [id:da4117356753841448] 
+		\draw [color={rgb, 255:red, 128; green, 128; blue, 128 }  ,draw opacity=1 ] [dash pattern={on 0.84pt off 2.51pt}]  (175,110) -- (164.59,120.58) -- (155,130) ;
+		%Shape: Arc [id:dp9038332052912171] 
+		\draw  [draw opacity=0][dash pattern={on 0.84pt off 2.51pt}] (229.88,131.31) .. controls (229.96,130.87) and (230,130.44) .. (230,130) .. controls (230,117.57) and (196.42,107.5) .. (155,107.5) .. controls (113.58,107.5) and (80,117.57) .. (80,130) -- (155,130) -- cycle ; \draw  [color={rgb, 255:red, 155; green, 155; blue, 155 }  ,draw opacity=1 ][dash pattern={on 0.84pt off 2.51pt}] (229.88,131.31) .. controls (229.96,130.87) and (230,130.44) .. (230,130) .. controls (230,117.57) and (196.42,107.5) .. (155,107.5) .. controls (113.58,107.5) and (80,117.57) .. (80,130) ;  
+		%Straight Lines [id:da35830764707718865] 
+		\draw [color={rgb, 255:red, 128; green, 128; blue, 128 }  ,draw opacity=1 ] [dash pattern={on 0.84pt off 2.51pt}]  (110,85) -- (155,130) ;
+		%Straight Lines [id:da9021655642139931] 
+		\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ] [dash pattern={on 4.5pt off 4.5pt}]  (155,130) -- (156.39,130) -- (230,130) ;
+		%Shape: Circle [id:dp4558574487763971] 
+		\draw  [fill={rgb, 255:red, 248; green, 231; blue, 28 }  ,fill opacity=0.3 ] (80,130) .. controls (80,88.58) and (113.58,55) .. (155,55) .. controls (196.42,55) and (230,88.58) .. (230,130) .. controls (230,171.42) and (196.42,205) .. (155,205) .. controls (113.58,205) and (80,171.42) .. (80,130) -- cycle ;
+		%Shape: Arc [id:dp3573405250428032] 
+		\draw  [draw opacity=0] (230,130) .. controls (230,130) and (230,130) .. (230,130) .. controls (230,130) and (230,130) .. (230,130) .. controls (230,146.57) and (196.42,160) .. (155,160) .. controls (113.58,160) and (80,146.57) .. (80,130) -- (155,130) -- cycle ; \draw  [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ] (230,130) .. controls (230,130) and (230,130) .. (230,130) .. controls (230,130) and (230,130) .. (230,130) .. controls (230,146.57) and (196.42,160) .. (155,160) .. controls (113.58,160) and (80,146.57) .. (80,130) ;  
+		%Straight Lines [id:da33857913729563416] 
+		\draw    (110,85) -- (77.83,52.78) ;
+		\draw [shift={(76.42,51.37)}, rotate = 45.05] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (8.74,-2.63) .. controls (5.56,-1.12) and (2.65,-0.24) .. (0,0) .. controls (2.65,0.24) and (5.56,1.12) .. (8.74,2.63)   ;
+		%Shape: Circle [id:dp5497611097316808] 
+		\draw  [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.75]  (73.63,50) .. controls (73.63,49.24) and (74.24,48.63) .. (75,48.63) .. controls (75.76,48.63) and (76.38,49.24) .. (76.38,50) .. controls (76.38,50.76) and (75.76,51.38) .. (75,51.38) .. controls (74.24,51.38) and (73.63,50.76) .. (73.63,50) -- cycle ;
+		%Straight Lines [id:da9616951207981407] 
+		\draw    (175,110) -- (218.59,66.41) ;
+		\draw [shift={(220,65)}, rotate = 135] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (8.74,-2.63) .. controls (5.56,-1.12) and (2.65,-0.24) .. (0,0) .. controls (2.65,0.24) and (5.56,1.12) .. (8.74,2.63)   ;
+		%Straight Lines [id:da39515252198297623] 
+		\draw    (155,55) -- (155,18) ;
+		\draw [shift={(155,15)}, rotate = 90] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+		%Shape: Arc [id:dp5576808294066461] 
+		\draw  [draw opacity=0][fill={rgb, 255:red, 126; green, 211; blue, 33 }  ,fill opacity=0.15 ][dash pattern={on 4.5pt off 4.5pt}] (155,55) .. controls (164.26,55) and (172.06,78.62) .. (174.33,110.67) -- (155,130) -- cycle ; \draw  [color={rgb, 255:red, 65; green, 117; blue, 5 }  ,draw opacity=1 ][dash pattern={on 4.5pt off 4.5pt}] (155,55) .. controls (164.26,55) and (172.06,78.62) .. (174.33,110.67) ;  
+		%Shape: Arc [id:dp6375404079760892] 
+		\draw  [draw opacity=0][fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=0.15 ][dash pattern={on 4.5pt off 4.5pt}] (155,55) .. controls (136.79,55) and (120.66,67.06) .. (110.64,85.64) -- (155,130) -- cycle ; \draw  [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][dash pattern={on 4.5pt off 4.5pt}] (155,55) .. controls (136.79,55) and (120.66,67.06) .. (110.64,85.64) ;  
+		%Shape: Arc [id:dp5945983737249444] 
+		\draw  [draw opacity=0][fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=0.15 ][dash pattern={on 4.5pt off 4.5pt}] (110.81,85.81) .. controls (110.81,85.81) and (110.81,85.81) .. (110.81,85.81) .. controls (121.55,75.07) and (150.04,86.15) .. (174.45,110.55) -- (155,130) -- cycle ; \draw  [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][dash pattern={on 4.5pt off 4.5pt}] (110.81,85.81) .. controls (110.81,85.81) and (110.81,85.81) .. (110.81,85.81) .. controls (121.55,75.07) and (150.04,86.15) .. (174.45,110.55) ;  
+		%Straight Lines [id:da4452594138985655] 
+		\draw    (230,130) -- (292,130) ;
+		\draw [shift={(295,130)}, rotate = 180] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+		%Straight Lines [id:da9644580102364083] 
+		\draw [color={rgb, 255:red, 74; green, 74; blue, 74 }  ,draw opacity=1 ] [dash pattern={on 0.84pt off 2.51pt}]  (220,65) -- (220,175) ;
+		%Straight Lines [id:da6832608152790306] 
+		\draw  [dash pattern={on 0.84pt off 2.51pt}]  (155,130) -- (220,175) ;
+		%Shape: Arc [id:dp16015112465036607] 
+		\draw  [draw opacity=0][fill={rgb, 255:red, 144; green, 19; blue, 254 }  ,fill opacity=0.1 ][dash pattern={on 4.5pt off 4.5pt}] (219.45,174.3) .. controls (201.13,180.26) and (178.93,183.75) .. (155,183.75) .. controls (108.81,183.75) and (69.05,170.74) .. (51.24,152.06) -- (155,130) -- cycle ; \draw  [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,draw opacity=1 ][dash pattern={on 4.5pt off 4.5pt}] (219.45,174.3) .. controls (201.13,180.26) and (178.93,183.75) .. (155,183.75) .. controls (108.81,183.75) and (69.05,170.74) .. (51.24,152.06) ;  
+		%Straight Lines [id:da6865276618739039] 
+		\draw  [dash pattern={on 0.84pt off 2.51pt}]  (155,130) -- (75,195) ;
+		%Straight Lines [id:da08422489886149576] 
+		\draw    (14.94,159.38) -- (88,144) ;
+		\draw [shift={(12,160)}, rotate = 348.11] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+		%Shape: Arc [id:dp21276762564850105] 
+		\draw  [draw opacity=0][fill={rgb, 255:red, 80; green, 227; blue, 194 }  ,fill opacity=0.15 ][dash pattern={on 4.5pt off 4.5pt}] (81.28,189.7) .. controls (58.28,181.77) and (40.14,170.24) .. (29.74,156.62) -- (155,130) -- cycle ; \draw  [color={rgb, 255:red, 80; green, 227; blue, 194 }  ,draw opacity=1 ][dash pattern={on 4.5pt off 4.5pt}] (81.28,189.7) .. controls (58.28,181.77) and (40.14,170.24) .. (29.74,156.62) ;  
+		
+		% Text Node
+		\draw (157,38) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle a$};
+		% Text Node
+		\draw (93,52) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \mathbf{x} '$};
+		% Text Node
+		\draw (137,97) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,opacity=1 ] [align=left] {$\displaystyle \gamma $};
+		% Text Node
+		\draw (223,64) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \mathbf{r}$};
+		% Text Node
+		\draw (156,79) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 65; green, 117; blue, 5 }  ,opacity=1 ] [align=left] {$\displaystyle \theta $};
+		% Text Node
+		\draw (134.75,65) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,opacity=1 ] [align=left] {$\displaystyle \theta '$};
+		% Text Node
+		\draw (153,4) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle z$};
+		% Text Node
+		\draw (296,122) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle y$};
+		% Text Node
+		\draw (11,167) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle x$};
+		% Text Node
+		\draw (56,162) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 51; green, 159; blue, 136 }  ,opacity=1 ] [align=left] {$\displaystyle \phi '$};
+		% Text Node
+		\draw (141,164) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,opacity=1 ] [align=left] {$\displaystyle \phi $};
+	\end{tikzpicture}
+\end{figure}
+% oohhhh que me costó hacer esta imagen T-T
+
+Necesitamos una función de Green que cumpla con las condiciones impuestas. Ya que la geometría del problema es prácticamente idéntica (pero sin la conexión a tierra) al segundo ejemplo de la subsección anterior, podemos usar el potencial encontrado como función de Green\footnote{La idea es usar una solución de un problema más simple y conveniente (en este caso, \(\Phi=0\) en la superficie de la esfera) para solucionar el problema general.}. De la ec. \ref{pot_ej2_2} tenemos
+\begin{equation}
+	G(\rv, \xv') = \frac{1}{|\rv - \xv'|} - \frac{a}{x'}\frac{1}{\left|\rv -  \dfrac{a^2}{x'^2}\xv'\right|}
+\end{equation}
+En coordenadas esféricas:
+\begin{equation}
+	G(\rv, \xv') = \frac{1}{\sqrt{r^2 + x'^2 - 2 r x' \cos \gamma}} + \frac{1}{\sqrt{\dfrac{r^2 x'^2}{a^2} + a^2 - 2 r x' \cos \gamma}}
+\end{equation}
+donde \(\gamma\) es el ángulo entre \(\rv\) y \(\xv\), es decir, \(\cos\gamma = \cos\theta\cos\theta' + \sin\theta\sin\theta'\cos(\phi - \phi')\). De esta ecuación se puede concluir una simetría entre las variables \(r\) y \(x\), por lo que se cumple la condición de Dirichlet para \(r\) o \(x\).
+
+Para resolver la ecuación \ref{green_dirichlet} necesitamos, aparte de \(G_D\), la derivada \({\partial G_D}/{\partial n'}\), por lo que, recordando que \(\hat{\mathbf{n}}'\) es el vector unitario que sale del volumen de interés (en nuestro caso -\(\xhat'\), hacia dentro porque nos interesa el espacio fuera de la esfera):
+\begin{equation*}
+	\left. \frac{\partial G_D}{\partial n'} \right|_{x'=a}= - \frac{(r^2 - a^2)}{a(x^2 + a^2 - 2 a x \cos \gamma)^{3/2}} 
+\end{equation*}
+Nótese que esta es la misma expresión que la densidad de carga superficial inducida. Luego, la ec. \ref{green_dirichlet}\footnote{Recordar que la primera integral es la distribución volumétrica de las fuentes y la segunda es la contribución de la superficie de la frontera. Aparte, el potencial dentro de la segunda integral está evaluada en la superficie.}:
+\begin{align}
+	\Phi(\rv) &= \cancel{\frac{1}{4\pi\eo}\int_{V}G_D\rho d^3r'} - \frac{1}{4\pi}\oint_{S}\Phi(\xv')\frac{\partial G_D}{\partial n'} dS'\nonumber\\
+	&= \frac{1}{4\pi}\oint_{S}\Phi(a,\theta',\phi')\frac{a(r^2 - a^2)}{(x^2 + a^2 - 2 a x \cos \gamma)^{3/2}} d\Omega'\label{pot_green_esf}
+\end{align}
+donde \(d\Omega\) es el elemento de ángulo sólido en el punto \((a,\theta',\phi')\). En el caso del potencial al interior de la esfera, el vector unitario apunta hacia afuera, por lo que el signo es opuesto.
+
+\subsubsection{Ejemplo 2: Esfera con hemisferios con potenciales diferentes}
+En el ejemplo anterior encontramos el potencial fuera de una esfera con un potencial superficial arbitrario. Consideremos una esfera conductora de radio \(a\) compuesta por dos semiesferas separadas por un pequeño anillo aislante. Los hemisferios se mantienen a potenciales diferentes. Bastará con considerar los potenciales como \(\pm V\), ya que los potenciales arbitrarios pueden tratarse mediante la superposición de la solución correspondiente a una esfera con un potencial fijo en toda su superficie. 
+\begin{figure}[h!]
+	\centering
+	\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+		%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+		
+		%Shape: Path Data [id:dp8819110671069896] 
+		\draw  [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=0.3 ] (175,225) .. controls (133.58,225) and (100,191.42) .. (100,150) .. controls (100,166.57) and (133.58,180) .. (175,180) .. controls (216.42,180) and (250,166.57) .. (250,150) .. controls (250,191.42) and (216.42,225) .. (175,225) -- cycle ;
+		%Straight Lines [id:da3313971260662344] 
+		\draw  [dash pattern={on 4.5pt off 4.5pt}]  (108,164) -- (175,150) ;
+		%Straight Lines [id:da19863093744187554] 
+		\draw  [dash pattern={on 4.5pt off 4.5pt}]  (175,150) -- (175,75) ;
+		%Shape: Arc [id:dp2917784255140139] 
+		\draw  [draw opacity=0][dash pattern={on 0.84pt off 2.51pt}] (249.88,151.31) .. controls (249.96,150.87) and (250,150.44) .. (250,150) .. controls (250,137.57) and (216.42,127.5) .. (175,127.5) .. controls (133.58,127.5) and (100,137.57) .. (100,150) -- (175,150) -- cycle ; \draw  [color={rgb, 255:red, 155; green, 155; blue, 155 }  ,draw opacity=1 ][dash pattern={on 0.84pt off 2.51pt}] (249.88,151.31) .. controls (249.96,150.87) and (250,150.44) .. (250,150) .. controls (250,137.57) and (216.42,127.5) .. (175,127.5) .. controls (133.58,127.5) and (100,137.57) .. (100,150) ;  
+		%Straight Lines [id:da708897092166552] 
+		\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ] [dash pattern={on 4.5pt off 4.5pt}]  (175,150) -- (176.39,150) -- (250,150) ;
+		%Shape: Path Data [id:dp6830601350186587] 
+		\draw  [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=0.3 ] (175,75) .. controls (216.42,75) and (250,108.58) .. (250,150) .. controls (250,166.57) and (216.42,180) .. (175,180) .. controls (133.58,180) and (100,166.57) .. (100,150) .. controls (100,108.58) and (133.58,75) .. (175,75) -- cycle ;
+		%Straight Lines [id:da2735237213255398] 
+		\draw    (175,75) -- (175,38) ;
+		\draw [shift={(175,35)}, rotate = 90] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+		%Straight Lines [id:da2932304624477211] 
+		\draw    (250,150) -- (312,150) ;
+		\draw [shift={(315,150)}, rotate = 180] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+		%Straight Lines [id:da6204849945361288] 
+		\draw    (57.94,174.39) -- (108,164) ;
+		\draw [shift={(55,175)}, rotate = 348.27] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+		%Curve Lines [id:da34184569848981405] 
+		\draw    (85,90) .. controls (118.65,90.15) and (135.45,109.63) .. (143.76,118.66) ;
+		\draw [shift={(145,120)}, rotate = 226.57] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		%Curve Lines [id:da14280403326410585] 
+		\draw    (227.2,185.45) .. controls (274.2,195.34) and (250.94,215.16) .. (285,215) ;
+		\draw [shift={(225,185)}, rotate = 11.03] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		
+		% Text Node
+		\draw (176,57) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle a$};
+		% Text Node
+		\draw (171,24) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle z$};
+		% Text Node
+		\draw (316,147) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle y$};
+		% Text Node
+		\draw (56,157) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle x$};
+		% Text Node
+		\draw (58,84) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle +V$};
+		% Text Node
+		\draw (286,209) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle -V$};
+	\end{tikzpicture}
+\end{figure}
+
+De la ec. \ref{pot_green_esf}
+\begin{align*}
+	\Phi(\rv) &= \frac{1}{4\pi}\oint_{S}\Phi(a,\theta',\phi')\frac{a(r^2 - a^2)}{(x^2 + a^2 - 2 a x \cos \gamma)^{3/2}} d\Omega'\\
+	&= \frac{V}{4\pi}\int_{0}^{2\pi} d\phi' \left\lbrace \int_{0}^{1}d(\cos\theta') - \int_{-1}^{0}d(\cos\theta')\right\rbrace \frac{a(r^2 - a^2)}{(x^2 + a^2 - 2 a x \cos \gamma)^{3/2}}
+\end{align*}
+con un cambio de variables en la segunda integral interior \((\theta'\rightarrow\pi-\theta', \phi'\rightarrow\pi+\phi') \Rightarrow (\cos\gamma \rightarrow -\cos\gamma)\) podemos escribir esto como
+\begin{equation}
+	\Phi(\rv) = \frac{V a(r^2 - a^2)}{4\pi(x^2 + a^2)^{3/2}}\int_{0}^{2\pi} d\phi' \int_{0}^{1}d(\cos\theta') \left[\frac{1}{(1 - 2\alpha \cos \gamma)^{3/2}} -  \frac{1}{(1 + 2\alpha \cos \gamma)^{3/2}}\right]
+\end{equation}
+donde \(\alpha = ax/(x^2 + a^2)\). Ya que \(\cos\gamma = \cos\theta\cos\theta' + \sin\theta\sin\theta'\cos(\phi - \phi')\), esto es demasiado complicado para integrar así como está.
+
+Tomando el caso del eje \(z\) positivo, esto se vuelve trivial y obtenemos:
+\begin{equation}
+	\Phi(z) = V\left[ 1 - \frac{(z^2 - a^2)}{z\sqrt{z^2 + a^2}}\right]
+\end{equation}
+
+Podemos hacer una expansión de Taylor alrededor de \((a^2/x^2)\) y encontramos que el potencial es:
+\begin{equation}
+	\Phi(\rv) = \frac{3 V a^2}{4 r^2}\int_{0}^{2\pi} \left[\cos\theta - \frac{7 a^2}{12 x^2}\left(\frac{5}{2}\cos^3\theta - \frac{3}{2}\cos\theta \right) + \cdots\right]
+\end{equation}
+
+\subsection{Funciones ortogonales}
+
+\subsection{Separación de variables}
+Consideremos la ecuación de Laplace expandida:
+\begin{equation}
+	\pd{^2}{x^2}\Phi + \pd{^2}{y^2}\Phi + \pd{^2}{z^2}\Phi = 0\label{laplace_exp_cart}
+\end{equation}
+Si asumimos que que el potencial puede representarse como el producto de tres funciones independientes, tal que
+\begin{equation}
+	\Phi(x,y,z) = X(x) Y(y) Z(z)\label{pot_sep_cart}
+\end{equation}
+Reemplazando en la ec. \ref{laplace_exp_cart}
+\begin{equation}
+	\underbrace{\frac{1}{X}\td{^2 X}{x^2}}_{f(x)} + \underbrace{\frac{1}{Y}\td{^2 Y}{y^2}}_{g(y)} + \underbrace{\frac{1}{Z}\td{^2 Z}{z^2}}_{h(z)} = 0
+\end{equation}
+Ya que esto debe ser verdad para valores arbitrarios de \(x, y, z\), las 3 funciones deben ser constantes por separado. Podemos escribir entonces
+\begin{equation}
+	\left. \begin{matrix}
+		f(x) &=& \dfrac{1}{X}\td{^2 X}{x^2} &=& -\alpha^2\vspace{3mm}\\
+		g(y) &=& \dfrac{1}{Y}\td{^2 Y}{y^2} &=& -\beta^2\vspace{3mm}\\
+		h(z) &=& \dfrac{1}{Z}\td{^2 Z}{z^2} &=& \gamma^2
+	\end{matrix}\right\rbrace 
+\end{equation}
+donde
+\begin{equation}
+	\alpha^2 + \beta^2 = \gamma^2
+\end{equation}
+Las soluciones de las funciones \(X(x), Y(y), Z(z)\) son, entonces:
+\begin{equation}
+	\left. \begin{matrix}
+		X(x) &=& e^{\pm i \alpha x}\\
+		Y(y) &=& e^{\pm i \beta y}\\
+		Z(z) &=& e^{\pm i \sqrt{\alpha^2 + \beta^2} z}
+	\end{matrix}\right\rbrace 
+\end{equation}
+y por lo tanto el potencial:
+\begin{equation}
+	\Phi(x,y,z) = e^{\pm i \alpha x} e^{\pm i \beta y} e^{\pm i \sqrt{\alpha^2 + \beta^2} z}
+\end{equation}
+Hasta aquí los parámetros \(\alpha,\beta\) son completamente arbitrarios, para encontrarlos necesitaremos condiciones de borde.
+
+\subsubsection{Ejemplo 1: Caja rectangular en 3 dimensiones}
+Considera una caja rectangular con dimensiones \(a,b,c\). Todas las superficies de la caja son mantenidas a potencial cero, a excepción de la superficie \(z=c\), que se mantiene a potencial \(V(x,y)\). Intentemos encontrar el potencial dentro de la caja.
+\begin{figure}[h!]
+	\centering
+	\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+		%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+		
+		%Curve Lines [id:da991873983603941] 
+		\draw [color={rgb, 255:red, 74; green, 74; blue, 74 }  ,draw opacity=1 ] [dash pattern={on 0.84pt off 2.51pt}]  (240.04,129.35) .. controls (229.52,128.61) and (217.54,126.98) .. (196.63,134.41) ;
+		\draw [shift={(195,135)}, rotate = 339.71] [color={rgb, 255:red, 74; green, 74; blue, 74 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		%Curve Lines [id:da8937918221020682] 
+		\draw [color={rgb, 255:red, 74; green, 74; blue, 74 }  ,draw opacity=1 ]   (265,125) .. controls (255.29,129.95) and (248.09,129.91) .. (240.04,129.35) ;
+		%Curve Lines [id:da7448236396712895] 
+		\draw [color={rgb, 255:red, 74; green, 74; blue, 74 }  ,draw opacity=1 ] [dash pattern={on 0.84pt off 2.51pt}]  (175.27,190.07) .. controls (177.3,185.92) and (178.72,181.49) .. (179.64,176.95) ;
+		\draw [shift={(180,175)}, rotate = 99.59] [color={rgb, 255:red, 74; green, 74; blue, 74 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		%Curve Lines [id:da7151680774761007] 
+		\draw [color={rgb, 255:red, 74; green, 74; blue, 74 }  ,draw opacity=1 ]   (140,215) .. controls (158.39,211.77) and (169.37,202.1) .. (175.27,190.07) ;
+		%Curve Lines [id:da9121436191489065] 
+		\draw [color={rgb, 255:red, 74; green, 74; blue, 74 }  ,draw opacity=1 ] [dash pattern={on 0.84pt off 2.51pt}]  (89.96,128.38) .. controls (99.13,133.68) and (105.26,140.16) .. (108.59,143.59) ;
+		\draw [shift={(110,145)}, rotate = 223.7] [color={rgb, 255:red, 74; green, 74; blue, 74 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		%Curve Lines [id:da8313384035929077] 
+		\draw [color={rgb, 255:red, 74; green, 74; blue, 74 }  ,draw opacity=1 ]   (60,120) .. controls (72.26,120.25) and (82.2,123.89) .. (89.96,128.38) ;
+		
+		%Straight Lines [id:da6607758466905512] 
+		\draw    (130,160) -- (130,42) ;
+		\draw [shift={(130,40)}, rotate = 90] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		%Straight Lines [id:da9439851490192819] 
+		\draw    (130,160) -- (303,160) ;
+		\draw [shift={(305,160)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		%Straight Lines [id:da12403324118194381] 
+		\draw    (130,160) -- (51.6,218.8) ;
+		\draw [shift={(50,220)}, rotate = 323.13] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		%Shape: Path Data [id:dp06396715283788357] 
+		\draw  [draw opacity=0][fill={rgb, 255:red, 80; green, 227; blue, 194 }  ,fill opacity=0.5 ] (240,90) -- (200,120) -- (90,120) -- (130,90) -- (240,90) -- cycle ;
+		%Shape: Path Data [id:dp4740851151121592] 
+		\draw  [draw opacity=0][fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=0.5 ] (240,90) -- (240,160) -- (200,190) -- (200,120) -- (240,90) -- cycle ;
+		%Straight Lines [id:da3464909681501356] 
+		\draw    (90,120) -- (130,90) ;
+		%Straight Lines [id:da15902924979562016] 
+		\draw    (200,120) -- (216.01,108) -- (240,90) ;
+		%Straight Lines [id:da13892530027232375] 
+		\draw    (200,190) -- (240,160) ;
+		%Shape: Rectangle [id:dp2112951864128524] 
+		\draw  [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=0.5 ] (90,120) -- (200,120) -- (200,190) -- (90,190) -- cycle ;
+		%Straight Lines [id:da43933366134817065] 
+		\draw    (130,90) -- (240,90) ;
+		%Straight Lines [id:da03741229678781499] 
+		\draw    (240,90) -- (240,160) ;
+		%Curve Lines [id:da4297130420653832] 
+		\draw [color={rgb, 255:red, 74; green, 74; blue, 74 }  ,draw opacity=1 ]   (140,215) .. controls (161.9,184.55) and (115.94,180.09) .. (153.83,150.89) ;
+		\draw [shift={(155,150)}, rotate = 143.13] [color={rgb, 255:red, 74; green, 74; blue, 74 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		%Curve Lines [id:da08756013084406955] 
+		\draw [color={rgb, 255:red, 74; green, 74; blue, 74 }  ,draw opacity=1 ]   (265,125) .. controls (250.58,140.77) and (250.29,140.61) .. (221.78,140.04) ;
+		\draw [shift={(220,140)}, rotate = 1.12] [color={rgb, 255:red, 74; green, 74; blue, 74 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		%Curve Lines [id:da24573409861410267] 
+		\draw [color={rgb, 255:red, 74; green, 74; blue, 74 }  ,draw opacity=1 ]   (180,65) .. controls (166.23,77.52) and (165.18,79.5) .. (165.01,103.14) ;
+		\draw [shift={(165,105)}, rotate = 270.29] [color={rgb, 255:red, 74; green, 74; blue, 74 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		
+		% Text Node
+		\draw (58,219) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle x$};
+		% Text Node
+		\draw (291,167) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle y$};
+		% Text Node
+		\draw (111,39) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle z$};
+		% Text Node
+		\draw (49,179) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle x=a$};
+		% Text Node
+		\draw (244,142) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle y=b$};
+		% Text Node
+		\draw (91,82) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle z=c$};
+		% Text Node
+		\draw (19,114) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \Phi =0$};
+		% Text Node
+		\draw (101,209) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \Phi =0$};
+		% Text Node
+		\draw (249,112) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \Phi =0$};
+		% Text Node
+		\draw (159,52) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \Phi =V( x,y)$};
+		
+		
+	\end{tikzpicture}
+\end{figure}
+
+Partiendo por la condición de que \(\Phi=0\) en \(x=0, y=0, z=0\), vemos que las formas de de \(X,Y,Z\) son
+\begin{equation}
+	\left. \begin{matrix}
+		X(x) &=& \sin\alpha x\\
+		Y(y) &=& \sin\beta y\\
+		Z(z) &=& \sinh\left(\sqrt{\alpha^2 + \beta^2} z\right)
+	\end{matrix}\right\rbrace 
+\end{equation}
+Para además tener que \(\Phi=0\) en \(x=a\) e \(y=b\) deberá cumplirse que \(\alpha a = n\pi\) y \(\beta b = m\pi\), donde \(m,n\) son enteros positivos. Con estas definiciones:
+\begin{equation}
+	\left. \begin{matrix}
+		\alpha_n 	&=& \dfrac{n\pi}{a}\vspace{3mm}\\
+		\beta_m 	&=& \dfrac{m\pi}{b}\vspace{3mm}\\
+		\gamma_{nm} &=& \pi\sqrt{\dfrac{n^2}{a^2} + \dfrac{m^2}{b^2}}
+	\end{matrix}\right\rbrace 
+\end{equation}
+Podemos entonces escribir un potencial parcial que satisface todos los bordes excepto uno:
+\begin{align}
+	\Phi_{nm} &= \sin\left(\alpha_n x\right) \sin\left(\beta_m y\right) \sinh\left(\gamma_{nm} z\right)\\
+	\Rightarrow \Phi(x,y,z) &= \sum_{n,m=1}^{\infty}A_{nm} \sin\left(\alpha_n x\right) \sin\left(\beta_m y\right) \sinh\left(\gamma_{nm} z\right)
+\end{align}
+donde \(A_{nm}\) son coeficientes arbitrarios que usaremos para satisfacer la última condición de frontera:
+\begin{equation}
+	\Phi(x,y,c) = \sum_{n,m=1}^{\infty}A_{nm} \sin\left(\alpha_n x\right) \sin\left(\beta_m y\right) \sinh\left(\gamma_{nm} c\right) = V(x,y)
+\end{equation}
+Pero esto es una doble serie de Fourier para la función \(V(x,y)\). En consecuencia, los coeficientes \(A_{nm}\):
+\begin{equation}
+	A_{nm} = \frac{4}{a b \sinh\left(\gamma_{nm} c\right)}\int_{0}^{a}dx \int_{0}^{b}dy ~V(x,y) \sin\left(\alpha_n x\right) \sin\left(\beta_m y\right)
+\end{equation}
+
+\subsubsection{Ejemplo 2: Caja en 2 dimensiones}
+Consideremos ahora el caso en que el potencial en uno de los ejes (digamos, \(z\)) es aproximadamente independiente del resto. Tenemos que la solución del caso anterior se reduce a:
+\begin{equation}
+	\Phi(x,y) = e^{\pm i \lambda x} e^{\pm \lambda y}
+\end{equation}
+donde \(\lambda\) es una constante real o compleja. Las condiciones de borde impondrán restricciones y darán forma a los valores de \(\lambda\).
+
+Consideremos una caja con dos paredes mantenidas a potencial cero en \(x=0,~x=a\), otra a potencial \(\Phi=V\) en \(y=0\), y \(\Phi(y\rightarrow\infty) = 0\).
+\begin{figure}[h!]
+	\centering
+	\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+		%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+		
+		%Straight Lines [id:da34254857341703304] 
+		\draw  [dash pattern={on 0.84pt off 2.51pt}]  (30,40) -- (30,12) ;
+		\draw [shift={(30,10)}, rotate = 90] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		%Straight Lines [id:da5717154486483115] 
+		\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ] [dash pattern={on 0.84pt off 2.51pt}]  (30,40) -- (30,10) ;
+		%Straight Lines [id:da33459253176239134] 
+		\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][line width=1.5]    (30,30) -- (30,190) ;
+		%Straight Lines [id:da7971066341651206] 
+		\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][line width=1.5]    (190,30) -- (190,190) ;
+		%Straight Lines [id:da9557099487862175] 
+		\draw    (30,190) -- (218,190) ;
+		\draw [shift={(220,190)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		%Straight Lines [id:da3006891415872851] 
+		\draw [color={rgb, 255:red, 80; green, 227; blue, 194 }  ,draw opacity=1 ][line width=1.5]    (30,190) -- (190,190) ;
+		%Straight Lines [id:da29460998782007] 
+		\draw    (110,30) -- (110,12) ;
+		\draw [shift={(110,10)}, rotate = 90] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		%Straight Lines [id:da9367137645318201] 
+		\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ] [dash pattern={on 0.84pt off 2.51pt}]  (190,40) -- (190,10) ;
+		%Curve Lines [id:da2907109045908467] 
+		\draw [color={rgb, 255:red, 74; green, 74; blue, 74 }  ,draw opacity=1 ]   (80.16,94.86) .. controls (58.81,95.53) and (54.44,91.78) .. (36.14,113.63) ;
+		\draw [shift={(35,115)}, rotate = 309.51] [color={rgb, 255:red, 74; green, 74; blue, 74 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		%Curve Lines [id:da5587244657650177] 
+		\draw [color={rgb, 255:red, 74; green, 74; blue, 74 }  ,draw opacity=1 ]   (140.16,94.86) .. controls (161.52,95.53) and (165.57,91.78) .. (183.86,113.63) ;
+		\draw [shift={(185,115)}, rotate = 230.49] [color={rgb, 255:red, 74; green, 74; blue, 74 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		%Curve Lines [id:da3108003038220676] 
+		\draw [color={rgb, 255:red, 74; green, 74; blue, 74 }  ,draw opacity=1 ]   (90,160) .. controls (71.39,163.4) and (70.83,163.5) .. (70.07,183.12) ;
+		\draw [shift={(70,185)}, rotate = 272.17] [color={rgb, 255:red, 74; green, 74; blue, 74 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		
+		% Text Node
+		\draw (91,89) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \Phi =0$};
+		% Text Node
+		\draw (90,154) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \Phi =V$};
+		% Text Node
+		\draw (60,29) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \Phi \left( y\rightarrow \infty \right) =0$};
+		% Text Node
+		\draw (11,12) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle y$};
+		% Text Node
+		\draw (201,175) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle x$};
+		% Text Node
+		\draw (186,192) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle a$};
+		% Text Node
+		\draw (18,187) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle 0$};
+	\end{tikzpicture}
+\end{figure}
+
+Analizando el comportamiento en \(x\), la familia de soluciones dependerá de \(\sin(n\pi x/a)\), con \(n\) un entero positivo, por lo que \(\lambda=n\pi/a\); mientras que tener \(\Phi=0\) cuando \(y\rightarrow\infty\) nos dará un factor \(\exp(-\lambda y)\). Entonces:
+\begin{equation}
+	\Phi(x,y) = \sum_{n=1}^{\infty}A_n \exp(-n\pi y/a) \sin(n\pi x/a)
+\end{equation}
+Para los coeficientes \(A_n\) usaremos la última condición \(\Phi(y=0) = V\) cuando \(0\leq x\leq a\). Al igual que el ejemplo anterior, los coeficientes de Fourier son
+\begin{equation}
+	A_n = \frac{2}{a}\int_{0}^{a}\Phi(x,0) \sin(n\pi x/a) dx
+\end{equation}
+Con \(\Phi(x,0) = V\) encontramos
+\begin{equation}
+	A_n =
+	\left. \begin{matrix}
+		\dfrac{4 V}{\pi n}, &n~\mathrm{impar}\vspace{3mm}\\
+		0, 					&n~\mathrm{par}
+	\end{matrix}\right\rbrace 
+\end{equation}
+El potencial entonces se puede determinar como
+\begin{equation}
+	\Phi(x,y) = \frac{4 V}{\pi}\sum_{n~\mathrm{impar}}\frac{1}{n} \exp(-n\pi y/a) \sin(n\pi x/a)
+\end{equation}
+En el caso de valores de \(y > a/\pi\) podemos hacer una aproximación decente tomando solo los primeros términos de la sumatoria, la forma asintótica es, entonces
+\begin{equation}
+	\Phi(x,y) = \frac{4 V}{\pi} \exp(-\pi y/a) \sin(\pi x/a)
+\end{equation}
+
+\section{Magnetoestática}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
