@@ -21,6 +21,25 @@
 \newcommand{\LambdaMuNu}{\indUpDown}
 \newcommand{\0}{\textcolor{gray}{0}}
 
+\newcommand{\pd}[2]{\dfrac{\partial #1}{\partial #2}}
+\newcommand{\td}[2]{\dfrac{d #1}{d #2}}
+
+\newcommand{\eff}[1]{#1_\mathrm{eff}}
+\newcommand{\Ueff}{\eff{U}}
+
+\newcommand{\la}{\nabla^2}
+\newcommand{\rv}{\mathbf{r}}
+\newcommand{\xv}{\mathbf{x}}
+\newcommand{\yv}{\mathbf{x}}
+\newcommand{\zv}{\mathbf{x}}
+\newcommand{\xhat}{\hat{\xv}}
+\newcommand{\yhat}{\hat{\yv}}
+\newcommand{\zhat}{\hat{\zv}}
+\newcommand{\rhat}{\hat{\rv}}
+\newcommand{\that}{\hat{\mathbf{\theta}}}
+\newcommand{\phat}{\hat{\mathbf{\varphi}}}
+\newcommand{\rhhat}{\hat{\mathbf{\rho}}}
+
 %opening
 \title{Mecánica Clásica Avanzada}
 \author{Simon Fonseca}
@@ -1337,6 +1356,643 @@ Por conservación de energía \(E = \bar{T} + \bar{U}\) tendremos como corolario
 \end{equation}
 
 \subsection{Movimiento en campo central}
+En esta sección nos enfocaremos en sistemas con potenciales como campos centrales, es decir, en la forma:
+\begin{equation}
+	U = U(r)
+\end{equation}
+Lo más cómodo será trabajar con coordenadas esféricas, es decir, nuestro lagrangiano general tendrá la forma:
+\begin{equation}
+	L = T - U = \frac{m\left(\dot{r}^2 + r^2\dot{\theta}^2 + r^2\sin^2\theta \dot{\varphi}^2\right)}{2} - U(r)
+\end{equation}
+En esta situación tendremos al menos dos integrales de movimiento (cantidades conservadas):
+\begin{enumerate}
+	\item \textbf{Energía}:
+	\begin{equation}
+		E = \sum_{a} \dot{q}_a\pd{L}{\dot{q}_a} - L = \frac{m\left(\dot{r}^2 + r^2\dot{\theta}^2 + r^2\sin^2\theta \dot{\varphi}^2\right)}{2} + U(r)
+	\end{equation}
+	\item \textbf{Momento angular}:
+	\begin{equation}
+		\mathbf{M} = \mathbf{r}\times\mathbf{p} = r \mathbf{e}_r \times m\mathbf{v} = \underbrace{\textcolor{magenta}{- m r^2 \sin\theta\dot{\varphi}}}_{M_\theta = -p_\varphi/\sin\theta} \mathbf{e}_\theta + \underbrace{\textcolor{teal}{m r^2\dot{\theta}}}_{M_\varphi = p_\theta} \mathbf{e}_\varphi
+	\end{equation}
+	Si bien en coordenadas cartesianas las componentes del momento angular se conservan por separado, este no es el caso para las esféricas (i.e. \(M_\theta\neq\mathrm{const}\), \(M_\varphi\neq\mathrm{const}\)), debido a que \(\mathbf{e}_\theta, \mathbf{e}_\varphi\) cambian de orientación de punto en punto.
+	El valor absoluto, por otro lado es constante e invariante en cualquier sistema de coordenadas:
+	\begin{equation}
+		M^2 = \mathbf{M}\cdot\mathbf{M} = m^2r^4\left(\dot{\theta}^2 + \sin^2\theta\dot{\varphi}^2\right) = \mathrm{const.}
+	\end{equation}
+\end{enumerate}
+
+\subsubsection{Consecuencias de la conservación de momento angular}
+Tendremos, además, que las partículas se mueven en un plano ortogonal a \(\mathbf{M}\). Si en un instante \(t_0\) los vectores posición y velocidad se encuentran en un plano ortogonal a \(\mathbf{M}\), entonces se mantendrán ahí para cualquier instante posterior.
+
+Si seleccionamos el eje \(z\) para que coincida con el del vector \(\mathbf{M}\), tal que la partícula se mueve exclusivamente en el plano \(z = 0\), tendremos que:
+\begin{align}
+	M_z &\equiv m r^2 \dot{\varphi} \underbrace{\textcolor{gray}{ \sin^2\theta}}_{=1} = \mathrm{const.}\nonumber\\
+	\Rightarrow M_z dt &= m r^2 d\varphi = 2 \cdot \underbrace{\frac{1}{2} m r^2 d\varphi}_{=dS}\nonumber\\
+	\Rightarrow M_z \int_{t_0}^{t_1} dt&= 2 \int_{t_0}^{t_1} dS\nonumber\\
+	\Rightarrow S &= \frac{M_z}{2}\Delta t
+\end{align}
+La superficie barrida por el vector posición de una partícula en órbita solo depende del intervalo de tiempo, sin importar la posición de la partícula.
+\begin{figure}[h!]
+	\centering
+	\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+		%uncomment if require: \path (0,131); %set diagram left start at 0, and has height of 131
+		
+		%Shape: Path Data [id:dp35597212288415603] 
+		\draw  [draw opacity=0][fill={rgb, 255:red, 80; green, 227; blue, 194 }  ,fill opacity=1 ] (250.12,65.56) .. controls (250.12,83.78) and (235.77,100.11) .. (213.13,111.11) -- (212.28,110.56) -- (190.29,66.96) -- (189.64,65.43) -- (212.28,20.56) -- (213.13,20) .. controls (235.77,31) and (250.12,47.33) .. (250.12,65.56) -- cycle (212.28,110.56) -- (212.28,110.56) -- (212.28,110.56) -- (207.24,107.23) -- (207.24,107.23) -- (212.28,110.56) -- cycle (212.28,20.56) -- (212.28,20.56) -- (206.92,24.1) -- (206.92,24.1) -- (212.28,20.56) -- cycle ;
+		%Shape: Path Data [id:dp8001712699250412] 
+		\draw  [draw opacity=0][fill={rgb, 255:red, 80; green, 227; blue, 194 }  ,fill opacity=1 ] (38.23,65) .. controls (38.23,57.11) and (40.92,49.59) .. (45.8,42.69) -- (45.8,42.5) -- (189.58,65) -- (189.53,65.01) -- (189.58,65.02) -- (45.91,87.5) -- (45.91,87.48) -- (45.8,87.5) -- (45.91,87.47) -- (45.91,87.4) -- (45.86,87.41) .. controls (45.84,87.37) and (45.82,87.34) .. (45.8,87.31) -- (45.8,87.5) -- (45.8,87.5) -- (45.8,87.31) .. controls (40.92,80.42) and (38.23,72.89) .. (38.23,65) -- cycle (45.8,42.5) -- (45.8,42.69) .. controls (45.83,42.64) and (45.87,42.58) .. (45.91,42.53) -- (46.02,42.55) -- (45.8,42.5) -- cycle (45.8,87.5) -- (45.8,87.5) -- (45.8,87.5) -- (45.8,87.5) -- cycle ;
+		%Shape: Arc [id:dp5087439506280278] 
+		\draw  [draw opacity=0] (38.23,65) .. controls (38.23,31.86) and (85.66,5) .. (144.18,5) .. controls (144.21,5) and (144.25,5) .. (144.28,5) -- (144.18,65) -- cycle ; \draw    (38.23,65) .. controls (38.23,31.86) and (85.66,5) .. (144.18,5) ; \draw [shift={(144.28,5)}, rotate = 178.52] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ; 
+		%Shape: Arc [id:dp3305674237771353] 
+		\draw  [draw opacity=0] (250.12,65) .. controls (250.12,65) and (250.12,65) .. (250.12,65) .. controls (250.12,31.86) and (202.69,5) .. (144.18,5) .. controls (144.14,5) and (144.11,5) .. (144.07,5) -- (144.18,65) -- cycle ; \draw    (250.12,65) .. controls (250.12,31.86) and (202.69,5) .. (144.18,5) .. controls (144.14,5) and (144.11,5) .. (144.07,5) ;  \draw [shift={(250.12,65)}, rotate = 270] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		%Shape: Arc [id:dp12868033211178243] 
+		\draw  [draw opacity=0] (250.12,65) .. controls (250.12,98.14) and (202.69,125) .. (144.18,125) .. controls (144.14,125) and (144.11,125) .. (144.07,125) -- (144.18,65) -- cycle ; \draw    (250.12,65) .. controls (250.12,98.14) and (202.69,125) .. (144.18,125) ; \draw [shift={(144.07,125)}, rotate = 358.52] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ; 
+		%Shape: Arc [id:dp32846112124541327] 
+		\draw  [draw opacity=0] (38.23,65) .. controls (38.23,98.14) and (85.66,125) .. (144.18,125) .. controls (144.21,125) and (144.25,125) .. (144.28,125) -- (144.18,65) -- cycle ; \draw    (38.32,67.47) .. controls (40.61,99.46) and (87.13,125) .. (144.18,125) .. controls (144.21,125) and (144.25,125) .. (144.28,125) ;  \draw [shift={(38.23,65)}, rotate = 81.04] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		
+		%Straight Lines [id:da6074143881544958] 
+		\draw    (45.8,42.5) -- (189.58,65) ;
+		%Straight Lines [id:da3872319508790236] 
+		\draw    (45.8,87.5) -- (189.58,65) ;
+		%Straight Lines [id:da09774168293415908] 
+		\draw    (189.58,65) -- (212.28,110) ;
+		%Straight Lines [id:da7201822002582281] 
+		\draw    (189.58,65) -- (212.28,20) ;
+		%Shape: Ellipse [id:dp8576485221596462] 
+		\draw  [fill={rgb, 255:red, 248; green, 231; blue, 28 }  ,fill opacity=1 ] (182.01,65) .. controls (182.01,60.86) and (185.4,57.5) .. (189.58,57.5) .. controls (193.76,57.5) and (197.15,60.86) .. (197.15,65) .. controls (197.15,69.14) and (193.76,72.5) .. (189.58,72.5) .. controls (185.4,72.5) and (182.01,69.14) .. (182.01,65) -- cycle ;
+		%Shape: Ellipse [id:dp8475794727234026] 
+		\draw  [fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=1 ] (87.42,12.5) .. controls (87.42,10.43) and (89.11,8.75) .. (91.2,8.75) .. controls (93.29,8.75) and (94.99,10.43) .. (94.99,12.5) .. controls (94.99,14.57) and (93.29,16.25) .. (91.2,16.25) .. controls (89.11,16.25) and (87.42,14.57) .. (87.42,12.5) -- cycle ;
+		
+		% Text Node
+		\draw (212.08,57.5) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle S$};
+		% Text Node
+		\draw (75.86,57.5) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle S$};
+		% Text Node
+		\draw (255,57.5) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \Delta t$};
+		% Text Node
+		\draw (6.78,54.5) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \Delta t$};
+	\end{tikzpicture}
+\end{figure}
+
+Reescribiendo la energía en términos del momento angular obtenemos:
+\begin{equation}
+	E = \frac{m \dot{r}^2}{2} + \underbrace{U(r) + \frac{M^2}{2 m r^2}}_{U_\mathrm{eff}(r)}
+\end{equation}
+donde \(U_\mathrm{eff}(r)\) es el potencial efectivo:
+\begin{equation}
+	U_\mathrm{eff}(r) = U(r) + \frac{M^2}{2 m r^2}
+\end{equation}
+Tendremos entonces un movimiento efectivo en una dimensión (radial). Tomando
+\begin{align}
+	\td{r}{t} &= \sqrt{\frac{2}{m} \left[E - U_\mathrm{eff}(r)\right]}\\
+	M &\equiv m r^2 \dot{\varphi} = \mathrm{const.}
+\end{align}
+encontramos la forma de la trayectoria \(r = r(\varphi)\) como
+\begin{equation}
+	\varphi - \varphi_0 = \int_{r_0}^{r} dr \frac{M}{m r^2 \sqrt{\frac{2}{m} \left(E - U_\mathrm{eff}(r)\right)}}
+\end{equation}
+
+\subsubsection{Campo de Coulomb (Caso \(U(r) \propto -1/r\))}
+Consideremos el caso especial de un potencial de Coulomb:
+\begin{equation}
+	U(r) = - \frac{\alpha}{r}
+\end{equation}
+con \(\alpha > 0\), es decir, un potencial atractivo.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{diagram-20260420}
+\end{figure}
+
+Tendremos 4 o 5 configuraciones posibles según la energía y el momento angular de la partícula:
+\begin{enumerate}
+	\item Caso \(M = 0\): La partícula caerá directamente al centro sin orbitar. Si \(M \neq 0\), la partícula jamás caerá.
+	\item Caso \(E < 0\): La partícula se moverá en una elipse entre los radios \(r_\mathrm{min}\) y \(r_\mathrm{max}\), con el origen del potencial en uno de los focos de la elipse. La trayectoria de la órbita vendrá dada por
+	\begin{equation}
+		\frac{p}{r} = 1 + e \cos \phi
+	\end{equation}
+	donde
+	\begin{equation}
+		p = \frac{M^2}{m\alpha}
+	\end{equation}
+	donde \(p\) es el \textit{semilatus rectum} (googlealo), y la excentricidad de la órbita
+	\begin{equation}
+		e = \sqrt{1 + \frac{2 E M^2}{m \alpha^2}}
+	\end{equation}
+	Para la elipse, la excentricidad cumplirá \(0 \leq e < 1\).	En el caso especial en que la energía es mínima, la órbita será circular (\(e = 0\)).
+	\item Caso \(E = 0\): La partícula seguirá una órbita parabólica, \(e = 1\).
+	\item Caso \(E > 0\): La partícula seguirá una órbita hiperbólica, \(e > 1\).
+\end{enumerate}
+
+A partir de la similaridad mecánica tenemos que 
+\begin{equation}
+	T^2 \sim a^3
+\end{equation}
+donde \(a\) es el semieje mayor de la órbita. Esta se conoce como la \textbf{Tercera ley de Kepler}.
+
+\subsubsection{Órbitas cerradas}
+En el campo de Coulomb \textbf{todas} las trayectorias \textit{ligadas} (es decir, cuerpos que están restringidos a solo una zona del espacio, como una órbita) son \textit{cerradas} (o sea, que cuando completan un periodo regresan exactamente a la misma configuración de posición-velocidad). Para un potencial general \(U(r)\) algunas órbitas pueden ser cerradas, pero otras no.
+
+Para un potencial general, todas las órbitas con un momento angular \(\mathbf{M}\) y energía \(E = \Ueff(r_\mathrm{min})\), donde \(r_\mathrm{min}\) es la solución de
+\begin{equation}
+	-\frac{M^2}{m r_\mathrm{min}^3} + U'(r_\mathrm{min}) = 0 \label{EDO_orb_cerrada}
+\end{equation}
+son \textbf{cerradas}.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{diagram-20260421}
+\end{figure}
+Los únicos potenciales en que las órbitas se mantienen cerradas para cualquier energía son los de Coulomb \(U(r) = -\alpha/r\) y el oscilador armónico 3-D \(U(r) = \alpha r^2\)
+
+\subsubsection{Problemas inversos de campo central (órbitas circulares)}
+Llamaremos \textit{problema inverso} a los casos en que, conociendo la trayectoria de una partícula, buscamos el potencial \(U(r)\).
+
+El caso más simple es cuando tenemos una órbitas circulares, en tal caso \(r = R = \mathrm{const.}\), y la partícula no tiene velocidad radial, \(v_r = 0\), por lo que
+\begin{align*}
+	E = \frac{m v_\phi^2}{2}& + U(r), ~~M = m v_\phi r\\
+	\Rightarrow E &= \frac{M^2}{2 m r^2} + U(r)
+\end{align*}
+Pero además, \(R\) debe ser un mínimo del potencial, por lo que, gracias a la ec. \ref{EDO_orb_cerrada}
+\begin{align}
+	-\frac{M^2}{m R^3} + U'(R) &= 0\nonumber\\
+	-\frac{2}{R}\left(E - U(R)\right) + U'(R) &= 0\nonumber\\
+	2\left(E - U(R)\right) &= R U'(R)\label{E-U_EU'}
+\end{align}
+Haciendo un cambio de variables
+\begin{equation}
+	\zeta = \ln R ~\Rightarrow~ R U'(R) = dU/d\zeta
+\end{equation}
+tenemos la EDO:
+\begin{equation}
+	\td{U(\zeta)}{\zeta} + 2U = 2E(\zeta)
+\end{equation}
+Si la resolvemos llegamos a
+\begin{equation}
+	\frac{2}{R^2}\int E(R) R dR
+\end{equation}
+En el caso que la energía siga la forma \(E = \lambda R^n\) tendremos:
+\begin{equation}
+	U(R) = \frac{2 \lambda}{n + 2}R^n
+\end{equation}
+
+Si, en cambio, lo que tenemos es el periodo de la órbita \(T\) como función de \(R\), entonces, para encontrar \(U(r)\) tomamos la misma ec. \ref{E-U_EU'}
+\begin{equation*}
+	2\left(E - U(R)\right) = R U'(R)
+\end{equation*}
+y el periodo de movimiento
+\begin{align}
+	T &= \frac{2\pi}{\omega} = \frac{2 \pi R}{v_\phi}\nonumber\\
+	&= \frac{2 \pi R}{\sqrt{\frac{2}{m} \left(E - U(R)\right)}}\nonumber\\
+	&= \frac{2 \pi R}{\sqrt{\frac{1}{m} R U'(R)}}\nonumber\\
+	\Rightarrow U &= \int \frac{4 \pi^2 m R}{T^2(R)} dR
+\end{align}
+En el caso del problema de Kepler, \(T^2 = \kappa R^3\), por lo que \(U = -4\pi^2 m /\kappa R\).
+
+\subsubsection{Captura de partículas (caso \(U(r) \propto 1/r^2\))}
+Hasta ahora hemos asumido que las partículas no caen al centro (es decir, no hay captura). Supongamos que tenemos un potencial atractivo de la forma
+\begin{equation*}
+	U(r) = -\frac{\alpha}{r^2}
+\end{equation*}
+entonces el potencial efectivo:
+\begin{equation}
+	\Ueff (r) = U(r) + \frac{M^2}{2 m r^2} = \frac{\beta}{r^2}
+\end{equation}
+donde
+\begin{equation}
+	\beta = \frac{M^2}{2 m} - \alpha \label{beta_captura}
+\end{equation}
+Tendremos dos casos distintivos según si \(\beta\) es positivo o negativo.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{diagram-20260422}
+\end{figure}
+En el caso que \(\beta>0\), la partícula estará restringida por una barrera energética centrífuga, por lo que nunca caerá al centro En el caso en que \(\beta<0\) la partícula caerá al centro. El valor crítico de \(M\) en que esto ocurrirá será \(M_\mathrm{crit} = \sqrt{2 m \alpha}\). Podemos encontrar la trayectoria dependiente del tiempo como:
+\begin{equation}
+	r = \sqrt{\frac{E}{m}(t - t_0)^2 + \frac{\beta}{E}}
+\end{equation}
+Tendremos 3 casos según su configuración de energía y momento angular (a través de \(\beta\)):
+\begin{enumerate}
+	\item Caso \(E>0, \beta>0\): Como la energía es positiva, en el infinito (donde \(U(r)\rightarrow 0\)) la energía cinética no es nula \(T\neq 0\). La solución es solo scattering.
+	\item Caso \(E>0, \beta<0\): La energía cinética en el infinito no es nula, por lo que la trayectoria de la partícula es una espiral que se acerca asintóticamente al centro.
+	\item Caso \(E<0, \beta<0\): La partícula no puede llegar al infinito. No hay restricciones en la forma de la trayectoria, solo que está atrapada y caerá al centro.
+\end{enumerate}
+
+\subsection{Scattering en un campo externo}
+Hasta ahora hemos trabajado con partículas singulares para las cuales conocemos sus condiciones iniciales. En algunos problemas puede ocurrir que solo tengamos parte de esta información.
+
+Por ejemplo, un flujo de partículas con energía \(E\) en un campo externo y necesitamos hallar su distribución angular tras la dispersión. No conocemos la posición exacta \(r(t=0)\) para reconstruir la trayectoria completa de cada  partícula, pero esperamos que todas las partículas dispersadas con un mismo parámetro de impacto \(\rho\) tengan el mismo ángulo de dispersión \(\Theta(\rho)\).
+
+\caja{Flujo de partícula \((J)\)}{Número de partículas que atraviesan una unidad de superficie en dirección transversal por unidad de tiempo. \[J = \frac{dN}{dS dt}\]}
+Asumiremos que el flujo es homogéneo.
+\caja{Sección transversal diferencial}{Número de partículas dispersadas en un ángulo sólido dado \(d\Omega\) o en un intervalo de energías de las partículas dispersadas \((E', E' + dE)\) y dividido por el flujo. \[\td{\sigma}{\Omega} = \frac{\frac{1}{J}dN_\mathrm{scatter}}{d\Omega} = \frac{1}{J} \frac{d N_\mathrm{scatter}}{\sin\theta d\theta d\phi}\] Para la mayoría de los casos tendremos que, por simetría azimutal,  \(d\phi = 2\pi\). Además, para una sección transversal de radio \(\rho\) tenemos \(d\sigma = 2\pi\rho d\rho\). Combinando ambos resultados podremos escribir \[\td{\sigma}{\Omega} = \frac{\rho}{\sin\theta}\left|\td{\rho}{\theta}\right|\]}
+
+\begin{figure}[h!]
+	\centering
+	\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+		%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+		
+		%Straight Lines [id:da8670513233559606] 
+		\draw  [dash pattern={on 4.5pt off 4.5pt}]  (10,160) -- (250,160) ;
+		%Straight Lines [id:da5626161483216395] 
+		\draw  [dash pattern={on 4.5pt off 4.5pt}]  (10,130) -- (250,130) ;
+		%Straight Lines [id:da033022653184010986] 
+		\draw  [dash pattern={on 0.84pt off 2.51pt}]  (80,160) -- (120,100) ;
+		%Curve Lines [id:da11167130219665578] 
+		\draw    (240,120) .. controls (150.33,120) and (128.67,106) .. (120,100) .. controls (119.67,99.77) and (119.32,99.53) .. (118.96,99.28) .. controls (109.75,92.91) and (89.07,77.81) .. (60.43,11.01) ;
+		\draw [shift={(60,10)}, rotate = 66.9] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		\draw [shift={(172.23,116.32)}, rotate = 7.01] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		\draw [shift={(113.36,95.12)}, rotate = 36.41] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		\draw [shift={(81.09,53.39)}, rotate = 59.82] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		%Straight Lines [id:da44422371587621146] 
+		\draw  [dash pattern={on 4.5pt off 4.5pt}]  (50,10) -- (100,130) ;
+		%Shape: Arc [id:dp4916864446332564] 
+		\draw  [draw opacity=0] (96.64,135.04) .. controls (104.7,140.42) and (110,149.59) .. (110,160) .. controls (110,160) and (110,160) .. (110,160) -- (80,160) -- cycle ; \draw [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ]   (99.09,136.85) .. controls (105.75,142.36) and (110,150.68) .. (110,160) ;  \draw [shift={(96.64,135.04)}, rotate = 39.54] [fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (7.14,-3.43) -- (0,0) -- (7.14,3.43) -- (4.74,0) -- cycle    ;
+		%Shape: Arc [id:dp9223588558707133] 
+		\draw  [draw opacity=0] (88.46,102.3) .. controls (77.62,106.82) and (70,117.52) .. (70,130) -- (100,130) -- cycle ; \draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (85.61,103.67) .. controls (76.31,108.76) and (70,118.64) .. (70,130) ;  \draw [shift={(88.46,102.3)}, rotate = 151.3] [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (7.14,-3.43) -- (0,0) -- (7.14,3.43) -- (4.74,0) -- cycle    ;
+		%Shape: Circle [id:dp6541046447992314] 
+		\draw  [color={rgb, 255:red, 245; green, 166; blue, 35 }  ,draw opacity=1 ][fill={rgb, 255:red, 245; green, 166; blue, 35 }  ,fill opacity=1 ] (118.5,100) .. controls (118.5,99.17) and (119.17,98.5) .. (120,98.5) .. controls (120.83,98.5) and (121.5,99.17) .. (121.5,100) .. controls (121.5,100.83) and (120.83,101.5) .. (120,101.5) .. controls (119.17,101.5) and (118.5,100.83) .. (118.5,100) -- cycle ;
+		%Straight Lines [id:da049623250589530765] 
+		\draw [color={rgb, 255:red, 65; green, 117; blue, 5 }  ,draw opacity=1 ]   (210,133) -- (210,157) ;
+		\draw [shift={(210,160)}, rotate = 270] [fill={rgb, 255:red, 65; green, 117; blue, 5 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+		\draw [shift={(210,130)}, rotate = 90] [fill={rgb, 255:red, 65; green, 117; blue, 5 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+		
+		% Text Node
+		\draw (71,162) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle O$};
+		% Text Node
+		\draw (89,143) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,opacity=1 ] [align=left] {$\displaystyle \phi _{0}$};
+		% Text Node
+		\draw (78,113) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,opacity=1 ] [align=left] {$\displaystyle \theta $};
+		% Text Node
+		\draw (122,84) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 245; green, 166; blue, 35 }  ,opacity=1 ] [align=left] {$\displaystyle A$};
+		% Text Node
+		\draw (217,140) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 65; green, 117; blue, 5 }  ,opacity=1 ] [align=left] {$\displaystyle \rho $};
+	\end{tikzpicture}
+\end{figure}
+Tomando el \textbf{periapsis} \(A\) el punto más cercano de la trayectoria con el centro, \(\phi_0\) el ángulo entre \(A\) y una de las asíntotas, y el \textbf{parámetro de impacto} \(\rho\) la distancia entre la trayectoria y el centro. El \textbf{ángulo de scattering} \(\theta\), en cambio, es por geometría \(\theta = \pi - 2\phi_0\). Podemos obtener:
+\begin{equation}
+	\phi_0 = \int_{r_\mathrm{min}}^{\infty} \frac{\frac{M}{m r^2}}{\sqrt{\frac{2}{m} (E - \Ueff(r))}} dr
+\end{equation}
+donde \(r_\mathrm{min}\) es la distancia al periapsis, que puede ser encontrada con la condición \(E = \Ueff(r_\mathrm{min})\) (porque la velocidad radial es cero se sigue que \(E = \cancel{m\dot{r}^2/2} + \Ueff\)). En estos experimentos, la forma exacta de la trayectoria nos importa poco, queremos saber el ángulo de reflexión \(\theta\).
+
+Asumiendo que en el infinito \(U(r)\approx 0\), y que todas las partículas incidentes tienen la misma velocidad \(v_\infty\) y que se mueven en la dirección horizontal, podemos encontrar los parámetros \(E, M\):
+\begin{equation}
+	E = \frac{m v_\infty^2}{2}, ~~~~~M = m v_\infty \rho
+\end{equation}
+\begin{equation}
+	\Rightarrow \phi_0 = \int_{r_\mathrm{min}}^{\infty} \frac{\frac{v \rho}{r^2}}{\sqrt{\frac{2}{m} \left(\frac{m v_\infty^2}{2}\left(1 - \frac{\rho^2}{r^2}\right) - U(r)\right)}} dr \label{phi0_int_dr}
+\end{equation}
+\begin{equation}
+	\Rightarrow \Ueff(r) = U(r) + \frac{m v_\infty^2}{2}\frac{\rho^2}{r^2}
+\end{equation}
+
+\subsubsection{Campo de Coulomb}
+Consideremos un campo de Coulomb \(U(r) = - \alpha/r\), y busquemos su sección transversal diferencial:
+\begin{equation*}
+	\td{\sigma}{\Omega} = \frac{\rho}{\sin\theta}\left|\td{\rho}{\theta}\right|
+\end{equation*}
+Sabemos que la trayectoria debe ser
+\begin{equation*}
+	\frac{p}{r} = 1 + e \cos\phi
+\end{equation*}
+Para nuestro caso tendremos \(E > 0 \leftrightarrow e > 1\), una hipérbola con semiejes
+\begin{equation*}
+	a = \frac{p}{e^2 - 1}, ~~~~~ b = \frac{p}{\sqrt{e^2 - 1}}
+\end{equation*}
+Los valores de \(p\) y \(e\):
+\begin{equation}
+	p = \frac{M^2}{m\alpha} = \frac{m v_\infty^2 \rho^2}{\alpha}, ~~~~~e = \sqrt{1 + \frac{2 E M^2}{m \alpha^2}} = \sqrt{1 + \left(\frac{m v_\infty^2 \rho}{\alpha}\right)^2} 
+\end{equation}
+La distancia mínima \(r_\mathrm{min}\):
+\begin{align}
+	E + \Ueff(r_\mathrm{min}) &= E + \frac{\alpha}{r_\mathrm{min}} - \frac{M^2}{2 m r_\mathrm{min}^2} = 0\nonumber\\
+	\Rightarrow r_\mathrm{min} &= \frac{\rho^2}{p}\left(e - 1\right)
+\end{align}
+Ahora, calculando en ángulo \(\phi_0\):
+\begin{equation}
+	\phi_0 = \int_{r_\mathrm{min}}^{\infty} \frac{\frac{v \rho}{r^2}}{\sqrt{\frac{2}{m} \left(\frac{m v_\infty^2}{2}\left(1 - \frac{\rho^2}{r^2}\right) - U(r)\right)}} dr = \arccos\left(\frac{\alpha/mv_\infty^2\rho}{\sqrt{1 + \left(\alpha/mv_\infty^2\rho\right)^2}}\right)
+\end{equation}
+Luego, sabiendo que \(p = m v_\infty^2 \rho^2/\alpha\) tenemos
+\begin{equation}
+	\Rightarrow \rho^2 = \left(\frac{\alpha}{m v_\infty^2}\right)^2 \cot^2\frac{\theta}{2}
+\end{equation}
+Y, finalmente,
+\begin{equation}
+	\td{\sigma}{\Omega} = \frac{\rho}{\sin\theta}\left|\td{\rho}{\theta}\right| = \left(\frac{\alpha}{2 m v_\infty^2}\right)^2 \frac{1}{\sin^4\left(\theta/2\right)}
+\end{equation}
+Esta es la \textbf{fórmula de Rutherford}.
+
+\subsubsection{Flujo no homogéneo}
+Supongamos que en vez de un \(J\) homogéneo tenemos
+\begin{equation*}
+	J = J(\rho) = J_0 \exp\left(- \frac{\rho^2}{\rho_0^2}\right)
+\end{equation*}
+En tal caso tendremos una fuerte supresión para pequeños \(\theta\)
+\begin{equation}
+	J = J(\rho) = J_0 \exp\left(- \left(\frac{\alpha}{m v_\infty^2 \rho_0}\right)^2 \cot^2\frac{\theta}{2}\right)
+\end{equation}
+
+\subsubsection{Transformación de coordenadas al CM (no relativista)}
+Consideremos una partícula a velocidad \(V_1\) colisionando con otra partícula en reposo \(V_2 = 0\). Al dispersarse se mueven con velocidades \(V'_1, V'_2\) y desde ángulos de dispersión \(\psi, \zeta\). A través de la transformación galileana 
+\begin{equation*}
+	\mathbf{V}_i = \mathbf{v}_i + \mathbf{V}_{\mathrm{CM}}
+\end{equation*}
+podemos pasar al marco de referencia del centro de masa, donde los ángulos de scattering son iguales \(\theta_1 = \theta_2 = \theta\).
+\begin{figure}[h!]
+	\centering
+	\begin{tikzpicture}[x=0.67pt,y=0.67pt,yscale=-1,xscale=1]
+		%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+		
+		%Straight Lines [id:da125469446083867] 
+		\draw [color={rgb, 255:red, 155; green, 155; blue, 155 }  ,draw opacity=1 ] [dash pattern={on 4.5pt off 4.5pt}]  (10,35) -- (290,35) ;
+		%Shape: Circle [id:dp40200672735298226] 
+		\draw  [fill={rgb, 255:red, 80; green, 227; blue, 194 }  ,fill opacity=1 ] (40,35) .. controls (40,29.48) and (44.48,25) .. (50,25) .. controls (55.52,25) and (60,29.48) .. (60,35) .. controls (60,40.52) and (55.52,45) .. (50,45) .. controls (44.48,45) and (40,40.52) .. (40,35) -- cycle ;
+		%Shape: Circle [id:dp8395697859980503] 
+		\draw  [fill={rgb, 255:red, 245; green, 166; blue, 35 }  ,fill opacity=1 ] (205,35) .. controls (205,21.19) and (216.19,10) .. (230,10) .. controls (243.81,10) and (255,21.19) .. (255,35) .. controls (255,48.81) and (243.81,60) .. (230,60) .. controls (216.19,60) and (205,48.81) .. (205,35) -- cycle ;
+		%Straight Lines [id:da2746329097782011] 
+		\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (60,35) -- (133,35) ;
+		\draw [shift={(135,35)}, rotate = 180] [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		%Straight Lines [id:da7562850773177036] 
+		\draw [color={rgb, 255:red, 155; green, 155; blue, 155 }  ,draw opacity=1 ] [dash pattern={on 4.5pt off 4.5pt}]  (40,210) -- (260,210) ;
+		%Straight Lines [id:da14915868220871542] 
+		\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (152,165) -- (198.61,116.44) ;
+		\draw [shift={(200,115)}, rotate = 133.83] [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		%Straight Lines [id:da2860878328930857] 
+		\draw [color={rgb, 255:red, 155; green, 155; blue, 155 }  ,draw opacity=1 ] [dash pattern={on 4.5pt off 4.5pt}]  (152,165) -- (105,210) ;
+		%Straight Lines [id:da1795470050369964] 
+		\draw [color={rgb, 255:red, 155; green, 155; blue, 155 }  ,draw opacity=1 ] [dash pattern={on 4.5pt off 4.5pt}]  (105,210) -- (187,250) ;
+		%Straight Lines [id:da4348541393189779] 
+		\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (187,250) -- (235.21,274.11) ;
+		\draw [shift={(237,275)}, rotate = 206.57] [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		%Shape: Circle [id:dp6940061728013278] 
+		\draw  [fill={rgb, 255:red, 245; green, 166; blue, 35 }  ,fill opacity=1 ] (162,250) .. controls (162,236.19) and (173.19,225) .. (187,225) .. controls (200.81,225) and (212,236.19) .. (212,250) .. controls (212,263.81) and (200.81,275) .. (187,275) .. controls (173.19,275) and (162,263.81) .. (162,250) -- cycle ;
+		%Shape: Arc [id:dp7247960670045274] 
+		\draw  [draw opacity=0][dash pattern={on 0.84pt off 2.51pt}] (145.97,171.18) .. controls (155.87,181.13) and (162,194.85) .. (162,210) .. controls (162,219.15) and (159.77,227.77) .. (155.82,235.36) -- (107,210) -- cycle ; \draw  [color={rgb, 255:red, 128; green, 128; blue, 128 }  ,draw opacity=1 ][dash pattern={on 0.84pt off 2.51pt}] (145.97,171.18) .. controls (155.87,181.13) and (162,194.85) .. (162,210) .. controls (162,219.15) and (159.77,227.77) .. (155.82,235.36) ;  
+		%Shape: Boxed Line [id:dp44611242222320635] 
+		\draw [color={rgb, 255:red, 155; green, 155; blue, 155 }  ,draw opacity=1 ] [dash pattern={on 4.5pt off 4.5pt}]  (345,210) -- (645,210) ;
+		%Straight Lines [id:da5174106587310204] 
+		\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (420,160) -- (376.66,131.11) ;
+		\draw [shift={(375,130)}, rotate = 33.69] [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		%Shape: Boxed Line [id:dp48594822002560745] 
+		\draw [color={rgb, 255:red, 155; green, 155; blue, 155 }  ,draw opacity=1 ] [dash pattern={on 4.5pt off 4.5pt}]  (420,160) -- (555,250) ;
+		%Straight Lines [id:da7144777072100006] 
+		\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (570.48,260.24) -- (613.34,288.89) ;
+		\draw [shift={(615,290)}, rotate = 213.76] [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		%Shape: Arc [id:dp10710715740170917] 
+		\draw  [draw opacity=0][dash pattern={on 0.84pt off 2.51pt}] (540,210) .. controls (540,210) and (540,210) .. (540,210) .. controls (540,210) and (540,210) .. (540,210) .. controls (540,219.11) and (537.29,227.59) .. (532.64,234.68) -- (495,210) -- cycle ; \draw  [color={rgb, 255:red, 128; green, 128; blue, 128 }  ,draw opacity=1 ][dash pattern={on 0.84pt off 2.51pt}] (540,210) .. controls (540,210) and (540,210) .. (540,210) .. controls (540,210) and (540,210) .. (540,210) .. controls (540,219.11) and (537.29,227.59) .. (532.64,234.68) ;  
+		%Straight Lines [id:da729762150184402] 
+		\draw [color={rgb, 255:red, 155; green, 155; blue, 155 }  ,draw opacity=1 ] [dash pattern={on 4.5pt off 4.5pt}]  (345,35) -- (645,35) ;
+		%Shape: Circle [id:dp6459672581508633] 
+		\draw  [fill={rgb, 255:red, 80; green, 227; blue, 194 }  ,fill opacity=1 ] (375,35) .. controls (375,29.48) and (379.48,25) .. (385,25) .. controls (390.52,25) and (395,29.48) .. (395,35) .. controls (395,40.52) and (390.52,45) .. (385,45) .. controls (379.48,45) and (375,40.52) .. (375,35) -- cycle ;
+		%Shape: Circle [id:dp019766758778378524] 
+		\draw  [fill={rgb, 255:red, 245; green, 166; blue, 35 }  ,fill opacity=1 ] (565,35) .. controls (565,21.19) and (576.19,10) .. (590,10) .. controls (603.81,10) and (615,21.19) .. (615,35) .. controls (615,48.81) and (603.81,60) .. (590,60) .. controls (576.19,60) and (565,48.81) .. (565,35) -- cycle ;
+		%Straight Lines [id:da2309236794835251] 
+		\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (395,35) -- (473,35) ;
+		\draw [shift={(475,35)}, rotate = 180] [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		%Straight Lines [id:da12245967125524337] 
+		\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (565,35) -- (517,35) ;
+		\draw [shift={(515,35)}, rotate = 360] [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		%Shape: Circle [id:dp6585623739413077] 
+		\draw  [fill={rgb, 255:red, 245; green, 166; blue, 35 }  ,fill opacity=1 ] (530,250) .. controls (530,236.19) and (541.19,225) .. (555,225) .. controls (568.81,225) and (580,236.19) .. (580,250) .. controls (580,263.81) and (568.81,275) .. (555,275) .. controls (541.19,275) and (530,263.81) .. (530,250) -- cycle ;
+		%Shape: Circle [id:dp6555152055275125] 
+		\draw  [fill={rgb, 255:red, 80; green, 227; blue, 194 }  ,fill opacity=1 ] (147,160) .. controls (147,154.48) and (151.48,150) .. (157,150) .. controls (162.52,150) and (167,154.48) .. (167,160) .. controls (167,165.52) and (162.52,170) .. (157,170) .. controls (151.48,170) and (147,165.52) .. (147,160) -- cycle ;
+		%Shape: Circle [id:dp1907852521393526] 
+		\draw  [fill={rgb, 255:red, 80; green, 227; blue, 194 }  ,fill opacity=1 ] (410,160) .. controls (410,154.48) and (414.48,150) .. (420,150) .. controls (425.52,150) and (430,154.48) .. (430,160) .. controls (430,165.52) and (425.52,170) .. (420,170) .. controls (414.48,170) and (410,165.52) .. (410,160) -- cycle ;
+		%Shape: Arc [id:dp6250330674650589] 
+		\draw  [draw opacity=0][dash pattern={on 0.84pt off 2.51pt}] (450,210) .. controls (450,210) and (450,210) .. (450,210) .. controls (450,210) and (450,210) .. (450,210) .. controls (450,200.89) and (452.71,192.41) .. (457.36,185.32) -- (495,210) -- cycle ; \draw  [color={rgb, 255:red, 128; green, 128; blue, 128 }  ,draw opacity=1 ][dash pattern={on 0.84pt off 2.51pt}] (450,210) .. controls (450,210) and (450,210) .. (450,210) .. controls (450,210) and (450,210) .. (450,210) .. controls (450,200.89) and (452.71,192.41) .. (457.36,185.32) ;  
+		%Right Arrow [id:dp26464392734767195] 
+		\draw   (145,75) -- (145,117) -- (155,117) -- (135,145) -- (115,117) -- (125,117) -- (125,75) -- cycle ;
+		%Right Arrow [id:dp5286235492596909] 
+		\draw   (505,75) -- (505,117) -- (515,117) -- (495,145) -- (475,117) -- (485,117) -- (485,75) -- cycle ;
+		
+		% Text Node
+		\draw (86,15) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \vec{V}_{1}$};
+		% Text Node
+		\draw (176,137) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \vec{V} '_{1}$};
+		% Text Node
+		\draw (220,245) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \vec{V} '_{2}$};
+		% Text Node
+		\draw (138,187) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \psi $};
+		% Text Node
+		\draw (138,212) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \zeta $};
+		% Text Node
+		\draw (394,127) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \vec{v} '_{1}$};
+		% Text Node
+		\draw (591,255) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \vec{v} '_{2}$};
+		% Text Node
+		\draw (516,212) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \theta $};
+		% Text Node
+		\draw (421,15) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \vec{v}_{1}$};
+		% Text Node
+		\draw (536,15) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \vec{v}_{2}$};
+		% Text Node
+		\draw (461,196) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \theta $};
+	\end{tikzpicture}
+\end{figure}
+
+El ángulo de scattering
+\begin{equation*}
+	\theta_i = \arctan\left(v_y^{(i)} / v_x^{(i)}\right)
+\end{equation*}
+y la velocidad del centro de masa
+\begin{equation*}
+	\mathbf{V}_{\mathrm{CM}} = \frac{m_1}{m_1 + m_2}v_1 \xhat
+\end{equation*}
+La relación entre los ángulos de scattering de cada marco será entonces
+\begin{equation}
+	\cos\theta = \cos\psi\sqrt{1 - \left(\frac{V^2_\mathrm{CM} + 2 v_1 V_\mathrm{CM}}{v_1^2}\right)\tan^2\psi}
+\end{equation}
+y las secciones transversales en ambos sistemas:
+\begin{align}
+	d\Omega_\mathrm{CM} = 2\pi \sin&\theta d\theta, ~~~~~ d\Omega_\mathrm{lab} = 2\pi \sin\psi d\psi\\
+	\Rightarrow \td{\sigma}{\Omega_\mathrm{lab}} &= \td{\sigma}{\Omega_\mathrm{CM}} \frac{1}{\sin\psi} \left|\td{\cos\theta}{\psi}\right|
+\end{align}
+
+\subsubsection{Sección de captura (caso \(U(r) \propto 1/r^2\))}
+Cuando tenemos un potencial efectivo con más de una raíz \(r_\mathrm{min}\) solo estaremos interesados en aquella de mayor valor, ya que la partícula se acerca desde el infinito será esta última con la cual interactuará.
+
+Recordando la condición de captura de la ec. \ref{beta_captura},
+\begin{align}
+	\beta &= \frac{M^2}{2 m} - \alpha = \frac{m v_\infty^2 \rho^2}{2} - \alpha < 0\nonumber\\
+	\Rightarrow \rho &< \rho_\mathrm{max} = \sqrt{\frac{2 \alpha}{m v_\infty^2}} = \sqrt{\frac{\alpha}{E_\infty}}
+\end{align}
+Es decir, el campo capturará aquellas partículas que pasan lo suficientemente cerca (con un parámetro de impacto \(\rho\) pequeño). El valor crítico de \(\rho\) dependerá de la energía \(E_\infty\).
+
+Si \(\rho < \rho_\mathrm{max}\) no tendremos dispersión, pero podemos hablar de la cantidad de partículas capturadas \(N\). Si \(J\) es homogéneo entonces
+\begin{align}
+	N &= J\cdot\underbrace{\pi \rho_\mathrm{max}^2}_{\text{área del disco}}\nonumber\\
+	\Rightarrow \sigma_{\text{captura}} &= \frac{N}{J} = \frac{\pi\alpha}{E_\infty}
+\end{align}
+
+\subsubsection{Problemas inversos de scattering}
+Supongamos que, a partir de un experimento, conocemos la sección transversal \(d\sigma/d\theta\) para la dispersión de partículas con energía \(E\). Busquemos el potencial central \(U(r)\) en el que se dispersan las partículas. Este problema puede aplicar para potenciales que dispersan las partículas o que las enfocan.
+\begin{figure}[h!]
+	\centering
+	\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+		%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+		
+		%Straight Lines [id:da12329521306784985] 
+		\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (150,95) -- (249.84,119.29) ;
+		\draw [shift={(252.75,120)}, rotate = 193.67] [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+		%Straight Lines [id:da3844254590484141] 
+		\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (151.93,86.77) -- (253.73,103.07) ;
+		\draw [shift={(256.69,103.55)}, rotate = 189.1] [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+		%Straight Lines [id:da3791406240470655] 
+		\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (153.22,78.42) -- (256.2,86.6) ;
+		\draw [shift={(259.19,86.84)}, rotate = 184.54] [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+		%Straight Lines [id:da2469564696707831] 
+		\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (153.62,70) -- (257,70) ;
+		\draw [shift={(260,70)}, rotate = 180] [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+		%Straight Lines [id:da6126267382972209] 
+		\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (153.14,61.58) -- (256.04,53.4) ;
+		\draw [shift={(259.03,53.16)}, rotate = 175.45] [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+		%Straight Lines [id:da8275149741898035] 
+		\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (150,45) -- (249.84,20.71) ;
+		\draw [shift={(252.75,20)}, rotate = 166.33] [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+		%Straight Lines [id:da0026773157752444376] 
+		\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (152.01,53.23) -- (253.81,36.93) ;
+		\draw [shift={(256.77,36.45)}, rotate = 170.9] [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+		%Straight Lines [id:da17493953392279016] 
+		\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (30,40) -- (125,40) ;
+		\draw [shift={(80.7,40)}, rotate = 180] [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+		%Straight Lines [id:da3767327248393044] 
+		\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (30,50) -- (125,50) ;
+		\draw [shift={(80.7,50)}, rotate = 180] [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+		%Straight Lines [id:da7667206097390896] 
+		\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (30,60) -- (125,60) ;
+		\draw [shift={(80.7,60)}, rotate = 180] [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+		%Straight Lines [id:da37728566082667936] 
+		\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (30,70) -- (125,70) ;
+		\draw [shift={(80.7,70)}, rotate = 180] [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+		%Straight Lines [id:da444783161986962] 
+		\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (30,80) -- (125,80) ;
+		\draw [shift={(80.7,80)}, rotate = 180] [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+		%Straight Lines [id:da8637420865586032] 
+		\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (30,100) -- (125,100) ;
+		\draw [shift={(80.7,100)}, rotate = 180] [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+		%Straight Lines [id:da35980012747919377] 
+		\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (30,90) -- (125,90) ;
+		\draw [shift={(80.7,90)}, rotate = 180] [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+		%Shape: Circle [id:dp0036170202154133246] 
+		\draw  [fill={rgb, 255:red, 80; green, 227; blue, 194 }  ,fill opacity=1 ] (110,70) .. controls (110,47.91) and (127.91,30) .. (150,30) .. controls (172.09,30) and (190,47.91) .. (190,70) .. controls (190,92.09) and (172.09,110) .. (150,110) .. controls (127.91,110) and (110,92.09) .. (110,70) -- cycle ;
+		%Straight Lines [id:da04196977805612401] 
+		\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (30,145) -- (90,145) ;
+		\draw [shift={(63.2,145)}, rotate = 180] [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+		%Straight Lines [id:da36838750141991816] 
+		\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (30,155) -- (90,155) ;
+		\draw [shift={(63.2,155)}, rotate = 180] [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+		%Straight Lines [id:da2686697110728311] 
+		\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (30,165) -- (90,165) ;
+		\draw [shift={(63.2,165)}, rotate = 180] [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+		%Straight Lines [id:da4725444321031188] 
+		\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (30,175) -- (90,175) ;
+		\draw [shift={(63.2,175)}, rotate = 180] [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+		%Straight Lines [id:da3306533451692827] 
+		\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (30,185) -- (90,185) ;
+		\draw [shift={(63.2,185)}, rotate = 180] [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+		%Straight Lines [id:da8597836174146836] 
+		\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (30,205) -- (90,205) ;
+		\draw [shift={(63.2,205)}, rotate = 180] [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+		%Straight Lines [id:da816977258862795] 
+		\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (30,195) -- (90,195) ;
+		\draw [shift={(63.2,195)}, rotate = 180] [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+		%Straight Lines [id:da2483777019014518] 
+		\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (259.96,175) -- (139.26,205) ;
+		\draw [shift={(199.61,190)}, rotate = 166.04] [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+		%Straight Lines [id:da8991579041051049] 
+		\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (260,175) -- (136.94,195.13) ;
+		\draw [shift={(198.47,185.06)}, rotate = 170.71] [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+		%Straight Lines [id:da5656032794616094] 
+		\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (259.96,175) -- (135.48,185.1) ;
+		\draw [shift={(197.72,180.05)}, rotate = 175.36] [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+		%Straight Lines [id:da36469872642251244] 
+		\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (259.96,175) -- (135,175) ;
+		\draw [shift={(197.48,175)}, rotate = 180] [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+		%Straight Lines [id:da9994241583886179] 
+		\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (259.96,175) -- (135.57,164.9) ;
+		\draw [shift={(197.76,169.95)}, rotate = 184.64] [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+		%Straight Lines [id:da9784472190135033] 
+		\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (259.96,175) -- (139.26,145) ;
+		\draw [shift={(199.61,160)}, rotate = 193.96] [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+		%Straight Lines [id:da5314156921328547] 
+		\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (259.96,175) -- (136.9,154.87) ;
+		\draw [shift={(198.43,164.94)}, rotate = 189.29] [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+		%Shape: Circle [id:dp7126042852260064] 
+		\draw  [fill={rgb, 255:red, 80; green, 227; blue, 194 }  ,fill opacity=1 ] (75,175) .. controls (75,152.91) and (92.91,135) .. (115,135) .. controls (137.09,135) and (155,152.91) .. (155,175) .. controls (155,197.09) and (137.09,215) .. (115,215) .. controls (92.91,215) and (75,197.09) .. (75,175) -- cycle ;
+		%Straight Lines [id:da8779585836148686] 
+		\draw  [dash pattern={on 0.84pt off 2.51pt}]  (115,215) -- (115,235) ;
+		%Straight Lines [id:da14850689025593666] 
+		\draw  [dash pattern={on 0.84pt off 2.51pt}]  (260,176.5) -- (260,235) ;
+		%Shape: Circle [id:dp12318921268461269] 
+		\draw  [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=1 ] (258.5,175) .. controls (258.5,174.17) and (259.17,173.5) .. (260,173.5) .. controls (260.83,173.5) and (261.5,174.17) .. (261.5,175) .. controls (261.5,175.83) and (260.83,176.5) .. (260,176.5) .. controls (259.17,176.5) and (258.5,175.83) .. (258.5,175) -- cycle ;
+		%Straight Lines [id:da30386940066411217] 
+		\draw    (118,220) -- (257,220) ;
+		\draw [shift={(260,220)}, rotate = 180] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (10.72,-5.15) -- (0,0) -- (10.72,5.15) -- (7.12,0) -- cycle    ;
+		\draw [shift={(115,220)}, rotate = 0] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (10.72,-5.15) -- (0,0) -- (10.72,5.15) -- (7.12,0) -- cycle    ;
+		
+		% Text Node
+		\draw (136,65) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle U( r)$};
+		% Text Node
+		\draw (101,170) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle U( r)$};
+		% Text Node
+		\draw (181,221) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle R$};
+	\end{tikzpicture}
+\end{figure}
+
+Sabemos que
+\begin{equation*}
+	\td{\sigma}{\theta} = 2\pi \rho(\theta) \left|\td{\rho}{\theta}\right|
+\end{equation*}
+por lo que
+\begin{equation}
+	\Rightarrow \int_{0}^{\pi} \td{\sigma}{\theta} d\theta = \pi \rho^2(\theta)
+\end{equation}
+por lo que si conocemos \(d\sigma/d\theta\) podemos extraer la dependencia \(\rho=\rho(\theta)\). Asumiremos entonces que conoces la relación \(\rho(\theta)\).
+
+Introduciendo las variables 
+\begin{equation*}
+	s = \frac{1}{r}, ~~~x = \frac{1}{\rho^2}, ~~~w = \sqrt{1 - \frac{U}{E}}
+\end{equation*}
+podemos reescribir la ec. \ref{phi0_int_dr} como
+\begin{equation*}
+	\frac{\pi - \theta(x)}{2} = \int_{0}^{s_0} \frac{ds}{\sqrt{x w^2 - s^2}}
+\end{equation*}
+donde \(s_0\) es la raíz de
+\begin{equation*}
+	x w^2(s_0) - s_0^2 = 0
+\end{equation*}
+Integrando esto obtenemos
+\begin{equation}
+	w = \exp\left(\frac{1}{\pi} \int_{r\cdot w}^{\infty} \frac{\theta(\rho)}{\sqrt{\rho^2 - r^2 w^2}} d\rho\right)
+\end{equation}
+\subsection{Sistemas de referencia no inerciales}
+
+\subsection{Sólido rígido}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
