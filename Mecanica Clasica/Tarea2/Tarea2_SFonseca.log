@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2025.9.10)  28 APR 2026 00:36
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2025.9.10)  28 APR 2026 11:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -615,19 +615,23 @@ File: uesint.fd
 
 [3]
 
-[4] (Tarea2_SFonseca.aux)
+[4]
+
+[5]
+
+[6] (Tarea2_SFonseca.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-08-13>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 14230 strings out of 403249
- 282688 string characters out of 5460860
- 771588 words of memory out of 5000000
- 42426 multiletter control sequences out of 15000+600000
+ 14240 strings out of 403249
+ 282965 string characters out of 5460860
+ 771593 words of memory out of 5000000
+ 42436 multiletter control sequences out of 15000+600000
  634867 words of font info for 83 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  102i,14n,107p,946b,726s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on Tarea2_SFonseca.pdf (4 pages).
+Output written on Tarea2_SFonseca.pdf (6 pages).

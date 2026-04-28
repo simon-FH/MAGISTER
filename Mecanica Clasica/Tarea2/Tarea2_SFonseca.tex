@@ -187,13 +187,13 @@ Ya que \(\ell \gg R\), podemos considerar que la distancia entre el centro de la
 \end{equation}
 y una densidad constante y homogénea
 \begin{equation}
-	\rho = \frac{m}{V} = \frac{3 m}{\pi R^2 \ell}
+	\rho = \frac{m}{V} \approx \frac{3 m}{\pi R^2 \ell}
 \end{equation}
-
-El centro de masa del cono estará, por simetría, sobre su eje central \(z'\), por lo que para encontrar su posición dentro del eje solo necesitamos 
-\begin{equation}
-	\mathbf{y}_{\mathrm{CM}} = \hat{\mathbf{z}}'\frac{1}{V} \int_{0}^{\ell} x A(x) \, dx = \frac{3}{4}\ell \,\hat{\mathbf{z}}' \approx \frac{3}{4}\ell\,\rhat
-\end{equation}
+%
+%El centro de masa del cono estará, por simetría, sobre su eje central \(z'\), por lo que para encontrar su posición dentro del eje solo necesitamos 
+%\begin{equation}
+%	\mathbf{y}_{\mathrm{CM}} = \hat{\mathbf{z}}'\frac{1}{V} \int_{0}^{\ell} x A(x) \, dx = \frac{3}{4}\ell \,\hat{\mathbf{z}}' \approx \frac{3}{4}\ell\,\rhat
+%\end{equation}
 \begin{figure}[h!]
 	\centering
 	\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
@@ -443,77 +443,162 @@ The electrons are emitted isotropically with constant energy \(E\) at the point 
 \begin{figure}[h!]
 	\centering
 	\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
-		%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+		%uncomment if require: \path (0,220); %set diagram left start at 0, and has height of 220
 		
-		%Straight Lines [id:da9938364631984339] 
-		\draw [color={rgb, 255:red, 128; green, 128; blue, 128 }  ,draw opacity=1 ] [dash pattern={on 4.5pt off 4.5pt}]  (110,105) -- (215,35) ;
-		%Straight Lines [id:da8029357218915097] 
-		\draw [color={rgb, 255:red, 128; green, 128; blue, 128 }  ,draw opacity=1 ] [dash pattern={on 4.5pt off 4.5pt}]  (185,55) -- (245,85) ;
-		%Straight Lines [id:da7105624982612926] 
-		\draw [color={rgb, 255:red, 155; green, 155; blue, 155 }  ,draw opacity=1 ] [dash pattern={on 4.5pt off 4.5pt}]  (50,145) -- (365,145) ;
-		%Straight Lines [id:da5266014669167257] 
-		\draw    (245,85) -- (365,145) ;
-		\draw [shift={(308.22,116.61)}, rotate = 206.57] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (6.56,-2.94) .. controls (4.17,-1.38) and (1.99,-0.4) .. (0,0) .. controls (1.99,0.4) and (4.17,1.38) .. (6.56,2.94)   ;
-		%Shape: Circle [id:dp4118345924705571] 
-		\draw  [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=0.3 ] (100,145) .. controls (100,98.06) and (138.06,60) .. (185,60) .. controls (231.94,60) and (270,98.06) .. (270,145) .. controls (270,191.94) and (231.94,230) .. (185,230) .. controls (138.06,230) and (100,191.94) .. (100,145) -- cycle ;
-		%Straight Lines [id:da45052931690562803] 
-		\draw    (50,145) -- (110,105) ;
-		\draw [shift={(83,123)}, rotate = 146.31] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (6.56,-2.94) .. controls (4.17,-1.38) and (1.99,-0.4) .. (0,0) .. controls (1.99,0.4) and (4.17,1.38) .. (6.56,2.94)   ;
-		%Straight Lines [id:da9391546826201083] 
-		\draw    (185,145) -- (185,155) ;
-		%Straight Lines [id:da5930150784381293] 
-		\draw    (50,145) -- (50,155) ;
-		%Straight Lines [id:da08561538012782988] 
-		\draw    (365,145) -- (365,155) ;
-		%Straight Lines [id:da3493512151254] 
-		\draw [color={rgb, 255:red, 46; green, 104; blue, 172 }  ,draw opacity=1 ]   (188,150) -- (362,150) ;
-		\draw [shift={(365,150)}, rotate = 180] [fill={rgb, 255:red, 46; green, 104; blue, 172 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (7.14,-3.43) -- (0,0) -- (7.14,3.43) -- (4.74,0) -- cycle    ;
-		\draw [shift={(185,150)}, rotate = 0] [fill={rgb, 255:red, 46; green, 104; blue, 172 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (7.14,-3.43) -- (0,0) -- (7.14,3.43) -- (4.74,0) -- cycle    ;
-		%Curve Lines [id:da3014865609830708] 
-		\draw    (110,105) .. controls (170,65) and (206.33,65.67) .. (245,85) ;
-		\draw [shift={(178.99,73.7)}, rotate = 168.26] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (6.56,-2.94) .. controls (4.17,-1.38) and (1.99,-0.4) .. (0,0) .. controls (1.99,0.4) and (4.17,1.38) .. (6.56,2.94)   ;
-		%Shape: Arc [id:dp7237034923157237] 
-		\draw  [draw opacity=0] (205.73,41.02) .. controls (208.43,45.01) and (210,49.82) .. (210,55) .. controls (210,58.93) and (209.09,62.65) .. (207.47,65.96) -- (185,55) -- cycle ; \draw  [color={rgb, 255:red, 0; green, 96; blue, 207 }  ,draw opacity=1 ] (205.73,41.02) .. controls (208.43,45.01) and (210,49.82) .. (210,55) .. controls (210,58.93) and (209.09,62.65) .. (207.47,65.96) ;  
-		%Shape: Arc [id:dp23193945440669372] 
-		\draw  [draw opacity=0] (83.16,122.63) .. controls (87.48,129.02) and (90,136.71) .. (90,145) -- (50,145) -- cycle ; \draw  [color={rgb, 255:red, 17; green, 151; blue, 122 }  ,draw opacity=1 ] (83.16,122.63) .. controls (87.48,129.02) and (90,136.71) .. (90,145) ;  
-		%Shape: Arc [id:dp040971740950694] 
-		\draw  [draw opacity=0] (329.35,126.84) .. controls (326.57,132.29) and (325,138.46) .. (325,145) .. controls (325,145) and (325,145) .. (325,145) -- (365,145) -- cycle ; \draw  [color={rgb, 255:red, 17; green, 151; blue, 122 }  ,draw opacity=1 ] (329.35,126.84) .. controls (326.57,132.29) and (325,138.46) .. (325,145) .. controls (325,145) and (325,145) .. (325,145) ;  
-		%Straight Lines [id:da06036679961595259] 
-		\draw    (185,145) -- (122.29,198.06) ;
-		\draw [shift={(120,200)}, rotate = 319.76] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (7.14,-3.43) -- (0,0) -- (7.14,3.43) -- (4.74,0) -- cycle    ;
-		%Straight Lines [id:da584669232303559] 
-		\draw [color={rgb, 255:red, 46; green, 104; blue, 172 }  ,draw opacity=1 ]   (53,150) -- (157.67,150) -- (182,150) ;
-		\draw [shift={(185,150)}, rotate = 180] [fill={rgb, 255:red, 46; green, 104; blue, 172 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (7.14,-3.43) -- (0,0) -- (7.14,3.43) -- (4.74,0) -- cycle    ;
-		\draw [shift={(50,150)}, rotate = 0] [fill={rgb, 255:red, 46; green, 104; blue, 172 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (7.14,-3.43) -- (0,0) -- (7.14,3.43) -- (4.74,0) -- cycle    ;
+		%Straight Lines [id:da22896508470176902] 
+		\draw [color={rgb, 255:red, 128; green, 128; blue, 128 }  ,draw opacity=1 ] [dash pattern={on 4.5pt off 4.5pt}]  (115,77.5) -- (225,22.5) ;
+		%Straight Lines [id:da4252899641944393] 
+		\draw [color={rgb, 255:red, 128; green, 128; blue, 128 }  ,draw opacity=1 ] [dash pattern={on 4.5pt off 4.5pt}]  (195,37.5) -- (275,77.5) ;
+		%Straight Lines [id:da41128984149043146] 
+		\draw [color={rgb, 255:red, 155; green, 155; blue, 155 }  ,draw opacity=1 ] [dash pattern={on 4.5pt off 4.5pt}]  (45,112.5) -- (345,112.5) ;
+		%Shape: Circle [id:dp6953915635540854] 
+		\draw  [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=0.3 ] (107.5,112.5) .. controls (107.5,64.18) and (146.68,25) .. (195,25) .. controls (243.32,25) and (282.5,64.18) .. (282.5,112.5) .. controls (282.5,160.82) and (243.32,200) .. (195,200) .. controls (146.68,200) and (107.5,160.82) .. (107.5,112.5) -- cycle ;
+		%Straight Lines [id:da6484289282974143] 
+		\draw    (195,112.5) -- (195,122.5) ;
+		%Straight Lines [id:da19759329821093452] 
+		\draw    (45,112.5) -- (45,122.5) ;
+		%Straight Lines [id:da5791899844416095] 
+		\draw    (345,112.5) -- (345,122.5) ;
+		%Shape: Arc [id:dp2314315416020447] 
+		\draw  [draw opacity=0] (217.28,26.15) .. controls (219.02,29.55) and (220,33.41) .. (220,37.5) .. controls (220,41.59) and (219.02,45.45) .. (217.28,48.85) -- (195,37.5) -- cycle ; \draw  [color={rgb, 255:red, 0; green, 96; blue, 207 }  ,draw opacity=1 ] (217.28,26.15) .. controls (219.02,29.55) and (220,33.41) .. (220,37.5) .. controls (220,41.59) and (219.02,45.45) .. (217.28,48.85) ;  
+		%Shape: Arc [id:dp397979074527137] 
+		\draw  [draw opacity=0] (80.65,94.34) .. controls (83.43,99.79) and (85,105.96) .. (85,112.5) -- (45,112.5) -- cycle ; \draw  [color={rgb, 255:red, 17; green, 151; blue, 122 }  ,draw opacity=1 ] (80.65,94.34) .. controls (83.43,99.79) and (85,105.96) .. (85,112.5) ;  
+		%Shape: Arc [id:dp6383682171746863] 
+		\draw  [draw opacity=0] (309.35,94.34) .. controls (306.57,99.79) and (305,105.96) .. (305,112.5) -- (345,112.5) -- cycle ; \draw  [color={rgb, 255:red, 17; green, 151; blue, 122 }  ,draw opacity=1 ] (309.35,94.34) .. controls (306.57,99.79) and (305,105.96) .. (305,112.5) ;  
+		%Straight Lines [id:da8252860520998729] 
+		\draw    (195,112.5) -- (132.29,165.56) ;
+		\draw [shift={(130,167.5)}, rotate = 319.76] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (7.14,-3.43) -- (0,0) -- (7.14,3.43) -- (4.74,0) -- cycle    ;
+		%Straight Lines [id:da9224386725643036] 
+		\draw [color={rgb, 255:red, 46; green, 104; blue, 172 }  ,draw opacity=1 ]   (48,117.5) -- (192,117.5) ;
+		\draw [shift={(195,117.5)}, rotate = 180] [fill={rgb, 255:red, 46; green, 104; blue, 172 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (7.14,-3.43) -- (0,0) -- (7.14,3.43) -- (4.74,0) -- cycle    ;
+		\draw [shift={(45,117.5)}, rotate = 0] [fill={rgb, 255:red, 46; green, 104; blue, 172 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (7.14,-3.43) -- (0,0) -- (7.14,3.43) -- (4.74,0) -- cycle    ;
+		%Straight Lines [id:da26224741793239914] 
+		\draw [color={rgb, 255:red, 46; green, 104; blue, 172 }  ,draw opacity=1 ]   (198,117.5) -- (342,117.5) ;
+		\draw [shift={(345,117.5)}, rotate = 180] [fill={rgb, 255:red, 46; green, 104; blue, 172 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (7.14,-3.43) -- (0,0) -- (7.14,3.43) -- (4.74,0) -- cycle    ;
+		\draw [shift={(195,117.5)}, rotate = 0] [fill={rgb, 255:red, 46; green, 104; blue, 172 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (7.14,-3.43) -- (0,0) -- (7.14,3.43) -- (4.74,0) -- cycle    ;
+		%Straight Lines [id:da516054537434487] 
+		\draw    (195,27.5) -- (195,37.5) ;
+		%Straight Lines [id:da5249287860167562] 
+		\draw [color={rgb, 255:red, 0; green, 116; blue, 102 }  ,draw opacity=1 ] [dash pattern={on 0.84pt off 2.51pt}]  (165,52.5) -- (195,112.5) ;
+		%Straight Lines [id:da7311496936773492] 
+		\draw    (275,77.5) -- (345.56,112.5) ;
+		\draw [shift={(313.5,96.6)}, rotate = 206.38] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (6.56,-2.94) .. controls (4.17,-1.38) and (1.99,-0.4) .. (0,0) .. controls (1.99,0.4) and (4.17,1.38) .. (6.56,2.94)   ;
+		%Straight Lines [id:da8895849006345163] 
+		\draw    (45.65,111.84) -- (115,77.5) ;
+		\draw [shift={(83.55,93.07)}, rotate = 153.66] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (6.56,-2.94) .. controls (4.17,-1.38) and (1.99,-0.4) .. (0,0) .. controls (1.99,0.4) and (4.17,1.38) .. (6.56,2.94)   ;
+		%Straight Lines [id:da2582455789509056] 
+		\draw [color={rgb, 255:red, 0; green, 116; blue, 102 }  ,draw opacity=1 ] [dash pattern={on 0.84pt off 2.51pt}]  (225,52.5) -- (195,112.5) ;
+		%Curve Lines [id:da38594122551837484] 
+		\draw    (115.56,77.5) .. controls (165,52.75) and (225,52.5) .. (275,77.5) ;
+		\draw [shift={(199.18,58.89)}, rotate = 180.32] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (6.56,-2.94) .. controls (4.17,-1.38) and (1.99,-0.4) .. (0,0) .. controls (1.99,0.4) and (4.17,1.38) .. (6.56,2.94)   ;
 		
 		% Text Node
-		\draw (177,153) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle O$};
+		\draw (187,120.5) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle O$};
 		% Text Node
-		\draw (110,152) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 46; green, 104; blue, 172 }  ,opacity=1 ] [align=left] {$\displaystyle R_{1}$};
+		\draw (110,119.5) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 46; green, 104; blue, 172 }  ,opacity=1 ] [align=left] {$\displaystyle R_{1}$};
 		% Text Node
-		\draw (268,152) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 46; green, 104; blue, 172 }  ,opacity=1 ] [align=left] {$\displaystyle R_{2}$};
+		\draw (260,119.5) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 46; green, 104; blue, 172 }  ,opacity=1 ] [align=left] {$\displaystyle R_{2}$};
 		% Text Node
-		\draw (43,155) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle A$};
+		\draw (38,122.5) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle A$};
 		% Text Node
-		\draw (359,155) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle F$};
+		\draw (339,122.5) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle F$};
 		% Text Node
-		\draw (194,48) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 0; green, 96; blue, 207 }  ,opacity=1 ] [align=left] {$\displaystyle \theta $};
+		\draw (205,31.5) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 0; green, 96; blue, 207 }  ,opacity=1 ] [align=left] {$\displaystyle \theta $};
 		% Text Node
-		\draw (69,133) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 17; green, 151; blue, 122 }  ,opacity=1 ] [align=left] {$\displaystyle \alpha $};
+		\draw (65,102.5) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 17; green, 151; blue, 122 }  ,opacity=1 ] [align=left] {$\displaystyle \alpha $};
 		% Text Node
-		\draw (332,133) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 17; green, 151; blue, 122 }  ,opacity=1 ] [align=left] {$\displaystyle \beta $};
+		\draw (314,100.5) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 17; green, 151; blue, 122 }  ,opacity=1 ] [align=left] {$\displaystyle \beta $};
 		% Text Node
-		\draw (179,37) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle B$};
+		\draw (189,12.5) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle B$};
 		% Text Node
-		\draw (151,172) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle R$};	
+		\draw (161,139.5) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle R$};
+		% Text Node
+		\draw (166,75) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 0; green, 116; blue, 102 }  ,opacity=1 ] [align=left] {$\displaystyle \rho $};
+		% Text Node
+		\draw (212,75) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 0; green, 116; blue, 102 }  ,opacity=1 ] [align=left] {$\displaystyle \rho $};
 	\end{tikzpicture}
 \end{figure}
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 
 \begin{enumerate}
-	\item[\textbf{a.}] Write out the scattering angle \(\theta = \alpha + \beta\)as a function of the impact parameter \(\rho\).
+	\item[\textbf{a.}] Write out the scattering angle \(\theta = \alpha + \beta\) as a function of the impact parameter \(\rho\).
 \end{enumerate}
+
+\begin{figure}[h!]
+	\centering
+	\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+		%uncomment if require: \path (0,220); %set diagram left start at 0, and has height of 220
+		
+		%Straight Lines [id:da7259190554486932] 
+		\draw [draw opacity=0][fill={rgb, 255:red, 248; green, 231; blue, 28 }  ,fill opacity=0.2 ]   (40,70) -- (160,10) -- (190,70) -- (40,70) ;
+		%Straight Lines [id:da9779749874503482] 
+		\draw [color={rgb, 255:red, 128; green, 128; blue, 128 }  ,draw opacity=1 ] [dash pattern={on 4.5pt off 4.5pt}]  (110,35) -- (160,10) ;
+		%Straight Lines [id:da8257478216843763] 
+		\draw [color={rgb, 255:red, 155; green, 155; blue, 155 }  ,draw opacity=1 ] [dash pattern={on 4.5pt off 4.5pt}]  (40,70) -- (190,70) ;
+		%Shape: Arc [id:dp8525286115409573] 
+		\draw  [draw opacity=0] (75.65,51.84) .. controls (78.43,57.29) and (80,63.46) .. (80,70) -- (40,70) -- cycle ; \draw  [color={rgb, 255:red, 17; green, 151; blue, 122 }  ,draw opacity=1 ] (75.65,51.84) .. controls (78.43,57.29) and (80,63.46) .. (80,70) ;  
+		%Straight Lines [id:da9176470612228212] 
+		\draw [color={rgb, 255:red, 46; green, 104; blue, 172 }  ,draw opacity=1 ]   (43,75) -- (187,75) ;
+		\draw [shift={(190,75)}, rotate = 180] [fill={rgb, 255:red, 46; green, 104; blue, 172 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (7.14,-3.43) -- (0,0) -- (7.14,3.43) -- (4.74,0) -- cycle    ;
+		\draw [shift={(40,75)}, rotate = 0] [fill={rgb, 255:red, 46; green, 104; blue, 172 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (7.14,-3.43) -- (0,0) -- (7.14,3.43) -- (4.74,0) -- cycle    ;
+		%Straight Lines [id:da2817599186584464] 
+		\draw [color={rgb, 255:red, 0; green, 116; blue, 102 }  ,draw opacity=1 ] [dash pattern={on 0.84pt off 2.51pt}]  (160,10) -- (190,70) ;
+		%Straight Lines [id:da8916062585500438] 
+		\draw    (40,70) -- (110,35) ;
+		\draw [shift={(78.22,50.89)}, rotate = 153.43] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (6.56,-2.94) .. controls (4.17,-1.38) and (1.99,-0.4) .. (0,0) .. controls (1.99,0.4) and (4.17,1.38) .. (6.56,2.94)   ;
+		%Straight Lines [id:da11392872153871136] 
+		\draw    (150,15) -- (155,25) -- (165,20) ;
+		%Straight Lines [id:da6493310814500558] 
+		\draw [draw opacity=0][fill={rgb, 255:red, 248; green, 231; blue, 28 }  ,fill opacity=0.2 ]   (260.23,80) -- (260,12.92) -- (395,80) ;
+		%Straight Lines [id:da5442441210170875] 
+		\draw [color={rgb, 255:red, 128; green, 128; blue, 128 }  ,draw opacity=1 ] [dash pattern={on 4.5pt off 4.5pt}]  (320,80) -- (260,80) ;
+		%Straight Lines [id:da7510858484660925] 
+		\draw [color={rgb, 255:red, 155; green, 155; blue, 155 }  ,draw opacity=1 ] [dash pattern={on 4.5pt off 4.5pt}]  (395,80) -- (260,12.92) ;
+		%Shape: Arc [id:dp6145976977724383] 
+		\draw  [draw opacity=0] (359.35,61.84) .. controls (356.57,67.29) and (355,73.46) .. (355,80) -- (395,80) -- cycle ; \draw  [color={rgb, 255:red, 17; green, 151; blue, 122 }  ,draw opacity=1 ] (359.35,61.84) .. controls (356.57,67.29) and (355,73.46) .. (355,80) ;  
+		%Straight Lines [id:da11786511909673236] 
+		\draw [color={rgb, 255:red, 46; green, 104; blue, 172 }  ,draw opacity=1 ]   (393.92,73.73) -- (264.91,9.77) ;
+		\draw [shift={(262.22,8.44)}, rotate = 26.37] [fill={rgb, 255:red, 46; green, 104; blue, 172 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (7.14,-3.43) -- (0,0) -- (7.14,3.43) -- (4.74,0) -- cycle    ;
+		\draw [shift={(396.61,75.06)}, rotate = 206.37] [fill={rgb, 255:red, 46; green, 104; blue, 172 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (7.14,-3.43) -- (0,0) -- (7.14,3.43) -- (4.74,0) -- cycle    ;
+		%Straight Lines [id:da3437761820088857] 
+		\draw [color={rgb, 255:red, 0; green, 116; blue, 102 }  ,draw opacity=1 ] [dash pattern={on 0.84pt off 2.51pt}]  (260.23,80) -- (260,12.92) ;
+		%Straight Lines [id:da7501678951641484] 
+		\draw    (395,80) -- (320,80) ;
+		\draw [shift={(353.9,80)}, rotate = 360] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (6.56,-2.94) .. controls (4.17,-1.38) and (1.99,-0.4) .. (0,0) .. controls (1.99,0.4) and (4.17,1.38) .. (6.56,2.94)   ;
+		%Straight Lines [id:da2730983383726572] 
+		\draw    (271.41,79.96) -- (271.37,68.78) -- (268.46,68.79) -- (260.19,68.82) ;
+		
+		% Text Node
+		\draw (111,77) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 46; green, 104; blue, 172 }  ,opacity=1 ] [align=left] {$\displaystyle R$};
+		% Text Node
+		\draw (60,60) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 17; green, 151; blue, 122 }  ,opacity=1 ] [align=left] {$\displaystyle \alpha $};
+		% Text Node
+		\draw (179,31) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 0; green, 116; blue, 102 }  ,opacity=1 ] [align=left] {$\displaystyle \rho $};
+		% Text Node
+		\draw (328,26) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 46; green, 104; blue, 172 }  ,opacity=1 ] [align=left] {$\displaystyle R$};
+		% Text Node
+		\draw (363,71) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 17; green, 151; blue, 122 }  ,opacity=1 ] [align=left] {$\displaystyle \alpha $};
+		% Text Node
+		\draw (246,41) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 0; green, 116; blue, 102 }  ,opacity=1 ] [align=left] {$\displaystyle \rho $};
+	\end{tikzpicture}
+\end{figure}
+
+Tenemos que
+\begin{equation}
+	\sin\alpha = \frac{\rho}{R_{1}}, ~~~~~ \sin\beta = \frac{\rho}{R_{2}}
+\end{equation}
+Por lo que
+\begin{equation*}
+	\theta = \arcsin\frac{\rho}{R_{1}} + \arcsin\frac{\rho}{R_{2}}
+\end{equation*}
+pero \(R_{1} = R_{2} = R\)
+\begin{equation}
+	\theta = 2 \arcsin\frac{\rho}{R} \label{theta}
+\end{equation}
+\begin{equation}
+	\alpha = \beta
+\end{equation}
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 
@@ -521,11 +606,60 @@ The electrons are emitted isotropically with constant energy \(E\) at the point 
 	\item[\textbf{b.}] Find the potential \(U(r)\) which satisfies these properties.
 \end{enumerate}
 
+Adaptaremos la ecuación de \(\theta(\rho)\) a
+\begin{equation}
+	\theta(\alpha) = 2 \Theta(R(1-\alpha))\arcsin\alpha
+\end{equation}
+donde \(\alpha = \rho / R\). Ahora, aplicando
+\begin{equation}
+	w(r) \equiv \sqrt{1 - \frac{U(r)}{E} } = \exp\left( \frac{1}{\pi } \int_{r w}^{\infty} \frac{\theta (\rho)}{\sqrt{\rho^2 - r^2 w^2} } \, d\rho \right) \label{w}
+\end{equation}
+con el cambio de variables la integral:
+\begin{equation}
+	\int_{\frac{r w}{R}}^1 \frac{\theta (R \,\alpha)}{\sqrt{\alpha ^2 R^2-r^2 w^2}} \, R \, d\alpha = \left\lbrace \begin{matrix}
+		-\ln\left[\frac{R}{\sqrt{R^2-r^2 w^2}+R}\right], & r < R\\
+		\hfill 0 \hfill, & r > R
+	\end{matrix}\right.
+\end{equation}
+y entonces, considerando el caso \(r < R\)
+\begin{align}
+	w(r) &= \exp \left(-\ln\left[\frac{R}{\sqrt{R^2-r^2 w^2}+R}\right]\right)\nonumber\\
+	&= \frac{\sqrt{R^2-r^2 w^2}+R}{R}\nonumber\\
+	\Rightarrow w(r < R) &= \frac{2 R^2}{R^2 + r^2}
+\end{align}
+mientras que en el caso \(r > R\)
+\begin{equation}
+	w(r > R) = 1
+\end{equation}
+Finalmente, resolviendo la ec. \ref{w} para \(U(r)\) tendremos
+\begin{equation}
+	U(r) = \left\lbrace \begin{matrix}
+		E \dfrac{\left(r^4+2 r^2 R^2-3 R^4\right)}{\left(r^2+R^2\right)^2}, & r < R \vspace{3mm}\\
+		\hfill 0 \hfill, & r > R
+	\end{matrix}\right.
+\end{equation}
+
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 
 \begin{enumerate}
 	\item[\textbf{c.}] Assume that we analyze scattering of a collinear beam of monochromatic particles in the field which You found earlier. Find the cross-section of elastic scattering \(d\sigma/d\Omega\) for this case.
 \end{enumerate}
-
+Sabemos que
+\begin{equation}
+	\td{\sigma}{\Omega} = \frac{\rho}{\sin\theta}\left|\td{\rho}{\theta}\right|
+\end{equation}
+Y, a partir de la ec. \ref{theta}
+\begin{equation}
+	\rho(\theta) = R \sin\frac{\theta}{2}
+\end{equation}
+Por lo que, reemplazando y resolviendo
+\begin{align}
+	\td{\sigma}{\Omega} &= \frac{\rho}{\sin\theta}\left|\td{\rho}{\theta}\right|\nonumber\\
+	&= R \frac{\sin\theta/2}{\sin\theta} \left|\frac{1}{2} R \cos\theta/2\right| \nonumber\\
+	&= \left\lbrace \begin{matrix}
+		\hfill{R^2}/{4},	& \theta < \pi \vspace{3mm}\\
+		-{R^2}/{4}, 		& \theta > \pi
+	\end{matrix}\right.
+\end{align}
 
 \end{document}
