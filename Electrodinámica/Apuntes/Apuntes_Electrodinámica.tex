@@ -39,11 +39,15 @@
 \newcommand{\that}{\hat{\mathbf{\theta}}}
 \newcommand{\phat}{\hat{\mathbf{\varphi}}}
 \newcommand{\rhhat}{\hat{\mathbf{\rho}}}
+\newcommand{\nhat}{\hat{\mathbf{n}}}
 \newcommand{\eo}{\epsilon_0}
 \newcommand{\ke}{\frac{1}{4\pi\eo}}
 \newcommand{\rdif}{\rv - \rv'}
 \newcommand{\pd}[2]{\dfrac{\partial #1}{\partial #2}}
+\newcommand{\lpd}[2]{\partial #1/\partial #2}
 \newcommand{\td}[2]{\dfrac{d #1}{d #2}}
+\newcommand{\ltd}[2]{d #1/d #2}
+\newcommand{\n}[1]{\mathbf{#1}}
 %opening
 \title{Electrodinámica Avanzada}
 \author{Simon Fonseca}
@@ -1136,26 +1140,277 @@ En el caso de valores de \(y > a/\pi\) podemos hacer una aproximación decente t
 	\Phi(x,y) = \frac{4 V}{\pi} \exp(-\pi y/a) \sin(\pi x/a)
 \end{equation}
 
+\subsection{Cosas útiles misceláneas}
+El \textbf{teorema de adición} nos dice que, para dos vectores \(\xv\) y \(\xv'\) con coordenadas esféricas \((r,\theta,\phi)\) y \((r',\theta',\phi')\), tendremos
+\begin{equation}
+	\frac{1}{|\xv - \xv'|} = 4\pi \sum_{\ell=0}^{\infty} \sum_{m=-\ell}^{\ell} \frac{1}{2\ell + 1} \frac{r_{<}^{\ell}}{r_{>}^{\ell + 1}} Y^{*}_{\ell m}(\theta', \phi') Y_{\ell m}(\theta, \phi) \label{add_theorem}
+\end{equation}
+donde
+\begin{equation*}
+	r_{<} = \min\left(|\xv|, |\xv'|\right), ~~~~~ r_{>} = \max\left(|\xv|, |\xv'|\right)
+\end{equation*}
+y \(Y_{\ell m}\) son los esféricos armónicos.
+
 \section{Magnetoestática}
 
+\subsection{Corrientes estacionarias}
+Lo más conveniente es trabajar con densidades volumétricas de corriente \(\n{J}\), pero en casos especiales vale la pena utilizar la corriente de línea \(I\) o la densidad superficial \(\n{K}\), las cuales cumplen
+\begin{align}
+	\n{J}(\rv) &= I \int_{C} dl' \delta(\rv - \rv')\\
+	\n{J}(\rv) &= \n{K}(\rv) \delta(n)
+\end{align}
 
+\subsubsection{Ecuaciones de conservación}
+La conservación de carga es una simetría universal. Si \(\rho(\rv,t)\) es la densidad de carga y \(\n{J}(\rv,t)\) es la densidad de corriente en una región del espacio, la expresaremos como
+\begin{equation}
+	\pd{\rho}{t} + \di\n{J} = 0
+\end{equation}
+En el caso estacionario, \(\lpd{\rho}{t} = 0\), por lo que en magnetoestática:
+\begin{equation}
+	\di\n{J} = 0
+\end{equation}
 
+\subsection{Ley de Biot-Savart}
+La ley de Biot-Savart nos da el campo magnético producido por una corriente estacionaria:
+\begin{equation}
+	\n{B}(\rv) = \frac{\mu_{0}}{4 \pi} \int d^3 r' \n{J}(\rv') \times \frac{\n{R}}{R^3}
+\end{equation}
+donde \(\n{R} \equiv \rv - \rv'\). En el caso de una corriente de línea, la ecuación toma la forma
+\begin{equation}
+	\n{B}(\rv) = \frac{\mu_{0} I}{4 \pi} \oint_{C} d\n{l}' \times \frac{\n{R}}{R^3}
+\end{equation}
 
+\subsubsection{Ejemplo 1: Hilo rectilíneo infinito}\label{BS_ej1}
+Considerando un hilo infinito sobre el eje \(z\) con corriente \(I\) en dirección \(\zhat\), tenemos:
+\begin{equation}
+	\n{B}(s) = \frac{\mu_{0} I}{2 \pi s}\phat
+\end{equation}
+donde \(s\) es la distancia cilíndrica entre un punto y el eje \(z\).
 
+\subsubsection{Ejemplo 2: Campo sobre el eje de una espira circular}
+Sea una espira circular de radio \(a\) en el plano \(z=0\) con corriente \(I\). Por simetría, dentro de su eje central solo puede existir componente \(z\), por lo que el campo es
+\begin{equation}
+	B_{z}(z) = \frac{\mu_{0} I a^2}{2(a^2 + z^2)^{3/2}}
+\end{equation}
+Y cerca del centro \(z=0\)
+\begin{equation}
+	B_{z}(0) = \frac{\mu_{0} I}{2 a}
+\end{equation}
 
+\subsubsection{Fuerza entre corrientes estacionarias}
+Si un circuito \(C_1\) con corriente \(I_1\) se encuentra inmerso en el campo producido por un segundo circuito \(C_2\) con corriente \(I_2\), el elemento diferencial de fuerza es
+\begin{align}
+	d \n{F}_{12} &= I_{1} d\n{l}_{1} \times \n{B}_{2}\\
+	\Rightarrow d \n{F}_{12} &= \frac{\mu_{0} I_{1} I_{2}}{4 \pi} d\n{l}_{1} \times \left(d\n{l}_{2} \times \frac{\rv_{12}}{r^{3}_{12}}\right)
+\end{align}
+\begin{figure}[h!]
+	\centering
+	\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+		%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+		
+		%Curve Lines [id:da5257744820171266] 
+		\draw [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=0.15 ]   (19.25,82) .. controls (39.25,72.22) and (98.59,61.45) .. (109.25,82) .. controls (119.92,102.55) and (89.25,112) .. (109.25,142) .. controls (129.25,172) and (37.59,164.55) .. (19.25,142) .. controls (0.92,119.45) and (-0.41,92.22) .. (19.25,82) -- cycle ;
+		\draw [shift={(68.87,70.55)}, rotate = 175.11] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+		\draw [shift={(103.28,115.25)}, rotate = 289.39] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+		\draw [shift={(66.75,160.68)}, rotate = 6.28] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+		\draw [shift={(5.01,107.7)}, rotate = 84.33] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+		%Curve Lines [id:da9731535332936837] 
+		\draw [fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=0.15 ]   (179.25,92) .. controls (196.59,82.22) and (160.59,32.22) .. (229.25,32) .. controls (297.92,31.78) and (173.25,88.22) .. (219.25,122) .. controls (265.25,155.78) and (172.59,169.55) .. (154.25,147) .. controls (135.92,124.45) and (159.59,102.22) .. (179.25,92) -- cycle ;
+		\draw [shift={(189.79,45.24)}, rotate = 118.6] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+		\draw [shift={(225.64,72.16)}, rotate = 311.61] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+		\draw [shift={(202.84,157.15)}, rotate = 349.9] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+		\draw [shift={(154.68,111.75)}, rotate = 123.36] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+		%Shape: Rectangle [id:dp48445697691230505] 
+		\draw  [color={rgb, 255:red, 4; green, 80; blue, 185 }  ,draw opacity=1 ] (181.25,59) -- (188.25,59) -- (188.25,79) -- (181.25,79) -- cycle ;
+		%Straight Lines [id:da7884148760870002] 
+		\draw [color={rgb, 255:red, 132; green, 86; blue, 212 }  ,draw opacity=1 ]   (179.25,69) -- (118.16,88.39) ;
+		\draw [shift={(116.25,89)}, rotate = 342.39] [color={rgb, 255:red, 132; green, 86; blue, 212 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		%Curve Lines [id:da7238432977709208] 
+		\draw [color={rgb, 255:red, 189; green, 0; blue, 25 }  ,draw opacity=1 ]   (105,80) .. controls (109,86.63) and (109.75,90.38) .. (107,99) ;
+		%Curve Lines [id:da7188819503748274] 
+		\draw [color={rgb, 255:red, 189; green, 0; blue, 25 }  ,draw opacity=1 ]   (111,80) .. controls (115,86.63) and (115.75,90.38) .. (113,99) ;
+		%Straight Lines [id:da83336475738567] 
+		\draw [color={rgb, 255:red, 189; green, 0; blue, 25 }  ,draw opacity=1 ]   (105,80) -- (111,80) ;
+		%Straight Lines [id:da41087661904499895] 
+		\draw [color={rgb, 255:red, 189; green, 0; blue, 25 }  ,draw opacity=1 ]   (107,99) -- (113,99) ;
+		
+		% Text Node
+		\draw (43.25,51) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle I_{1}$};
+		% Text Node
+		\draw (215.25,11) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle I_{2}$};
+		% Text Node
+		\draw (159.25,43) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 4; green, 80; blue, 185 }  ,opacity=1 ] [align=left] {$\displaystyle dI_{2}$};
+		% Text Node
+		\draw (95.25,60) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 189; green, 0; blue, 25 }  ,opacity=1 ] [align=left] {$\displaystyle dI_{1}$};
+		% Text Node
+		\draw (134.25,58) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 132; green, 86; blue, 212 }  ,opacity=1 ] [align=left] {$\displaystyle \vec{x}_{12}$};
+	\end{tikzpicture}
+\end{figure}
 
+En el caso de dos hilos paralelos infinitos separados por una distancia \(d\):
+\begin{equation}
+	\frac{F}{L} = \frac{\mu_{0} I_{1} I_{2}}{2\pi d}
+\end{equation}
 
+\subsection{Ecuaciones de magnetoestática}
+Dos de las ecuaciones de Maxwell son la \textbf{divergencia del campo magnético}:
+\begin{equation}
+	\di\n{B} = 0
+\end{equation}
+Lo cual, en consecuencia, nos dirá que existe un campo potencial vectorial \(\n{A}\) tal que
+\begin{equation}
+	\n{B} = \ro\n{A}\label{potVec}
+\end{equation}
+Además, la \textbf{ley de Ampere}:
+\begin{equation}
+	\ro\n{B} = \mu_{0}\n{J}
+\end{equation}
+o, en forma integral
+\begin{equation}
+	\oint_{C} \n{B}\cdot d\n{l} = \mu_{0} I_{\mathrm{enc}}
+\end{equation}
 
+\subsubsection{Ejemplo 1: Hilo rectilíneo infinito}
+Podemos usar la ley de Ampere para aplicar el mismo caso que en la situación de la subsección \ref{BS_ej1}. Tomando una circunferencia de radio \(C\) centrada en el hilo, recuperamos:
+\begin{equation*}
+	B(s) = \frac{\mu_{0} I}{2 \pi s}
+\end{equation*}
 
+\subsubsection{Ejemplo 2: Solenoide largo}
+Para un solenoide ideal largo con \(n\) espiras por unidad de longitud y corriente \(I\), la ley de Ampere aplicada a un contorno rectangular da
+\begin{equation}
+	B_{\mathrm{int}} = \mu_{0} n I, ~~~~~ B_{\mathrm{ext}} = 0
+\end{equation}
 
+\subsubsection{Ejemplo 3: Toroide}
+Para un toroide ideal con \(N\) espiras, el campo es azimutal dentro del núcleo y nulo fuera. Un contorno circular de radio \(s\) coaxial con el toroide da
+\begin{equation}
+	B(s) = \frac{\mu_{0} N I}{2 \pi s}
+\end{equation}
 
+\subsection{Condiciones de borde}
+Cuando tenemos dos regiones con campos magnéticos distintos, tendremos dos condiciones que se deben cumplir:
+\begin{align}
+	\nhat \cdot  (\n{B}_{1} - \n{B}_{2}) &= 0\\
+	\nhat \times (\n{B}_{1} - \n{B}_{2}) &= \mu_{0} \n{K}
+\end{align}
 
+\subsection{Potencial vectorial}
+De la ec. \ref{potVec} sabemos que
+\begin{equation*}
+	\n{B} = \ro\n{A}
+\end{equation*}
+Por lo que podemos elegir el potencial
+\begin{equation}
+	\n{A}(\rv) = \frac{\mu_{0}}{4 \pi} \int d^3 r' \frac{\n{J}(\rv')}{|\rv - \rv'|}
+\end{equation}
 
+\subsubsection{Gauge de Coulomb}
+La definición de \(\n{A}\) no es única, si \(\chi\) es una función escalar entonces
+\begin{equation}
+	\n{A}' = \n{A} + \gr\chi
+\end{equation}
+produce el mismo campo \(\n{B}\). La condición de Gauge lidia con este grado de libertad redundante imponiendo que
+\begin{align}
+	\di\n{A} &= 0\label{diA_0}\\
+	\Rightarrow\la\n{A} &= -\mu_{0}\n{J} \label{laA_J}
+\end{align}
 
+\subsubsection{Expansión lejana y momento dipolar magnético}
+Lejos de una distribución localizada de corrientes, la expansión multipolar del potencial vectorial muestra que el termino dominante no nulo es dipolar. El resultado puede escribirse como
+\begin{equation}
+	\n{A} \approx \frac{\mu_{0}}{4\pi} \frac{\n{m}\times\rv}{r^3}
+\end{equation}
+donde
+\begin{equation}
+	\n{m} = \frac{1}{2} \int d^3 r' \rv' \times \n{J}(\rv')
+\end{equation}
+es el momento dipolar magnético.
 
+Un dipolo con momento \(\n{m}\) dentro de un campo magnético constante \(\n{B}\) experimentará un torque \(\n{N}\)
+\begin{equation}
+	\n{N} = \n{\mu} \times \n{B}
+\end{equation}
+En el caso de una espira de superficie \(\n{S}\) por la cual pasa una corriente \(I\), este momento dipolar será:
+\begin{equation}
+	\n{\mu} = I\n{S}
+\end{equation}
+Con una energía potencial asociada
+\begin{equation}
+	U = - \n{m}\cdot\n{B}
+\end{equation}
 
+\subsubsection{Ejemplo 1: Campo de una corriente uniforme en un cilindro largo}
+Consideremos un cilindro infinito de radio \(a\) con densidad de corriente uniforme \(\n{J} = J_0\zhat\). Por simetría podemos tomar 
+\begin{equation*}
+	\n{A} = A_z(s) \zhat
+\end{equation*}
+y, utilizando la ec. \ref{laA_J}
+\begin{equation*}
+	A_z(s) = -\frac{\mu_{0} J_{0}}{4} s^2 + C
+\end{equation*}
+Y de aquí, usando la ec. \ref{potVec}
+\begin{equation}
+	\n{B} = \frac{\mu_{0} J_{0}}{2} s\phat
+\end{equation}
 
+\subsection{Magnetización}
+Cuando los componentes individuales de un cuerpo se comportan como un dipolo, y suficientes de ellos apuntan a la misma dirección, el resultado macroscópico es una magnetización promedio sobre toda la región:
+\begin{equation}
+	\n{M}(\rv) = \sum_{i} N_{i} \left\langle\n{m}_{i} \right\rangle 
+\end{equation}
+Tal magnetización producirá efectos sobre el cuerpo que lo aloja. Para empezar, densidades de corriente ligadas sobre el volumen o su superficie:
+\begin{align}
+	\n{J}_{M} &= \ro\n{M}\\
+	\n{K}_{M} &= \n{M}\times\nhat
+\end{align}
+Además de densidades de carga volumétrica o superficial:
+\begin{align}
+	\rho_{M} &= -\di\n{M}\\
+	\sigma_{M} &= \n{M}\cdot\nhat
+\end{align}
 
+\subsection{Potencial escalar magnético en regiones libres de corriente}
+En regiones donde no circula corriente libre y el dominio es simplemente conexo puede ser útil introducir un potencial escalar magnético. Si
+\begin{equation*}
+	\n{J}_{f} = 0
+\end{equation*}
+entonces la Ley de Ampere dice
+\begin{equation*}
+	\ro\n{H} = 0
+\end{equation*}
+donde \(\n{H}\) es el campo auxiliar
+\begin{equation}
+	\n{H} = \frac{1}{\mu_{0}} \n{B} - \n{M}
+\end{equation}
+En una región simplemente conexa podemos escribir entonces
+\begin{equation}
+	\n{H} = -\gr\Phi_{M}\label{potEsc}
+\end{equation}
+Y, en regiones sin magnetización
+\begin{equation}
+	\la\Phi_{M} = 0
+\end{equation}
+
+\subsubsection{Ejemplo 1: Esfera uniformemente magnetizada}
+Sea una esfera de radio \(a\) con magnetización uniforme
+\begin{equation*}
+	\n{M} = M_0 \zhat
+\end{equation*}
+Como estamos en ausencia de corrientes libres, se cumplirá que \(\ro\n{H} = 0\) y podremos introducir la ec. \ref{potEsc}
+\begin{equation*}
+	\n{H} = -\gr\Phi_{M}
+\end{equation*}
+Además,
+\begin{equation*}
+	\di\n{H} = - \di\n{M}
+\end{equation*}
+pero, como estamos considerando magnetización uniforme, se tendrá que cumplir que \(\di\n{M} = 0\). Por lo tanto, las únicas fuentes de campo magnético vendrán de corrientes ligadas.
+
+Como tenemos que \(\n{M}\) es uniforme, tendremos que \(\ro\n{M} = 0\), por lo que solo sobrevive la corriente superficial 
+\begin{equation}
+	\n{K}_{M} = M_{0} \sin\theta \phat
+\end{equation}
 
 
 
