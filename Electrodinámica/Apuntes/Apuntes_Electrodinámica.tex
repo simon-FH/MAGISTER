@@ -1141,7 +1141,11 @@ En el caso de valores de \(y > a/\pi\) podemos hacer una aproximación decente t
 \end{equation}
 
 \subsection{Cosas útiles misceláneas}
-El \textbf{teorema de adición} nos dice que, para dos vectores \(\xv\) y \(\xv'\) con coordenadas esféricas \((r,\theta,\phi)\) y \((r',\theta',\phi')\), tendremos
+El \textbf{teorema de adición} nos dice que, para dos vectores \(\xv\) y \(\xv'\) con coordenadas esféricas \((r,\theta,\phi)\) y \((r',\theta',\phi')\), y un ángulo \(\gamma\) entre ambos, tendremos
+\begin{equation}
+	\frac{1}{|\xv - \xv'|} = \sum_{\ell=0}^{\infty} \frac{r_{<}^{\ell}}{r_{>}^{\ell + 1}} P_{\ell}(\cos\gamma)
+\end{equation}
+o también
 \begin{equation}
 	\frac{1}{|\xv - \xv'|} = 4\pi \sum_{\ell=0}^{\infty} \sum_{m=-\ell}^{\ell} \frac{1}{2\ell + 1} \frac{r_{<}^{\ell}}{r_{>}^{\ell + 1}} Y^{*}_{\ell m}(\theta', \phi') Y_{\ell m}(\theta, \phi) \label{add_theorem}
 \end{equation}
@@ -1149,7 +1153,12 @@ donde
 \begin{equation*}
 	r_{<} = \min\left(|\xv|, |\xv'|\right), ~~~~~ r_{>} = \max\left(|\xv|, |\xv'|\right)
 \end{equation*}
-y \(Y_{\ell m}\) son los esféricos armónicos.
+y \(P_{\ell}\) son los polinomios de Legendre, e \(Y_{\ell m}\) son los esféricos armónicos.
+
+Notablemente, los esféricos armónicos cumplen con la propiedad de ortogonalidad:
+\begin{equation}
+	\oint Y^{*}_{\ell m}(\Omega) \, Y_{\ell m}(\Omega) \, d\Omega = \delta_{\ell \ell'} \delta_{mm'}\label{YY*_ort}
+\end{equation}
 
 \section{Magnetoestática}
 
@@ -1255,7 +1264,7 @@ En el caso de dos hilos paralelos infinitos separados por una distancia \(d\):
 \subsection{Ecuaciones de magnetoestática}
 Dos de las ecuaciones de Maxwell son la \textbf{divergencia del campo magnético}:
 \begin{equation}
-	\di\n{B} = 0
+	\di\n{B} = 0 \label{divB_0}
 \end{equation}
 Lo cual, en consecuencia, nos dirá que existe un campo potencial vectorial \(\n{A}\) tal que
 \begin{equation}
@@ -1295,6 +1304,30 @@ Cuando tenemos dos regiones con campos magnéticos distintos, tendremos dos cond
 	\nhat \times (\n{B}_{1} - \n{B}_{2}) &= \mu_{0} \n{K}
 \end{align}
 
+\subsection{Magnetización}
+Cuando los componentes individuales de un cuerpo se comportan como un dipolo, y suficientes de ellos apuntan a la misma dirección, el resultado macroscópico es una magnetización promedio sobre toda la región:
+\begin{equation}
+	\n{M}(\rv) = \sum_{i} N_{i} \left\langle\n{m}_{i} \right\rangle 
+\end{equation}
+Tal magnetización producirá efectos sobre el cuerpo que lo aloja. Para empezar, densidades de corriente ligadas sobre el volumen o su superficie:
+\begin{align}
+	\n{J}_{M} &= \ro\n{M}\\
+	\n{K}_{M} &= \n{M}\times\nhat
+\end{align}
+Además de densidades de carga volumétrica o superficial:
+\begin{align}
+	\rho_{M} &= -\di\n{M}\\
+	\sigma_{M} &= \n{M}\cdot\nhat
+\end{align}
+En este caso conviene introducir el campo auxiliar \(\n{H}\):
+\begin{equation}
+	\n{H} = \frac{1}{\mu_{0}} \n{B} - \n{M}
+\end{equation}
+donde, por la ec. \ref{divB_0}
+\begin{equation}
+	\di\n{H} = - \di\n{M}\label{divH_divM}
+\end{equation}
+
 \subsection{Potencial vectorial}
 De la ec. \ref{potVec} sabemos que
 \begin{equation*}
@@ -1302,8 +1335,13 @@ De la ec. \ref{potVec} sabemos que
 \end{equation*}
 Por lo que podemos elegir el potencial
 \begin{equation}
-	\n{A}(\rv) = \frac{\mu_{0}}{4 \pi} \int d^3 r' \frac{\n{J}(\rv')}{|\rv - \rv'|}
+	\n{A}(\rv) = \frac{\mu_{0}}{4 \pi} \int d^3 r' \frac{\n{J}(\rv')}{|\rv - \rv'|}\label{A}
 \end{equation}
+Y, si trabajamos en una región magnetizada por \(\n{M}\), pero sin corrientes libres \((\n{J} = 0)\) tendremos
+\begin{equation}
+	\n{A}(\xv) = \frac{\mu_{0}}{4 \pi} \int_{V} \frac{\nabla'\times\n{M}(\xv')}{|\xv - \xv'|} d^3 x' + \frac{\mu_{0}}{4 \pi} \oint_{S} \frac{\n{M}(\xv')\times\nhat'}{|\xv - \xv'|} da'\label{A_mag}
+\end{equation}
+
 
 \subsubsection{Gauge de Coulomb}
 La definición de \(\n{A}\) no es única, si \(\chi\) es una función escalar entonces
@@ -1354,22 +1392,6 @@ Y de aquí, usando la ec. \ref{potVec}
 	\n{B} = \frac{\mu_{0} J_{0}}{2} s\phat
 \end{equation}
 
-\subsection{Magnetización}
-Cuando los componentes individuales de un cuerpo se comportan como un dipolo, y suficientes de ellos apuntan a la misma dirección, el resultado macroscópico es una magnetización promedio sobre toda la región:
-\begin{equation}
-	\n{M}(\rv) = \sum_{i} N_{i} \left\langle\n{m}_{i} \right\rangle 
-\end{equation}
-Tal magnetización producirá efectos sobre el cuerpo que lo aloja. Para empezar, densidades de corriente ligadas sobre el volumen o su superficie:
-\begin{align}
-	\n{J}_{M} &= \ro\n{M}\\
-	\n{K}_{M} &= \n{M}\times\nhat
-\end{align}
-Además de densidades de carga volumétrica o superficial:
-\begin{align}
-	\rho_{M} &= -\di\n{M}\\
-	\sigma_{M} &= \n{M}\cdot\nhat
-\end{align}
-
 \subsection{Potencial escalar magnético en regiones libres de corriente}
 En regiones donde no circula corriente libre y el dominio es simplemente conexo puede ser útil introducir un potencial escalar magnético. Si
 \begin{equation*}
@@ -1379,17 +1401,17 @@ entonces la Ley de Ampere dice
 \begin{equation*}
 	\ro\n{H} = 0
 \end{equation*}
-donde \(\n{H}\) es el campo auxiliar
-\begin{equation}
-	\n{H} = \frac{1}{\mu_{0}} \n{B} - \n{M}
-\end{equation}
 En una región simplemente conexa podemos escribir entonces
 \begin{equation}
 	\n{H} = -\gr\Phi_{M}\label{potEsc}
 \end{equation}
-Y, en regiones sin magnetización
+Y, en regiones con magnetización
 \begin{equation}
-	\la\Phi_{M} = 0
+	\la\Phi_{M} = -\rho_{M}
+\end{equation}
+La solución general del potencial escalar será
+\begin{equation}
+	\Phi_{M} = - \frac{1}{4\pi} \int_{V} \frac{\nabla' \cdot \n{M}(\xv')}{|\xv - \xv'|}d^3 x' + \frac{1}{4\pi}\oint_{S}\frac{\nhat' \cdot \n{M}(\xv')}{|\xv - \xv'|} da' \label{PhiM_sol}
 \end{equation}
 
 \subsubsection{Ejemplo 1: Esfera uniformemente magnetizada}
@@ -1401,19 +1423,130 @@ Como estamos en ausencia de corrientes libres, se cumplirá que \(\ro\n{H} = 0\)
 \begin{equation*}
 	\n{H} = -\gr\Phi_{M}
 \end{equation*}
-Además,
-\begin{equation*}
-	\di\n{H} = - \di\n{M}
-\end{equation*}
-pero, como estamos considerando magnetización uniforme, se tendrá que cumplir que \(\di\n{M} = 0\). Por lo tanto, las únicas fuentes de campo magnético vendrán de corrientes ligadas.
+Además, de la ec. \ref{divH_divM}, pero considerando magnetización uniforme, se tendrá que cumplir que
+\begin{equation}
+	\di\n{H} = - \di\n{M} = 0
+\end{equation}
+Por lo tanto, las únicas fuentes de campo magnético vendrán de corrientes ligadas.
 
 Como tenemos que \(\n{M}\) es uniforme, tendremos que \(\ro\n{M} = 0\), por lo que solo sobrevive la corriente superficial 
 \begin{equation}
-	\n{K}_{M} = M_{0} \sin\theta \phat
+	\n{K}_{M} = \n{M}\times\nhat = M_{0} \sin\theta \phat
+\end{equation}
+y la densidad de carga superficial
+\begin{equation}
+	\sigma_{M} = \n{M}\cdot\nhat = M_{0} \cos\theta
 \end{equation}
 
+Ya que la densidad volumétrica de carga ligada es cero, tendremos que el primer término de la ec. \ref{PhiM_sol} se cancela y nos deja\footnote{Jackson define \(\cos\gamma da = r^2 d\Omega\), donde \(\rhat\cdot\nhat = \cos\gamma\).}
+\begin{equation}
+	\Phi_{M}(r,\theta) = \frac{M_0 a^2}{4\pi} \oint \frac{\cos\theta'}{|\xv - \xv'|} d\Omega'
+\end{equation}
+De aquí reconocemos que \(\cos\theta'\) es directamente proporcional a \(Y_{1,0}\):
+\begin{equation}
+	Y_{1,0}(\theta',\phi') = \frac{1}{2}\sqrt{\frac{3}{\pi}} \cos\theta' \Rightarrow \cos\theta' = 2\sqrt{\frac{\pi}{3}} Y_{1,0}(\theta',\phi')
+\end{equation}
+Y, expandiendo la diferencia inversa con la ec. \ref{add_theorem} y utilizando la propiedad de ortogonalidad de la ec. \ref{YY*_ort}, obtenemos:
+\begin{align}
+	\Phi_{M}(r,\theta) &= \frac{M_0 a^2}{4\pi} \oint \textcolor{blue}{\frac{1}{|\xv - \xv'|} } \cdot \textcolor{red}{\cos\theta'} d\Omega' \nonumber\\
+	&= \frac{M_0 a^2}{4\pi} \oint \textcolor{blue}{\left[4\pi \sum_{\ell=0}^{\infty} \sum_{m=-\ell}^{\ell} \frac{1}{2\ell + 1} \frac{r_{<}^{\ell}}{r_{>}^{\ell + 1}} Y^{*}_{\ell m}(\theta', \phi') Y_{\ell m}(\theta, \phi)\right] } \cdot \textcolor{red}{2\sqrt{\frac{\pi}{3}} Y_{1,0}(\theta',\phi')} d\Omega' \nonumber\\
+	&= \frac{M_0 a^2}{4\pi} \cdot 4\pi \cdot \frac{1}{2\cdot 1 + 1} \frac{r_{<}^{1}}{r_{>}^{1 + 1}} \cdot \textcolor{purple}{2 \sqrt{\frac{\pi}{3}}  Y_{1,0}(\theta,\phi)} \nonumber\\
+	&= \frac{M_0 a^2}{3} \cdot \frac{r_{<}}{r_{>}^{2}} \cdot \textcolor{purple}{\cos\theta} = \left\lbrace \begin{matrix}
+		\dfrac{M_0}{3} \cdot r \cdot \cos\theta = \dfrac{M_0}{3} z, & r < a \vspace{3mm}\\
+		\hfill\dfrac{M_0 a^3}{3 r^2} \cdot \cos\theta, & r > a
+	\end{matrix}\right.
+\end{align}
 
+Podemos también encontrar el potencial vectorial utilizando la ec. \ref{A_mag}, donde la única corriente es la superficial ligada a la magnetización del sistema
+\begin{align*}
+	\n{A}(\xv) &= \frac{\mu_{0}}{4 \pi} \oint_{S} \frac{\n{K}_{M}}{|\xv - \xv'|} da' = \frac{\mu_{0}}{4 \pi} M_0 a^2 \oint_{S} \frac{\sin\theta' \phat}{|\xv - \xv'|} d\Omega'\\
+	&= -\frac{\mu_{0}}{4 \pi} M_0 a^2 \oint_{S} \frac{\sin\theta' \sin\varphi' \xhat}{|\xv - \xv'|} d\Omega' + \frac{\mu_{0}}{4 \pi} M_0 a^2 \oint_{S} \frac{\sin\theta' \cos\varphi' \yhat}{|\xv - \xv'|} d\Omega'
+\end{align*}
+Ya que la situación es simétrica angularmente, podemos considerar un punto en \(\varphi = 0\), donde tendremos que \(\phat = \yhat\), y generalizar a todo el espacio con \(\yhat \rightarrow \phat\)
+\begin{equation*}
+	\n{A}(\xv) = \frac{\mu_{0}}{4 \pi} M_0 a^2 \phat \oint_{S} \frac{\sin\theta' \cos\varphi'}{|\xv - \xv'|} d\Omega'
+\end{equation*}
+De aquí reconocemos que \(\sin\theta' \cos\varphi'\) es directamente proporcional a la parte real de \(Y_{1,1}\) (o también de \(Y_{1,-1}\)):
+\begin{equation}
+	Y_{1,1}(\theta',\phi') = -\frac{1}{2}\sqrt{\frac{3}{2 \pi}} e^{i \varphi} \sin\theta'
+\end{equation}
+\begin{equation}
+	\Rightarrow \sin\theta' \cos\varphi' = -2\sqrt{\frac{2 \pi}{3}} \Re \left[Y_{1,1}(\theta',\phi')\right] = \sqrt{\frac{2 \pi}{3}}\left[Y_{1,-1} - Y_{1,1} \right]
+\end{equation}
+Realizando el mismo procedimiento que con el potencial escalar llegamos a que
+\begin{equation*}
+	\n{A}(\xv) = \frac{\mu_{0}}{4 \pi} M_0 a^2  \cdot \frac{r_{<}}{r_{>}^{2}} \cdot \sin\theta \cos\varphi \phat
+\end{equation*}
+pero, de nuevo por simetría y tomando \(\varphi = 0\) para luego aplicarlo a todo el sistema tenemos:
+\begin{equation}
+	\n{A}(\xv) = \frac{\mu_{0}}{3} M_0 a^2  \cdot \frac{r_{<}}{r_{>}^{2}} \cdot \sin\theta \phat = \left\lbrace \begin{matrix}
+		\dfrac{\mu_{0}}{3} M_0 r \sin\theta \phat, & r < a \vspace{3mm}\\
+		\dfrac{\mu_{0}}{3} M_0 \dfrac{a^3}{r^{2}} \sin\theta \phat, & r > a
+	\end{matrix}\right.
+\end{equation}
 
+Finalmente, podemos utilizar el potencial escalar o vectorial para encontrar el campo magnético dentro de la esfera:
+\begin{equation}
+	\left.\begin{matrix}
+		\n{H}_{\mathrm{in}} = -\gr\Phi_{M} = - \dfrac{1}{3} \n{M} \vspace{4mm}\\
+		\Rightarrow \n{B}_{\mathrm{in}} = \mu_0 (\n{H} + \n{M}) = \dfrac{2}{3} \mu_{0} \n{M}
+	\end{matrix}\right\rbrace
+\end{equation}
+
+\begin{equation}
+	\left.\begin{matrix}
+		\n{B}_{\mathrm{in}} = \ro\n{A}_{\mathrm{in}} = \dfrac{1}{r}\pd{(r A_{\varphi})}{r} = \dfrac{2}{3} \mu_{0} \n{M}\vspace{4mm}\\
+		\Rightarrow \n{H}_{\mathrm{in}} = \dfrac{1}{\mu_{0}} \n{B}_{\mathrm{in}} - \n{M} = - \dfrac{1}{3} \n{M}
+	\end{matrix}\right\rbrace
+\end{equation}
+Por lo que ambos resultados coinciden. Se puede ver que, dentro de la esfera, los campos \(\n{B}\) y \(\n{H}\) apuntan en sentidos contrarios. Fuera de la esfera, como \(\n{M} = 0\), se tiene simplemente que
+\begin{equation}
+	\n{B}_{\mathrm{out}} = \n{H}_{\mathrm{out}} = -\gr\Phi_{M}
+\end{equation}
+
+\subsection{Inducción electromagnética y ley de Faraday}
+Cuando los campos dependen del tiempo, el campo eléctrico ya no puede derivarse unicamente de un potencial escalar. La cantidad experimentalmente relevante en circuitos es la fuerza electromotriz (\(\mathcal{E}\)), si el contorno es fijo entonces:
+\begin{equation}
+	\mathcal{E} = \oint_{C} \n{E}\cdot d\n{\ell}
+\end{equation}
+La observación empírica fundamental es que una variación temporal del flujo magnético a través de una superficie \(S\) con borde \(\partial S = C\) induce una fuerza electromotriz:
+\begin{equation}
+	\mathcal{E} = - \td{\Phi_{B}}{t}, ~~~~~ \Phi_{B} = \int_{S} \n{B}\cdot d\n{a}
+\end{equation}
+
+\subsubsection{Ley de Faraday}
+En su forma integral, para un contorno fijo:
+\begin{equation}
+	\oint_{C} \n{E}\cdot d\ell = - \td{}{t} \int_{S}\n{B}\cdot d\n{a} \label{Faraday_int}
+\end{equation}
+Y en su forma diferencial
+\begin{equation}
+	\ro\n{E} = - \pd{\n{B}}{t} \label{Faraday_dif}
+\end{equation}
+
+\subsubsection{Consecuencia sobre el potencial eléctrico}
+En electrostática, \(\ro\n{E} = 0 \Rightarrow \n{E} = -\gr\Phi\), pero esto ya no es suficiente. Introduciendo el potencial vectorial
+\begin{equation}
+	\n{E} = -\gr\Phi - \pd{\n{A}}{t}
+\end{equation}
+
+\subsubsection{Ejemplo 1: Campo inducido por un solenoide largo con corriente variable}
+Consideremos un solenoide largo de radio \(a\) cuyo campo interior, aproximadamente uniforme, depende del tiempo:
+\begin{equation*}
+	\n{B}(t) = B(t)\zhat, ~~~~~ s < a
+\end{equation*}
+Por simetría cilíndrica, el campo eléctrico inducido debe ser azimutal. Tomando las espiras como circunferencias de radio \(s\), la ley de Faraday para \(s < a\)
+\begin{align}
+	\oint_{C} \n{E}\cdot d\ell &= - \td{}{t} \int_{S}\n{B}\cdot d\n{a}\nonumber\\
+	E_{\varphi} \cdot 2\pi s &= - \td{}{t} \pi s^2 B \nonumber\\
+	E_{\varphi} &= - \frac{s}{2} \td{B}{t}
+\end{align}
+y para \(s > a\), el flujo esta determinado por el área del solenoide:
+\begin{align}
+	\oint_{C} \n{E}\cdot d\ell &= - \td{}{t} \int_{S}\n{B}\cdot d\n{a}\nonumber\\
+	E_{\varphi} \cdot 2\pi s &= - \td{}{t} \pi a^2 B \nonumber\\
+	E_{\varphi} &= - \frac{a^2}{2 s} \td{B}{t}
+\end{align}
 
 
 
