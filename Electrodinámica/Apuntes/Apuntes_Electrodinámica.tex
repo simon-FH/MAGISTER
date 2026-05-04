@@ -1581,6 +1581,8 @@ donde
 se interpreta como la corriente de desplazamiento total.
 
 \section{Electrodinámica}
+Esta sección también sirve como resumen de las ecuaciones más importantes hasta ahora.
+
 \subsection{Ecuaciones de Maxwell y de conservación}
 La ecuaciones de Maxwell, en sus formas diferenciales e integrales
 \begin{enumerate}
@@ -1603,35 +1605,88 @@ Aparte, tendremos que la densidad de carga y de corriente satisfacen la \textbf{
 \subsection{Campos auxiliares y medios materiales lineales}
 Introduciendo los campos
 \begin{equation}
-	\n{D} = 
+	\n{D} = \eo\n{E} + \n{P}, ~~~~~~~ \n{H} = \frac{1}{\uo}\n{B} - \n{M} \label{CamposAuxiliares}
+\end{equation}
+donde \(\n{P}\) y \(\n{M}\) son la polarización y magnetización, respectivamente. En medios lineales, homogéneos e isótropos se suele usar
+\begin{equation}
+	\n{D} = \epsilon\n{E}, ~~~~~~~ \n{H} = \frac{1}{\mu}\n{B}
+\end{equation}
+En términos de \(\n{D}\) y \(\n{H}\), las ecuaciones diferenciales de Maxwell toman la forma
+\begin{align}
+	\di\n{D} &= \rho_{f} \label{Maxwell_Coulomb_Aux}\\
+	\ro\n{E} &= \pd{\n{B}}{t}\nonumber\\
+	\di\n{B} &= 0\nonumber\\
+	\ro\n{H} &= \n{J}_{f} + \pd{\n{D}}{t} \label{Maxwell_Ampere_Aux}
+\end{align}
+donde \(\rho_{f}\) y \(\n{J}_{f}\) son las densidades de carga y corriente libres (que no vienen de magnetización o polarización).
+
+\subsection{Potenciales}
+Podemos definir los campos eléctrico y magnético en base al potencial escalar eléctrico \(\Phi\) y el potencial vectorial magnético \(\n{A}\):
+\begin{align}
+	\n{B} &= \ro\n{A} \label{B_Pot}\\
+	\n{E} &= -\gr\Phi - \pd{\n{A}}{t} \label{E_Pot}
+\end{align}
+A partir de la ,ey de Gauss y de Ampere, podemos encontrar ecuaciones explícitas para ambos potenciales:
+\begin{equation}
+	\la\Phi + \pd{\n{A}}{t} = - \frac{\rho}{\eo} \label{EcPotElectrico}
+\end{equation}
+\begin{equation}
+	\la\n{A} - \frac{1}{c^2}\pd{^2\n{A}}{t^2} - \gr\left(\di\n{A} + \frac{1}{c^2} \pd{\Phi}{t}\right) = -\uo\n{J} \label{EcPotMagnetico}
+\end{equation}
+donde \(1/c^2 = \uo\eo\).
+
+\subsection{Transformaciones de gauge}
+Sea \(\Lambda(\rv,t)\) una función escalar arbitraria. Al redefinir los potenciales tal que
+\begin{equation}
+	\n{A}' = \n{A} + \gr\Lambda, ~~~~~~~ \Phi' = \Phi - \pd{\Lambda}{t}
+\end{equation}
+obtendremos los mismos campos electromagnéticos \(\n{E}, \n{B}\). Podemos entonces imponer condiciones a los potenciales y reducir los grados de libertad redundantes introducidos por \(\Lambda\).
+
+\subsubsection{Gauge de Lorenz}
+Una opción es el gauge de Lorenz:
+\begin{equation}
+	\di\n{A}' + \frac{1}{c^2}\pd{\Phi'}{t} = 0 \label{gaugeLorenz}
+\end{equation}
+para lo cual la función \(\Lambda\) deberá satisfacer
+\begin{equation}
+	\la\Lambda - \frac{1}{c^2}\pd{^2\Lambda}{t^2} = - \left(\di\n{A} + \frac{1}{c^2}\pd{\Phi}{t}\right)
+\end{equation}
+Bajo este gauge, las ecuaciones de Gauss y Ampere potenciales (ecs. \ref{EcPotElectrico} y \ref{EcPotMagnetico}) se desacoplan y toman la forma de ecuaciones de onda inhomogéneas:
+\begin{align}
+	\la\Phi - \frac{1}{c^2}\pd{^2\Phi}{t^2} &= -\frac{\rho}{\eo} \label{EcPotElectricoLorenz}\\
+	\la\n{A} - \frac{1}{c^2}\pd{^2\n{A}}{t^2} &= -\uo\n{J} \label{EcPotMagneticoLorenz}
+\end{align}
+Dentro del gauge de Lorenz aun quedan grados de libertad residuales. Para que este siga valiendo debe cumplirse que
+\begin{equation}
+	\la\Lambda - \frac{1}{c^2}\pd{^2\Lambda}{t^2} = 0
 \end{equation}
 
+\subsubsection{Gauge de Coulomb}
+Otro gauge común es el gauge de Coulomb:
+\begin{equation}
+	\di\n{A}' = 0 \label{gaugeCoulomb}
+\end{equation}
+lo cual implica
+\begin{equation}
+	\la\Lambda = - \di\n{A}
+\end{equation}
+Entonces la ec. \ref{EcPotElectrico} se reduce a
+\begin{equation*}
+	\la\Phi = - \frac{\rho}{\eo}
+\end{equation*}
+cuya solución formal es
+\begin{equation}
+	\Phi(\rv,t) = \ke\int d^3r'\,\frac{\rho(\rv',t)}{|\rdif|}
+\end{equation}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+El gauge de Coulomb permite separar la corriente en una parte longitudinal y una transversal
+\begin{equation}
+	\n{J} = \n{J}_{\ell} + \n{J}_{t}
+\end{equation}
+donde 
+\begin{equation}
+	\ro\n{J}_{\ell} = 0, ~~~~~~~ \di\n{J}_{t} = 0
+\end{equation}
 
 
 
