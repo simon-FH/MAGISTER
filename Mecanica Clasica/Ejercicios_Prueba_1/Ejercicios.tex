@@ -1,0 +1,65 @@
+\documentclass[]{article}
+\usepackage{geometry,tikz,lipsum,amsmath,amssymb,soul,xcolor,cancel}
+\usepackage[dvipsnames]{xcolor}
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+\numberwithin{equation}{section}
+
+\NewDocumentCommand{\caja}{ m O{gray!40} O{gray!10} m }{
+	\begin{figure}[h]
+		\centering
+		\begin{tikzpicture}
+			\node[anchor=text, text width=\columnwidth-1.2cm, draw, rounded corners, line width=1pt, fill=#3, inner sep=5mm] (big) {\\#4};
+			\node[draw, rounded corners, line width=.5pt, fill=#2, anchor=west, xshift=5mm] (small) at (big.north west) {#1};
+		\end{tikzpicture}
+	\end{figure}
+}
+\NewDocumentCommand{\indUpDown}{ O{\Lambda} O{\mu} O{\nu} }{
+	{#1}^{#2}_{\ #3}
+}
+\NewDocumentCommand{\indDownUp}{ O{\Lambda} O{\mu} O{\nu} }{
+	{#1}_{#2}^{\ #3}
+}
+\newcommand{\LambdaMuNu}{\indUpDown}
+\newcommand{\0}{\textcolor{gray}{0}}
+
+\newcommand{\eff}[1]{#1_\mathrm{eff}}
+\newcommand{\Ueff}{\eff{U}}
+
+\newcommand{\rbf}{\mathbf{r}}
+\newcommand{\ei}{\mathbf{e}_i}
+\newcommand{\ej}{\mathbf{e}_j}
+\newcommand{\lc}{\epsilon_{ijk}}
+\newcommand{\gr}{\nabla}
+\newcommand{\di}{\nabla\cdot}
+\newcommand{\ro}{\nabla\times}
+\newcommand{\la}{\nabla^2}
+\newcommand{\rv}{\mathbf{r}}
+\newcommand{\xv}{\mathbf{x}}
+\newcommand{\yv}{\mathbf{y}}
+\newcommand{\zv}{\mathbf{z}}
+\newcommand{\xhat}{\hat{\xv}}
+\newcommand{\yhat}{\hat{\yv}}
+\newcommand{\zhat}{\hat{\zv}}
+\newcommand{\rhat}{\hat{\rv}}
+\newcommand{\that}{\hat{\mathbf{\theta}}}
+\newcommand{\phat}{\hat{\mathbf{\varphi}}}
+\newcommand{\rhhat}{\hat{\mathbf{\rho}}}
+\newcommand{\nhat}{\hat{\mathbf{n}}}
+\newcommand{\eo}{\epsilon_{0}}
+\newcommand{\uo}{\mu_{0}}
+\newcommand{\ke}{\frac{1}{4\pi\eo}}
+\newcommand{\rdif}{\rv - \rv'}
+\newcommand{\pd}[2]{\dfrac{\partial #1}{\partial #2}}
+\newcommand{\lpd}[2]{\partial #1/\partial #2}
+\newcommand{\td}[2]{\dfrac{d #1}{d #2}}
+\newcommand{\ltd}[2]{d #1/d #2}
+\newcommand{\n}[1]{\mathbf{#1}}
+%opening
+\title{Ejercicios Prueba 1 Mecánica Clásica Avanzada}
+\author{Simon Fonseca}
+
+\begin{document}
+
+\maketitle
+
+\end{document}
