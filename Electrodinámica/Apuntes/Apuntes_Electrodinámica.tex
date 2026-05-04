@@ -40,7 +40,8 @@
 \newcommand{\phat}{\hat{\mathbf{\varphi}}}
 \newcommand{\rhhat}{\hat{\mathbf{\rho}}}
 \newcommand{\nhat}{\hat{\mathbf{n}}}
-\newcommand{\eo}{\epsilon_0}
+\newcommand{\eo}{\epsilon_{0}}
+\newcommand{\uo}{\mu_{0}}
 \newcommand{\ke}{\frac{1}{4\pi\eo}}
 \newcommand{\rdif}{\rv - \rv'}
 \newcommand{\pd}[2]{\dfrac{\partial #1}{\partial #2}}
@@ -1182,35 +1183,35 @@ En el caso estacionario, \(\lpd{\rho}{t} = 0\), por lo que en magnetoestática:
 \subsection{Ley de Biot-Savart}
 La ley de Biot-Savart nos da el campo magnético producido por una corriente estacionaria:
 \begin{equation}
-	\n{B}(\rv) = \frac{\mu_{0}}{4 \pi} \int d^3 r' \n{J}(\rv') \times \frac{\n{R}}{R^3}
+	\n{B}(\rv) = \frac{\uo}{4 \pi} \int d^3 r' \n{J}(\rv') \times \frac{\n{R}}{R^3}
 \end{equation}
 donde \(\n{R} \equiv \rv - \rv'\). En el caso de una corriente de línea, la ecuación toma la forma
 \begin{equation}
-	\n{B}(\rv) = \frac{\mu_{0} I}{4 \pi} \oint_{C} d\n{l}' \times \frac{\n{R}}{R^3}
+	\n{B}(\rv) = \frac{\uo I}{4 \pi} \oint_{C} d\n{l}' \times \frac{\n{R}}{R^3}
 \end{equation}
 
 \subsubsection{Ejemplo 1: Hilo rectilíneo infinito}\label{BS_ej1}
 Considerando un hilo infinito sobre el eje \(z\) con corriente \(I\) en dirección \(\zhat\), tenemos:
 \begin{equation}
-	\n{B}(s) = \frac{\mu_{0} I}{2 \pi s}\phat
+	\n{B}(s) = \frac{\uo I}{2 \pi s}\phat
 \end{equation}
 donde \(s\) es la distancia cilíndrica entre un punto y el eje \(z\).
 
 \subsubsection{Ejemplo 2: Campo sobre el eje de una espira circular}
 Sea una espira circular de radio \(a\) en el plano \(z=0\) con corriente \(I\). Por simetría, dentro de su eje central solo puede existir componente \(z\), por lo que el campo es
 \begin{equation}
-	B_{z}(z) = \frac{\mu_{0} I a^2}{2(a^2 + z^2)^{3/2}}
+	B_{z}(z) = \frac{\uo I a^2}{2(a^2 + z^2)^{3/2}}
 \end{equation}
 Y cerca del centro \(z=0\)
 \begin{equation}
-	B_{z}(0) = \frac{\mu_{0} I}{2 a}
+	B_{z}(0) = \frac{\uo I}{2 a}
 \end{equation}
 
 \subsubsection{Fuerza entre corrientes estacionarias}
 Si un circuito \(C_1\) con corriente \(I_1\) se encuentra inmerso en el campo producido por un segundo circuito \(C_2\) con corriente \(I_2\), el elemento diferencial de fuerza es
 \begin{align}
 	d \n{F}_{12} &= I_{1} d\n{l}_{1} \times \n{B}_{2}\\
-	\Rightarrow d \n{F}_{12} &= \frac{\mu_{0} I_{1} I_{2}}{4 \pi} d\n{l}_{1} \times \left(d\n{l}_{2} \times \frac{\rv_{12}}{r^{3}_{12}}\right)
+	\Rightarrow d \n{F}_{12} &= \frac{\uo I_{1} I_{2}}{4 \pi} d\n{l}_{1} \times \left(d\n{l}_{2} \times \frac{\rv_{12}}{r^{3}_{12}}\right)
 \end{align}
 \begin{figure}[h!]
 	\centering
@@ -1258,7 +1259,7 @@ Si un circuito \(C_1\) con corriente \(I_1\) se encuentra inmerso en el campo pr
 
 En el caso de dos hilos paralelos infinitos separados por una distancia \(d\):
 \begin{equation}
-	\frac{F}{L} = \frac{\mu_{0} I_{1} I_{2}}{2\pi d}
+	\frac{F}{L} = \frac{\uo I_{1} I_{2}}{2\pi d}
 \end{equation}
 
 \subsection{Ecuaciones de magnetoestática}
@@ -1272,36 +1273,36 @@ Lo cual, en consecuencia, nos dirá que existe un campo potencial vectorial \(\n
 \end{equation}
 Además, la \textbf{ley de Ampere}:
 \begin{equation}
-	\ro\n{B} = \mu_{0}\n{J}
+	\ro\n{B} = \uo\n{J}
 \end{equation}
 o, en forma integral
 \begin{equation}
-	\oint_{C} \n{B}\cdot d\n{l} = \mu_{0} I_{\mathrm{enc}}
+	\oint_{C} \n{B}\cdot d\n{l} = \uo I_{\mathrm{enc}}
 \end{equation}
 
 \subsubsection{Ejemplo 1: Hilo rectilíneo infinito}
 Podemos usar la ley de Ampere para aplicar el mismo caso que en la situación de la subsección \ref{BS_ej1}. Tomando una circunferencia de radio \(C\) centrada en el hilo, recuperamos:
 \begin{equation*}
-	B(s) = \frac{\mu_{0} I}{2 \pi s}
+	B(s) = \frac{\uo I}{2 \pi s}
 \end{equation*}
 
 \subsubsection{Ejemplo 2: Solenoide largo}
 Para un solenoide ideal largo con \(n\) espiras por unidad de longitud y corriente \(I\), la ley de Ampere aplicada a un contorno rectangular da
 \begin{equation}
-	B_{\mathrm{int}} = \mu_{0} n I, ~~~~~ B_{\mathrm{ext}} = 0
+	B_{\mathrm{int}} = \uo n I, ~~~~~ B_{\mathrm{ext}} = 0
 \end{equation}
 
 \subsubsection{Ejemplo 3: Toroide}
 Para un toroide ideal con \(N\) espiras, el campo es azimutal dentro del núcleo y nulo fuera. Un contorno circular de radio \(s\) coaxial con el toroide da
 \begin{equation}
-	B(s) = \frac{\mu_{0} N I}{2 \pi s}
+	B(s) = \frac{\uo N I}{2 \pi s}
 \end{equation}
 
 \subsection{Condiciones de borde}
 Cuando tenemos dos regiones con campos magnéticos distintos, tendremos dos condiciones que se deben cumplir:
 \begin{align}
 	\nhat \cdot  (\n{B}_{1} - \n{B}_{2}) &= 0\\
-	\nhat \times (\n{B}_{1} - \n{B}_{2}) &= \mu_{0} \n{K}
+	\nhat \times (\n{B}_{1} - \n{B}_{2}) &= \uo \n{K}
 \end{align}
 
 \subsection{Magnetización}
@@ -1321,7 +1322,7 @@ Además de densidades de carga volumétrica o superficial:
 \end{align}
 En este caso conviene introducir el campo auxiliar \(\n{H}\):
 \begin{equation}
-	\n{H} = \frac{1}{\mu_{0}} \n{B} - \n{M}
+	\n{H} = \frac{1}{\uo} \n{B} - \n{M}
 \end{equation}
 donde, por la ec. \ref{divB_0}
 \begin{equation}
@@ -1335,11 +1336,11 @@ De la ec. \ref{potVec} sabemos que
 \end{equation*}
 Por lo que podemos elegir el potencial
 \begin{equation}
-	\n{A}(\rv) = \frac{\mu_{0}}{4 \pi} \int d^3 r' \frac{\n{J}(\rv')}{|\rv - \rv'|}\label{A}
+	\n{A}(\rv) = \frac{\uo}{4 \pi} \int d^3 r' \frac{\n{J}(\rv')}{|\rv - \rv'|}\label{A}
 \end{equation}
 Y, si trabajamos en una región magnetizada por \(\n{M}\), pero sin corrientes libres \((\n{J} = 0)\) tendremos
 \begin{equation}
-	\n{A}(\xv) = \frac{\mu_{0}}{4 \pi} \int_{V} \frac{\nabla'\times\n{M}(\xv')}{|\xv - \xv'|} d^3 x' + \frac{\mu_{0}}{4 \pi} \oint_{S} \frac{\n{M}(\xv')\times\nhat'}{|\xv - \xv'|} da'\label{A_mag}
+	\n{A}(\xv) = \frac{\uo}{4 \pi} \int_{V} \frac{\nabla'\times\n{M}(\xv')}{|\xv - \xv'|} d^3 x' + \frac{\uo}{4 \pi} \oint_{S} \frac{\n{M}(\xv')\times\nhat'}{|\xv - \xv'|} da'\label{A_mag}
 \end{equation}
 
 
@@ -1351,13 +1352,13 @@ La definición de \(\n{A}\) no es única, si \(\chi\) es una función escalar en
 produce el mismo campo \(\n{B}\). La condición de Gauge lidia con este grado de libertad redundante imponiendo que
 \begin{align}
 	\di\n{A} &= 0\label{diA_0}\\
-	\Rightarrow\la\n{A} &= -\mu_{0}\n{J} \label{laA_J}
+	\Rightarrow\la\n{A} &= -\uo\n{J} \label{laA_J}
 \end{align}
 
 \subsubsection{Expansión lejana y momento dipolar magnético}
 Lejos de una distribución localizada de corrientes, la expansión multipolar del potencial vectorial muestra que el termino dominante no nulo es dipolar. El resultado puede escribirse como
 \begin{equation}
-	\n{A} \approx \frac{\mu_{0}}{4\pi} \frac{\n{m}\times\rv}{r^3}
+	\n{A} \approx \frac{\uo}{4\pi} \frac{\n{m}\times\rv}{r^3}
 \end{equation}
 donde
 \begin{equation}
@@ -1385,11 +1386,11 @@ Consideremos un cilindro infinito de radio \(a\) con densidad de corriente unifo
 \end{equation*}
 y, utilizando la ec. \ref{laA_J}
 \begin{equation*}
-	A_z(s) = -\frac{\mu_{0} J_{0}}{4} s^2 + C
+	A_z(s) = -\frac{\uo J_{0}}{4} s^2 + C
 \end{equation*}
 Y de aquí, usando la ec. \ref{potVec}
 \begin{equation}
-	\n{B} = \frac{\mu_{0} J_{0}}{2} s\phat
+	\n{B} = \frac{\uo J_{0}}{2} s\phat
 \end{equation}
 
 \subsection{Potencial escalar magnético en regiones libres de corriente}
@@ -1459,12 +1460,12 @@ Y, expandiendo la diferencia inversa con la ec. \ref{add_theorem} y utilizando l
 
 Podemos también encontrar el potencial vectorial utilizando la ec. \ref{A_mag}, donde la única corriente es la superficial ligada a la magnetización del sistema
 \begin{align*}
-	\n{A}(\xv) &= \frac{\mu_{0}}{4 \pi} \oint_{S} \frac{\n{K}_{M}}{|\xv - \xv'|} da' = \frac{\mu_{0}}{4 \pi} M_0 a^2 \oint_{S} \frac{\sin\theta' \phat}{|\xv - \xv'|} d\Omega'\\
-	&= -\frac{\mu_{0}}{4 \pi} M_0 a^2 \oint_{S} \frac{\sin\theta' \sin\varphi' \xhat}{|\xv - \xv'|} d\Omega' + \frac{\mu_{0}}{4 \pi} M_0 a^2 \oint_{S} \frac{\sin\theta' \cos\varphi' \yhat}{|\xv - \xv'|} d\Omega'
+	\n{A}(\xv) &= \frac{\uo}{4 \pi} \oint_{S} \frac{\n{K}_{M}}{|\xv - \xv'|} da' = \frac{\uo}{4 \pi} M_0 a^2 \oint_{S} \frac{\sin\theta' \phat}{|\xv - \xv'|} d\Omega'\\
+	&= -\frac{\uo}{4 \pi} M_0 a^2 \oint_{S} \frac{\sin\theta' \sin\varphi' \xhat}{|\xv - \xv'|} d\Omega' + \frac{\uo}{4 \pi} M_0 a^2 \oint_{S} \frac{\sin\theta' \cos\varphi' \yhat}{|\xv - \xv'|} d\Omega'
 \end{align*}
 Ya que la situación es simétrica angularmente, podemos considerar un punto en \(\varphi = 0\), donde tendremos que \(\phat = \yhat\), y generalizar a todo el espacio con \(\yhat \rightarrow \phat\)
 \begin{equation*}
-	\n{A}(\xv) = \frac{\mu_{0}}{4 \pi} M_0 a^2 \phat \oint_{S} \frac{\sin\theta' \cos\varphi'}{|\xv - \xv'|} d\Omega'
+	\n{A}(\xv) = \frac{\uo}{4 \pi} M_0 a^2 \phat \oint_{S} \frac{\sin\theta' \cos\varphi'}{|\xv - \xv'|} d\Omega'
 \end{equation*}
 De aquí reconocemos que \(\sin\theta' \cos\varphi'\) es directamente proporcional a la parte real de \(Y_{1,1}\) (o también de \(Y_{1,-1}\)):
 \begin{equation}
@@ -1475,13 +1476,13 @@ De aquí reconocemos que \(\sin\theta' \cos\varphi'\) es directamente proporcion
 \end{equation}
 Realizando el mismo procedimiento que con el potencial escalar llegamos a que
 \begin{equation*}
-	\n{A}(\xv) = \frac{\mu_{0}}{4 \pi} M_0 a^2  \cdot \frac{r_{<}}{r_{>}^{2}} \cdot \sin\theta \cos\varphi \phat
+	\n{A}(\xv) = \frac{\uo}{4 \pi} M_0 a^2  \cdot \frac{r_{<}}{r_{>}^{2}} \cdot \sin\theta \cos\varphi \phat
 \end{equation*}
 pero, de nuevo por simetría y tomando \(\varphi = 0\) para luego aplicarlo a todo el sistema tenemos:
 \begin{equation}
-	\n{A}(\xv) = \frac{\mu_{0}}{3} M_0 a^2  \cdot \frac{r_{<}}{r_{>}^{2}} \cdot \sin\theta \phat = \left\lbrace \begin{matrix}
-		\dfrac{\mu_{0}}{3} M_0 r \sin\theta \phat, & r < a \vspace{3mm}\\
-		\dfrac{\mu_{0}}{3} M_0 \dfrac{a^3}{r^{2}} \sin\theta \phat, & r > a
+	\n{A}(\xv) = \frac{\uo}{3} M_0 a^2  \cdot \frac{r_{<}}{r_{>}^{2}} \cdot \sin\theta \phat = \left\lbrace \begin{matrix}
+		\dfrac{\uo}{3} M_0 r \sin\theta \phat, & r < a \vspace{3mm}\\
+		\dfrac{\uo}{3} M_0 \dfrac{a^3}{r^{2}} \sin\theta \phat, & r > a
 	\end{matrix}\right.
 \end{equation}
 
@@ -1489,14 +1490,14 @@ Finalmente, podemos utilizar el potencial escalar o vectorial para encontrar el 
 \begin{equation}
 	\left.\begin{matrix}
 		\n{H}_{\mathrm{in}} = -\gr\Phi_{M} = - \dfrac{1}{3} \n{M} \vspace{4mm}\\
-		\Rightarrow \n{B}_{\mathrm{in}} = \mu_0 (\n{H} + \n{M}) = \dfrac{2}{3} \mu_{0} \n{M}
+		\Rightarrow \n{B}_{\mathrm{in}} = \uo (\n{H} + \n{M}) = \dfrac{2}{3} \uo \n{M}
 	\end{matrix}\right\rbrace
 \end{equation}
 
 \begin{equation}
 	\left.\begin{matrix}
-		\n{B}_{\mathrm{in}} = \ro\n{A}_{\mathrm{in}} = \dfrac{1}{r}\pd{(r A_{\varphi})}{r} = \dfrac{2}{3} \mu_{0} \n{M}\vspace{4mm}\\
-		\Rightarrow \n{H}_{\mathrm{in}} = \dfrac{1}{\mu_{0}} \n{B}_{\mathrm{in}} - \n{M} = - \dfrac{1}{3} \n{M}
+		\n{B}_{\mathrm{in}} = \ro\n{A}_{\mathrm{in}} = \dfrac{1}{r}\pd{(r A_{\varphi})}{r} = \dfrac{2}{3} \uo \n{M}\vspace{4mm}\\
+		\Rightarrow \n{H}_{\mathrm{in}} = \dfrac{1}{\uo} \n{B}_{\mathrm{in}} - \n{M} = - \dfrac{1}{3} \n{M}
 	\end{matrix}\right\rbrace
 \end{equation}
 Por lo que ambos resultados coinciden. Se puede ver que, dentro de la esfera, los campos \(\n{B}\) y \(\n{H}\) apuntan en sentidos contrarios. Fuera de la esfera, como \(\n{M} = 0\), se tiene simplemente que
@@ -1547,6 +1548,90 @@ y para \(s > a\), el flujo esta determinado por el área del solenoide:
 	E_{\varphi} \cdot 2\pi s &= - \td{}{t} \pi a^2 B \nonumber\\
 	E_{\varphi} &= - \frac{a^2}{2 s} \td{B}{t}
 \end{align}
+
+\subsubsection{Flujo magnético y circulación del potencial vectorial}
+La relación entre potencial vectorial magnético y flujo magnético para una superficie \(S\) con borde \(C\)
+\begin{equation}
+	\oint_{C} \n{A}\cdot d\ell = \Phi_{B}
+\end{equation}
+Podemos entonces reescribir la ley de Faraday con potenciales. Si el contorno es fijo, la fuerza electromotriz puede escribirse usando:
+\begin{equation}
+	\mathcal{E} = - \td{}{t} \oint_{C} \n{A}\cdot d\ell
+\end{equation}
+
+\subsubsection{Contornos moviles y fuerza electromotriz general}
+Si el circuito se mueve con velocidad local \(\n{v}\), la fuerza sobre una carga contiene la contribución de Lorentz. En ese caso, la fuerza electromotriz general es
+\begin{equation}
+	\mathcal{E} = \oint_{C(t)} (\n{E} + \n{v}\times\n{B})\cdot d\ell
+\end{equation}
+
+\subsection{Corriente de desplazamiento y ley de Ampere generalizada}
+La ley de Ampere puramente estática es incompatible con cualquier proceso donde la densidad de carga cambie en el tiempo. Maxwell resolvió la inconsistencia introduciendo la \textbf{corriente de desplazamiento}. La ley correcta entonces es
+\begin{equation}
+	\ro\n{B} = \uo\n{J} + \uo\eo\pd{\n{E}}{t}
+\end{equation}
+Y, en forma integral,
+\begin{equation}
+	\oint_{C} \n{B}\cdot d\ell = \uo\int_{S}\n{J}\cdot d\n{a} + \uo\eo\int_{S}\n{E}\cdot d\n{a}
+\end{equation}
+donde
+\begin{equation}
+	\eo\td{}{t}\int_{S}\n{E}\cdot d\n{a}
+\end{equation}
+se interpreta como la corriente de desplazamiento total.
+
+\section{Electrodinámica}
+\subsection{Ecuaciones de Maxwell y de conservación}
+La ecuaciones de Maxwell, en sus formas diferenciales e integrales
+\begin{enumerate}
+	\item \textbf{Ley de Coulomb}
+	\begin{align}
+		&\di\n{E} = \dfrac{\rho}{\eo} & &\oint_{S}\n{E}\cdot d\n{a} = \dfrac{1}{\eo}\int_{V}\rho\,d^3 r \label{Maxwell_Coulomb}\\
+		\intertext{\item \textbf{Ley de Faraday}}
+		&\ro\n{E} = - \pd{\n{B}}{t} & &\oint_{C} \n{E}\cdot d\ell = - \td{}{t} \int_{S}\n{B}\cdot d\n{a} \label{Maxwell_Faraday}\\
+		\intertext{\item \textbf{Ausencia de monopolos magnéticos}}
+		&\di\n{B} = 0 & &\oint_{S} \n{B}\cdot d\n{a} = 0 \label{Maxwell_monoplos}\\
+		\intertext{\item \textbf{Ley de Ampere}}
+		&\ro\n{B} = \uo\n{J} + \uo\eo\pd{\n{E}}{t} & &\oint_{C} \n{B}\cdot d\ell = \uo\int_{S}\n{J}\cdot d\n{a} + \uo\eo\int_{S}\n{E}\cdot d\n{a} \label{Maxwell_Ampere}
+	\end{align}
+\end{enumerate}
+Aparte, tendremos que la densidad de carga y de corriente satisfacen la \textbf{ecuación de continuidad}:
+\begin{equation}
+	\pd{\rho}{t} + \di\n{J} = 0 \label{Maxwell_continuidad}
+\end{equation}
+
+\subsection{Campos auxiliares y medios materiales lineales}
+Introduciendo los campos
+\begin{equation}
+	\n{D} = 
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,44 +1,44 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.26)  2 MAY 2026 18:56
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2025.9.10)  3 MAY 2026 20:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**Apuntes_Electrodinámica.tex
-(./Apuntes_Electrodinámica.tex
-LaTeX2e <2025-11-01>
-L3 programming layer <2026-01-19>
-(/app/texlive/texmf-dist/tex/latex/base/article.cls
+**./Apuntes_Electrodinámica.tex
+(Apuntes_Electrodinámica.tex
+LaTeX2e <2025-06-01> patch level 1
+L3 programming layer <2025-08-13>
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
 Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
-(/app/texlive/texmf-dist/tex/latex/base/size10.clo
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.clo
 File: size10.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
 )
-\c@part=\count275
-\c@section=\count276
-\c@subsection=\count277
-\c@subsubsection=\count278
-\c@paragraph=\count279
-\c@subparagraph=\count280
-\c@figure=\count281
-\c@table=\count282
+\c@part=\count271
+\c@section=\count272
+\c@subsection=\count273
+\c@subsubsection=\count274
+\c@paragraph=\count275
+\c@subparagraph=\count276
+\c@figure=\count277
+\c@table=\count278
 \abovecaptionskip=\skip49
 \belowcaptionskip=\skip50
 \bibindent=\dimen148
 )
-(/app/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
 
-(/app/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 \KV@toks@=\toks17
 )
-(/app/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 
-(/app/texlive/texmf-dist/tex/generic/iftex/iftex.sty
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
 Package: iftex 2024/12/12 v1.0g TeX engine tests
 ))
-\Gm@cnth=\count283
-\Gm@cntv=\count284
-\c@Gm@tempcnt=\count285
+\Gm@cnth=\count279
+\Gm@cntv=\count280
+\c@Gm@tempcnt=\count281
 \Gm@bindingoffset=\dimen149
 \Gm@wd@mp=\dimen150
 \Gm@odd@mp=\dimen151
@@ -48,55 +48,67 @@ Package: iftex 2024/12/12 v1.0g TeX engine tests
 \Gm@layouthoffset=\dimen155
 \Gm@layoutvoffset=\dimen156
 \Gm@dimlist=\toks18
-)
-(/app/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
-(/app/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
-(/app/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
-(/app/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
+
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendlayer\tikz.
+sty
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgf.sty
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfrcs.st
+y
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil
+-common.tex
 \pgfutil@everybye=\toks19
 \pgfutil@tempdima=\dimen157
 \pgfutil@tempdimb=\dimen158
 )
-(/app/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil
+-latex.def
 \pgfutil@abb=\box53
 )
-(/app/texlive/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
-(/app/texlive/texmf-dist/tex/generic/pgf/pgf.revision.tex)
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfrcs.
+code.tex
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf\pgf.revision.tex)
 Package: pgfrcs 2025-08-29 v3.1.11a (3.1.11a)
 ))
 Package: pgf 2025-08-29 v3.1.11a (3.1.11a)
 
-(/app/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
-(/app/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgfcore.
+sty
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
 Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/app/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
 Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
 
-(/app/texlive/texmf-dist/tex/latex/graphics/trig.sty
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
 Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
 )
-(/app/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
+fg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 106.
+Package graphics Info: Driver file: xetex.def on input line 106.
 
-(/app/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\xetex.def
+File: xetex.def 2022/09/22 v5.0n Graphics/color driver for xetex
 ))
 \Gin@req@height=\dimen159
 \Gin@req@width=\dimen160
 )
-(/app/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
-(/app/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systemlayer\pgfsys.
+sty
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+s.code.tex
 Package: pgfsys 2025-08-29 v3.1.11a (3.1.11a)
 
-(/app/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys
+.code.tex
 \pgfkeys@pathtoks=\toks20
 \pgfkeys@temptoks=\toks21
 
-(/app/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.code.
-tex
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys
+libraryfiltered.code.tex
 \pgfkeys@tmptoks=\toks22
 ))
 \pgf@x=\dimen161
@@ -111,44 +123,54 @@ tex
 \pgf@yd=\dimen170
 \w@pgf@writea=\write3
 \r@pgf@reada=\read2
-\c@pgf@counta=\count286
-\c@pgf@countb=\count287
-\c@pgf@countc=\count288
-\c@pgf@countd=\count289
+\c@pgf@counta=\count282
+\c@pgf@countb=\count283
+\c@pgf@countc=\count284
+\c@pgf@countd=\count285
 \t@pgf@toka=\toks23
 \t@pgf@tokb=\toks24
 \t@pgf@tokc=\toks25
-\pgf@sys@id@count=\count290
- (/app/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+\pgf@sys@id@count=\count286
+
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf.c
+fg
 File: pgf.cfg 2025-08-29 v3.1.11a (3.1.11a)
 )
-Driver file for pgf: pgfsys-pdftex.def
+Driver file for pgf: pgfsys-xetex.def
 
-(/app/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
-File: pgfsys-pdftex.def 2025-08-29 v3.1.11a (3.1.11a)
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+s-xetex.def
+File: pgfsys-xetex.def 2025-08-29 v3.1.11a (3.1.11a)
 
-(/app/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+s-dvipdfmx.def
+File: pgfsys-dvipdfmx.def 2025-08-29 v3.1.11a (3.1.11a)
+
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+s-common-pdf.def
 File: pgfsys-common-pdf.def 2025-08-29 v3.1.11a (3.1.11a)
-)))
-(/app/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
-File: pgfsyssoftpath.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgfsyssoftpath@smallbuffer@items=\count291
-\pgfsyssoftpath@bigbuffer@items=\count292
 )
-(/app/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+\pgfsys@objnum=\count287
+)))
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+ssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfsyssoftpath@smallbuffer@items=\count288
+\pgfsyssoftpath@bigbuffer@items=\count289
+)
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+sprotocol.code.tex
 File: pgfsysprotocol.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ))
-(/app/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
 Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
 
-(/app/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
-Package xcolor Info: Driver file: pdftex.def on input line 274.
-
-(/app/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+Package xcolor Info: Driver file: xetex.def on input line 274.
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
-Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
 Package xcolor Info: Model `RGB' extended on input line 1365.
 Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
 Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
@@ -157,37 +179,51 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
 )
-(/app/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+e.code.tex
 Package: pgfcore 2025-08-29 v3.1.11a (3.1.11a)
 
-(/app/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
-(/app/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
-(/app/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code
+.tex
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathutil.
+code.tex)
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathparse
+r.code.tex
 \pgfmath@dimen=\dimen171
-\pgfmath@count=\count293
+\pgfmath@count=\count290
 \pgfmath@box=\box54
 \pgfmath@toks=\toks26
 \pgfmath@stack@operand=\toks27
 \pgfmath@stack@operation=\toks28
 )
-(/app/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex)
-(/app/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex)
-(/app/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.co
-de.tex)
-(/app/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex)
-
-(/app/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.
-tex)
-(/app/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex)
-(/app/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex)
-(/app/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex)
-(/app/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmeti
-cs.code.tex) (/app/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
-) (/app/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count294
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.code.tex)
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.basic.code.tex)
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.trigonometric.code.tex)
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.random.code.tex)
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.comparison.code.tex)
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.base.code.tex)
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.round.code.tex)
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.misc.code.tex)
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.integerarithmetics.code.tex)
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathcalc.
+code.tex)
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfloat
+.code.tex
+\c@pgfmathroundto@lastzeros=\count291
 ))
-(/app/texlive/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
-(/app/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfint.code.
+tex)
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epoints.code.tex
 File: pgfcorepoints.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgf@picminx=\dimen172
 \pgf@picmaxx=\dimen173
@@ -204,103 +240,131 @@ File: pgfcorepoints.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgf@zx=\dimen184
 \pgf@zy=\dimen185
 )
-(/app/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.t
-ex
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epathconstruct.code.tex
 File: pgfcorepathconstruct.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgf@path@lastx=\dimen186
 \pgf@path@lasty=\dimen187
 )
-(/app/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epathusage.code.tex
 File: pgfcorepathusage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgf@shorten@end@additional=\dimen188
 \pgf@shorten@start@additional=\dimen189
 )
-(/app/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+escopes.code.tex
 File: pgfcorescopes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgfpic=\box55
 \pgf@hbox=\box56
 \pgf@layerbox@main=\box57
-\pgf@picture@serial@count=\count295
+\pgf@picture@serial@count=\count292
 )
-(/app/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.te
-x
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+egraphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgflinewidth=\dimen190
 )
-(/app/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code
-.tex
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+etransformations.code.tex
 File: pgfcoretransformations.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgf@pt@x=\dimen191
 \pgf@pt@y=\dimen192
 \pgf@pt@temp=\dimen193
-) (/app/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+)
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+equick.code.tex
 File: pgfcorequick.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-) (/app/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
+)
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eobjects.code.tex
 File: pgfcoreobjects.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 )
-(/app/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.
-tex
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epathprocessing.code.tex
 File: pgfcorepathprocessing.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-) (/app/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
+)
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+earrows.code.tex
 File: pgfcorearrows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgfarrowsep=\dimen194
-) (/app/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+)
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eshade.code.tex
 File: pgfcoreshade.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgf@max=\dimen195
-\pgf@sys@shading@range@num=\count296
-\pgf@shadingcount=\count297
+\pgf@sys@shading@range@num=\count293
+\pgf@shadingcount=\count294
 )
-(/app/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eimage.code.tex
 File: pgfcoreimage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 )
-(/app/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eexternal.code.tex
 File: pgfcoreexternal.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgfexternal@startupbox=\box58
 )
-(/app/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+elayers.code.tex
 File: pgfcorelayers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 )
-(/app/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.te
-x
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+etransparency.code.tex
 File: pgfcoretransparency.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-) (/app/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
+)
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epatterns.code.tex
 File: pgfcorepatterns.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-) (/app/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
+)
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+erdf.code.tex
 File: pgfcorerdf.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 )))
-(/app/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
+shapes.code.tex
 File: pgfmoduleshapes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgfnodeparttextbox=\box59
 )
-(/app/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
+plot.code.tex
 File: pgfmoduleplot.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 )
-(/app/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfco
+mp-version-0-65.sty
 Package: pgfcomp-version-0-65 2025-08-29 v3.1.11a (3.1.11a)
 \pgf@nodesepstart=\dimen196
 \pgf@nodesepend=\dimen197
 )
-(/app/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfco
+mp-version-1-18.sty
 Package: pgfcomp-version-1-18 2025-08-29 v3.1.11a (3.1.11a)
-)) (/app/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
-(/app/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
-(/app/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex))
-(/app/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty
-(/app/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
-(/app/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+))
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgffor.st
+y
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfkeys.s
+ty
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys
+.code.tex))
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/pgf/math\pgfmath.sty
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code
+.tex))
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgffor.
+code.tex
 Package: pgffor 2025-08-29 v3.1.11a (3.1.11a)
 \pgffor@iter=\dimen198
 \pgffor@skip=\dimen199
 \pgffor@stack=\toks29
 \pgffor@toks=\toks30
 ))
-(/app/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z\tikz.code.tex
 Package: tikz 2025-08-29 v3.1.11a (3.1.11a)
 
-(/app/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.
-tex
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibr
+aryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgf@plot@mark@count=\count298
+\pgf@plot@mark@count=\count295
 \pgfplotmarksize=\dimen256
 )
 \tikz@lastx=\dimen257
@@ -315,66 +379,73 @@ File: pgflibraryplothandlers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \tikz@figbox@bg=\box61
 \tikz@tempbox=\box62
 \tikz@tempbox@bg=\box63
-\tikztreelevel=\count299
-\tikznumberofchildren=\count300
-\tikznumberofcurrentchild=\count301
-\tikz@fig@count=\count302
- (/app/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+\tikztreelevel=\count296
+\tikznumberofchildren=\count297
+\tikznumberofcurrentchild=\count298
+\tikz@fig@count=\count299
+
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
+matrix.code.tex
 File: pgfmodulematrix.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgfmatrixcurrentrow=\count303
-\pgfmatrixcurrentcolumn=\count304
-\pgf@matrix@numberofcolumns=\count305
+\pgfmatrixcurrentrow=\count300
+\pgfmatrixcurrentcolumn=\count301
+\pgf@matrix@numberofcolumns=\count302
 )
-\tikz@expandcount=\count306
+\tikz@expandcount=\count303
 
-(/app/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibra
-rytopaths.code.tex
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-))) (/app/texlive/texmf-dist/tex/latex/lipsum/lipsum.sty
-(/app/texlive/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
-(/app/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2026-01-19 L3 programming layer (loader) 
+)))
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/lipsum\lipsum.sty
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/l3keys2e\l3k
+eys2e.sty
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
+Package: expl3 2025-08-13 L3 programming layer (loader) 
 
-(/app/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count307
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-xet
+ex.def
+File: l3backend-xetex.def 2025-06-09 L3 backend support: XeTeX
+\g__graphics_track_int=\count304
+\g__pdfannot_backend_int=\count305
+\g__pdfannot_backend_link_int=\count306
 ))
-Package: l3keys2e 2025-10-09 LaTeX2e option processing using LaTeX3 keys
+Package: l3keys2e 2024-08-16 LaTeX2e option processing using LaTeX3 keys
 )
 Package: lipsum 2021-09-20 v2.7 150 paragraphs of Lorem Ipsum dummy text
-\g__lipsum_par_int=\count308
-\l__lipsum_a_int=\count309
-\l__lipsum_b_int=\count310
+\g__lipsum_par_int=\count307
+\l__lipsum_a_int=\count308
+\l__lipsum_b_int=\count309
 
-(/app/texlive/texmf-dist/tex/latex/lipsum/lipsum.ltd.tex))
-(/app/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2025/07/09 v2.17z AMS math features
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/lipsum\lipsum.ltd.tex))
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+Package: amsmath 2025/06/16 v2.17y AMS math features
 \@mathmargin=\skip51
 
 For additional information on amsmath, use the `?' option.
-(/app/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
 Package: amstext 2024/11/17 v2.01 AMS text
 
-(/app/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks31
 \ex@=\dimen265
 ))
-(/app/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen266
 )
-(/app/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
-\inf@bad=\count311
+\inf@bad=\count310
 LaTeX Info: Redefining \frac on input line 233.
-\uproot@=\count312
-\leftroot@=\count313
+\uproot@=\count311
+\leftroot@=\count312
 LaTeX Info: Redefining \overline on input line 398.
 LaTeX Info: Redefining \colon on input line 409.
-\classnum@=\count314
-\DOTSCASE@=\count315
+\classnum@=\count313
+\DOTSCASE@=\count314
 LaTeX Info: Redefining \ldots on input line 495.
 LaTeX Info: Redefining \dots on input line 498.
 LaTeX Info: Redefining \cdots on input line 619.
@@ -387,20 +458,20 @@ LaTeX Info: Redefining \Bigg on input line 724.
 \big@size=\dimen267
 LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
-\macc@depth=\count316
+\macc@depth=\count315
 LaTeX Info: Redefining \bmod on input line 904.
 LaTeX Info: Redefining \pmod on input line 909.
 LaTeX Info: Redefining \smash on input line 939.
 LaTeX Info: Redefining \relbar on input line 969.
 LaTeX Info: Redefining \Relbar on input line 970.
-\c@MaxMatrixCols=\count317
+\c@MaxMatrixCols=\count316
 \dotsspace@=\muskip17
-\c@parentequation=\count318
-\dspbrk@lvl=\count319
+\c@parentequation=\count317
+\dspbrk@lvl=\count318
 \tag@help=\toks32
-\row@=\count320
-\column@=\count321
-\maxfields@=\count322
+\row@=\count319
+\column@=\count320
+\maxfields@=\count321
 \andhelp@=\toks33
 \eqnshift@=\dimen268
 \alignsep@=\dimen269
@@ -412,24 +483,23 @@ LaTeX Info: Redefining \Relbar on input line 970.
 \multlinegap=\skip52
 \multlinetaggap=\skip53
 \mathdisplay@stack=\toks35
-LaTeX Info: Redefining \[ on input line 2950.
-LaTeX Info: Redefining \] on input line 2951.
+LaTeX Info: Redefining \[ on input line 2949.
+LaTeX Info: Redefining \] on input line 2950.
 )
-(/app/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 
-(/app/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-))
-(/app/texlive/texmf-dist/tex/generic/soul/soul.sty
+)) (C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/soul\soul.sty
 Package: soul 2023-06-14 v3.1 Permit use of UTF-8 characters in soul (HO)
 
-(/app/texlive/texmf-dist/tex/generic/soul/soul-ori.sty
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/soul\soul-ori.sty
 Package: soul-ori 2023-06-14 v3.1 letterspacing/underlining (mf)
 \SOUL@word=\toks36
 \SOUL@lasttoken=\toks37
@@ -443,50 +513,52 @@ Package: soul-ori 2023-06-14 v3.1 letterspacing/underlining (mf)
 \SOUL@hyphkern=\dimen277
 \SOUL@dimen=\dimen278
 \SOUL@dimeni=\dimen279
-\SOUL@minus=\count323
-\SOUL@comma=\count324
-\SOUL@apo=\count325
-\SOUL@grave=\count326
+\SOUL@minus=\count322
+\SOUL@comma=\count323
+\SOUL@apo=\count324
+\SOUL@grave=\count325
 \SOUL@spaceskip=\skip54
 \SOUL@ttwidth=\dimen280
 \SOUL@uldp=\dimen281
 \SOUL@ulht=\dimen282
 )
-(/app/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.s
+ty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 )
-(/app/texlive/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/generic/etexcmds\etexcmds.sty
 Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
-))
-(/app/texlive/texmf-dist/tex/latex/cancel/cancel.sty
+)) (C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/cancel\cancel.sty
 Package: cancel 2013/04/12 v2.2 Cancel math terms
 )
-(/app/texlive/texmf-dist/tex/latex/esint/esint.sty
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/esint\esint.sty
 Package: esint 
 \symlargesymbolsA=\mathgroup6
 )
-(./Apuntes_Electrodinámica.aux)
+(Apuntes_Electrodinámica.aux)
 \openout1 = `Apuntes_Electrodinámica.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
 
 *geometry* driver: auto-detecting
-*geometry* detected driver: pdftex
+*geometry* detected driver: xetex
 *geometry* verbose mode - [ preamble ] result:
-* driver: pdftex
+* driver: xetex
 * paper: <default>
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
@@ -517,96 +589,95 @@ LaTeX Font Info:    ... okay on input line 55.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-(/app/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count327
-\scratchdimen=\dimen283
-\scratchbox=\box66
-\nofMPsegments=\count328
-\nofMParguments=\count329
-\everyMPshowfont=\toks42
-\MPscratchCnt=\count330
-\MPscratchDim=\dimen284
-\MPnumerator=\count331
-\makeMPintoPDFobject=\count332
-\everyMPtoPDFconversion=\toks43
-) (/app/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
-Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-85.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 57.
 
-(/app/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
-e
-))
-LaTeX Font Info:    Trying to load font information for U+msa on input line 56.
-
-
-(/app/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 56.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 57.
 
 
-(/app/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for U+esint on input line 5
-6.
+7.
 
-(/app/texlive/texmf-dist/tex/latex/esint/uesint.fd
+(C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/esint\uesint.fd
 File: uesint.fd 
-) [1
+)
 
-{/app/texlive/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5] [6
-] [7] [8]
+[1
+
+]
+
+[2]
+
+[3]
+
+[4]
+
+[5]
+
+[6]
+
+[7]
+
+[8]
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[9] [10] [11] [12] [13] [14] [15] [16] [17]
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[18] [19] [20] [21] [22] [23] [24] [25] (./Apuntes_Electrodinámica.aux)
+[9]
+
+[10]
+
+[11]
+
+[12]
+
+[13]
+
+[14]
+
+[15]
+
+[16]
+
+[17]
+
+[18]
+
+[19]
+
+[20]
+
+[21]
+
+[22]
+
+[23]
+
+[24]
+
+[25]
+
+[26]
+
+[27] (Apuntes_Electrodinámica.aux)
  ***********
-LaTeX2e <2025-11-01>
-L3 programming layer <2026-01-19>
+LaTeX2e <2025-06-01> patch level 1
+L3 programming layer <2025-08-13>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 14641 strings out of 467548
- 290828 string characters out of 5422840
- 777737 words of memory out of 6000000
- 43275 multiletter control sequences out of 15000+600000
- 638053 words of font info for 84 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 102i,18n,107p,662b,722s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</app/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></app/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></app/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmbx8.pfb></app/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmex10.pfb></app/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cmextra/cmex8.pfb></app/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmmi10.pfb></app/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><
-/app/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></app/texlive/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></app/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr10.pfb></app/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmr12.pfb></app/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmr17.pfb></app/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><
-/app/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></app/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></app/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr8.pfb></app/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmsy10.pfb></app/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmsy5.pfb></app/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></
-app/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></app/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></app/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmti10.pfb></app/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmtt10.pfb></app/texlive/texmf-dist/fonts/type1/public/esint-ty
-pe1/esint10.pfb></app/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/l
-ine10.pfb>
-Output written on Apuntes_Electrodinámica.pdf (25 pages, 365264 bytes).
-PDF statistics:
- 214 PDF objects out of 1000 (max. 8388607)
- 135 compressed objects within 2 object streams
- 0 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 14270 strings out of 403249
+ 282901 string characters out of 5460860
+ 771821 words of memory out of 5000000
+ 42453 multiletter control sequences out of 15000+600000
+ 635536 words of font info for 91 fonts, out of 8000000 for 9000
+ 1348 hyphenation exceptions out of 8191
+ 102i,18n,107p,663b,718s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
+Output written on Apuntes_Electrodinámica.pdf (27 pages).
