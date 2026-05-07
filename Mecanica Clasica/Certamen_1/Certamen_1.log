@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.26)  6 MAY 2026 13:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.26)  6 MAY 2026 16:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**Ej1b.tex
-(./Ej1b.tex
+**Certamen_1.tex
+(./Certamen_1.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
 (/app/texlive/texmf-dist/tex/latex/base/article.cls
@@ -461,26 +461,25 @@ Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 (/app/texlive/texmf-dist/tex/latex/cancel/cancel.sty
 Package: cancel 2013/04/12 v2.2 Cancel math terms
 )
-(/app/texlive/texmf-dist/tex/latex/esint/esint.sty
-Package: esint 
-\symlargesymbolsA=\mathgroup6
-) (./Ej1b.aux)
-\openout1 = `Ej1b.aux'.
+(/app/texlive/texmf-dist/tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
+) (./Certamen_1.aux)
+\openout1 = `Certamen_1.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -538,52 +537,72 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Trying to load font information for U+msa on input line 57.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 66.
 
 
 (/app/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 57.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 66.
 
 
 (/app/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+esint on input line 5
-7.
+Overfull \hbox (50.74538pt too wide) in paragraph at lines 126--127
+ [][] 
+ []
 
-(/app/texlive/texmf-dist/tex/latex/esint/uesint.fd
-File: uesint.fd 
-) [1
+[1
 
-{/app/texlive/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] (./Ej1b.aux)
+{/app/texlive/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (58.52684pt too wide) detected at line 188
+[] []
+ []
+
+
+Overfull \hbox (33.57555pt too wide) detected at line 191
+[]\OMS/cmsy/m/n/10 ) E[] \OT1/cmr/m/n/10 = []
+ []
+
+
+Overfull \hbox (72.8673pt too wide) detected at line 195
+[]\OMS/cmsy/m/n/10 ) E[] \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 E[] \OT1/cmr/m/n/10
+ + \OML/cmm/m/it/10 E[] \OMS/cmsy/m/n/10 ^^@ []
+ []
+
+[2] [3] [4] [5] [6] (./Certamen_1.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 14415 strings out of 467548
- 285345 string characters out of 5422840
- 761539 words of memory out of 6000000
- 43057 multiletter control sequences out of 15000+600000
- 635079 words of font info for 74 fonts, out of 8000000 for 9000
+ 14538 strings out of 467548
+ 288200 string characters out of 5422840
+ 777608 words of memory out of 6000000
+ 43179 multiletter control sequences out of 15000+600000
+ 636723 words of font info for 75 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,6n,107p,469b,223s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</app/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></app/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></app/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmmi7.pfb></app/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmr10.pfb></app/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmr12.pfb></app/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17
-.pfb></app/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></app/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></app/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmsy10.pfb></app/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmsy5.pfb>
-Output written on Ej1b.pdf (2 pages, 103696 bytes).
+ 102i,12n,107p,706b,723s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</app/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></app/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></app/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmex10.pfb></app/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmmi10.pfb></app/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmmi5.pfb></app/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmm
+i7.pfb></app/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></app/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></app/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></app/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr5.pfb></app/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr7.pfb></app/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
+10.pfb></app/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></app/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></app/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></app/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on Certamen_1.pdf (6 pages, 193734 bytes).
 PDF statistics:
- 64 PDF objects out of 1000 (max. 8388607)
- 39 compressed objects within 1 object stream
+ 106 PDF objects out of 1000 (max. 8388607)
+ 65 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
