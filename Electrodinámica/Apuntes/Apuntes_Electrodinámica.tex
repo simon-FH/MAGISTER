@@ -1826,19 +1826,105 @@ Para una partícula de carga \(q\) que sigue la trayectoria \(\rv_{0}(t')\), esc
 \end{align}
 Sustituyendo estas expresiones en las ecs. \ref{potElec_ret} y \ref{potMagn_ret}:
 \begin{align}
-	\Phi( \rv, t) &= \ke[q] \int dt'\, \frac{1}{R(t')} \delta\left(t - t' - \frac{R(t')}{c} \right)\\
-	\n{A}(\rv, t) &= \ku[q] \int dt'\, \frac{\n{v}(t')}{R(t')} \delta\left(t - t' - \frac{R(t')}{c} \right)
+	\Phi( \rv, t) &= \ke[q] \int dt'\, \frac{1}{R(t')} \delta\left(t - t' - \frac{R(t')}{c} \right) \label{potElec_ret_puntual}\\
+	\n{A}(\rv, t) &= \ku[q] \int dt'\, \frac{\n{v}(t')}{R(t')} \delta\left(t - t' - \frac{R(t')}{c} \right) \label{potMagn_ret_puntual}
 \end{align}
 donde
 \begin{equation*}
 	\n{R}(t') = \rv-\rv_{0}(t'), ~~~~~~~ R(t') = |\n{R}(t')|, ~~~~~~~ \Rhat(t') = \frac{\n{R}(t')}{R(t')}, ~~~~~~~ t' = t_{\mathrm{ret}} = t - \frac{R(t')}{c}
 \end{equation*}
 
-\subsection{Potenciales de Liènard-Wiechert}
+\subsubsection{Potenciales de Liènard-Wiechert}
 Si usamos la identidad general
 \begin{equation}
 	\delta\left(g(t')\right) = \sum_{i} \frac{\delta\left(t' - t'_{i}\right)}{|g'(t_{i})|}
 \end{equation}
+para resolver las ecs. \ref{potElec_ret_puntual} y \ref{potMagn_ret_puntual}, obtenemos los \textbf{potenciales de Liènard-Wiechert}:
+\begin{align}
+	\Phi(\rv,t)  = \ke[q] &\left[\frac{1}{(1 - \Rhat\cdot\n{\beta})R}\right]_{\mathrm{ret}} \label{potElec_L-W}\\
+	\n{A}(\rv,t) = \ku[q] &\left[\frac{\n{v}}{(1 - \Rhat\cdot\n{\beta})R}\right]_{\mathrm{ret}} \label{potMagn_L-W}
+\end{align}
+donde
+\begin{equation}
+	\n{\beta} = \n{v}/c
+\end{equation}
+Toda magnitud entre corchetes debe evaluarse en el tiempo retardado determinado por \(t - t_{\mathrm{ret}} = R(t_{\mathrm{ret}})/c\).
+
+El denominador también puede escribirse como
+\begin{equation}
+	(1 - \Rhat\cdot\n{\beta})R = \kappa R, ~~~~~~~ \kappa\equiv 1 - \Rhat\cdot\n{\beta}
+\end{equation}
+
+Es útil escribir los potenciales como
+\begin{equation}
+	\n{A}(\rv,t) = \frac{\n{v}_{\mathrm{ret}}}{c^2} \Phi(\rv,t)
+\end{equation}
+
+\subsubsection{Campos de una carga en movimiento}
+Al derivar las expresiones de Liènard-Wiechert se obtiene una fórmula compacta para el campo eléctrico:
+\begin{equation}
+	\n{E}(\rv,t) = \ke[q] \left[\frac{(1 - \beta^2)(\Rhat - \beta)}{\kappa^3 R^2} + \frac{\Rhat\times\left[\left(\Rhat - \beta\right)\times\dot{\beta}\right]}{c \kappa^3 R}\right]_{\mathrm{ret}}
+\end{equation}
+y el campo magnético:
+\begin{equation}
+	\n{B}(\rv, t) = \frac{1}{c}\left[\Rhat\times\n{E}\right]_{\mathrm{ret}}
+\end{equation}
+Aquí tenemos dos términos que contribuyen a los campos:
+\begin{itemize}
+	\item El término \(\sim 1/R^2\) representa el campo ligado al movimiento de la carga. Su intensidad depende de la velocidad instantánea retardada y de la distorsión angular introducida por el movimiento. No implica, por sí solo, radiación.
+	
+	\item El término \(\sim 1/R\) aparece sólo si \(\dot{\beta}\neq 0\), es decir, si la carga acelera. Esta contribución es transversal, domina a grandes distancias y está asociada a la radiación electromagnética.
+\end{itemize}
+Estas expresiones para los campos son la aplicación de los ecuaciones de Jefimenko a una carga puntual.
+
+\subsubsection{Límite estático}
+Si la partícula está en reposo, es decir, \(\n{v} = 0\), entonces \(\beta = 0, \kappa = 1\), y las ecs. \ref{potElec_L-W}, \ref{potMagn_L-W} se reduces a
+\begin{align*}
+	\Phi(\rv,t) &= \ke[q] \frac{1}{R}\\
+	\n{A}(\rv,t) &= 0
+\end{align*}
+Recuperamos así el potencial de Coulomb.
+
+\subsubsection{Límite no relativista}
+Para velocidades pequeñas, \(|\beta| \ll 1 \), el factor \(\kappa^{-1}\) puede expandirse como
+\begin{equation*}
+	\frac{1}{1 - \Rhat\cdot\n{\beta}} \approx 1 + \Rhat\cdot\beta + \mathcal{O}(\beta^2)
+\end{equation*}
+Entonces los potenciales retardados toman la forma aproximada
+\begin{align*}
+	\Phi(\rv,t) &\approx \ke[q] \frac{1}{R}\\
+	\n{A}(\rv,t) &\approx \ku[q] \frac{\n{v}_{\mathrm{ret}}}{R	}
+\end{align*}
+
+\subsection{Trabajo mecánico del campo}
+La fuerza de Lorentz sobre una carga puntual es
+\begin{equation*}
+	\n{F} = q \left(\n{E} + \n{v}\times\n{B}\right)
+\end{equation*}
+La potencia transferida a la partícula es
+\begin{equation*}
+	P = \n{F}\cdot\n{v} = q\n{v}\cdot\n{E}
+\end{equation*}
+Por tanto, sólo el campo eléctrico realiza trabajo. El campo magnético puede cambiar la dirección del movimiento, pero no cambia la energía cinética instantáneamente.
+
+Para una distribución continua, la corriente local es \(\n{J} = \rho\n{v}\) y la potencia por unidad de volumen entregada a la materia es
+\begin{equation*}
+	\td{P}{V} = \rho \n{v}\cdot\n{E} = \n{J}\cdot\n{E}
+\end{equation*}
+Así, dentro de un volumen \(V\):
+\begin{equation}
+	P = \td{W}{t} = \int_{V} \n{J}\cdot\n{E} \, d^3r
+\end{equation}
+Podemos usar las leyes de Ampere y Faraday para reescribir \(\n{J}\cdot\n{E}\) como
+\begin{equation}
+	\n{J}\cdot\n{E} = -\pd{}{t} \left(\frac{\eo}{2} E^2 + \frac{1}{2\uo}B^2\right) - \di\left(\frac{1}{\uo} \n{E}\times\n{B}\right)
+\end{equation}
+
+\subsection{Teorema de Poynting}
+
+
+
+
 
 
 
