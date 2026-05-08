@@ -40,9 +40,17 @@
 \newcommand{\phat}{\hat{\mathbf{\varphi}}}
 \newcommand{\rhhat}{\hat{\mathbf{\rho}}}
 \newcommand{\nhat}{\hat{\mathbf{n}}}
+\newcommand{\Rhat}{\hat{\mathbf{R}}}
 \newcommand{\eo}{\epsilon_{0}}
 \newcommand{\uo}{\mu_{0}}
-\newcommand{\ke}{\frac{1}{4\pi\eo}}
+\NewDocumentCommand{\ke}{ O{1}}{
+	\frac{#1}{4\pi\eo}
+}
+\NewDocumentCommand{\ku}{ O{}}{
+	\frac{\uo #1}{4\pi}
+}
+%\newcommand{\ke}{\frac{1}{4\pi\eo}}
+%\newcommand{\ku}{\frac{\uo}{4\pi}}
 \newcommand{\rdif}{\rv - \rv'}
 \newcommand{\pd}[2]{\dfrac{\partial #1}{\partial #2}}
 \newcommand{\lpd}[2]{\partial #1/\partial #2}
@@ -1687,6 +1695,156 @@ donde
 \begin{equation}
 	\ro\n{J}_{\ell} = 0, ~~~~~~~ \di\n{J}_{t} = 0
 \end{equation}
+Usando el gauge de Coulomb, y separando la contribución longitudinal, se obtiene que el potencial vectorial queda gobernado únicamente por la parte transversal de la corriente:
+\begin{equation}
+	\la\n{A} - \frac{1}{c^2}\pd{^2\n{A}}{t^2} = -\uo\n{J}_{t}
+\end{equation}
+
+La separación de la corriente puede hacerse explícita usando la \textbf{descomposición de Helmholtz}. Dado un campo vectorial suficientemente regular y localizado, una forma útil para la corriente longitudinal es:
+\begin{equation}
+	\n{J}_{\ell} = \gr\left[\frac{1}{4\pi} \int d^3r' \frac{\partial_{t} \rho(\rv',t)}{|\rdif|}\right]
+\end{equation}
+La parte transversal se define entonces por
+\begin{equation}
+	\n{J}_{t} = \n{J} - \n{J}_{\ell}, ~~~~~~~ \di\n{J}_{t} = 0
+\end{equation}
+Comparando la expresión de \(\n{J}_{\ell}\) con la solución del potencial escalar, obtenemos que
+\begin{equation}
+	\n{J}_{\ell} = \eo\gr\pd{\Phi}{t}
+\end{equation}
+
+\subsection{Ecuación de onda y función de Green}
+En electrostática uno puede pensar el potencial como una suma instantánea de contribuciones provenientes de toda la distribución de carga.
+En electrodinámica no se puede hacer eso, porque no existen acciones a distancia instantáneas.
+La función de Green retardada resuelve exactamente este problema físico: especifica cómo responde el vacío a una perturbación puntual localizada en espacio y tiempo.
+
+Consideremos la ecuación escalar inhomogénea (ejem ejem, ecs. \ref{EcPotElectricoLorenz}, \ref{EcPotMagneticoLorenz})
+\begin{equation}
+	\left(\la - \frac{1}{c^2} \pd{^2}{t^2}\right)\, \psi(\rv,t) = -4 \pi f(\rv, t) \label{EcPsi}
+\end{equation}
+La función de Green asociada se define como la solución de
+\begin{equation}
+		\left(\la - \frac{1}{c^2} \pd{^2}{t^2}\right)\, G(\rv,t; \, \rv', t') = -4\pi \, \delta^{(3)}(\rdif)\delta(t - t')
+\end{equation}
+Si conocemos una función de Green apropiada, la solución formal de la ec. \ref{EcPsi} es
+\begin{equation}
+	\psi(\rv,t) = \psi_{\mathrm{hom}}(\rv,t) + \int d^3 r' \int dt'\, G(\rv,t; \, \rv', t') f(\rv', t') \label{psiGreen}
+\end{equation}
+La parte homogénea depende de las condiciones iniciales y de borde; la segunda parte codifica la respuesta lineal a la fuente. En el vacío y sin fronteras materiales, el problema es homogéneo e isótropo. Por ello la función de Green sólo puede depender de las diferencias:
+\begin{equation}
+	\n{R} = \rdif, ~~~~~~~ \tau = t - t'
+\end{equation}
+por lo que
+\begin{equation}
+	G(\rv,t; \, \rv', t') = G(\n{R}, \tau)
+\end{equation}
+y la ecuación para la función de Green se reduce a
+\begin{equation}
+	\left(\la_{\n{R}} - \frac{1}{c^2} \pd{^2}{\tau^2}\right)\, G(\n{R}, \tau) = -4\pi \, \delta^{(3)}(\n{R})\delta(\tau) \label{G_RTau}
+\end{equation}
+
+\subsubsection{Transformada de Fourier temporal}
+Definimos
+\begin{equation}
+	G(\n{R}, \tau) = \frac{1}{2\pi} \int_{-\infty}^{\infty} d\omega\, e^{-i\omega\tau} g_{\omega}(\n{R}) \label{GreenFourier}
+\end{equation}
+lo cual transforma la ec. \ref{G_RTau} en la \textbf{ecuación de Green de Helmholtz}:
+\begin{equation*}
+	\left(\la_{\n{R}} + k^2\right) g_{\omega}(\n{R}) = -4\pi \delta^{(3)}(\n{R}), ~~~~~~~ k \equiv \frac{\omega}{c}
+\end{equation*}
+
+Para \(R \neq 0\), la ecuación homogénea es
+\begin{equation*}
+	\frac{1}{R^2} \td{}{R^2}\left(R^2 \td{g_{\omega}}{R}\right) + k^2 g_{\omega} = 0
+\end{equation*}
+con solución general
+\begin{equation}
+	g_{\omega}(\n{R}) = \frac{A e^{ikR} + B e^{-ikR}}{R}
+\end{equation}
+donde \(A + B = 1\).
+
+\subsubsection{Funciones de Green retardada y avanzada}
+La elección física más importante en electrodinámica clásica es la solución saliente u \textit{outgoing}, lo cual, en el dominio de frecuencias, corresponde a escoger
+\begin{equation}
+	g_{\omega}^{(+)} (R) = \frac{e^{ikR}}{R} \label{g+}
+\end{equation}
+que representa una onda esférica que se propaga hacia afuera. La solución entrante o \textit{incoming} es
+\begin{equation}
+	g_{\omega}^{(-)} (R) = \frac{e^{-ikR}}{R} \label{g-}
+\end{equation}
+
+Reemplazando las ecs. \ref{g+} y \ref{g-} en la expresión \ref{GreenFourier}
+\begin{align}
+	G^{(+)} &= \frac{1}{R} \delta\left(\tau - \frac{R}{c}\right) \label{GreenRet}\\
+	G^{(-)} &= \frac{1}{R} \delta\left(\tau + \frac{R}{c}\right) \label{GreenAdv}
+\end{align}
+
+\subsection{Potenciales retardados para fuentes continuas}
+Aplicando la expresión \ref{psiGreen} a las ecuaciones de los potenciales \ref{EcPotElectricoLorenz} y \ref{EcPotMagneticoLorenz} con la función de Green retardada de la ec. \ref{GreenRet}, tenemos:
+\begin{align*}
+	\Phi(\rv,t)  = \ke &\int d^3r' \int dt' \, \frac{1}{|\rdif|} \delta\left(t - t' - \frac{|\rdif|}{c}\right) \rho(\rv',t)\\
+	\n{A}(\rv,t) = \ku &\int d^3r' \int dt' \, \frac{1}{|\rdif|} \delta\left(t - t' - \frac{|\rdif|}{c}\right) \n{J}(\rv',t)
+\end{align*}
+La integración sobre \(t'\) es inmediata debido a la delta de Dirac, y conduce a las \textbf{soluciones retardadas estándar}:
+\begin{align}
+	\Phi(\rv,t)  &= \ke \int d^3r' \, \frac{1}{R} \rho (\rv',t_{\mathrm{ret}}) \label{potElec_ret}\\
+	\n{A}(\rv,t) &= \ku \int d^3r' \, \frac{1}{R} \n{J}(\rv',t_{\mathrm{ret}}) \label{potMagn_ret}
+\end{align}
+donde
+\begin{equation}
+	R = |\rdif|, ~~~~~~~ t_{\mathrm{ret}} = t - \frac{|\rdif|}{c}
+\end{equation}
+
+\subsection{Campos retardados y ecuaciones de Jefimenko}
+Si usamos potenciales retardados para obtener los campos a partir de las ecs. \ref{B_Pot} y \ref{E_Pot} llegaremos al par de ecuaciones de Jefimenko:
+\begin{align}
+	\n{E}(\rv,t) &= \ke \int d^3r' \frac{1}{R^2}\left[\left(\rho(\rv',t_{\mathrm{ret}}) + \frac{R}{c} \pd{}{t'}\rho(\rv',t_{\mathrm{ret}})\right)\Rhat - \frac{1}{c}\pd{}{t'}\n{J}(\rv',t_{\mathrm{ret}}) \right] \label{E_Jefimenko}\\
+	\n{B}(\rv,t) &= \ku \int d^3r' \frac{1}{R^2}\left[\n{J}(\rv',t_{\mathrm{ret}}) + \frac{R}{c}\pd{}{t'}\n{J}(\rv',t_{\mathrm{ret}})\right]\times\Rhat \label{B_Jefimenko}
+\end{align}
+donde
+\begin{equation*}
+	\Rhat = \frac{\rdif}{|\rdif|}, ~~~~~~~ R = |\rdif|, ~~~~~~~ t' = t_{\mathrm{ret}} =  t - \frac{|\rdif|}{c}
+\end{equation*}
+En el caso del campo eléctrico, se puede ver que hay 3 contribuciones:
+\begin{itemize}
+	\item Término de Coulomb \((\sim \rho /R^2)\)
+	\item Término de corrección por variación temporal de la densidad de carga \((\sim \partial_{t'}\rho /cR)\)
+	\item Término ligado a la variación temporal de la corriente \((\sim \partial_{t'}\n{J} /c^2R)\)
+\end{itemize}
+Para el campo magnético tenemos 2 contribuciones:
+\begin{itemize}
+	\item Término de Biot-Savart \((\sim \n{J}/R^2)\)
+	\item Término de corrección retardada \((\sim \partial_{t'}\n{J}/cR)\)
+\end{itemize}
+Los términos \(\sim 1/R^2\) dominan cerca de la fuente. Los términos \(\sim 1/R\) sobreviven lejos de la fuente y transportan energía a grandes distancias.
+
+\subsection{Caso de una carga puntual en movimiento}
+Para una partícula de carga \(q\) que sigue la trayectoria \(\rv_{0}(t')\), escribimos
+\begin{align}
+	\rho( \rv', t') &= q\, \delta^{(3)}(\rv' - \rv_{0}(t'))\\
+	\n{J}(\rv', t') &= q \n{v}(t')\, \delta^{(3)}(\rv' - \rv_{0}(t'))
+\end{align}
+Sustituyendo estas expresiones en las ecs. \ref{potElec_ret} y \ref{potMagn_ret}:
+\begin{align}
+	\Phi( \rv, t) &= \ke[q] \int dt'\, \frac{1}{R(t')} \delta\left(t - t' - \frac{R(t')}{c} \right)\\
+	\n{A}(\rv, t) &= \ku[q] \int dt'\, \frac{\n{v}(t')}{R(t')} \delta\left(t - t' - \frac{R(t')}{c} \right)
+\end{align}
+donde
+\begin{equation*}
+	\n{R}(t') = \rv-\rv_{0}(t'), ~~~~~~~ R(t') = |\n{R}(t')|, ~~~~~~~ \Rhat(t') = \frac{\n{R}(t')}{R(t')}, ~~~~~~~ t' = t_{\mathrm{ret}} = t - \frac{R(t')}{c}
+\end{equation*}
+
+\subsection{Potenciales de Liènard-Wiechert}
+Si usamos la identidad general
+\begin{equation}
+	\delta\left(g(t')\right) = \sum_{i} \frac{\delta\left(t' - t'_{i}\right)}{|g'(t_{i})|}
+\end{equation}
+
+
+
+
+
+
 
 
 
