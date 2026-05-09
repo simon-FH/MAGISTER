@@ -35,6 +35,9 @@
 \newcommand{\xhat}{\hat{\xv}}
 \newcommand{\yhat}{\hat{\yv}}
 \newcommand{\zhat}{\hat{\zv}}
+\newcommand{\ihat}{\hat{\mathbf{i}}}
+\newcommand{\jhat}{\hat{\mathbf{j}}}
+\newcommand{\khat}{\hat{\mathbf{k}}}
 \newcommand{\rhat}{\hat{\rv}}
 \newcommand{\that}{\hat{\mathbf{\theta}}}
 \newcommand{\phat}{\hat{\mathbf{\varphi}}}
@@ -1617,7 +1620,7 @@ Introduciendo los campos
 \end{equation}
 donde \(\n{P}\) y \(\n{M}\) son la polarización y magnetización, respectivamente. En medios lineales, homogéneos e isótropos se suele usar
 \begin{equation}
-	\n{D} = \epsilon\n{E}, ~~~~~~~ \n{H} = \frac{1}{\mu}\n{B}
+	\n{D} = \epsilon\n{E}, ~~~~~~~ \n{H} = \frac{1}{\mu}\n{B} \label{D_H}
 \end{equation}
 En términos de \(\n{D}\) y \(\n{H}\), las ecuaciones diferenciales de Maxwell toman la forma
 \begin{align}
@@ -1909,18 +1912,276 @@ Por tanto, sólo el campo eléctrico realiza trabajo. El campo magnético puede 
 
 Para una distribución continua, la corriente local es \(\n{J} = \rho\n{v}\) y la potencia por unidad de volumen entregada a la materia es
 \begin{equation*}
-	\td{P}{V} = \rho \n{v}\cdot\n{E} = \n{J}\cdot\n{E}
+	\td{P_{\mathrm{mat}}}{V} = \rho \n{v}\cdot\n{E} = \n{J}\cdot\n{E}
 \end{equation*}
 Así, dentro de un volumen \(V\):
 \begin{equation}
-	P = \td{W}{t} = \int_{V} \n{J}\cdot\n{E} \, d^3r
+	P_{\mathrm{mat}} = \td{W_{\mathrm{mat}}}{t} = \int_{V} \n{J}\cdot\n{E} \, d^3r
 \end{equation}
 Podemos usar las leyes de Ampere y Faraday para reescribir \(\n{J}\cdot\n{E}\) como
 \begin{equation}
-	\n{J}\cdot\n{E} = -\pd{}{t} \left(\frac{\eo}{2} E^2 + \frac{1}{2\uo}B^2\right) - \di\left(\frac{1}{\uo} \n{E}\times\n{B}\right)
+	\n{J}\cdot\n{E} = -\pd{}{t} \left(\frac{\eo}{2} E^2 + \frac{1}{2\uo}B^2\right) - \di\left(\frac{1}{\uo} \n{E}\times\n{B}\right) \label{JE}
 \end{equation}
 
 \subsection{Teorema de Poynting}
+Definimos la densidad de energía electromagnética en el vacío como
+\begin{equation}
+	u = \frac{\eo}{2} E^2 + \frac{1}{2\uo}B^2
+\end{equation}
+y el vector de Poynting como
+\begin{equation}
+	\n{S} = \frac{1}{\uo} \n{E}\times\n{B}
+\end{equation}
+Entonces la ec. \ref{JE}:
+\begin{equation}
+	\pd{u}{t} + \di\n{S} = -\n{J}\cdot\n{E}
+\end{equation}
+Ésta es la forma local del \textbf{teorema de Poynting}.
+
+El término \(\partial_{t} u\) mide el cambio local de energía almacenada en el campo. El término \(\di\n{S}\) mide el flujo neto de energía electromagnética que sale del volumen. El lado derecho, \(-\n{J}\cdot\n{E}\), mide la energía que el campo pierde al realizar trabajo mecánico sobre las cargas.
+
+Si \(\n{J}\cdot\n{E} > 0\), el campo entrega energía a la materia. Entonces la energía del campo en esa
+región disminuye o entra energía desde el exterior a través de \(\n{S}\).
+
+Integramos sobre un volumen fijo \(V\) y usamos el teorema de Gauss:
+\begin{equation*}
+	\td{}{t} \int_{V} u \, d^3r + \oint_{\partial V} \n{S}\cdot\nhat \, da = - \int_{V}\n{J}\cdot\n{E} \, d^3 r
+\end{equation*}
+\begin{equation}
+	\Rightarrow \td{}{t} \left(W_{\mathrm{field}} + W_{\mathrm{mat}}\right) = - \oint_{\partial V} \n{S}\cdot\nhat \, da
+\end{equation}
+donde
+\begin{equation}
+	W_{\mathrm{field}} = \int_{V} u \, d^3r, ~~~~~~~ \td{}{t} W_{\mathrm{mat}} = \int_{V}\n{J}\cdot\n{E} \, d^3 r
+\end{equation}
+Si \(\n{S}\cdot\nhat > 0\) sobre la superficie, energía electromagnética sale del volumen. Entonces la energía total contenida dentro de \(V\) disminuye.
+
+\subsubsection{Forma macroscópica en medios lineales}
+En medios lineales, homogéneos y sin dispersión, conviene usar las ecs. \ref{D_H}:
+\begin{equation*}
+	\n{D} = \epsilon\n{E}, ~~~~~~~ \n{H} = \frac{1}{\mu}\n{B}
+\end{equation*}
+La densidad de energía y el vector de Poynting se escriben como:
+\begin{equation}
+	u = \frac{1}{2}\left(\n{E}\cdot\n{D} + \n{B}\cdot\n{H}\right), ~~~~~~~ \n{S} = \n{E}\times\n{H}
+\end{equation}
+
+\subsubsection{Lectura física del vector de Poynting}
+El vector de Poynting tiene unidades de potencia por unidad de área: \([\n{S}] = \mathrm{W\cdot m}^{-2}\).
+
+Su dirección indica hacia dónde fluye la energía electromagnética. En el vacío, \(\n{S} = \frac{1}{\uo} \n{E}\times\n{B}\), por tanto, la energía se transporta perpendicularmente a \(\n{E}\) y \(\n{B}\).
+
+\subsubsection{Onda plana electromagnética}
+Para una onda plana que se propaga en dirección \(\khat\):
+\begin{equation*}
+	\n{B} = \frac{1}{c} \khat\times\n{E}, ~~~~~~~ E = c B
+\end{equation*}
+Entonces, como \(1/(\uo c) = \eo c\)
+\begin{equation*}
+	\n{S} = \eo c E^2 \khat
+\end{equation*}
+La densidad de energía de la onda es
+\begin{equation*}
+	u = \eo E^2
+\end{equation*}
+Por lo tanto,
+\begin{equation}
+	\n{S} = u c \khat \label{ondaPlana_Poynting}
+\end{equation}
+
+\subsection{Conservación de momento lineal}
+La densidad de fuerza de Lorentz sobre la materia es
+\begin{equation}
+	\n{f} = \rho\n{E} + \n{J}\times\n{B}
+\end{equation}
+Usando Coulomb y Faraday llegamos a
+\begin{equation}
+	\n{f} + \pd{}{t} \left(\eo\n{E}\times\n{B}\right) = \eo\left[\left(\di\n{E}\right)\n{E} - \n{E}\times\left(\ro\n{E}\right)\right] + \frac{1}{\uo} \left(\ro\n{B}\right)\times\n{B}
+\end{equation}
+
+\subsubsection{Densidad de momento del campo}
+Definimos la densidad de momento electromagnético como
+\begin{equation}
+	\n{g} \equiv \eo \n{E}\times\n{B} = \frac{1}{c^2} \n{S}
+\end{equation}
+Para una onda plana, de la ec. \ref{ondaPlana_Poynting} se obtiene
+\begin{equation}
+	\n{g} = \frac{u}{c} \khat
+\end{equation}
+
+\subsection{Tensor de esfuerzos de Maxwell}
+El tensor de esfuerzos de Maxwell en el vacío es
+\begin{equation}
+	T_{\alpha\beta} = \eo\left(E_{\alpha} E_{\beta} - \frac{1}{2}E^2 \delta_{\alpha\beta}\right) + \frac{1}{\uo} \left(B_{\alpha}B_{\beta} - \frac{1}{2}B^2\delta_{\alpha\beta} \right)
+\end{equation}
+con esta definición,
+\begin{equation}
+	\pd{\n{g}}{t} + \n{f} = \di\n{T}
+\end{equation}
+o, en componentes:
+\begin{equation}
+	\partial_{t} g_{\alpha} + f_{\alpha} = \partial_{\beta} T_{\alpha\beta}
+\end{equation}
+\(T_{\alpha\beta}\) es el flujo de la componente $\alpha$ del momento electromagnético a través de una superficie normal a la dirección $\beta$.
+
+En forma integral:
+\begin{equation*}
+	\td{}{t} \int_{V}\n{g}\, d^3 r + \td{\n{P}_{\mathrm{mat}}}{t} = \oint_{\partial V}\n{T}\cdot\nhat\, da
+\end{equation*}
+o, equivalentemente
+\begin{equation}
+	\td{}{t} \left(\n{P}_{\mathrm{field}} + \n{P}_{\mathrm{mat}}\right) = \oint_{\partial V}\n{T}\cdot\nhat\, da
+\end{equation}
+donde
+\begin{equation*}
+	\n{P}_{\mathrm{field}} = \int_{V}\n{g}\, d^3 r
+\end{equation*}
+Si se toma \(V\) como todo el espacio y los campos decaen suficientemente rápido, la integral superficial desaparece y el momento total materia más campo se conserva.
+
+La presión de una onda plana que incide normalmente sobre una superficie perfectamente absorbente es
+\begin{equation}
+	p_{\mathrm{abs}} = \left< u \right> = \frac{1}{c} \left< S \right>
+\end{equation}
+Para un reflector perfecto, el momento se invierte y la presión es el doble:
+\begin{equation}
+	p_{\mathrm{refl}} = \frac{2}{c} \left< S \right>
+\end{equation}
+
+\subsubsection{Momento angular electromagnético}
+Si el campo transporta momento lineal, también puede transportar momento angular. La densidad de momento angular del campo es
+\begin{equation}
+	\n{l}_{\mathrm{field}} = \n{r}\times\n{g} = \eo\n{r}\times\left(\n{E}\times\n{B}\right)
+\end{equation}
+El momento angular total del campo es
+\begin{equation}
+	\n{L}_{\mathrm{field}} = \int \n{r}\times\n{g} \, d^3 r
+\end{equation}
+
+\subsubsection{Conservación de momento angular}
+A partir de la conservación de momento lineal y de la simetría del tensor de Maxwell, se obtiene una ley de conservación para el momento angular total
+\begin{equation}
+	T_{\alpha\beta} = T_{\beta\alpha}
+\end{equation}
+
+\subsubsection{Ejemplo 1: Presión electrostática sobre un conductor}
+En la superficie de un conductor en equilibrio electrostático, el campo tangencial se anula y el campo normal satisface
+\begin{equation*}
+	E_{n} = \frac{\sigma}{\eo}
+\end{equation*}
+La presión electrostática local puede obtenerse del tensor de esfuerzos. Justo afuera del conductor,
+\begin{equation*}
+	n{T} = \eo\left(\n{EE} - \frac{1}{2}E^2 \n{I}\right)
+\end{equation*}
+donde \(\n{EE}\) denota el tensor con componentes \(E_{\alpha} E_{\beta}\). Si \(\n{E} = E_{n} \nhat\), la fuerza por unidad de área es
+\begin{equation*}
+	p = \frac{1}{2} \eo E_{n}^{2} = \frac{\sigma^2}{2\eo}
+\end{equation*}
+
+\subsubsection{Ejemplo 2: Presión magnética}
+De manera análoga, un campo magnético tangencial a una superficie puede producir una presión magnética de orden
+\begin{equation*}
+	p_{B} = \frac{1}{2\uo}B^2
+\end{equation*}
+
+\subsubsection{Balance de energía y momento en lenguaje compacto}
+La estructura obtenida puede resumirse como dos ecuaciones locales:
+\begin{align*}
+	\pd{u}{t} + \di\n{S} &= -\n{J}\cdot\n{E}\\
+	\pd{\n{g}}{t} + \n{f} &= \di\n{T}
+\end{align*}
+
+Estas ecuaciones dicen que el campo intercambia energía y momento con la materia, pero que el total se conserva si se incluyen los flujos correspondientes
+
+\subsection{Simetrías y transformaciones vectoriales}
+
+\subsubsection{Inversiones}
+Una inversión espacial (\(\mathcal{P}\)) es  una reflexión en todas las componentes espaciales:
+\begin{equation*}
+	(x,y,z) \xrightarrow{\mathcal{P}} (-x,-y,-z)
+\end{equation*}
+Un \textbf{vector polar}, como la posición \(\n{r}\) o el momento \(\n{p}\), es aquel que cambia de signo bajo una inversión:
+\begin{equation*}
+	\n{r} \xrightarrow{\mathcal{P}} -\n{r}
+\end{equation*}
+Un \textbf{vector axial}, como el momento angular \(\n{L} = \n{r}\times\n{p}\), no cambia de signo bajo inversión espacial, porque es el producto cruz de dos vectores polares:
+\begin{equation*}
+	\n{L} \xrightarrow{\mathcal{P}} \n{L}
+\end{equation*}
+La fuerza eléctrica es polar, por lo tanto el campo eléctrico también debe serlo por \(\n{F} = q \n{E}\), por lo que
+\begin{equation}
+	\n{E}(\rv,t) \xrightarrow{\mathcal{P}} -\n{E}(-\rv,t)
+\end{equation}
+El campo magnético, en cambio, es axial, esto se ve desde la parte magnética de la fuerza de Lorentz: \(\n{F} = q \n{v}\times\n{B}\). Por lo que
+\begin{equation}
+	\n{B}(\rv,t) \xrightarrow{\mathcal{P}} \n{B}(-\rv,t)
+\end{equation}
+El potencial escalar es un escalar bajo paridad, mientras que \(\n{A}\) es un vector polar:
+\begin{equation}
+	\Phi(\rv,t) \xrightarrow{\mathcal{P}} \Phi(-\rv,t), ~~~~~~~ \n{A}(\rv,t) \xrightarrow{\mathcal{P}} -\n{A}(-\rv,t)
+\end{equation}
+
+\subsubsection{Rotaciones}
+Bajo una rotación propia \(R \in SO(3)\):
+\begin{equation*}
+	\n{r} \xrightarrow{\mathcal{R}} R\n{r}
+\end{equation*}
+Tanto \(\n{E}\) como \(\n{B}\) transforman como vectores ordinarios:
+\begin{equation}
+	\n{E}(\rv,t) \xrightarrow{\mathcal{R}} R\n{E}(\rv,t), ~~~~~~~ \n{B}(\rv,t) \xrightarrow{\mathcal{R}} R\n{B}(\rv,t)
+\end{equation}
+Las ecuaciones de Maxwell son \textbf{invariantes bajo rotaciones} porque los operadores \(\di\) y \(\ro\) están construidos de manera geométrica. Esto garantiza que las ecuaciones no privilegian ninguna dirección del espacio. Las direcciones sólo aparecen a través de las fuentes o de condiciones de borde.
+
+\subsubsection{Inversión temporal}
+Bajo inversión temporal \(\mathcal{T}\),
+\begin{equation*}
+	t \xrightarrow{\mathcal{T}} -t, ~~~~~~~ \rv \xrightarrow{\mathcal{T}} \rv
+\end{equation*}
+Las velocidades cambian de signo, por lo que
+\begin{equation}
+	\n{J}(\rv,t) \xrightarrow{\mathcal{T}} -\n{J}(\rv,-t), ~~~~~~~ \rho(\rv,t) \xrightarrow{\mathcal{T}} \rho(\rv,-t)
+\end{equation}
+En el caso de los campos:
+\begin{equation}
+	\n{E}(\rv,t) \xrightarrow{\mathcal{T}} \n{E}(\rv,-t), ~~~~~~~ \n{B}(\rv,t) \xrightarrow{\mathcal{T}} -\n{B}(\rv,-t)
+\end{equation}
+
+\subsubsection{Transformación de energía, momento y flujo}
+A partir de las reglas anteriores:
+\begin{equation*}
+	u = \frac{\eo}{2} E^2 + \frac{1}{2\uo}B^2
+\end{equation*}
+es par bajo paridad y bajo inversión temporal. En cambio,
+\begin{equation*}
+	\n{S} = \frac{1}{\uo} \n{E}\times\n{B}
+\end{equation*}
+es un vector polar bajo paridad y cambia de signo bajo inversión temporal. La densidad de momento
+\begin{equation*}
+	\n{g} = \frac{1}{c^2} \n{S}
+\end{equation*}
+tiene las mismas propiedades de transformación que el momento mecánico: es polar y cambia de signo bajo inversión temporal.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
