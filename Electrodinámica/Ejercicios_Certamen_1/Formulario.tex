@@ -79,12 +79,30 @@
 \begin{equation*}
 	(\mathbf{E}_2 - \mathbf{E}_1)\cdot\hat{\mathbf{n}} = \frac{\sigma}{\eo}, ~~~~~ \hat{\mathbf{n}}\times(\mathbf{E}_2 - \mathbf{E}_1) = 0
 \end{equation*}
+\begin{equation*}
+	U = \frac{1}{2}\sum_{i}q_i\Phi(\rv_i), ~~~~~ U = \frac{1}{2}\int\rho(\rv)\Phi(\rv)d^3r
+\end{equation*}
 \vspace{-2mm}\hrule\vspace{1mm}
 \begin{equation*}
-	\Phi(\rv) = \frac{1}{4\pi\eo}\int_{V}G\rho d^3r' + \frac{1}{4\pi}\oint_{S}\left( G\frac{\partial\Phi}{\partial n'} - \Phi\frac{\partial G}{\partial n'} \right)dS'
+	\n{z} = \phi\gr\varphi
 \end{equation*}
 \begin{equation*}
-	G_D(\rv,\rv') = 0, ~~~~~\rv'\in S
+	\int_{V}(\phi\la\varphi + \gr\phi\cdot\gr\varphi)dV = \oint_{S}\phi\frac{\partial\varphi}{\partial n}dS
+\end{equation*}
+\begin{equation*}
+	\int_{V}(\phi\la\varphi + \varphi\la\phi)dV = \oint_{S}\left(\phi\frac{\partial\varphi}{\partial n} - \varphi\frac{\partial\phi}{\partial n}\right)dS
+\end{equation*}
+\begin{equation*}
+	\Phi(\rv) = \frac{1}{4\pi\eo}\int_{V}G\rho\, d^3r' + \frac{1}{4\pi}\oint_{S}\left( G\frac{\partial\Phi}{\partial n'} - \Phi\frac{\partial G}{\partial n'} \right)dS'
+\end{equation*}
+\begin{equation*}
+	\nabla'^2 G(\rv,\rv') = -4 \pi \delta(\rdif)
+\end{equation*}
+\begin{equation*}
+	G(\rv,\rv') = \frac{1}{|\rdif|} + F(\rv,\rv'), ~~~~~ \nabla'^2 F(\rv,\rv') = 0
+\end{equation*}
+\begin{equation*}
+	G_{D}(\rv,\rv') = 0, ~~~~~\rv'\in S
 \end{equation*}
 \begin{equation*}
 	\Rightarrow\Phi(\rv) = \frac{1}{4\pi\eo}\int_{V}G_D\rho d^3r' - \frac{1}{4\pi}\oint_{S}\Phi\frac{\partial G_D}{\partial n'} dS'
@@ -110,6 +128,9 @@
 	\oint Y^{*}_{\ell m}(\Omega) \, Y_{\ell m}(\Omega) \, d\Omega = \delta_{\ell \ell'} \delta_{mm'}\label{YY*_ort}
 \end{equation*}
 \vspace{-2mm}\hrule\vspace{1mm}
+\begin{equation*}
+	\n{B}(\rv) = \frac{\uo}{4 \pi} \int d^3 r' \n{J}(\rv') \times \frac{\rdif}{|\rdif|^3}, \n{B}(\rv) = \frac{\uo I}{4 \pi} \oint_{C} d\n{l}' \times \frac{\rdif}{|\rdif|^3}
+\end{equation*}
 \begin{equation*}
 	\nhat \cdot  (\n{B}_{1} - \n{B}_{2}) = 0, ~~~~~ \nhat \times (\n{B}_{1} - \n{B}_{2}) = \uo \n{K}
 \end{equation*}

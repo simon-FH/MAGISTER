@@ -66,5 +66,125 @@
 
 \begin{document}
 \maketitle
+\section{Coulomb, Gauss, Poisson-Laplace}
+\begin{enumerate}
+	\item Use la ley de Gauss para encontrar el campo dentro y fuera de una cáscara esférica de radio \(R\) con densidad superficial uniforme \(\sigma\).
+	
+	\textbf{R:} 
+	\begin{equation*}
+		\rho = \sigma\cdot\delta(r - R)
+	\end{equation*}
+	Asumiendo \(\n{E} = E(r)\rhat\), dentro de la esfera:
+	\begin{align*}
+		\oint_{S}\n{E}\cdot d\n{a} &= \dfrac{1}{\eo}\int_{0}\rho\, d^3 r\\
+		4 \pi r^2 \cdot E(r) &= \dfrac{1}{\eo}\cdot 4\pi \int_{0}^{r<R}\sigma r^2 \delta(r - R)\, d r\\
+		4 \pi r^2 \cdot E(r) &= 0\\
+		\Rightarrow E(r) &= 0
+	\end{align*}
+	Fuera de la esfera:
+	\begin{align*}
+		\oint_{S}\n{E}\cdot d\n{a} &= \dfrac{1}{\eo}\int_{0}\rho\, d^3 r\\
+		4 \pi r^2 \cdot E(r) &= \dfrac{1}{\eo}\cdot 4\pi \int_{0}^{r>R}\sigma r^2 \delta(r - R)\, d r\\
+		4 \pi r^2 \cdot E(r) &= \dfrac{1}{\eo}\cdot 4\pi R^2 \cdot \sigma\\
+		\Rightarrow E(r) &= \dfrac{1}{\eo} \dfrac{R^2}{r^2} \sigma
+	\end{align*}
+	
+	\item Considere un cilindro macizo infinito de radio \(R\) y densidad volumétrica uniforme \(\rho_{0}\). Determine el campo eléctrico para \(s < R\) y para \(s > R\).
+	
+	\textbf{R:} 
+	\begin{equation*}
+		\rho = \rho_{0}\cdot\Theta(R - s)
+	\end{equation*}
+	Asumiendo \(\n{E} = E(s)\hat{\mathbf{s}}\), dentro del cilindro:
+	\begin{align*}
+		\oint_{S}\n{E}\cdot d\n{a} &= \dfrac{1}{\eo}\int_{0}\rho\, d^3 r\\
+		2\pi s \cdot \ell \cdot E(s) &= \dfrac{1}{\eo}\cdot 2\pi \ell \int_{0}^{s<R}\rho_{0} s \, \Theta(R - s)\, ds\\
+		2\pi s \cdot \ell \cdot E(s) &= \dfrac{1}{\eo}\cdot 2\pi \ell \frac{s^2}{2} \cdot \rho_{0}\\
+		\Rightarrow E(s) &= \frac{1}{2 \eo} s \rho_{0}
+	\end{align*}
+	Fuera del cilindro:
+	\begin{align*}
+		\oint_{S}\n{E}\cdot d\n{a} &= \dfrac{1}{\eo}\int_{0}\rho\, d^3 r\\
+		2\pi s \cdot \ell \cdot E(s) &= \dfrac{1}{\eo}\cdot 2\pi \ell \int_{0}^{s>R}\rho_{0} s \, \Theta(R - s)\, ds\\
+		2\pi s \cdot \ell \cdot E(s) &= \dfrac{1}{\eo}\cdot 2\pi \ell \frac{R^2}{2} \cdot \rho_{0}\\
+		\Rightarrow E(s) &= \frac{1}{2 \eo}\frac{R^2}{s} \rho_{0}
+	\end{align*}
+	
+	\item Muestre que si \(\Phi\) satisface la ecuación de Laplace en un volumen libre de carga, entonces no puede tener un máximo local estricto en el interior a menos que sea constante.
+	
+	\textbf{R:} 
+	\begin{equation*}
+		\la\Phi = \pd{^2\Phi}{x^2} + \pd{^2\Phi}{y^2} + \pd{^2\Phi}{z^2} = 0
+	\end{equation*}
+	Para que exista un máximo dentro de la región tenemos que tener un punto de inflexión en cada coordenada, por lo que cada una de las segundas derivadas debe ser negativa. Como es imposible que las  3 sean negativas y al mismo tiempo igualen 0, esto no puede ocurrir.
+\end{enumerate}
+
+\section{Teorema y funciones de Green, método de imágenes}
+\begin{enumerate}
+	\item Aplique la primera identidad de Green a una función armónica \(u\) y demuestre de nuevo el 	teorema de unicidad para condiciones de Dirichlet.
+	
+	\textbf{R:} Función armónica \(\Leftrightarrow\) Satisface ecuación de Laplace.
+	\begin{equation*}
+		\la u = 0
+	\end{equation*}
+	\begin{align*}
+		\int_{V}(u\la u + \gr u\cdot\gr u)dV &= \oint_{S} u \frac{\partial u}{\partial n}dS\\
+		\int_{V}|\gr u|^2 \, dV &= \oint_{S} u \frac{\partial u}{\partial n}dS
+	\end{align*}
+	La condición de Dirichlet:
+	\begin{equation*}
+		u_{D}(\rv') = 0, ~~~~~ \rv'\in S
+	\end{equation*}
+	Por lo que
+	\begin{equation*}
+		\Rightarrow\int_{V}|\gr u_{D}|^2 \, dV = 0
+	\end{equation*}
+	Para que la integral de una cantidad \(|\gr u_{D}|^2 > 0\) en un volumen arbitrario sea igual a cero, necesariamente debe ocurrir que \(\gr u_{D} = 0\). Por lo que \(u_{D} = C = \mathrm{const.}\), pero \(u_{D}(\rv') = 0\), así que \(u_{D} = 0\). Solución única.
+
+	\item Verifique explícitamente que
+	\begin{equation*}
+		G_{D} (\rv, \rv') = \frac{1}{|\rdif|} - \frac{1}{|\rdif^*|}
+	\end{equation*}
+	se anula sobre el plano \(z = 0\) y satisface la ecuación de Green adecuada en el semiespacio \(z > 0\).
+	
+	\textbf{R:} Carga real \(\rv' = (x',y',z')\). Carga imagen \(\rv'^* = (x',y',-z')\). Tenemos que
+	\begin{align*}
+		G_{D} (\rv, \rv') &= \frac{1}{|\rdif|} - \frac{1}{|\rdif^*|}\\
+		&= \frac{1}{\sqrt{\Delta x^2 + \Delta y^2 + (z - z')^2}} - \frac{1}{\sqrt{\Delta x^2 + \Delta y^2 + (z + z')^2}}
+	\end{align*}
+	Reemplazando \(z = 0\):
+	\begin{align*}
+		G_{D} (\rv, \rv') &= \frac{1}{\sqrt{\Delta x^2 + \Delta y^2 + (- z')^2}} - \frac{1}{\sqrt{\Delta x^2 + \Delta y^2 + (z')^2}}\\
+		&= 0
+	\end{align*}
+	
+	Para que sea adecuada debe cumplir con
+	\begin{equation*}
+		\nabla'^2 G(\rv,\rv') = -4 \pi \delta(\rdif)
+	\end{equation*}
+	\begin{align*}
+		\nabla'^2 G_{D} (\rv, \rv') &= \nabla'^2 \frac{1}{|\rdif|} - \nabla'^2\frac{1}{|\rdif^*|}\\
+		&= -4 \pi \delta(\rdif) + 4 \pi \delta(\rdif^*)
+	\end{align*}
+	pero \(\delta(\rdif^*)\) siempre es 0 en \(z > 0\), por lo que:
+	\begin{equation*}
+		\nabla'^2 G_{D} (\rv, \rv') = -4 \pi \delta(\rdif)
+	\end{equation*}
+	
+	\item A partir del potencial de una carga frente a un plano conductor puesto a tierra, calcule la	energía potencial del sistema y compárela con la energía de interacción entre la carga real y su	imagen. Discuta por qué aparece un factor de 1/2 si el problema se formula como energía de	polarización del conductor.
+	
+	\textbf{R:} La energía potencial del sistema puede obtenerse desde:
+	\begin{align*}
+		\n{F} &= -\gr U\\
+		\Rightarrow U &= - \int_{\infty}^{a} \left[- \ke \frac{q^2}{(2a')^2}\right] da'\\
+		&= -\ke \frac{q^2}{4 a}
+	\end{align*}
+	
+	Mientras que la energía de interacción entre dos cargas \(q, -q\) fijas a una distancia \(2 a\) es
+	\begin{align*}
+		U &= - \int_{\infty}^{2a} \left[- \ke \frac{q^2}{r^2}\right] dr\\
+		&= -\ke \frac{q^2}{2 a}
+	\end{align*}
+\end{enumerate}
 
 \end{document}
