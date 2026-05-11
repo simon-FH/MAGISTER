@@ -71,6 +71,32 @@
 \maketitle
 
 \begin{equation*}
+	\gr\phi = \sum_{i=1}^{3}\ei\frac{1}{h_i}\frac{\partial\phi}{\partial u_i}
+\end{equation*}
+\begin{equation*}
+	\di\mathbf{F} = \frac{1}{h_1h_2h_3}\left(\sum_{i=1}^{3}\frac{\partial F_i}{\partial u_i}\right) 
+\end{equation*}
+\begin{equation*}
+	\ro\mathbf{F} = \frac{1}{h_1h_2h_3}\begin{vmatrix}
+		h_1\mathbf{e}_1 & h_2\mathbf{e}_2 & h_3\mathbf{e}_3\\
+		\partial/\partial u_1 & \partial/\partial u_2 & \partial/\partial u_3\\
+		h_1F_1 & h_2F_2 & h_3F_3
+	\end{vmatrix}
+\end{equation*}
+\begin{equation*}
+	\la\phi = \frac{1}{h_1h_2h_3}\left[\frac{\partial}{\partial u_i}\left(\frac{h_j h_k}{h_i}\frac{\partial\phi}{\partial u_i}\right) \right]
+\end{equation*}
+\begin{equation*}
+	h_x = 1,~~~~~ h_y = 1,~~~~~ h_z = 1
+\end{equation*}
+\begin{equation*}
+	h_\rho = 1,~~~~~ h_\varphi = \rho,~~~~~ h_z = 1
+\end{equation*}
+\begin{equation*}
+	h_r = 1,~~~~~ h_\theta = r,~~~~~ h_\varphi = r\sin\theta
+\end{equation*}
+\vspace{-2mm}\hrule\vspace{1mm}
+\begin{equation*}
 	\n{F} = \ke\frac{q_1q_2}{|\rv_1 - \rv_2|^3}(\rv_1 - \rv_2)
 \end{equation*}
 \begin{equation*}
@@ -84,7 +110,7 @@
 \end{equation*}
 \vspace{-2mm}\hrule\vspace{1mm}
 \begin{equation*}
-	\n{z} = \phi\gr\varphi
+	\n{x} = \phi\gr\varphi
 \end{equation*}
 \begin{equation*}
 	\int_{V}(\phi\la\varphi + \gr\phi\cdot\gr\varphi)dV = \oint_{S}\phi\frac{\partial\varphi}{\partial n}dS
@@ -96,7 +122,10 @@
 	\Phi(\rv) = \frac{1}{4\pi\eo}\int_{V}G\rho\, d^3r' + \frac{1}{4\pi}\oint_{S}\left( G\frac{\partial\Phi}{\partial n'} - \Phi\frac{\partial G}{\partial n'} \right)dS'
 \end{equation*}
 \begin{equation*}
-	\nabla'^2 G(\rv,\rv') = -4 \pi \delta(\rdif)
+	\left[z - \mathcal{L}(\rv)\right] G(\rv,\rv'; z) = -4 \pi \delta(\rdif)
+\end{equation*}
+\begin{equation*}
+	\nabla'^2 G(\rv,\rv') = -4 \pi \delta(\rdif), ~~~~~ z = 0, ~~~ \mathcal{L} = \nabla'^2
 \end{equation*}
 \begin{equation*}
 	G(\rv,\rv') = \frac{1}{|\rdif|} + F(\rv,\rv'), ~~~~~ \nabla'^2 F(\rv,\rv') = 0
@@ -133,6 +162,9 @@
 \end{equation*}
 \begin{equation*}
 	\nhat \cdot  (\n{B}_{1} - \n{B}_{2}) = 0, ~~~~~ \nhat \times (\n{B}_{1} - \n{B}_{2}) = \uo \n{K}
+\end{equation*}
+\begin{equation*}
+	\n{A}(\rv) = \frac{\uo}{4 \pi} \int d^3 r' \frac{\n{J}(\rv')}{|\rv - \rv'|}\label{A}
 \end{equation*}
 \begin{equation*}
 	\n{J}_{M} = \ro\n{M}, ~~ \n{K}_{M} = \n{M}\times\nhat, ~~ \rho_{M} = -\di\n{M}, ~~ \sigma_{M} = \n{M}\cdot\nhat

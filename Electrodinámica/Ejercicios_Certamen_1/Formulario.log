@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2025.9.10)  10 MAY 2026 01:00
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2025.9.10)  10 MAY 2026 21:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -606,7 +606,7 @@ LaTeX Font Info:    Trying to load font information for U+esint on input line 7
 (C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/esint\uesint.fd
 File: uesint.fd 
 )
-Overfull \hbox (4.18811pt too wide) detected at line 133
+Overfull \hbox (4.18811pt too wide) detected at line 162
 \OT1/cmr/bx/n/10 B\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 r\OT1/cmr/m/n/10 ) = [] [] 
 \OML/cmm/m/it/10 d[]r[]\OT1/cmr/bx/n/10 J\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 r[]\
 OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ^^B []\OML/cmm/m/it/10 ; \OT1/cmr/bx/n/10 B\O
@@ -634,10 +634,10 @@ L3 programming layer <2025-08-13>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 14048 strings out of 403249
- 277106 string characters out of 5460860
- 772747 words of memory out of 5000000
- 42251 multiletter control sequences out of 15000+600000
+ 14051 strings out of 403249
+ 277167 string characters out of 5460860
+ 772760 words of memory out of 5000000
+ 42254 multiletter control sequences out of 15000+600000
  634835 words of font info for 79 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  102i,12n,107p,419b,252s stack positions out of 10000i,1000n,20000p,200000b,200000s
