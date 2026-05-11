@@ -74,7 +74,7 @@
 	\gr\phi = \sum_{i=1}^{3}\ei\frac{1}{h_i}\frac{\partial\phi}{\partial u_i}
 \end{equation*}
 \begin{equation*}
-	\di\mathbf{F} = \frac{1}{h_1h_2h_3}\left(\sum_{i=1}^{3}\frac{\partial F_i}{\partial u_i}\right) 
+	\di\mathbf{F} = \frac{1}{h_1h_2h_3}\left(\sum_{i=1}^{3}\frac{\partial}{\partial u_i} (h_j h_k F_i) \right) 
 \end{equation*}
 \begin{equation*}
 	\ro\mathbf{F} = \frac{1}{h_1h_2h_3}\begin{vmatrix}
@@ -94,6 +94,19 @@
 \end{equation*}
 \begin{equation*}
 	h_r = 1,~~~~~ h_\theta = r,~~~~~ h_\varphi = r\sin\theta
+\end{equation*}
+\vspace{-2mm}\hrule\vspace{1mm}
+\begin{equation*}
+	\gr(uv) = u\gr v + v\gr u,~~~~~ \di(u \n{A}) = u\di \n{A} + \n{A}\cdot\gr u
+\end{equation*}
+\begin{equation*}
+	\ro(u \n{A}) = u\ro \n{A} - \n{A}\times\gr u, ~~~~ \di(\ro \n{A}) = 0
+\end{equation*}
+\begin{equation*}
+	\ro(\n{A} \times \n{B}) = (\n{B}\cdot\gr) \n{A} + \n{A}(\di \n{B}) - (\n{A}\cdot \gr) \n{B} - \n{B}(\di \n{A})
+\end{equation*}
+\begin{equation*}
+	\di(\n{A} \times \n{B}) = \n{B} \cdot \ro \n{A} - \n{A} \ro \n{B}, ~~~ \ro(\ro \n{A}) = \gr (\di \n{A}) - \la \n{A}
 \end{equation*}
 \vspace{-2mm}\hrule\vspace{1mm}
 \begin{equation*}
@@ -301,7 +314,6 @@ T_{\alpha\beta} = \eo\left(E_{\alpha} E_{\beta} - \frac{1}{2}E^2 \delta_{\alpha\
 \begin{equation*}
 	\n{L}_{\mathrm{field}} = \int \n{r}\times\n{g} \, d^3 r
 \end{equation*}
-
 
 
 
