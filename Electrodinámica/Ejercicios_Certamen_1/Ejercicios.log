@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2025.9.10)  11 MAY 2026 19:59
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2025.9.10)  12 MAY 2026 11:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -621,13 +621,19 @@ File: uesint.fd
 
 [6]
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-
 [7]
 
 [8]
+Overfull \hbox (70.68642pt too wide) detected at line 388
+[]
+ []
+
+
+Overfull \hbox (12.54857pt too wide) detected at line 416
+[]
+ []
+
+
 
 [9]
 
@@ -637,19 +643,31 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [12]
 
-[13] (Ejercicios.aux)
+[13]
+
+[14]
+
+[15]
+
+[16]
+
+[17]
+
+[18]
+
+[19] (Ejercicios.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-08-13>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 14128 strings out of 403249
- 279258 string characters out of 5460860
- 757786 words of memory out of 5000000
- 42326 multiletter control sequences out of 15000+600000
- 634859 words of font info for 82 fonts, out of 8000000 for 9000
+ 14142 strings out of 403249
+ 279442 string characters out of 5460860
+ 764786 words of memory out of 5000000
+ 42334 multiletter control sequences out of 15000+600000
+ 636689 words of font info for 88 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  102i,18n,107p,486b,795s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on Ejercicios.pdf (13 pages).
+Output written on Ejercicios.pdf (19 pages).

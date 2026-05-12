@@ -325,6 +325,128 @@
 			&= V \left(1 - \frac{z}{\sqrt{a^2 + z^2}}\right)
 		\end{align*}
 	\end{enumerate}
+	
+	\item Encuentra la función de Green del potencial eléctrico considerando los condiciones de borde tipo Dirichlet en el espacio entre dos esferas conductoras concéntricas con radios \(R_1\) y \(R_2\), tal que \(R_2 > R_1\).
+	
+	Hint. Debido a la simetría esférica, la función de Green depende solo de las coordenadas radiales \(r\) y \(r'\) y del ángulo definido por \(cos \gamma = \rhat\cdot\rhat'\), donde \(\rhat = \rv/r\), \(\rhat' = \rv'/r'\). Por lo tanto, podemos expandir la función de Green en términos de polinomios de Legendre:
+	\begin{equation*}
+		G(r,r') = \sum_{\ell=0}^{\infty} \frac{2\ell + 1}{4\pi}P_{\ell} g_\ell(r,r') P_{\ell}(\cos\gamma)
+	\end{equation*}
+	
+	\textbf{R:} Buscamos \(G(\rv,\rv')\), tal que
+	\begin{equation*}
+		\nabla'^2 G(\rv,\rv') = -4 \pi \delta(\rdif)
+	\end{equation*}
+	y también
+	\begin{equation*}
+		G(R_1,\rv') = G(R_2,\rv') = 0
+	\end{equation*}
+	Debido a la simetría esférica podemos escribir la función de Green como una sumatoria de polinomios de Legendre:
+	\begin{equation*}
+		G(\rv,\rv') = \frac{1}{|\rv - \rv'|} = \sum_{\ell=0}^{\infty} g_\ell(\rv,\rv') P_{\ell}(\cos\gamma)
+	\end{equation*}
+	En el espacio libre se cumple que \(g_\ell(\rv,\rv') = \left({r_{<}^{\ell}}\right)/\left({r_{>}^{\ell + 1}}\right)\), pero en nuestro deberíamos tener que construir \(g_\ell(\rv,\rv')\) para satisfaga las condiciones de borde. Con la información que nos dan en la sección de pistas tenemos:
+	\begin{equation*}
+		G(\rv,\rv') = \sum_{\ell=0}^{\infty} \frac{2\ell + 1}{4\pi} g_\ell(\rv,\rv') P_{\ell}(\cos\gamma)
+	\end{equation*}
+	donde $g_\ell(\rv, \rv')$ es una función en la forma:
+	\begin{equation*}
+		g_\ell(\rv, \rv') = A r^{\ell} + B r^{-(\ell + 1)}
+	\end{equation*}
+	Usando las condiciones de Dirichlet, para el sector \(R_1 < r < r'\):
+	\begin{align*}
+		g_\ell(R_1, \rv') = \psi_1 &= A R_1^{\ell} + B R_1^{-(\ell + 1)} = 0\\
+		\Rightarrow B &= -A R_1^{(2\ell + 1)}\\
+		\Rightarrow \psi_1 &= A r^{\ell} - A R_1^{(2\ell + 1)} r^{-(\ell + 1)}\\
+		\psi_1 &= A \left(r^{\ell} -  \frac{R_1^{(2\ell + 1)}}{r^{(\ell + 1)}}\right)
+	\end{align*}
+	y para el sector \(r' < r < R_2\):
+	\begin{align*}
+		g_\ell(R_2, \rv') = \psi_2 &= A R_2^{\ell} + B R_2^{-(\ell + 1)} = 0\\
+		\Rightarrow A &= -B R_2^{-(2\ell + 1)}\\
+		\Rightarrow \psi_2 &= -B R_2^{-(2\ell + 1)} r^{\ell} + B r^{-(\ell + 1)}\\
+		\psi_2 &= B \left(\frac{1}{r^{(\ell + 1)}} - \frac{r^{\ell}}{R_2^{(2\ell + 1)}}\right)
+	\end{align*}
+	finalmente, la función \(g_\ell\) será la multiplicación de ambas soluciones con una constante:
+	\begin{equation*}
+		g_\ell = C_\ell \cdot \left(r^{\ell} - \frac{R_1^{(2\ell + 1)}}{r^{(\ell + 1)}}\right) \cdot \left(\frac{1}{r^{(\ell + 1)}} - \frac{r^{\ell}}{R_2^{(2\ell + 1)}}\right) 
+	\end{equation*}
+	pero CUIDADO, no podemos usar una multiplicación simple, porque el problema tiene regiones dependiendo de la relación entre \(r\) y \(r'\). Usaremos la notación \(r_<, r_>\) para que en cada región se esté codificando las condiciones de borde adecuadas:
+	\begin{equation*}
+		g_\ell = C_\ell \cdot \left(r_<^{\ell} - \frac{R_1^{(2\ell + 1)}}{r_<^{(\ell + 1)}}\right) \cdot \left(\frac{1}{r_>^{(\ell + 1)}} - \frac{r_>^{\ell}}{R_2^{(2\ell + 1)}}\right) 
+	\end{equation*}
+	Para calcular la constante $C_\ell$, debemos recurrir a la condición de discontinuidad de la derivada de la función de Green. Como $G$ representa el potencial de una carga puntual, su derivada debe tener un salto justo en la posición de la carga ($r=r'$):
+	\begin{equation*}
+		\left.\td{g_\ell}{r}\right|_{r'^+} - \left.\td{g_\ell}{r}\right|_{r'^-} = - \frac{4\pi}{r'^2}
+	\end{equation*}
+	Usando la expresión que encontramos:
+	\begin{align*}
+		&\td{}{r}\left[C_\ell \cdot \left(r'^{\ell} - \frac{R_1^{(2\ell + 1)}}{r'^{(\ell + 1)}}\right) \cdot \left(\frac{1}{r^{(\ell + 1)}} - \frac{r^{\ell}}{R_2^{(2\ell + 1)}}\right) \right] - \td{}{r}\left[C_\ell \cdot \left(r^{\ell} - \frac{R_1^{(2\ell + 1)}}{r^{(\ell + 1)}}\right) \cdot \left(\frac{1}{r'^{(\ell + 1)}} - \frac{r'^{\ell}}{R_2^{(2\ell + 1)}}\right) \right] = 	- \frac{4\pi}{r'^2}\\
+		&\left(r'^{\ell} - \frac{R_1^{(2\ell + 1)}}{r'^{(\ell + 1)}}\right)\td{}{r}\left[\frac{1}{r^{(\ell + 1)}} - \frac{r^{\ell}}{R_2^{(2\ell + 1)}} \right]_{r'} - \left(\frac{1}{r'^{(\ell + 1)}} - \frac{r'^{\ell}}{R_2^{(2\ell + 1)}}\right) \td{}{r}\left[r^{\ell} - \frac{R_1^{(2\ell + 1)}}{r^{(\ell + 1)}} \right]_{r'} = 	- \frac{4\pi}{C_\ell r'^2}\\
+		&\left(r'^{\ell} - \frac{R_1^{(2\ell + 1)}}{r'^{(\ell + 1)}}\right) \cdot \left(- \frac{(\ell + 1)}{r'^{(\ell + 2)}} - \frac{\ell r'^{\ell - 1}}{R_2^{(2\ell + 1)}} \right) - \left(\frac{1}{r'^{(\ell + 1)}} - \frac{r'^{\ell}}{R_2^{(2\ell + 1)}}\right) \cdot\left(\ell r'^{(\ell - 1)} + \frac{(\ell + 1) R_1^{(2\ell + 1)}}{r'^{(\ell + 2)}} \right) = - \frac{4\pi}{C_\ell r'^2}\\
+		& \frac{1}{r'^2} (2\ell + 1)\left(\frac{R_1^{(2\ell + 1)}}{R_2^{(2\ell + 1)}} - 1\right) = - \frac{4\pi}{C_\ell r'^2}
+	\end{align*}
+	\begin{equation*}
+		C_\ell = \frac{4\pi }{(2\ell + 1)} \left(1 - \frac{R_1^{(2\ell + 1)}}{R_2^{(2\ell + 1)}}\right)^{-1}
+	\end{equation*}
+	Por lo que la función de Green:
+	\begin{equation*}
+		G(r,r') = \sum_{\ell=0}^{\infty} \left(1 - \frac{R_1^{(2\ell + 1)}}{R_2^{(2\ell + 1)}}\right)^{-1} \cdot \left(r_<^{\ell} - \frac{R_1^{(2\ell + 1)}}{r_<^{(\ell + 1)}}\right) \cdot \left(\frac{1}{r_>^{(\ell + 1)}} - \frac{r_>^{\ell}}{R_2^{(2\ell + 1)}}\right)  P_{\ell}(\cos\gamma)
+	\end{equation*}
+	
+	\item Calcula la densidad de carga en la esfera interna si la esfera externa está en un potencial fijo \(V = V_0\). Escribe el resultado en unidades \(V/R_1\) tomando que \(R_2 / R_1 \equiv \beta > 1\).
+	
+	\textbf{R:} Tenemos que el potencial según una función de Green con condiciones de Dirichlet:
+	\begin{equation*}
+		\Phi(\rv) = \frac{1}{4\pi\eo}\int_{V}G_D\rho d^3r' - \frac{1}{4\pi}\oint_{S}\Phi\frac{\partial G_D}{\partial n'} dS'
+	\end{equation*}
+	pero no tenemos carga volumétrica, por lo que
+	\begin{equation*}
+		\Phi(\rv) = - \frac{1}{4\pi}\oint_{S} \Phi \frac{\partial G_D}{\partial n'} dS' = - \frac{1}{4\pi}\int_{R_1} \Phi \frac{\partial G_D}{\partial n'} dS' - \frac{1}{4\pi}\int_{R_2} \Phi \frac{\partial G_D}{\partial n'} dS'
+	\end{equation*}
+	Como el potencial en la esfera externa es constante ($V = V_0$) y no hay cargas libres en el volumen, el problema tiene simetría esférica total. Esto significa que en la sumatoria de la función de Green, solo el término $\ell = 0$ sobrevive al integrar sobre el ángulo sólido $dS'$. Para la segunda integral:
+	\begin{align*}
+		\frac{1}{4\pi}\int_{R_2} \Phi \frac{\partial G_D}{\partial n'} dS' &= \frac{1}{4\pi}\int_{R_2} V_0 \pd{}{r'} \left[\left(1 - \frac{R_1}{R_2}\right)^{-1} \cdot \left(1 - \frac{R_1}{r_<}\right) \cdot \left(\frac{1}{r_>} - \frac{1}{R_2}\right)  P_{0}(\cos\gamma)\right]_{r'=R_2} dS' \\
+		&= \frac{1}{4\pi}\int_{R_2} V_0 \pd{}{r'} \left[\left(1 - \frac{R_1}{R_2}\right)^{-1} \cdot \left(1 - \frac{R_1}{r'}\right) \cdot \left(\frac{1}{r} - \frac{1}{R_2}\right)  P_{0}(\cos\gamma)\right]_{r'=R_2} dS' \\
+		&= \frac{1}{4\pi}\int_{R_2} V_0 \left[\left(1 - \frac{R_1}{R_2}\right)^{-1} \cdot \left(\frac{R_1}{r'^2}\right) \cdot \left(\frac{1}{r} - \frac{1}{R_2}\right)  P_{0}(\cos\gamma)\right]_{r'=R_2} dS'\\
+		&= \frac{1}{4\pi}\int_{R_2} V_0 \left[\left(1 - \frac{R_1}{R_2}\right)^{-1} \cdot \left(\frac{R_1}{R_2^2}\right) \cdot \left(\frac{1}{r} - \frac{1}{R_2}\right)  P_{0}(\cos\gamma)\right] dS'\\
+		&= \frac{V_0}{4\pi} \left(1 - \frac{R_1}{R_2}\right)^{-1} \cdot \left(\frac{R_1}{R_2^2}\right) \cdot \left(\frac{1}{r} - \frac{1}{R_2}\right)\cdot 4\pi R_2^2\\
+		&= V_0 R_1 \left(1 - \frac{R_1}{R_2}\right)^{-1} \cdot \left(\frac{1}{r} - \frac{1}{R_2}\right)\\
+		&= V_0 R_1 \frac{1}{\left(R_2 - R_1\right)} \cdot \left(\frac{R_2}{r} - 1\right)
+	\end{align*}
+	Para la primera integral podemos decir que el potencial en la superficie es 0, efectivamente anulando la integral. El potencial es, entonces:
+	\begin{align*}
+		\Phi(r) = \frac{V_0 }{\left(\beta - 1\right)} \cdot \left(\frac{R_2}{r} - 1\right)
+	\end{align*}
+	La densidad de carga superficial se obtiene mediante el salto del campo eléctrico (o la derivada normal del potencial) en la superficie:
+	\begin{align*}
+		(\mathbf{E}_2 - \mathbf{E}_1)\cdot\hat{\mathbf{n}} &= \frac{\sigma}{\eo}\\
+		\Rightarrow \sigma &= \eo (\mathbf{E}_2 - 0)\cdot\rhat\\
+		\sigma &= -\eo \left. \pd{\Phi}{r} \right|_{r=R_1}
+	\end{align*}
+	La derivada del potencial es:
+	\begin{align*}
+		\pd{\Phi}{r} &= \frac{V_0 }{\left(\beta - 1\right)} \cdot \pd{}{r}\left[\left(\frac{R_2}{r} - 1\right)\right]\\
+		&= -\frac{V_0 }{\left(\beta - 1\right)} \cdot \frac{R_2}{r^2}
+	\end{align*}
+	Evaluando en \(r = R_1\)
+	\begin{align*}
+		\sigma &= \eo \frac{\beta}{\left(\beta - 1\right)} \cdot \frac{V_0}{R_1}
+	\end{align*}
+	
+	\item Analiza el potencial eléctrico \( V (r) \) en el espacio entre los esferas en el limite \(\beta \rightarrow 1\).
+	
+	\textbf{R:} Volviendo al potencial general:
+	\begin{equation*}
+		\Phi(r) = \frac{V_0 }{\left(\beta - 1\right)} \cdot \left(\frac{R_2}{r} - 1\right)
+	\end{equation*}
+	El límite \(\beta = R_2/R_1 \rightarrow 1\) es equivalente a que la cantidad \(d = R_2 - R_1 = R_1(\beta - 1) \rightarrow 0\) (\(\beta = 1 + d/R_1\). \(R_1 = d - R_2\)) y que \(\alpha = r - R_1 \rightarrow 0\) (\(r = R_1 + \alpha\)). Reescribiendo el potencial
+	\begin{align*}
+		\Phi(r) &= \frac{V_0 R_1}{d} \cdot \left(\frac{R_2}{r} - 1\right)\\
+		\Phi(r) &= \frac{V_0 R_1}{d} \cdot \frac{1}{(R_1 + \alpha)}\left(R_2 - (R_1 + \alpha)\right)\\
+		\Phi(r) &= \frac{V_0}{d} \cdot \frac{R_1}{(R_1 + \alpha)}\left(d - \alpha\right)\\
+	\end{align*}
+	
 \end{enumerate}
 	
 \section{Magnetostática}
@@ -596,17 +718,121 @@
 			\gr\pd{\Phi}{t} &= -\ke \delta'(t) \gr\frac{z}{r^3}\\
 			&= -\ke \delta'(t) \left(\frac{z\gr r^3 - r^3 \gr z}{r^6}\right)\\
 			&= -\ke \delta'(t) \left(\frac{3r^2 z \rhat - r^3 \zhat}{r^6}\right)\\
-			&= -\ke \delta'(t) \left(\frac{3 z}{r^4}\rhat - \frac{1}{r^3}\zhat\right)\\
+			&= -\ke \delta'(t) \left(\frac{3 z}{r^4}\rhat - \frac{1}{r^3}\zhat\right)
+		\end{align*}
+		\textbf{PERO ESTO ESTÁ MAL POR LA SINGULARIDAD EN \(r=0\), ASÍ QUE HAY QUE HACER EL CÁLCULO DE NUEVO USANDO ESTA IDENTIDAD (ZZZZZZZ):}
+		\begin{equation*}
+			\partial_{i}\partial_{j}\left(\frac{1}{r}\right) = \frac{3 x_{i} x_{j} - r^2 \delta_{ij}}{r^5} - \frac{4\pi}{3} \delta_{ij} \delta(\rv)
+		\end{equation*}
+		donde
+		\begin{align*}
+			\gr\pd{\Phi}{t} &= -\ke \delta'(t) \gr\left(-\pd{}{z}\frac{1}{r}\right)\\
+			&= \ke \delta'(t)\, \n{e}_{i} \partial_{i}\partial_{z}\left(\frac{1}{r}\right)\\
+			&= \ke \delta'(t) \left(\frac{3 x z }{r^5}\xhat + \frac{3 y z }{r^5}\yhat + \frac{3 z^2 - r^2}{r^5} \zhat - \frac{4\pi}{3} \delta(\rv)\zhat \right)\\
+			&= \ke \delta'(t) \left(\frac{3z }{r^5} \left[x\xhat + y\yhat + z\zhat\right] - \frac{r^2}{r^5} \zhat - \frac{4\pi}{3} \delta(\rv)\zhat \right)\\
+			&= \ke \delta'(t) \left(\frac{3z }{r^5}\rv - \frac{1}{r^3} \zhat - \frac{4\pi}{3} \delta(\rv)\zhat \right)
 		\end{align*}
 		Finalmente
 		\begin{align*}
-			\n{J}_{t} &= -\delta(\rv) \delta'(t)\zhat + \eo \ke \delta'(t) \left(\frac{3 z}{r^4}\rhat - \frac{1}{r^3}\zhat\right)
+			\n{J}_{t} &= -\delta(\rv) \delta'(t)\zhat - \eo \ke \delta'(t) \left(\frac{3z }{r^5}\rv - \frac{1}{r^3} \zhat - \frac{4\pi}{3} \delta(\rv)\zhat \right)\\
+			&= - \delta'(t)\left[\delta(\rv)\zhat + \frac{3z }{4\pi r^5}\rv - \frac{1}{4\pi r^3} \zhat - \frac{1}{3} \delta(\rv)\zhat \right]\\
+			&= - \delta'(t)\left[\frac{3z }{4\pi r^5}\rv - \frac{1}{4\pi r^3} \zhat + \frac{2}{3} \delta(\rv)\zhat \right]
 		\end{align*}
+		
+		\item Demostrar que los campos eléctricos y magnéticos son causales y que los componentes del campo eléctrico son
+		\begin{equation*}
+			E_x(\mathbf{x}, t)=\frac{1}{4 \pi \epsilon_0} \frac{c}{r}\left[-\delta^{\prime \prime}(r-c t)+\frac{3 c}{r} \delta^{\prime}(r-c t)-\frac{3}{r^2} \delta(r-c t)\right] \sin \theta \cos \theta \cos \phi
+		\end{equation*}
+		donde $E_y$ es igual a $E_x, \operatorname{con} \cos \phi$ reemplazado por $\sin \phi, \mathrm{y}$
+		\begin{equation*}
+			E_z(\mathbf{x}, t)=\frac{1}{4 \pi \epsilon_0} \frac{c}{r}\left[\sin ^2 \theta \delta^{\prime \prime}(r-c t)+\left(3 \cos ^2 \theta-1\right)\left(\frac{\delta^{\prime}(r-c t)}{r}-\frac{\delta(r-c t)}{r^2}\right)\right]
+		\end{equation*}	
+		Para el campo magnético:
+		\begin{equation*}
+			\mathbf{B}(\mathbf{x}, t)=\frac{\mu_0 c^2}{4 \pi}\left[-\frac{\delta^{\prime \prime}(r-c t)}{r}+\frac{\delta^{\prime}(r-c t)}{r^2}\right] \sin \theta \hat{\boldsymbol{\phi}}
+		\end{equation*}
+		
+		\textbf{R:} Usando la densidad de corriente
+		\begin{equation*}
+			J_{z}(\rv,t) = -\delta'(t)\left[\delta(\rv)\zhat + \frac{1}{4\pi} \gr\pd{}{z}\left(\frac{1}{r}\right)\right]
+		\end{equation*}
+		Y sabiendo que
+		\begin{equation*}
+			\la\n{A} - \frac{1}{c^2}\pd{^2\n{A}}{t^2} = -\uo\n{J}_{t}
+		\end{equation*}
+		Y que
+		\begin{equation}
+			\n{A}_{\mathrm{ret}}(\rv,t) = \int \frac{\left[-\uo\n{J}_{t}\right]_{\mathrm{ret}}}{|\rdif|}\, d^3 r'
+		\end{equation}
+		Podemos expresar el numerador como
+		\begin{equation*}
+			\left[-\uo\n{J}_{t}\right]_{\mathrm{ret}} = \uo \delta'\left(t - \frac{|\rdif|}{c}\right) \left[\delta(\rv)\zhat + \frac{1}{4\pi} \gr\pd{}{z}\left(\frac{1}{r}\right)\right]
+		\end{equation*}
+		El potencial entonces:
+		\begin{align*}
+			\n{A}_{\mathrm{ret}}(\rv,t) &= \uo \int \frac{\delta'\left(t - \dfrac{|\rdif|}{c}\right)\delta(\rv')}{|\rdif|}\zhat\, d^3 r' + \frac{\uo}{4\pi} \int \frac{\delta'\left(t - \dfrac{|\rdif|}{c}\right) \gr\pd{}{z'}\left(\dfrac{1}{r'}\right)}{|\rdif|}\, d^3 r'\\
+			&= \uo \frac{\delta'\left(t - r/c\right)}{r}\zhat + \frac{\uo}{4\pi} \int \frac{\delta'\left(t - \dfrac{|\rdif|}{c}\right) \gr\pd{}{z'}\left(\dfrac{1}{r'}\right)}{|\rdif|}\, d^3 r'
+		\end{align*}
+		............
 	\end{enumerate}
 \end{enumerate}
 
-
-
+\section{Simetrías}
+\begin{enumerate}
+	\item Considere las ecuaciones de Maxwell en el vacío con términos fuente \(\rho(\rv,t), \n{J}(\rv,t)\).
+	\begin{enumerate}
+		\item Bajo la transformación de paridad \(\mathcal{P}: r \rightarrow -r\), determine cómo se transforman las siguientes cantidades:
+		\begin{enumerate}
+			\item Densidad de carga, \(\rho(\rv, t)\);
+			\item Densidad de corriente, \(\n{J}(\rv, t)\);
+			\item Campo eléctrico, \(\n{E}(\rv, t)\);
+			\item Campo magnético, \(\n{B}(\rv, t)\);
+		\end{enumerate}
+		Luego, verifique explícitamente si las ecuaciones de Maxwell son invariantes bajo la inversión espacial.
+		
+		\textbf{R:} Si transformamos \(\rv\) entonces sus derivadas:
+		\begin{equation*}
+			\dot{\rv} \xrightarrow{\mathcal{P}} -\dot{\rv}, ~~~ \ddot{\rv} ~~\xrightarrow{\mathcal{P}}~~ -\ddot{\rv}
+		\end{equation*}
+		Y la fuerzas, incluida la eléctrica, cumplen con la segunda ley de Newton:
+		\begin{equation*}
+			\n{F} \propto \ddot{\rv} \Rightarrow \n{F} ~~\xrightarrow{\mathcal{P}}~~ -\n{F}
+		\end{equation*}
+		Luego, la fuerza eléctrica es proporcional al campo, tal que
+		\begin{equation*}
+			\n{E} \propto \n{F} \Rightarrow \n{E} ~~\xrightarrow{\mathcal{P}}~~ -\n{E}
+		\end{equation*}
+		Y el operador nabla:
+		\begin{equation*}
+			\nabla = \ei\partial_i ~~\xrightarrow{\mathcal{P}}~~ -\ei\partial_i
+		\end{equation*}
+		Con la ley de Gauss:
+		\begin{equation*}
+			\di\n{E} = \dfrac{\rho}{\eo} ~~\xrightarrow{\mathcal{P}}~~ -\di(-\n{E}) = \di\n{E} = \dfrac{\rho}{\eo}
+		\end{equation*}
+		por lo que
+		\begin{equation*}
+			\rho ~~\xrightarrow{\mathcal{P}}~~ \rho
+		\end{equation*}
+		La densidad de corriente, en el caso de una partícula puntual moviéndose en el espacio:
+		\begin{equation*}
+			\n{J} = \rho \dot{\rv} ~~\xrightarrow{\mathcal{P}}~~ \rho (- \dot{\rv}) = - \rho \dot{\rv}
+		\end{equation*}
+		Por lo que
+		\begin{equation*}
+			\n{J} ~~\xrightarrow{\mathcal{P}}~~ -\n{J}
+		\end{equation*}
+		Para el campo magnético, con la ley de Ampere-Maxwell:
+		\begin{equation*}
+			\ro\n{B} = \uo\n{J} + \uo\eo\pd{\n{E}}{t} ~~\xrightarrow{\mathcal{P}}~~ (-\gr)\times\n{B} = -\uo\n{J} + \uo\eo\pd{(-\n{E})}{t}
+		\end{equation*}
+		Finalmente:
+		\begin{equation*}
+			\n{B} ~~\xrightarrow{\mathcal{P}}~~ \n{B}
+		\end{equation*}
+	\end{enumerate}
+	
+\end{enumerate}
 
 
 
