@@ -546,7 +546,62 @@
 			\Phi (\xv,t) = -\ke \delta(t) \frac{z}{r^3}
 		\end{equation*}
 		
-		\textbf{R:}
+		\textbf{R:} Tenemos que
+		\begin{equation*}
+			\Phi(\rv,t) = \ke \int d^3r' \, \frac{1}{\rdif} \rho (\rv',t)
+		\end{equation*}
+		por lo que
+		\begin{align*}
+			\Phi(\rv,t) &= \ke \iiint_{-\infty}^{\infty}  \frac{\delta(x')\delta(y')\delta(t)}{\sqrt{(x - x')^2 + (y - y')^2 + (z - z')^2}} \td{}{z'}\delta(z') \, dx'dy'dz'\\
+			&= \ke\delta(t) \int_{-\infty}^{\infty}  \frac{1}{\sqrt{x^2 + y^2 + (z - z')^2}} \td{}{z'}\delta(z') \, dz'
+		\end{align*}
+		Sabiendo que
+		\begin{equation*}
+			\int f(x) \delta'(x-a) \, dx = - f'(a)
+		\end{equation*}
+		Tenemos entonces
+		\begin{align*}
+			\Phi(\rv,t) &= -\ke\delta(t) \int_{-\infty}^{\infty}  \delta(z') \td{}{z'}\frac{1}{\sqrt{x^2 + y^2 + (z - z')^2}} \, dz'\\
+			&= -\ke\delta(t) \int_{-\infty}^{\infty}  \delta(z') \frac{(z - z')}{\left(x^2 + y^2 + (z - z')^2\right)^{3/2}} \, dz'\\
+			&= -\ke\delta(t)\frac{z}{\left(x^2 + y^2 + z^2\right)^{3/2}}\\
+			&= -\ke\delta(t)\frac{z}{r^3}
+		\end{align*}
+		
+		\item Demostrar que la corriente transversal \(\n{J}_t\) es
+		\begin{equation*}
+			\n{J}_t = -\delta'(t)\left(\frac{2}{3} \delta(\xv)\zhat - \frac{1}{4\pi r^3}\zhat + \frac{3 z}{4 \pi r^5}\xv \right)
+		\end{equation*}
+		donde \(r = |\xv|\).
+		
+		\textbf{R:} Tenemos que
+		\begin{equation*}
+			\n{J} = \n{J}_{\ell} + \n{J}_{t}, ~~~~~ \n{J}_{\ell} = \eo\gr\pd{\Phi}{t}
+		\end{equation*}
+		por lo que
+		\begin{equation*}
+			\n{J}_{t} = -\underbrace{\delta(x)\delta(y)\delta(z)}_{\delta(\rv)} \delta'(t)\zhat - \eo\gr\pd{\Phi}{t}
+		\end{equation*}
+		Derivando \(\Phi\):
+		\begin{align*}
+			\pd{\Phi}{t} &= -\ke \pd{}{t}\left(\delta(t)\frac{z}{r^3}\right)\\
+			&= -\ke \left(\frac{z}{r^3}\pd{}{t}\delta(t) + \delta(t)\pd{}{t}\frac{z}{r^3}\right)\\
+			&= -\ke \left(\frac{z}{r^3}\delta'(t) - \delta(t)\frac{3 z \dot{r}}{r^4} + \delta(t)\frac{\dot{z}}{r^3}\right)
+		\end{align*}
+		Pero el dipolo no se está moviendo, por lo que todas las velocidades se anulan:
+		\begin{align*}
+			\pd{\Phi}{t} &= -\ke \frac{z}{r^3}\delta'(t)
+		\end{align*}
+		Tomando el gradiente:
+		\begin{align*}
+			\gr\pd{\Phi}{t} &= -\ke \delta'(t) \gr\frac{z}{r^3}\\
+			&= -\ke \delta'(t) \left(\frac{z\gr r^3 - r^3 \gr z}{r^6}\right)\\
+			&= -\ke \delta'(t) \left(\frac{3r^2 z \rhat - r^3 \zhat}{r^6}\right)\\
+			&= -\ke \delta'(t) \left(\frac{3 z}{r^4}\rhat - \frac{1}{r^3}\zhat\right)\\
+		\end{align*}
+		Finalmente
+		\begin{align*}
+			\n{J}_{t} &= -\delta(\rv) \delta'(t)\zhat + \eo \ke \delta'(t) \left(\frac{3 z}{r^4}\rhat - \frac{1}{r^3}\zhat\right)
+		\end{align*}
 	\end{enumerate}
 \end{enumerate}
 
