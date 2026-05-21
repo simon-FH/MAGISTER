@@ -21,13 +21,12 @@
 }
 \newcommand{\LambdaMuNu}{\indUpDown}
 \newcommand{\0}{\textcolor{gray}{0}}
-
-\newcommand{\pd}[2]{\dfrac{\partial #1}{\partial #2}}
-\newcommand{\td}[2]{\dfrac{d #1}{d #2}}
-
-\newcommand{\eff}[1]{#1_\mathrm{eff}}
-\newcommand{\Ueff}{\eff{U}}
-
+\newcommand{\ei}{\mathbf{e}_i}
+\newcommand{\ej}{\mathbf{e}_j}
+\newcommand{\lc}{\epsilon_{ijk}}
+\newcommand{\gr}{\nabla}
+\newcommand{\di}{\nabla\cdot}
+\newcommand{\ro}{\nabla\times}
 \newcommand{\la}{\nabla^2}
 \newcommand{\rv}{\mathbf{r}}
 \newcommand{\xv}{\mathbf{x}}
@@ -36,10 +35,33 @@
 \newcommand{\xhat}{\hat{\xv}}
 \newcommand{\yhat}{\hat{\yv}}
 \newcommand{\zhat}{\hat{\zv}}
+\newcommand{\ihat}{\hat{\mathbf{i}}}
+\newcommand{\jhat}{\hat{\mathbf{j}}}
+\newcommand{\khat}{\hat{\mathbf{k}}}
 \newcommand{\rhat}{\hat{\rv}}
 \newcommand{\that}{\hat{\mathbf{\theta}}}
 \newcommand{\phat}{\hat{\mathbf{\varphi}}}
 \newcommand{\rhhat}{\hat{\mathbf{\rho}}}
+\newcommand{\nhat}{\hat{\mathbf{n}}}
+\newcommand{\Rhat}{\hat{\mathbf{R}}}
+\newcommand{\eo}{\epsilon_{0}}
+\newcommand{\uo}{\mu_{0}}
+\NewDocumentCommand{\ke}{ O{1}}{
+	\frac{#1}{4\pi\eo}
+}
+\NewDocumentCommand{\ku}{ O{}}{
+	\frac{\uo #1}{4\pi}
+}
+%\newcommand{\ke}{\frac{1}{4\pi\eo}}
+%\newcommand{\ku}{\frac{\uo}{4\pi}}
+\newcommand{\rdif}{\rv - \rv'}
+\newcommand{\pd}[2]{\dfrac{\partial #1}{\partial #2}}
+\newcommand{\lpd}[2]{\partial #1/\partial #2}
+\newcommand{\td}[2]{\dfrac{d #1}{d #2}}
+\newcommand{\ltd}[2]{d #1/d #2}
+\newcommand{\n}[1]{\mathbf{#1}}
+\newcommand{\eff}[1]{#1_\mathrm{eff}}
+\newcommand{\Ueff}{\eff{U}}
 
 %opening
 \title{Mecánica Clásica Avanzada}
@@ -987,7 +1009,7 @@ Definimos la \textbf{4-velocidad propia}:
 \end{align}
 La norma del vector 4-velocidad cumple con:
 \begin{equation}
-	u_\mu u^\mu \equiv \eta_{\mu\nu}u^\mu u^\nu = c^2
+	u_\mu u^\mu \equiv \eta_{\mu\nu}u^\mu u^\nu = c^2 \label{uu_c2}
 \end{equation}
 Si conocemos todas las componentes de la 4-velocidad, podemos recuperar la velocidad normal sin conocer directamente el valor \(\gamma\) a través de:
 \begin{equation}
@@ -1271,7 +1293,7 @@ De aquí, el término \(\dfrac{d\mathbf{e}_a}{dt}\) puede ser escrito según los
 \end{equation}
 donde \(\Gamma^{c}_{ab}\) son los \textbf{símbolos de Christoffel}
 \begin{equation}
-	\Gamma^{c}_{ab} = \left(\mathbf{e}^c \cdot \frac{d\mathbf{e}_a}{dr_b}\right)
+	\Gamma^{c}_{ab} = \left(\mathbf{e}^c \cdot \frac{d\mathbf{e}_a}{dr_b}\right) \label{christoffel}
 \end{equation}
 que pueden ser escritos en función de la métrica
 \begin{equation}
@@ -1307,7 +1329,7 @@ El teorema de Noether dice que si el lagrangiano \(L\) de un sistema con \(n\) g
 \end{align*}
 donde \(\epsilon = \mathrm{const}\) es un parámetro continuo. Entonces la cantidad
 \begin{equation}
-	Q = \sum_{a}\frac{\partial L}{\partial \dot{q}_a}\gamma_a
+	Q = \sum_{a}\frac{\partial L}{\partial \dot{q}_a}\gamma_a \label{Noether1}
 \end{equation}
 es conservada.
 
@@ -1389,8 +1411,8 @@ Si seleccionamos el eje \(z\) para que coincida con el del vector \(\mathbf{M}\)
 \begin{align}
 	M_z &\equiv m r^2 \dot{\varphi} \underbrace{\textcolor{gray}{ \sin^2\theta}}_{=1} = \mathrm{const.}\nonumber\\
 	\Rightarrow M_z dt &= m r^2 d\varphi = 2 \cdot \underbrace{\frac{1}{2} m r^2 d\varphi}_{=dS}\nonumber\\
-	\Rightarrow M_z \int_{t_0}^{t_1} dt&= 2 \int_{t_0}^{t_1} dS\nonumber\\
-	\Rightarrow S &= \frac{M_z}{2}\Delta t
+	\Rightarrow M_z \int_{t_0}^{t_1} dt&= 2 \int_{t_0}^{t_1} dA\nonumber\\
+	\Rightarrow A &= \frac{M_z}{2}\Delta t \label{2da_Kepler}
 \end{align}
 La superficie barrida por el vector posición de una partícula en órbita solo depende del intervalo de tiempo, sin importar la posición de la partícula.
 \begin{figure}[h!]
@@ -1425,9 +1447,9 @@ La superficie barrida por el vector posición de una partícula en órbita solo 
 		\draw  [fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=1 ] (87.42,12.5) .. controls (87.42,10.43) and (89.11,8.75) .. (91.2,8.75) .. controls (93.29,8.75) and (94.99,10.43) .. (94.99,12.5) .. controls (94.99,14.57) and (93.29,16.25) .. (91.2,16.25) .. controls (89.11,16.25) and (87.42,14.57) .. (87.42,12.5) -- cycle ;
 		
 		% Text Node
-		\draw (212.08,57.5) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle S$};
+		\draw (212.08,57.5) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle A$};
 		% Text Node
-		\draw (75.86,57.5) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle S$};
+		\draw (75.86,57.5) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle A$};
 		% Text Node
 		\draw (255,57.5) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \Delta t$};
 		% Text Node
@@ -2191,7 +2213,7 @@ Dependerá de la velocidad y dirección del movimiento del cuerpo:
 \end{equation}
 La diferencia de intensidad entre la fuerza Coriolis y la centrífuga dependerá del contexto. En el caso terrestre, la fuerza Coriolis es mucho más intensa que la centrífuga, por lo que esta última puede ser desestimada.
 
-\subsubsection{Solución de problemas en sistemas no inerciales}
+\subsubsection{Solución de problemas en sistemas no inerciales}\label{seccion_ProblemasNoInerciales}
 El algoritmo básico de solución de problemas en este contexto es
 \begin{itemize}
 	\item[\(\rightarrow\)] Escribir todas las fuerzas
@@ -2575,19 +2597,482 @@ Para cualquier eje \(\mathbf{n}\) arbitrario tendremos que su momento de inercia
 donde \(\lambda_{\mathrm{min}}, \lambda_{\mathrm{max}}\) son los valores mínimos y máximos del conjunto \(\left\lbrace \lambda_{1},\lambda_{2},\lambda_{3} \right\rbrace\).
 
 
+\section{Simetrías y leyes de conservación}
+Recordando y resumiendo el teorema de Noether en la ec. \ref{Noether1}, tenemos que si existe una transformación continua de coordenadas y tiempo
+\begin{equation}
+	\n{q} \rightarrow \n{q} + \delta\n{q}(\varepsilon), ~~~~~~~ t \rightarrow t + \delta t(\varepsilon)
+\end{equation}
+que \textbf{mantiene la acción invariante}, entonces el invariante de Noether:
+\begin{equation}
+	Q = \lim_{\varepsilon \rightarrow 0} \pd{L}{\dot{\varepsilon}}
+\end{equation}
+se conserva (\(\ltd{Q}{t} = 0\)).
+
+Algunos ejemplos clásicos de transformaciones que suelen dejar la acción invariante:
+\begin{enumerate}
+	\item \textbf{Traslación temporal}: Conservación de energía
+	\begin{equation*}
+		\n{q} \rightarrow \n{q}, ~~~~~~~ t \rightarrow t + \varepsilon
+	\end{equation*}
+	\item \textbf{Traslación espacial}: Conservación de momento lineal respecto un cierto eje \(\n{n}\)
+	\begin{equation*}
+	\n{q} \rightarrow \n{q} + \varepsilon \n{n}, ~~~~~~~ t \rightarrow t
+	\end{equation*}
+	\item \textbf{Rotación espacial}: Conservación de momento angular respecto al eje \(\nhat\)
+	\begin{equation*}
+	\n{q} \rightarrow \n{q} + \varepsilon(\nhat\times\n{q}), ~~~~~~~ t \rightarrow t
+	\end{equation*}
+\end{enumerate}
+Ahora veremos ejemplos menos triviales.
+
+\subsection{Invariantes como generadores}
+Usaremos la operación \textbf{corchete de Poisson} entre dos funciones \(f(q,p), \, g(q,p)\):
+\begin{equation}
+	[f, g] = \sum_{a} \left( \pd{f}{p_a}\pd{g}{q_a} - \pd{f}{q_a}\pd{g}{p_a} \right)
+\end{equation}
+donde \(q_a, p_a\) son las coordenadas y momentos generalizados del sistema. Tendremos entonces que
+\begin{equation}
+	[f,q_a] = \pd{f}{p_a}, ~~~~~~~ [f,p_a] = -\pd{f}{q_a}
+\end{equation}
+Una función \(G(\n{q},\n{p})\) arbitraria bajo transformaciones de simetría,
+\begin{equation}
+	\delta G = \pd{G}{q} \delta q + \pd{G}{p} \delta p
+\end{equation}
+nos dará, entonces,
+\begin{equation}
+	\td{G}{\varepsilon} = \pd{G}{\varepsilon} + [Q,G] \equiv \pd{G}{\varepsilon} + \hat{\n{Q}} G
+\end{equation}
+donde a \(\hat{\n{Q}}\) se le llama \textbf{generador}. Entonces, \(Q\) no es solo una constante sobre la trayectoria, también nos dice como cambian otras cantidades bajo esta simetría.
+
+La función \(G\) por lo general no depende de \(\varepsilon\), por lo que su cambio vendrá dado por:
+\begin{equation}
+	\delta G(\n{q},\n{p}) = \varepsilon \hat{\n{Q}} G \equiv \varepsilon [Q,G]
+\end{equation}
+
+\subsubsection{Ejemplo: Traslaciones y rotaciones}
+Tomemos una función arbitraria:
+\begin{equation*}
+	G(\rv,\n{p}) \rightarrow G(\rv,\n{p}) + \delta G(\rv,\n{p})
+\end{equation*}
+Asumamos que tenemos una simetría de acción bajo la traslación de una cantidad infinitesimal \(a\):
+\begin{equation*}
+	\rv \rightarrow \rv + a \, \n{n}, ~~~~~~~ \n{p} \rightarrow \n{p}
+\end{equation*}
+Tenemos entonces el invariante de Noether:
+\begin{equation*}
+	Q = \textcolor{red}{\n{p}\cdot\n{n}}
+\end{equation*}
+Y la variación infinitesimal de \(G(\rv,\n{p})\) será
+\begin{equation*}
+	\delta G(\rv) = a \, \n{n} \cdot \pd{G(\rv)}{\rv} = a \, \n{n} \cdot [\n{p}, G(\rv)] = a[\textcolor{red}{\n{p}\cdot\n{n}}, G(\rv)]
+\end{equation*}
+
+Tomemos también una rotación de un ángulo infinitesimal \(\phi\) alrededor de un eje \(\nhat\)
+\begin{equation*}
+	\rv \rightarrow \rv + \phi \, \nhat\times\rv, ~~~~~~~ \n{p} \rightarrow \n{p} + \phi \, \nhat\times\n{p}
+\end{equation*}
+Tenemos entonces el invariante de Noether:
+\begin{equation*}
+	Q = \textcolor{blue}{\n{M}\cdot\nhat}
+\end{equation*}
+donde \(\n{M} = \rv\times\n{p}\) es el momento angular. La diferencia de la función \(G(\rv,\n{p})\) será:
+\begin{align*}
+	\delta G(\rv,\n{p}) &= \phi \pd{G}{\rv}\cdot(\nhat\times\rv) + \phi \pd{G}{\n{p}}\cdot(\nhat\times\n{p})\\
+	&= \phi (\nhat\times\rv)\cdot[G,\rv] - \phi (\nhat\times\n{p})\cdot[G,\n{p}]\\
+	&= \phi [G, \nhat\cdot(\n{p}\times\rv)]\\
+	&= \phi [\textcolor{blue}{\n{M}\cdot\nhat}, G]
+\end{align*}
+
+Los invariantes de Noether \(\left(\textcolor{red}{\n{p}\cdot\n{n}}, ~ \textcolor{blue}{\n{M}\cdot\nhat}\right)\) serán, entonces, generadores de evolución, rotación y traslación.
+
+\subsubsection{Transformaciones finitas}
+Como ya fue el caso en las secciones \ref{seccion_LIE} y \ref{seccion_ProblemasNoInerciales}, podemos reconstruir el cambio de una función para transformaciones finitas a partir de un generador:
+\begin{align}
+	\n{q} \rightarrow \tilde{\n{q}}(\varepsilon) &= \n{q} \, \exp\left(\varepsilon\hat{\n{Q}}\right)\\
+	G(\n{q}) \rightarrow G(\tilde{\n{q}}(\varepsilon)) &= G(\n{q}) \, \exp\left(\varepsilon\hat{\n{Q}}\right)
+\end{align}
+
+\subsubsection{Conmutadores} 
+Antes usamos la notación \([f,g] \equiv [f,g]_{q,p}\) para corchetes de Poisson. Cuando utilizamos dos operadores \(\hat{\n{Q}}_{a}, \hat{\n{Q}}_{b}\), la operación \([\hat{\n{Q}}_{a}, \hat{\n{Q}}_{b}]\) representará, en cambio, un \textbf{conmutador}:
+\begin{equation}
+	[\hat{\n{Q}}_{a}, \hat{\n{Q}}_{b}] \equiv \hat{\n{Q}}_{a} \hat{\n{Q}}_{b} - \hat{\n{Q}}_{b} \hat{\n{Q}}_{a} = \sum_{k} f_{ab}^{k} \hat{\n{Q}}_k
+\end{equation}
+donde \(f_{ab}^{k}\) son las constantes de estructura que caracterizan a un grupo de Lie.
+
+Definimos los operadores \(\hat{\n{f}}\) y \(\hat{\n{g}}\) tal que, para cualquier función \(h\),
+\begin{equation}
+	\hat{\n{f}} h \equiv [f,h]_{q,p}, ~~~~~~~ \hat{\n{g}} h \equiv [g,h]_{q,p}
+\end{equation}
+entonces tendremos que
+\begin{equation}
+	[\hat{\n{f}}, \hat{\n{g}}] \equiv [[f,g]_{q,p}, h]_{q,p}
+\end{equation}
+es decir, el corchete de Poisson \([f,g]_{q,p}\) corresponde al generador \([\hat{\n{f}}, \hat{\n{q}}]\).
+
+El álgebra de generadores debe ser cerrada: el conmutador de 2 generadores es una combinación lineal de otros generadores.
 
 
+\section{Formulación lagrangiana relativista}
 
+\subsection{Acción covariante de una partícula libre}
+El principio de mínima acción nos obliga a minimizar:
+\begin{equation*}
+	S = \int L \, dt
+\end{equation*}
+donde la acción \(S\) debe cumplir con algunas condiciones:
+\begin{itemize}
+	\item Covariante bajo Lorentz y rotaciones
+	\item Covariante bajo traslaciones
+	(es decir, formar un grupo de transformaciones de Poincaré: Lorentz + rotaciones + traslaciones)
+	\item En el caso no relativista debe reducirse a
+	\begin{equation*}
+		S_{\mathrm{NR}} = \int \left(\frac{1}{2} mv^2\right) dt
+	\end{equation*}
+\end{itemize}
+La única variable que cumple con los requisitos es el tiempo propio de la partícula \(\tau\):
+\begin{equation}
+	S = -mc^2 \int d\tau = -mc^2 \int \sqrt{1 - \frac{v^2}{c^2}} dt
+\end{equation}
+De lo cual sacamos el lagrangiano:
+\begin{equation}
+	L = -m c^2 \sqrt{1 - \frac{v^2}{c^2}}
+\end{equation}
+que en el límite no relativista entrega
+\begin{equation*}
+	L \approx -mc^2 + \frac{1}{2}m v^2 + \mathcal{O}(v^2/c^2)
+\end{equation*}
+De esta formulación obtenemos las cantidades conservadas:
+\begin{enumerate}
+	\item \textbf{Energía} \(E\): por la invarianza respecto a \(t \rightarrow t + t_{0}\)
+	\item \textbf{Momento}: por la invarianza traslacional respecto a \(\rv \rightarrow \rv + \rv_{0}\)
+	\begin{equation*}
+		\n{p} = \pd{L}{\n{v}} = \frac{m\n{v}}{\sqrt{1 - v^2/c^2}}
+	\end{equation*}
+	\item \textbf{Momento angular}: por la invarianza respecto a la rotación alrededor de un eje
+	\begin{equation*}
+		M_{i} = \pd{L}{\dot{\phi}_{i}}
+	\end{equation*}
+\end{enumerate}
+Pero esta formulación nos deja un lagrangiano y unas ecuaciones de Euler-Lagrange que no son covariantes de Lorentz, por cambiamos de \(d\tau\) a \(dt\).
 
+\subsection{Lagrangiano covariante}
+Intentemos mantener la invarianza y no separar las coordenadas de tiempo y espacio. Asumamos que \(\theta\) es un parámetro a lo largo de la trayectoria \(x^\mu (\theta)\) (puede ser \(\tau\) pero no necesariamente). Tendremos:
+\begin{equation*}
+	\dot{x}^{\alpha} \equiv \td{x^{\alpha}}{\theta} ~~~ \Rightarrow ~~~ d\tau = \sqrt{d\tau^2} = \sqrt{\eta_{\mu\nu} dx^{\mu} dx^{\nu}} = \sqrt{\eta_{\mu\nu} \dot{x}^{\mu} \dot{x}^{\nu}} d\theta
+\end{equation*}
+Luego la acción:
+\begin{equation}
+	S = -m c^2 \int d\tau = -m c^2 \int \Lambda(x^{\mu},\dot{x}^{\mu}) d\theta
+\end{equation}
+donde
+\begin{equation}
+	\Lambda(x^{\mu},\dot{x}^{\mu}) = -mc^2 \sqrt{\eta_{\mu\nu} \dot{x}^{\mu} \dot{x}^{\nu}} = -mc^2 \td{\tau}{\theta}
+\end{equation}
+En el caso de una partícula libre, la dependencia de \(\Lambda\) respecto a \(x^{\mu}\) no aparece.
 
+Luego, las ecuaciones de Euler-Lagrange covariantes:
+\begin{equation}
+	\pd{\Lambda}{x^\mu} - \td{}{\theta}\left(\pd{\Lambda}{\dot{x}^\mu}\right) = 0
+\end{equation}
 
+En el caso de una partícula libre, el lagrangiano covariante:
+\begin{equation}
+	\Lambda = -mc\sqrt{\eta_{\mu\nu} \dot{x}^{\mu} \dot{x}^{\nu}}
+\end{equation}
+Y las ecuaciones de Euler-Lagrange
+\begin{align*}
+	0 - \td{}{\theta}\left(\pd{\Lambda}{\dot{x}^\mu}\right) &= 0 \\
+	- \td{}{\theta}\left(-mc^2 \left[-\frac{1}{2} \frac{\eta_{\mu\nu} \dot{x}^{\nu}}{\sqrt{\eta_{\mu\nu} \dot{x}^{\mu} \dot{x}^{\nu}}}\right]\right) &= 0  \\
+	\td{}{\theta}\left(mc^2 \frac{\dot{x}_{\mu}}{\sqrt{\eta_{\mu\nu} \dot{x}^{\mu} \dot{x}^{\nu}}}\right) &= 0
+\end{align*}
+pero
+\begin{equation*}
+	\dot{x}_{\mu} = \td{x_{\mu}}{\theta} = \td{x_{\mu}}{\tau} \td{\tau}{\theta} = \td{\tau}{\theta} u_{\mu}
+\end{equation*}
+entonces (recordando la ec. \ref{uu_c2}, \(\eta_{\mu\nu}u^\mu u^\nu = c^2 \))
+\begin{align}
+	\td{}{\theta} \left(mc^2 \frac{\ltd{\tau}{\theta} \, u_{\mu}}{\ltd{\tau}{\theta} \sqrt{\eta_{\mu\nu} u^{\mu} u^{\nu}}}\right) &= 0 \nonumber\\
+	\Rightarrow \td{}{\theta} \left(m c u_{\mu}\right) &= 0
+\end{align}
 
+\subsection{Campos externos}
+Para un campo definido en un cierto marco de referencia, tenemos que abandonar la covarianza del lagrangiano para incorporar el campo dado. Por ejemplo, una partícula relativista en un potencial independiente del tiempo 1-D, definido como \(U(x)\) en el marco del laboratorio:
+\begin{equation}
+	S = \int L dt, ~~~~~~~ L = -m c^2 \sqrt{1 - \frac{v^2}{c^2}} - U(x)
+\end{equation}
+En cualquier otro marco deberemos separar la acción en un término puramente cinético y otro de interacción que incluya al potencial:
+\begin{equation}
+	S = S_{0} + S_{\mathrm{int}}
+\end{equation}
+donde, para el caso del potencial anterior,
+\begin{equation}
+	S_{0} = -m c^2 \int d\tau, ~~~~~~~ S_{\mathrm{int}} = -\int \frac{U(x)}{\sqrt{1 - v^2/c^2}} d\tau
+\end{equation}
 
+\subsection{Movimiento relativista en un campo central}
+\subsubsection{Problema de Kepler relativista (caso \(U \propto 1/r\))}
+En el caso del problema de Kepler tendremos un potencial con la forma
+\begin{equation*}
+	U(r) = -\frac{\alpha}{r}, ~~~ \alpha > 0
+\end{equation*}
+por lo que el lagrangiano será
+\begin{align}
+	L &= -mc^2 \sqrt{1 - \frac{v^2}{c^2}} - U(r)\nonumber\\
+	&= -mc^2 \sqrt{1 - \frac{1}{c^2}\left[\dot{r}^2 + r^2\left(\dot{\theta}^2 + \dot{\phi}^2 \sin^2\theta \right)\right]} + \frac{\alpha}{r}
+\end{align}
+Con coordenadas generalizadas: \((r, \theta, \phi)\) y momentos generalizados:
+\begin{equation}
+	p_{r} = \pd{L}{\dot{r}} = \gamma m \dot{r}, ~~~~~ p_{\theta} = \pd{L}{\dot{\theta}} = \gamma m r^2 \dot{\theta}, ~~~~~ p_{\phi} = \pd{L}{\dot{\phi}} = \gamma m r^2 \dot{\phi} \sin^2\theta
+\end{equation}
+Calcular las ecuaciones de Euler-Lagrange es muy difícil, pero podemos usar integrales de movimiento para encontrar la trayectoria. De la simetría angular:
+\begin{equation*}
+	\phi \rightarrow \phi + \phi_{0} ~~~\Rightarrow~~~ p_{\phi} \equiv M_{z} = \mathrm{const}
+\end{equation*}
+podemos elegir arbitrariamente el plano \(\theta = \pi/2\) y obtener:
+\begin{equation}
+	\gamma m r^2 \dot{\phi} = \frac{m r^2 \dot{\phi}}{\sqrt{1 - v^2/c^2}} = \mathrm{const}
+\end{equation}
+es decir, la \textbf{Segunda Ley de Kepler}, que dependía de que se cumpliera \(dt = C \, dA\) (con \(C\) una constante dependiente de \(M_{z}\), ec. \ref{2da_Kepler}), \textbf{ya no es válida}.
 
+Y de la simetría temporal:
+\begin{equation*}
+	t \rightarrow t + t_{0} ~~~\Rightarrow~~~ E = \sum_{i} p_{i}\dot{q}_i - L = \mathrm{const}
+\end{equation*}
+Tendremos
+\begin{align*}
+	E &= p_{r}\dot{r} + p_{\theta}\dot{\theta} + p_{\phi}\dot{\phi} - L \\
+	&= \gamma m \left(\dot{r}^2 + r^2 \dot{\theta}^2 + r^2 \dot{\phi}^2 \sin^2\theta\right) + mc^2 \sqrt{1 - \frac{v^2}{c^2}} - \frac{\alpha}{r}\\
+	&= \gamma m v^2 + \frac{mc^2}{\gamma} - \frac{\alpha}{r}\\
+	&= \gamma m v^2 \left(1 + \frac{c^2/v^2}{\gamma^2}\right) - \frac{\alpha}{r}\\
+	&= \gamma m v^2 \left(1 + \left(1 - \frac{v^2}{c^2}\right) \frac{c^2}{v^2}\right) - \frac{\alpha}{r}\\
+	&= \gamma m v^2 \frac{c^2}{v^2} - \frac{\alpha}{r}\\
+	&= \gamma m c^2 - \frac{\alpha}{r}
+\end{align*}
+Es decir,
+\begin{equation}
+	E = \gamma m c^2 + U(r) = \mathrm{const}
+\end{equation}
+\begin{equation}
+	\Rightarrow \gamma = \frac{E - U(r)}{m c^2} \label{gamma_E_U}
+\end{equation}
+Si tomamos \(\theta = \pi/2\) podemos reescribir \(\gamma\) en función de la coordenada radial:
+\begin{equation*}
+	\gamma = \left[1 - \frac{v^2}{c^2}\right]^{-1/2} = \left[1 - \frac{\dot{r}^2 + r^2\dot{\phi}^2}{c^2}\right]^{-1/2}
+\end{equation*}
+pero
+\begin{align}
+	M_{z} &= \gamma m r^2 \dot{\phi} \nonumber\\
+	\Rightarrow \gamma &= \frac{M_{z}}{m r^2 \dot{\phi}}
+\end{align}
+\begin{align*}
+	M_{z} &= \gamma m r^2 \dot{\phi} \\
+	\Rightarrow M_{z}^{2}\gamma^{-2} &= m^2 r^4 \dot{\phi}^2\\
+	M_{z}^{2} \left(1 - \frac{\dot{r}^2 + r^2\dot{\phi}^2}{c^2}\right) &= m^2 r^4 \dot{\phi}^2
+\end{align*}
+\begin{equation}
+	\Rightarrow \dot{\phi} = M_{z}\sqrt{\frac{1 - \dot{r}^2/c^2}{m^2 r^4 + M_{z}^2 \, r^2/c^2}}
+\end{equation}
+\begin{align}
+	\Rightarrow \gamma &= \frac{M_{z}}{m r^2 \dot{\phi}} \nonumber\\
+	\gamma &= \sqrt{\frac{1 + (M_{z}/m r c)^2}{1 - \dot{r}^2/c^2}}
+\end{align}
+Luego la energía,
+\begin{align}
+	E &= m c^2 \sqrt{\frac{1 + (M_{z}/m r c)^2}{1 - \dot{r}^2/c^2}} + U(r)\\
+	E &= m c^2 \sqrt{\frac{1 + (M_{z}/m r c)^2}{1 - \dot{r}^2/c^2}} - \frac{\alpha}{r} = \mathrm{const}
+\end{align}
+Lo cual puede reescribirse como
+\begin{equation}
+	\frac{1}{2} m c^2 = \underbrace{\frac{1}{2} m \dot{r}^2}_{T_{\mathrm{NR}}} + \underbrace{\frac{1}{2} m^3 c^6 \left(E + \frac{\alpha}{r}\right)^{-2} \left(1 + \frac{M_{z}^2}{m^2 r^2 c^2}\right)}_{``\Ueff"}
+\end{equation}
+Dejando el término cinético al lado izquierdo podemos encontrar ecuaciones de movimiento para \(r\):
+\begin{equation}
+	\dot{r} = \td{r}{t} = \sqrt{c^2 - m^2 c^6 \left(E + \frac{\alpha}{r}\right)^{-2} \left(1 + \frac{M_{z}^2}{m^2 r^2 c^2}\right)}
+\end{equation}
+\begin{equation}
+	\Rightarrow t - t_0 = \int^{r} \frac{dr}{\sqrt{c^2 - m^2 c^6 \left(E + \frac{\alpha}{r}\right)^{-2} \left(1 + \frac{M_{z}^2}{m^2 r^2 c^2}\right)}}
+\end{equation}
+Podemos obtener la trayectoria \(r(\phi)\) como
+\begin{equation*}
+	\td{\phi}{r} = \frac{\dot{\phi}}{\dot{r}} = \frac{M_z}{\gamma m r^2}\frac{1}{\dot{r}}
+\end{equation*}
+Usando la ec. \ref{gamma_E_U}:
+\begin{equation*}
+	\td{\phi}{r} = \frac{M_z c^2}{r^2}\left(E  + \frac{\alpha}{r}\right)^{-1} \frac{1}{\dot{r}}
+\end{equation*}
+\begin{equation}
+	\Rightarrow \phi - \phi_0 = M_z c^2 \int^{r} \frac{dr}{r \left(E r + \alpha \right) \sqrt{c^2 - m^2 c^6 \left(E + \frac{\alpha}{r}\right)^{-2} \left(1 + \frac{M_{z}^2}{m^2 r^2 c^2}\right)}}
+\end{equation}
+No se cumple ni la Primera ni la Tercera Ley de Kepler (no se cumple ninguna xd). Las trayectorias no son cerradas.
 
+\subsubsection{Campo central general}
+En el caso general, el lagrangiano será
+\begin{equation*}
+	L = -mc^2 \sqrt{1 - \frac{v^2}{c^2}} - U(r)
+\end{equation*}
+La energía
+\begin{equation*}
+	E = \gamma mc^2 + U(r) = \mathrm{const}
+\end{equation*}
+Y la conservación del momento angular
+\begin{equation*}
+	\n{M} = \rv\times\n{p} = \rv\times\gamma m \n{v} = \mathrm{const}
+\end{equation*}
+\begin{equation*}
+	M = \gamma m r^2 \dot{\phi}
+\end{equation*}
+Por lo que la energía
+\begin{equation*}
+	\Rightarrow E = mc^2 \sqrt{\frac{1 + (M_z/m r c)^2}{1 - (\dot{r}/c)^2}} + U(r), ~~~~~~ \dot{\phi} = M_z \sqrt{\frac{1 - (\dot{r}/c)^2}{m^2 r^4 + (M_z r/c)^2}}
+\end{equation*}
+En el límite no relativista (\(c\rightarrow\infty\))
+\begin{equation*}
+	E_{\mathrm{NR}} = E - mc^2 \approx \frac{1}{2}m\dot{r}^2 + \frac{M_z^2}{2 m r^2} + U(r) + \mathcal{O}(1/c^2)
+\end{equation*}
+Podemos también reescribir
+\begin{equation*}
+	\frac{1}{2} m c^2 = \frac{1}{2} m \dot{r}^2 + \frac{1}{2} m^3 c^6 \left(E - U(r)\right)^{-2} \left(1 + \frac{M_{z}^2}{(m r c)^2}\right)
+\end{equation*}
+Donde el último término es el potencial efectivo, que en el límite no relativista:
+\begin{equation*}
+	E_{\mathrm{NR}} = E - mc^2 = \frac{1}{2}m \dot{r}^2 + \Ueff^{\mathrm{NR}}
+\end{equation*}
+\begin{equation}
+	\Ueff^{\mathrm{NR}} \approx U(r) + \frac{M_z^2}{2 m r^2} - \frac{M^2 (E_{\mathrm{NR}} - U(r))}{m^2 r^2 c^2} + \frac{3 (E_{\mathrm{NR}} - U(r))^2}{2 m c^2} + \cdots
+\end{equation}
+Y las soluciones a las ecuaciones de movimiento
+\begin{equation*}
+	t - t_0 = \int \frac{dr}{\sqrt{c^2 + m^2 c^6 \left(E - U(r)\right)^{-2} \left(1 + \frac{M_{z}^2}{(m r c)^2}\right)}}
+\end{equation*}
+\begin{equation*}
+	\phi(t) = \int \underbrace{\frac{mc^2}{(E - U(r))}}_{\gamma} \frac{M_z}{mr^2} \, dt
+\end{equation*}
+Y la ecuación de la trayectoria
+\begin{equation*}
+	\phi - \phi_0 = \int \frac{M_z c^2 (E - U(r))}{r^2 \sqrt{c^2 + m^2 c^6 \left(E - U(r)\right)^{-2} \left(1 + \frac{M_{z}^2}{(m r c)^2}\right)}} \, dr
+\end{equation*}
 
+\subsection{Lagrangiano en campo electromagnético}
+\subsubsection{Movimiento en campo electromagnético}
+Tomando el 4-vector de potencial electromagnético \(A^\mu\), asumimos
+\begin{equation}
+	S_\mathrm{int} = -q \int dx_\mu A^\mu (x) = q \int d\tau (u\cdot A)
+\end{equation}
+\begin{equation*}
+	u_\mu \equiv \td{x_\mu}{\tau}, ~~~~~~~ u \cdot A \equiv \eta_{\mu\nu} u^\mu A^\nu
+\end{equation*}
+Tomando \(A^\mu = (\phi,\n{A})\)
+\begin{equation*}
+	S_\mathrm{int} = -q \int \gamma(\phi - \n{A}\cdot\n{v}) \, d\tau = -q \int (\phi - \n{A}\cdot\n{v}) \, dt
+\end{equation*}
+\begin{equation}
+	\Rightarrow L = -mc^2 \sqrt{1 - \frac{v^2}{c^2}} - q(\phi - \n{A}\cdot\n{v})
+\end{equation}
+De aquí, el momento generalizado
+\begin{equation}
+	P^{a} = \pd{L}{v^{a}} = \underbrace{\gamma m v^a}_{p^a} + q A^{a}
+\end{equation}
+Las ecuaciones de movimiento:
+\begin{align}
+	\td{}{t}\left(\td{L}{v^a}\right) &= \pd{L}{r^a}\nonumber\\
+	\td{P^a}{t} \equiv \td{p^a}{t} + q\td{A^a}{t} & = -q\gr_a \phi + q\gr_a (\n{A}\cdot\n{v})
+\end{align}
+\begin{equation}
+	\Rightarrow\td{\n{p}}{t} = q(\n{E} + \n{v}\times\n{B})
+\end{equation}
+\begin{equation}
+	\n{E} = - \gr\phi - \pd{\n{A}}{t}, ~~~~~~~ \n{B} = \ro\n{A}
+\end{equation}
+Ya que el campo magnético no afecta la energía cinética,
+\begin{equation}
+	\td{E_\mathrm{kin}}{t} = \n{v}\cdot\td{\n{p}}{t} = q\n{E}\cdot\n{v}
+\end{equation}
+Para sacar la expresión de la energía desde el teorema de Noether,
+\begin{equation}
+	E = \n{v}\cdot\pd{L}{\n{v}} - L = \gamma mc^2 + q\phi
+\end{equation}
 
+\subsubsection{Versión covariante}
+Definiendo el tensor de campo electromagnético:
+\begin{equation}
+	F_{\mu\nu} \equiv \partial_\mu A_\nu - \partial_\nu A_\mu
+\end{equation}
+\begin{equation}
+	F^{\mu\nu} = \begin{bmatrix}
+		0 		& -E_x/c 	& -E_y/c 	& -E_z/c \\
+		E_x/c 	& 0			& -B_z 		& B_y	\\
+		E_y/c 	& B_z		& 0 		& -B_x	\\
+		E_z/c 	& -B_y 		& B_x 		& 0
+	\end{bmatrix}
+\end{equation}
+\begin{equation}
+	F_{\mu\nu} = \eta_{\mu\alpha} F^{\alpha\beta} \eta_{\beta\nu} = \begin{bmatrix}
+	0 		& E_x/c 	& E_y/c 	& E_z/c \\
+	-E_x/c 	& 0			& -B_z 		& B_y	\\
+	-E_y/c 	& B_z		& 0 		& -B_x	\\
+	-E_z/c 	& -B_y 		& B_x 		& 0
+	\end{bmatrix}
+\end{equation}
+Donde los componentes de los campos:
+\begin{equation*}
+	E_{i} = c F_{0i}, ~~~~~~~ B_{i} = -\frac{1}{2} \epsilon_{ijk} F^{jk}
+\end{equation*}
+Tenemos
+\begin{equation}
+	m \td{u^{\nu}}{\tau} \equiv \td{p^\nu}{\tau} = q F^{\mu\nu} u_{\nu}
+\end{equation}
+Y los componentes del momento:
+\begin{equation}
+	\begin{matrix}
+		\td{p_0}{t} &=& \dfrac{q}{c} (E_x v_x + E_y v_y + E_z v_z) = \dfrac{q}{c}\n{E}\cdot\n{v},\vspace{3mm}\\
+		\td{p_1}{t} &=& q (E_x + v_y B_z - v_z B_y),\hfill\vspace{3mm}\\
+		\td{p_2}{t} &=& q (E_y + v_z B_x - v_x B_z),\hfill\vspace{3mm}\\
+		\td{p_3}{t} &=& q (E_z + v_x B_y - v_y B_x)\hfill
+	\end{matrix}
+\end{equation}
 
+\subsubsection{Sistema de N partículas}
+Ya que el principio de relatividad nos prohíbe usar fuerzas a distancia, para un sistema de \(N\) partículas deberemos escribir la acción como
+\begin{equation}
+	S = S_{0} + S_\mathrm{int} + \int \mathcal{L}_{\mathrm{field}} \, d^2 x
+\end{equation}
+donde
+\begin{equation}
+	\mathcal{L}_{\mathrm{field}} = - \frac{1}{4} F_{\mu\nu} F^{\mu\nu}
+\end{equation}
+Además, las ecuaciones de Maxwell:
+\begin{equation}
+	\partial_\nu F^{\mu\nu} = \uo j^\mu, ~~~~~~~ \epsilon_{\alpha\beta\mu\nu} \partial^\beta F^{\mu\nu} = 0
+\end{equation}
+
+\subsection{Lagrangiano en campo gravitacional}
+Añadir un término de interacción \(S_\mathrm{int}\) no es la única forma de incluir interacciones en nuestro sistema. Otra opción es reemplazar la métrica plana por un tensor métrico
+\begin{equation*}
+	\eta_{\mu\nu} = \mathrm{diag}(1,-1,-1,-1) ~~\rightarrow~~ g_{\mu\nu}(x)
+\end{equation*}
+El principio de mínima acción queda entonces:
+\begin{equation}
+	S = -mc^2 \int \sqrt{g_{\mu\nu}(x) \td{x^{\mu}}{\tau} \td{x^{\nu}}{\tau}} \, d\tau
+\end{equation}
+donde \(\tau\) puede ser cualquier parámetro a largo de la trayectoria. Si \(\tau\) es el tiempo propio, entonces
+\begin{equation*}
+	\sqrt{g_{\mu\nu}(x) \td{x^{\mu}}{\tau} \td{x^{\nu}}{\tau}} = 1
+\end{equation*}
+Variando la acción llegamos a:
+\begin{equation}
+	g_{\mu\nu} \td{^2 x^\nu}{\tau^2} + \frac{1}{2} \td{x^\alpha}{\tau} \td{x^\nu}{\tau} \left(\partial_\alpha g_{\mu\nu} + \partial_\nu g_{\mu\alpha} - \partial_\mu g_{\alpha\nu}\right) = 0
+\end{equation}
+Y las ecuaciones de movimiento (o geodésicas):
+\begin{equation}
+	\td{^2 x^\mu}{\tau^2} + \Gamma^\mu_{\alpha\beta} \td{x^\alpha}{\tau} \td{x^\beta}{\tau} = 0
+\end{equation}
+donde \(\Gamma^\mu_{\alpha\beta}\) son los \textbf{símbolos de Christoffel} (véase también ec. \ref{christoffel}). Reescribiendo,
+\begin{equation}
+	\td{p^\mu}{\tau} = -m \Gamma^\mu_{\alpha\beta} \td{x^\alpha}{\tau} \td{x^\beta}{\tau}
+\end{equation}
+donde el lado derecho puede ser interpretado como la 4-fuerza covariante.
+
+\section{Formalismo Hamiltoniano}
 
 
 
