@@ -17,8 +17,67 @@
 
 \newcommand{\dderiv}[3]{\left(\dfrac{\partial #1}{\partial #2} \right)_{#3}}
 
+\NewDocumentCommand{\indUpDown}{ O{\Lambda} O{\mu} O{\nu} }{
+	{#1}^{#2}_{\ #3}
+}
+\NewDocumentCommand{\indDownUp}{ O{\Lambda} O{\mu} O{\nu} }{
+	{#1}_{#2}^{\ #3}
+}
+
+\newcommand{\LambdaMuNu}{\indUpDown}
+\newcommand{\0}{\textcolor{gray}{0}}
+\newcommand{\ei}{\mathbf{e}_i}
+\newcommand{\ej}{\mathbf{e}_j}
+\newcommand{\lc}{\epsilon_{ijk}}
+\newcommand{\gr}{\nabla}
+\newcommand{\di}{\nabla\cdot}
+\newcommand{\ro}{\nabla\times}
+\newcommand{\la}{\nabla^2}
+\newcommand{\rv}{\mathbf{r}}
+\newcommand{\xv}{\mathbf{x}}
+\newcommand{\yv}{\mathbf{y}}
+\newcommand{\zv}{\mathbf{z}}
+\newcommand{\xhat}{\hat{\xv}}
+\newcommand{\yhat}{\hat{\yv}}
+\newcommand{\zhat}{\hat{\zv}}
+\newcommand{\ihat}{\hat{\mathbf{i}}}
+\newcommand{\jhat}{\hat{\mathbf{j}}}
+\newcommand{\khat}{\hat{\mathbf{k}}}
+\newcommand{\rhat}{\hat{\rv}}
+\newcommand{\that}{\hat{\mathbf{\theta}}}
+\newcommand{\phat}{\hat{\mathbf{\varphi}}}
+\newcommand{\rhhat}{\hat{\mathbf{\rho}}}
+\newcommand{\nhat}{\hat{\mathbf{n}}}
+\newcommand{\Rhat}{\hat{\mathbf{R}}}
+\newcommand{\eo}{\epsilon_{0}}
+\newcommand{\uo}{\mu_{0}}
+\NewDocumentCommand{\ke}{ O{1}}{
+	\frac{#1}{4\pi\eo}
+}
+\NewDocumentCommand{\ku}{ O{}}{
+	\frac{\uo #1}{4\pi}
+}
+%\newcommand{\ke}{\frac{1}{4\pi\eo}}
+%\newcommand{\ku}{\frac{\uo}{4\pi}}
+\newcommand{\rdif}{\rv - \rv'}
 \newcommand{\pd}[2]{\dfrac{\partial #1}{\partial #2}}
+\newcommand{\lpd}[2]{\partial #1/\partial #2}
 \newcommand{\td}[2]{\dfrac{d #1}{d #2}}
+\newcommand{\ltd}[2]{d #1/d #2}
+\newcommand{\n}[1]{\mathbf{#1}}
+\newcommand{\eff}[1]{#1_\mathrm{eff}}
+\newcommand{\Ueff}{\eff{U}}
+
+\newcommand{\wfrac}[3][3pt]{%
+	\frac{\wfracterm{depth}{\dp}{#1}{#2}}{\wfracterm{height}{\ht}{#1}{#3}}%
+}
+\newcommand{\wfracterm}[4]{%
+	\sbox0{$\displaystyle#4$}%
+	\vrule width 0pt #1 \dimexpr #20+#3\relax
+	\usebox{0}%
+}
+
+\newcommand{\pr}[1]{\left\langle #1 \right\rangle }
 
 %opening
 \title{Física Estadística Avanzada}
@@ -752,7 +811,7 @@ Es un potencial útil cuando las variables de control (externas) son \((S, p, N)
 \subsubsection{Energía Libre de Gibbs (\(G\))}
 Es un potencial útil cuando las variables de control (externas) son \((T, p, N)\).
 \begin{align}
-	G &\equiv E - TS + pV\\
+	G &\equiv E - TS + pV \label{Gibbs}\\
 	dG(T,p,N) &= -SdT + Vdp + \mu dN
 \end{align}
 \begin{equation}
@@ -1602,7 +1661,7 @@ Esta es una distribución gaussiana con media \(U\) y varianza \(\sigma_E^2 = k_
 \subsubsection{Gas ideal}
 Para el gas ideal clásico, la función de partición canónica
 \begin{equation}
-	Z_N = \dfrac{1}{N!}\left(\dfrac{V}{\lambda^3}\right)^N
+	Z_N = \dfrac{1}{N!}\left(\dfrac{V}{\lambda^3}\right)^N \label{particion_canonica_gas_ideal}
 \end{equation}
 donde \(\lambda\) es la longitud de onda térmica dada por la ec. \ref{lambda_onda_termica}. A partir de \( Z_N\) , podemos derivar todas las propiedades termodinámicas:
 
@@ -1725,41 +1784,338 @@ El camino libre medio \(\ell\) es la distancia promedio que recorre una molécul
 donde \(d\) es el diámetro de la partícula en consideración y \(n = N/V\) su densidad numérica.
 
 \subsection{Distribución de Boltzmann}
+Para un sistema de \(N\) partículas sujeto a un potencial \(U(\rv)\), la densidad \(n\) en un volumen \(dx \, dy \, dz\) está definida por la distribución de Boltzmann:
+\begin{equation}
+	n(\rv) = \frac{n}{A} \exp\left[- \beta U(\rv)\right]
+\end{equation}
+donde \(A\) es una constante de normalización
+\begin{equation}
+	A = \int_{V} \exp\left[- \beta U(\rv)\right] d^3 r
+\end{equation}
+En muchos problemas no es necesario calcular explícitamente \(A\), si se conoce la concentración en un punto de referencia \((x_0, y_0, z_0)\), con potencial \(U_0 = U(x_0, y_0, z_0)\), entonces
+\begin{equation}
+	n(\rv) = n(x_0, y_0, z_0) \exp\left[- \beta\left(U(\rv) - U_0\right)\right]
+\end{equation}
+Para un campo gravitacional uniforme cercano a la superficie terrestre
+\begin{equation*}
+	U(z) = m g z
+\end{equation*}
+si tomamos \(U(0) = 0\), entonces la distribución de Boltzmann se reduce a
+\begin{equation}
+	n(\rv) = n_0 \exp\left[- \beta m g z\right] \label{Boltzmann_grav}
+\end{equation}
 
 \subsection{Ensamble Gran Canónico}
+Aplicaremos este ensamble cuando trabajamos con un sistema a volumen fijo en equilibrio térmico y químico con un reservorio, con el cual puede intercambiar energía y partículas. Es decir, mantendremos fijas las variables
+\begin{equation*}
+	T, V, \mu
+\end{equation*}
+La definición más formal, un ensamble gran canónico es una colección de un número muy grande de réplicas idénticas del sistema, todas con el mismo \(T, V, \mu\), pero en diferentes microestados cuánticos \(r\) con energía \(E_r\) y número de partículas \(N_r\). Cada réplica está en contacto con el mismo reservorio que fija \(T, \mu\). La probabilidad de cada microestado \(r\) vendrá dada por:
+\begin{equation}
+	P_r = \frac{e^{- \beta\left(E_{r} - \mu N_r\right)}}{\Xi}
+\end{equation}
+donde \(\Xi\) es la función de partición
+\begin{equation}
+	\Xi = \sum_{N=0}^{\infty} \sum_{r(N)} e^{-\beta\left( E_{r,N} - \mu N\right)}
+\end{equation}
+aquí, la notación \(r(N)\) indica que la suma sobre estados cuánticos \(r\) depende del número de partículas \(N\). En caso continuo,
+\begin{equation}
+	\Xi = \sum_{N=0}^{\infty} e^{\beta \mu N} \int d\Gamma_N e^{\beta H_N(\Gamma_N)}
+\end{equation}
 
+Para cada valor fijo de \(N \), el sistema tiene un conjunto de estados cuánticos accesibles, caracterizados por una energía \(E_{r,N} \). El índice \(r\) enumera estos estados para ese \(N\) específico. Primero se suma sobre todos los estados \(r\) para un \(N\) dado, y luego se suma sobre todos los posibles \(N \).
 
+\subsubsection{Potencial químico}
+El potencial químico \(\mu\) es la variable termodinámica conjugada al número de partículas \(N \). En equilibrio, es la magnitud que se iguala cuando hay difusión de partículas entre dos regiones o sistemas en contacto. Intuitivamente, podríamos pensar que la difusión ocurre cuando hay una diferencia de concentración, pero en rigor, la fuerza impulsora es la diferencia de potencial químico.
 
+Para un gas ideal monoatómico, el potencial químico puede escribirse como
+\begin{equation}
+	\mu(T,p) = -c_p T \ln\left[\frac{T}{T_0}\right] + k_B T \ln\left[\frac{p}{p_0}\right] + c_p - s_0 T
+\end{equation}
+donde \(c_p\) es la capacidad calorífica molar a presión constante, y \(s_0, T_0, p_0\) son constantes de referencia.
 
+Al incluir en el potencial químico la contribución de la energía potencial gravitatoria obtenemos:
+\begin{equation}
+	\mu(T,p) = -c_p T \ln\left[\frac{T}{T_0}\right] + k_B T \ln\left[\frac{p}{p_0}\right] + c_p - s_0 T + m g h
+\end{equation}
+Comparando el potencial químico entre dos alturas \(h_1, h_0\), podemos describir el cambio de presión con la llamada \textbf{fórmula barométrica}:
+\begin{equation}
+	p_1 = p_0 \exp\left[-\beta m g (h_1 - h_0)\right]
+\end{equation}
+y la densidad:
+\begin{equation*}
+	n_1 = n_0 \exp\left[-\beta m g (h_1 - h_0)\right]
+\end{equation*}
+lo cual coincide con la ec. \ref{Boltzmann_grav}.
 
+Para un gas ideal monoatómico:
+\begin{equation}
+	\mu = \frac{1}{\beta} \ln\left[\beta p \lambda^3\right]
+\end{equation}
 
+\subsubsection{Fugacidad (\(z\))}
+La fugacidad se define como:
+\begin{equation}
+	z = e^{\beta \mu}
+\end{equation}
+Es una medida de la actividad termodinámica de las partículas. Para un gas ideal,
+\begin{equation}
+	z = \beta p \lambda^3
+\end{equation}
+es decir, es proporcional a la densidad (o presión) normalizada por la escala cuántica (ec. \ref{lambda_onda_termica}). También conviene introducir la variable adimensional:
+\begin{equation}
+	\alpha = -\beta\mu = - \ln z \label{alpha}
+\end{equation}
 
+En el límite de baja densidad (\(z \ll 1\)), el sistema se comporta clásicamente. En la serie de Mayer y en el desarrollo de la función de partición gran canónica, \(z\) es el parámetro de expansión.
 
+Para un gas ideal:
+\begin{equation}
+	\Xi = e^{\pr{N}}, ~~~~~~~ \pr{N} = z \frac{V}{\lambda^3}
+\end{equation}
 
+Nos permite escribir la relación entre funciones de partición canónicas (de la ec. \ref{Z}, \(Z = \sum_{r} e^{-\beta E_r}\)) y gran canónicas:
+\begin{equation}
+	\Xi = \sum_{N=0}^{\infty} z^N Z_N (T,V)
+\end{equation}
 
+\subsubsection{Potencial gran canónico}
+Definimos el potencial gran canónico como
+\begin{equation}
+	\Omega_{GC} (T,V,\mu) = - \frac{\ln\Xi}{\beta}
+\end{equation}
+El gran potencial \(\Omega_{GC} (T,V,\mu)\) es el potencial termodinámico natural para las variables \((T,V,\mu)\). Es la función que se minimiza en el equilibrio cuando el sistema está en contacto con un reservorio que fija \(T\) y \(\mu\). Se relaciona con la energía libre de Helmholtz mediante
+\begin{equation}
+	\Omega_{GC} = F - \mu N
+\end{equation}
+Nos dará las relaciones termodinámicas
+\begin{equation}
+	\begin{matrix}
+		\dderiv{\Omega_{GC}}{\mu}{T,V} = -\pr{N},\ \ \ & \dderiv{\Omega_{GC}}{T}{V,\mu} = -S,\ \ \ & \dderiv{\Omega_{GC}}{V}{T,\mu} = -P
+	\end{matrix}
+\end{equation}
+También podemos obtener la energía interna media \(U = \left\langle E \right\rangle \) como
+\begin{equation}
+	U = - \dderiv{(\beta \Omega_{GC})}{\beta}{\mu, V} + \mu \left\langle N \right\rangle
+\end{equation}
 
+Para sistemas homogéneos (extensivos), se cumple:
+\begin{equation}
+	\Omega_{GC} (T,V,\mu) = - P V
+\end{equation}
+\(\Omega_{GC}\) es la energía libre útil para describir sistemas en contacto con reservorios de partículas; su valor es directamente \(- P V\) , que es la energía libre de Gibbs por unidad de volumen. También se cumplirá que
+\begin{equation}
+	T S = \Omega_{GC} + \left\langle  E \right\rangle - \mu \pr{N}
+\end{equation}
+donde los valores medios vienen dados por
+\begin{equation}
+	\left\langle  E \right\rangle = \sum_{N,j} E_{N,j} P_{N,j}, ~~~~~~~ \left\langle N \right\rangle = \sum_{N,j} N P_{N,j}
+\end{equation}
+Con ello podemos expresar una forma estadística de la entropía:
+\begin{equation}
+	S = -k \sum_{N,j} P_{N,j} \ln P_{N,j}
+\end{equation}
+Esta es la forma de Gibbs de la entropía, mide cuán dispersa está la probabilidad entre los
+microestados accesibles del sistema abierto.
 
+\subsubsection{Gas ideal}
+Para un gas ideal clásico, la función de partición canónica viene dada por la ec. \ref{particion_canonica_gas_ideal}
+\begin{equation*}
+	Z_N = \frac{1}{N!}\left(\dfrac{V}{\lambda^3}\right)^N
+\end{equation*}
+donde \(\lambda = h/\sqrt{2\pi m k_B T}\) es la longitud de onda térmica. La función de partición gran canónica será
+\begin{equation*}
+	\Xi = \sum_{N=0}^{\infty} z^N \frac{1}{N!}\left(\dfrac{V}{\lambda^3}\right)^N
+\end{equation*}
+lo cual coincide con una expansión de Taylor, podremos escribir entonces
+\begin{equation}
+	\Xi(z,V,T) = \exp\left[z \frac{V}{\lambda^3}\right] ~~~\Rightarrow~~~ \ln\Xi = z \frac{V}{\lambda^3}
+\end{equation}
+De aquí obtendremos
+\begin{equation}
+	\pr{N} = z \frac{V}{\lambda^3}, ~~~~~ U = \frac{3}{2}\pr{N} k_B T, ~~~~~ P = \frac{\pr{N}}{V} k_B T, ~~~~~ \Omega_{GC} = -k_B T \pr{N}
+\end{equation}
 
+\subsubsection{Compresibilidad isotérmica}
+La compresibilidad isotérmica \(\kappa_T\) mide la respuesta del volumen a cambios de presión a temperatura constante
+\begin{equation}
+	\kappa_T = - \frac{1}{V}\deriv{V}{P}{T,N}\hspace{-6mm}, ~~~~~~~~~ \deriv{\pr{N}}{\mu}{T,V}\hspace{-4mm} = \frac{\pr{N}^2}{V} \kappa_T
+\end{equation}
+En el ensamble gran canónico, tendremos la \textbf{relación fluctuación-compresibilidad}:
+\begin{equation}
+	\frac{\left\langle (\Delta N)^2\right\rangle}{\pr{N}^2} = \frac{\kappa_T}{\beta V}
+\end{equation}
+Tendremos que \(\kappa_T > 0 \) para sistemas estables (el volumen disminuye al aumentar la presión).
+\(\kappa_T\) grande indica que el sistema es fácilmente compresible. En un gas ideal, \(\kappa_T = 1/P\), y las fluctuaciones relativas son \(\sim 1/\sqrt{N}\).
 
+\subsubsection{Fluctuaciones}
+En el ensamble gran canónico, tanto la energía como el número de partículas fluctúan. En el caso del número de partículas, la varianza es
+\begin{align}
+	\pr{ (\Delta N)^2} &= \left\langle N^2\right\rangle - \pr{N}^2 = \frac{1}{\beta^2}\pd{^2 \ln\Xi}{\mu^2}\\
+	\Rightarrow \pr{ (\Delta N)^2} &= \frac{1}{\beta} \deriv{\pr{N}}{\mu}{T,V}
+\end{align}
 
+La densidad media es \(\left\langle \rho\right\rangle = \pr{N}/V\). Como \(V\) es fijo en el ensamble gran canónico, las fluctuaciones de densidad provienen únicamente de las de \(\pr{N}\):
+\begin{equation}
+	\pr{ (\Delta \rho)^2} = \frac{1}{\beta V^2} \deriv{\pr{N}}{\mu}{T,V}
+\end{equation}
+Y en términos de la compresibilidad:
+\begin{equation}
+	\pr{ (\Delta \rho)^2} = \frac{1}{\beta V} \rho^2 \kappa_T
+\end{equation}
 
+En el \underline{canónico}, la función de partición es \(Z_N (T,V)\). La varianza de la energía es:
+\begin{equation}
+	\pr{ (\Delta E)^2}{C} = \frac{T}{\beta} C_V
+\end{equation}
+En el \underline{gran canónico}, la varianza de la energía resulta:
+\begin{equation}
+	\pr{ (\Delta E)^2}{GC} = \frac{T}{\beta} \deriv{U}{T}{z,V}
+\end{equation}
+donde \(z\) es la fugacidad. También, si se quiere escribir explícitamente en términos de \(\Xi\),
+\begin{equation}
+	\pr{ (\Delta E)^2}{GC} = \pd{^2 \ln\Xi}{\beta^2} + 2\mu \pd{^2 \ln\Xi}{\beta\partial\mu} + \mu^2\pd{\ln\Xi}{\mu^2}
+\end{equation}
 
+Recordando \(\alpha\) (ec. \ref{alpha}), podemos expresar
+\begin{equation}
+	\deriv{N}{\beta}{\alpha,V}\hspace{-4mm} = \deriv{U}{\alpha}{\beta,V}\hspace{-5mm}, ~~~~~~~~~~ \deriv{N}{T}{z,V}\hspace{-4mm} = \frac{1}{T} \deriv{U}{\mu}{T,V}
+\end{equation}
+De aquí interpretamos que la sensibilidad de \(N\) a cambios en \(\beta\) (temperatura inversa) es igual a la sensibilidad de \(U\) a cambios en \(\alpha\) (potencial químico adimensionalizado).
 
+Con estas relaciones podemos obtener la expresión final de las fluctuaciones de energía,
+\begin{equation}
+	\pr{ (\Delta E)^2}{GC} = \underbrace{\pr{ (\Delta E)^2}{C}}_{T C_V/\beta} + \deriv{U}{N}{T,V}^2 \pr{ (\Delta N)^2}
+\end{equation}
 
+\subsubsection{Distribución de probabilidad}
+La probabilidad de encontrar exactamente \(N\) partículas en el sistema (independientemente del estado cuántico) es:
+\begin{equation*}
+	P(N) = P_{N,r} = \frac{e^{- \beta\left(E_{r} - \mu N_r\right)}}{\Xi} = \frac{z^N Z_N (T,V)}{\Xi}
+\end{equation*}
+Para sistemas macroscópicos, \(P (N )\) tiene un máximo muy pronunciado alrededor de \(N = \pr{N} \). Para un gas ideal, encontramos que
+\begin{equation}
+	P(N) \approx P(\pr{N}) \exp\left[- \frac{\left(N - \pr{N}\right)^2}{2 \pr{N}}\right]
+\end{equation}
+Para \( N \sim 10^{23}, \sigma_N/\pr{N} \sim 10^{−11}\), extremadamente pequeña. La distribución es tan angosta que prácticamente todos los sistemas del ensamble tienen \(N = \pr{N}\). Esto justifica la equivalencia entre los ensambles canónico y gran canónico en el límite termodinámico.
 
+\subsection{Equilibrio de fases y ecuación de Clausius-Clapeyron}
+A partir de la relación fundamental descrita en la ec. \ref{Gibbs}:
+\begin{equation*}
+	G = E - TS + pV
+\end{equation*}
+Para un sistema simple compresible, \(G\) es el potencial natural cuando las variables controladas son \(P\) y \(T \). La cantidad
+\begin{equation*}
+	\mu(P,T) = \frac{G}{N}
+\end{equation*}
+es la energía libre de Gibbs por partícula. Por eso, \(\mu\) decide qué fase es termodinámicamente estable bajo condiciones dadas.
 
+Supóngase un sistema con dos fases, \(A\) y \(B\), en un conjunto isotérmico-isobárico:
+\begin{equation*}
+	N = N_A + N_B, ~~~~~~~ G = G_A(N_A,P,T) + G_B(N_B,P,T)
+\end{equation*}
+Si tomamos una cantidad infinitesimal de partículas pasando de la fase \(A\) a la \(B\), obtenemos el cambio de \(G\):
+\begin{equation}
+	dG = (\mu_a - \mu_B) dN_A
+\end{equation}
+Como el sistema tenderá a minimizar \(G\), tendremos que
+\begin{itemize}
+	\item si \(\mu_A > \mu_B\), entonces la fase \(A\) tiende a disminuir;
+	\item si \(\mu_A < \mu_B\), entonces la fase \(A\) tiende a crecer;
+	\item si \(\mu_A = \mu_B\), no hay fuerza termodinámica neta para transferir partículas.
+\end{itemize}
+La condición de coexistencia \(\mu_A = \mu_B\) definirá la frontera de fase en el plano \(P-T \). 
 
+La ecuación de Clausius-Clapeyron, en cambio, nos dará la pendiente de la curva que define una frontera entre fases, puede ser descrita como
+\begin{equation}
+	\td{P_\sigma}{T} = \frac{\Delta s}{\Delta v}
+\end{equation}
+donde \(P_\sigma\) es la presión de coexistencia, o la presión necesaria para mantenerse en la curva de la frontera como función de \(T\). Además, si consideramos el calor latente
+\begin{equation}
+	L = T \Delta s
+\end{equation}
+podemos obtener
+\begin{equation}
+	\td{P_\sigma}{T} = \frac{L}{T \Delta v}
+\end{equation}
 
+En una transición líquido \(\rightarrow\) vapor, normalmente
+\begin{equation*}
+	\Delta s > 0, ~~~~~~~ \Delta v > 0
+\end{equation*}
+por lo que
+\begin{equation*}
+	\td{P_\sigma}{T} > 0
+\end{equation*}
+Es decir, la presión de coexistencia crece con la temperatura.
 
+\subsection{Ensamble Isotérmico-Isobárico (NPT)}
+El ensamble isotérmico-isobárico o NPT se utilizará en contextos de equilibrio térmico y mecánico con un reservorio mayor, con el cual intercambia energía y volumen, pero no partículas. Es decir, tendremos fijas a las variables:
+\begin{equation*}
+	T, P, N
+\end{equation*}
+La definición formal, un ensamble isotérmico-isobárico es una colección de un número muy grande de réplicas idénticas del sistema, todas con el mismo \(T, P, N\), pero en diferentes microestados cuánticos \(r\) con energía \(E_r\) y volumen \(V\). Cada réplica está en contacto con el mismo reservorio que fija \(T, P\). La probabilidad de cada microestado \(r\) vendrá dada por:
+\begin{equation}
+	P_r = \frac{e^{- \beta\left(E_{r} + PV\right)}}{\Delta}
+\end{equation}
+donde \(\Delta\) es la función de partición
+\begin{equation}
+	\Delta = \sum_{V} \sum_{r} e^{-\beta\left(E_r + PV\right)}
+\end{equation}
+La versión continua es
+\begin{equation}
+	\Delta = \frac{1}{V_0}\int_{0}^{\infty} e^{-\beta PV} Z \, dV \label{NPT_continua}
+\end{equation}
+donde \(V_0\) es una constante de referencia con dimensiones de volumen, introducida para que \(\Delta\) sea adimensional
 
+La cantidad termodinámica natural asociada a este ensamble es la energía libre de Gibbs:
+\begin{equation*}
+	G = U + PV - TS
+\end{equation*}
 
+El peso estadístico del ensamble NPT es \(P_r(V) \propto e^{- \beta\left(E_{r} + PV\right)}\). De aquí la combinación:
+\begin{equation*}
+	H \equiv E + PV
+\end{equation*}
+es la entalpía. Es decir, comparado con el ensamble canónico, donde los microestados son penalizados por su energía \(E\), en el ensamble NPT, serán penalizados por su entalpía. Podemos obtener la entalpía promedio de
+\begin{equation}
+	\pr{H} = \pr{E + PV} = -\deriv{\ln\Delta}{\beta}{N,P}
+\end{equation}
 
+La relación entre la función de partición y la energía libre de Gibbs, la entropía:
+\begin{equation}
+	G = -\frac{1}{\beta} \ln\Delta, ~~~~~ S = \frac{\left\langle E + PV \right\rangle }{T} + k_B \ln\Delta
+\end{equation}
+Las fluctuaciones de volumen están dadas por
+\begin{equation}
+	\pr{\left(\Delta V\right)^2} = \frac{1}{\beta} \deriv{V}{P}{N,T} \hspace{-4mm} = - \frac{1}{\beta} \deriv{^2 G}{P^2}{N,T}
+\end{equation}
+A presión y temperatura constantes, el estado de equilibrio es el que minimiza la energía libre de Gibbs.
 
-
-
-
-
-
+\subsubsection{Gas Ideal}
+Reemplazando la función de partición canónica en la ec. \ref{NPT_continua}, obtenemos
+\begin{equation}
+	\Delta = \frac{1}{V_0 \lambda^{3N} (\beta P)^{N+1}}
+\end{equation}
+\begin{equation}
+	\Rightarrow\ln\Delta = -(N+1)\ln(\beta P) - 3N \ln\lambda - \ln V_0
+\end{equation}
+De aquí podemos encontrar expresiones para la energía libre de Gibbs:
+\begin{equation}
+	G = \frac{N}{\beta} \left[\ln P + \frac{5}{2}\ln\beta + \ln\left(\frac{V_0^{1/N} h^3}{\beta (2\pi m)^{3/2}}\right)\right]
+\end{equation}
+Entalpía:
+\begin{equation}
+	H = - \pd{\ln\Delta}{\beta} \approx \frac{5 N}{2\beta}
+\end{equation}
+para \(N\) grande. Volumen más probable (lo mismo que la ley de gases ideales):
+\begin{equation*}
+	V_\mathrm{MP} = \frac{N}{\beta P}
+\end{equation*}
+Y el volumen medio:
+\begin{equation*}
+	\pr{V} = \frac{N + 1}{\beta P}
+\end{equation*}
 
 
 
