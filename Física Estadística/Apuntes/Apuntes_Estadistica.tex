@@ -2117,6 +2117,149 @@ Y el volumen medio:
 	\pr{V} = \frac{N + 1}{\beta P}
 \end{equation*}
 
+\section{Paramagnetismo}
+Consideremos $N$ dipolos magnéticos idénticos, localizados, prácticamente estáticos y no interactuantes, inmersos en un campo magnético uniforme $\n{B} = B\zhat$.
+
+La energía de un dipolo clásico de momento $\mu$ orientado un ángulo $\theta$ respecto al campo es
+\begin{equation}
+	\epsilon(\theta) = -\n{\mu}\cdot\n{B} = -\mu B \cos\theta
+\end{equation}
+Por tanto, para $N$ dipolos independientes
+\begin{equation}
+	E = -\mu B \sum_{i}\cos\theta_i
+\end{equation}
+
+
+Tendremos dos fenómenos compitiendo entre sí:
+\begin{enumerate}
+	\item La \textbf{energía} favorece la alineación el campo;
+	\item La \textbf{entropía} favorece la dispersión angular de orientaciones.
+\end{enumerate}
+
+Como los dipolos no interactúan, la función de partición total factoriza:
+\begin{equation}
+	Z_N(\beta) = \left(Z_1(\beta)\right)^N
+\end{equation}
+Todo se reduce, por tanto, al cálculo de la función de partición de un solo dipolo.
+
+La función de partición de un dipolo es entonces
+\begin{align}
+	Z_1 &= \iint e^{\beta \mu B \cos\theta} \sin\phi \, d\theta \, d\phi\\
+	&= 4\pi \frac{\sinh \left(\beta\mu B\right)}{\beta\mu B}
+\end{align}
+
+Conociendo \(Z_1\), obtenemos
+\begin{align}
+	F &= -\dfrac{N}{\beta}\ln Z_1 = - \dfrac{N}{\beta} \left(\ln 4\pi + \ln\sinh x - \ln x\right)\\
+	U &= -N \pd{}{\beta}\ln Z_1\\
+	S &= -\deriv{F}{T}{B}
+\end{align}
+\begin{equation}
+	M = -\deriv{F}{B}{T} = N\mu\left(\coth \beta\mu B - \frac{1}{\beta \mu B}\right)
+\end{equation}
+
+En el régimen de campo débil o alta temperatura,
+\begin{equation}
+	M = \frac{N \beta \mu^2 B}{3}
+\end{equation}
+y la susceptibilidad
+\begin{equation}
+	\chi \equiv \deriv{M}{B}{B\rightarrow 0} = \frac{N\beta\mu^2}{3}
+\end{equation}
+es decir, la \textbf{Ley de Curie}:
+\begin{equation}
+	\chi = \frac{C}{T}, ~~~~~ C = \frac{N \mu^2}{3 k_B}
+\end{equation}
+
+Régimen de campo fuerte o baja temperatura,
+\begin{equation}
+	M \rightarrow N\mu
+\end{equation}
+
+\subsection{Paramagnetismo cuántico}
+Cuando el momento magnético está asociado a un momento angular total $J$, las orientaciones posibles ya no son continuas sino discretas:
+\begin{equation}
+	m = -J, -J + 1,\ldots, J - 1, J
+\end{equation}
+La componente del momento magnético a lo largo del campo es
+\begin{equation}
+	\mu_z = g \mu_B m
+\end{equation}
+y la energía del subnivel magnético es
+\begin{equation}
+	\epsilon_m = -g\mu_B m B
+\end{equation}
+Por tanto,
+\begin{equation*}
+	Z_1 = \sum_{m=-J}^{J} e^{\beta g \mu_B m B}
+\end{equation*}
+Definimos el parámetro adimensional
+\begin{equation}
+	x \equiv \beta g \mu_B J B
+\end{equation}
+Entonces
+\begin{equation}
+	Z_1 = \sum_{m=-J}^{J} e^{x m/J}
+\end{equation}
+Reordenando la sumatoria obtenemos
+\begin{equation}
+	Z_1 = \frac{\sinh\left(\frac{2J+1}{2J} x\right)}{\sinh\left(\frac{1}{2J} x\right)}
+\end{equation}
+\begin{equation}
+	\Rightarrow \ln Z_1 = \ln\sinh\left(\frac{2J+1}{2J} x\right) - \ln\sinh\left(\frac{1}{2J} x\right)
+\end{equation}
+La magnetización media por dipolo será
+\begin{equation}
+	\bar{\mu}_z = \frac{1}{\beta} \pd{\ln Z_1}{B} = g\mu_B J \mathcal{B}_J(x)
+\end{equation}
+donde
+\begin{equation}
+	\mathcal{B}_J(x) = \left(1 + \frac{1}{2J}\right) \coth\left[\left(1 + \frac{1}{2J}\right) x \right] - \frac{1}{2J}\coth\left[\frac{1}{2J} x\right]
+\end{equation}
+Por tanto, para $N$ dipolos,
+\begin{equation}
+	M = N g \mu_B J \mathcal{B}_J(x)
+\end{equation}
+En el límite clásico
+\begin{equation}
+	\lim_{J\rightarrow\infty} \mathcal{B}_J(x) = \coth \left(\beta g\mu_B J B\right) - \frac{1}{\left(\beta g\mu_B J B\right)}
+\end{equation}
+
+
+
+
+\section{Estadísticas}
+
+\section{Moléculas}
+
+\section{Osciladores}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
