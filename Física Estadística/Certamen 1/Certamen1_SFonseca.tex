@@ -107,7 +107,7 @@ Tenemos que los valores fijos del sistema son el volumen $V$, la temperatura $T$
 	&= \frac{1}{N! h^{6N}} \left[\int e^{-\beta H(\rv_1,\rv_2,\pv_1,\pv_2)} \, d^3\rv_1 d^3\rv_2 \, d^3\pv_1 d^3\pv_2\right]^N \\
 	&= \frac{1}{N! h^{6N}} \left[\int e^{-\beta \frac{1}{2m}\left(p_1^2 + p_2^2\right)} \, e^{-\beta \frac{1}{2} K \left(\rv_1 - \rv_2\right)^2} \, d^3\rv_1 d^3\rv_2 \, d^3\pv_1 d^3\pv_2\right]^N \\
 	&= \frac{1}{N! h^{6N}} \left[\int e^{-\beta \frac{1}{2m}\left(p_1^2 + p_2^2\right)} \, d^3\pv_1 d^3\pv_2 \, \int e^{-\beta \frac{1}{2} K \left(\rv_1 - \rv_2\right)^2} \, d^3\rv_1 d^3\rv_2 \right]^N 
-	\intertext{Pero $e^{p_1^2} = e^{p_{1x}^2 + p_{1y}^2 + p_{1z}^2} = e^{p_{1x}^2} + e^{p_{1y}^2} + e^{p_{1z}^2}$, por lo que}
+	\intertext{Pero $e^{p_1^2} = e^{p_{1x}^2 + p_{1y}^2 + p_{1z}^2} = e^{p_{1x}^2} \cdot e^{p_{1y}^2}  \cdot e^{p_{1z}^2}$, por lo que}
 	&= \frac{1}{N! h^{6N}} \left[\left(\int e^{-\beta \frac{1}{2m} p^2} \, dp \right)^6 \, \int e^{-\beta \frac{1}{2} K \left(\rv_1 - \rv_2\right)^2} \, d^3\rv_1 d^3\rv_2 \right]^N 
 \end{align*}
 Pero, considerando el cambio de variables \(\rv_1 = \n{R} + \rv/2, ~~ \rv_2 = \n{R} - \rv/2\)
@@ -509,7 +509,7 @@ Usando los valores del Problema 4:
 	\Theta_{\mathrm{vib}} &= \frac{\epsilon_{\mathrm{vib}}}{k_B} \approx \frac{ 8.63694\times 10^{-20} \, \mathrm{[J]}}{1.380649 \times 10^{-23} \, \mathrm{[J/K]}} \approx 6255.71 \, \mathrm{[K]}
 \end{align}
 \begin{equation}
-	\Rightarrow \frac{\Theta_{\mathrm{rot}}}{\Theta_{\mathrm{vib}}} \approx \frac{85}{6215} \approx 1.205\times10^{-2}
+	\Rightarrow \frac{\Theta_{\mathrm{rot}}}{\Theta_{\mathrm{vib}}} \approx \frac{75.366}{6255.71} \approx 1.205\times10^{-2}
 \end{equation}
 Para el primer nivel rotacional $J=1 ~\Rightarrow~ J(J+1) = 2$:
 \begin{equation}
