@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2025.9.10)  28 MAY 2026 20:50
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2025.9.10)  31 MAY 2026 19:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -534,22 +534,22 @@ Package: cancel 2013/04/12 v2.2 Cancel math terms
 (Certamen1_SFonseca.aux)
 \openout1 = `Certamen1_SFonseca.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -585,18 +585,18 @@ LaTeX Font Info:    ... okay on input line 89.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 90.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 92.
 
 (C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 90.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 92.
 
 
 (C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 96--99
+Underfull \hbox (badness 10000) in paragraph at lines 98--101
 
  []
 
@@ -605,7 +605,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 96--99
 [1
 
 ]
-Overfull \hbox (12.43428pt too wide) in paragraph at lines 140--141
+Overfull \hbox (12.43428pt too wide) in paragraph at lines 142--143
 []\TU/lmr/m/n/10 Y ahora podemos obtener varias cantidades termodinámicas deriv
 adas de la expresión de Helmholtz, 
  []
@@ -613,20 +613,110 @@ adas de la expresión de Helmholtz,
 
 
 [2]
+Underfull \hbox (badness 10000) in paragraph at lines 178--180
 
-[3] (Certamen1_SFonseca.aux)
+ []
+
+
+Overfull \hbox (22.13658pt too wide) detected at line 189
+[]
+ []
+
+
+
+[3]
+Overfull \hbox (1.15494pt too wide) detected at line 202
+[]
+ []
+
+
+
+[4]
+Overfull \hbox (9.85309pt too wide) detected at line 218
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 230--232
+
+ []
+
+
+
+[5]
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 289--292
+
+ []
+
+Missing character: There is no   in font cmr10!
+Missing character: There is no   in font cmr10!
+Missing character: There is no   in font cmr10!
+Missing character: There is no   in font cmr10!
+Missing character: There is no   in font cmr10!
+Missing character: There is no   in font cmr10!
+Missing character: There is no   in font cmr10!
+Missing character: There is no   in font cmr10!
+Missing character: There is no   in font cmr10!
+Missing character: There is no   in font cmr10!
+Missing character: There is no   in font cmr10!
+Missing character: There is no   in font cmr10!
+
+
+[7]
+Missing character: There is no   in font cmr10!
+Missing character: There is no   in font cmr10!
+Missing character: There is no   in font cmr10!
+Missing character: There is no   in font cmr10!
+
+Underfull \hbox (badness 10000) in paragraph at lines 334--336
+
+ []
+
+
+
+[8]
+Underfull \hbox (badness 10000) in paragraph at lines 372--375
+
+ []
+
+
+
+[9]
+
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 419--422
+
+ []
+
+Missing character: There is no   in font cmr10!
+Missing character: There is no   in font cmr10!
+Missing character: There is no   in font cmr10!
+
+
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 463--466
+
+ []
+
+
+
+[12]
+
+[13] (Certamen1_SFonseca.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-08-13>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 13989 strings out of 403249
- 276365 string characters out of 5460860
- 758820 words of memory out of 5000000
- 42192 multiletter control sequences out of 15000+600000
+ 13996 strings out of 403249
+ 276497 string characters out of 5460860
+ 759880 words of memory out of 5000000
+ 42199 multiletter control sequences out of 15000+600000
  634465 words of font info for 77 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 102i,11n,107p,494b,221s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,19n,107p,494b,304s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on Certamen1_SFonseca.pdf (3 pages).
+Output written on Certamen1_SFonseca.pdf (13 pages).

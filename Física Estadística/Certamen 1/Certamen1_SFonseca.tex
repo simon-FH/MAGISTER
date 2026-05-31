@@ -63,8 +63,10 @@
 \newcommand{\rdif}{\rv - \rv'}
 \newcommand{\pd}[2]{\dfrac{\partial #1}{\partial #2}}
 \newcommand{\lpd}[2]{\partial #1/\partial #2}
+\newcommand{\spd}[2]{\frac{\partial #1}{\partial #2}}
 \newcommand{\td}[2]{\dfrac{d #1}{d #2}}
 \newcommand{\ltd}[2]{d #1/d #2}
+\newcommand{\std}[2]{\frac{d #1}{d #2}}
 \newcommand{\n}[1]{\mathbf{#1}}
 \newcommand{\eff}[1]{#1_\mathrm{eff}}
 \newcommand{\Ueff}{\eff{U}}
@@ -98,9 +100,9 @@ Estudie la termodinámica de este sistema, incluyendo la dependencia de la canti
 \\
 
 \textbf{Respuesta:}
-Tenemos que los valores fijos del sistema son el volumen $V$, la temperatura $T$ y el número de partículas $N$, por lo que usaremos el ensamble canónico para describir al sistema:
+Tenemos que los valores fijos del sistema son el volumen $V$, la temperatura $T$ y el número de partículas $N$, por lo que usaremos el ensamble canónico para describir al sistema. Ya que este sistema tiene 6 grados de libertad ($p_{1x}, p_{1y}, p_{1z}, p_{2x}, p_{2y}, p_{2z}$), el factor será $1/h^{6N}$:
 \begin{align*}
-	Z(T,V,N) &= \frac{1}{N! h^{3N}}\int e^{-\beta H(\Gamma)} \, d\Gamma \nonumber\\
+	Z(T,V,N) &= \frac{1}{N! h^{6N}}\int e^{-\beta H(\Gamma)} \, d\Gamma \nonumber\\
 	&= \frac{1}{N! h^{6N}} \int e^{-\beta H(\rv_1,\rv_2,\pv_1,\pv_2)} \, d^3\rv_{1,1} d^3\rv_{2,1} \ldots d^3\rv_{1,N} d^3\rv_{2,N} \, d^3\pv_{1,1} d^3\pv_{2,1} \ldots d^3\pv_{1,N} d^3\pv_{2,N} \\
 	&= \frac{1}{N! h^{6N}} \left[\int e^{-\beta H(\rv_1,\rv_2,\pv_1,\pv_2)} \, d^3\rv_1 d^3\rv_2 \, d^3\pv_1 d^3\pv_2\right]^N \\
 	&= \frac{1}{N! h^{6N}} \left[\int e^{-\beta \frac{1}{2m}\left(p_1^2 + p_2^2\right)} \, e^{-\beta \frac{1}{2} K \left(\rv_1 - \rv_2\right)^2} \, d^3\rv_1 d^3\rv_2 \, d^3\pv_1 d^3\pv_2\right]^N \\
@@ -163,6 +165,7 @@ Por lo que $\pr{r_{12}^2}$ como función de \(T\) será
 	\pr{r_{12}^2} = \frac{3 k_B}{K} T
 \end{equation}
 lo cual reproduce el teorema de equipartición.
+
 \qed
 
 \section{Problema 2}
@@ -173,7 +176,346 @@ Considere un sistema gaseoso constituido por $N$ moléculas diatómicas no inter
 donde $I$ es el momento de inercia de la molécula.
 \begin{enumerate}
 	\item[(a)] Estudie la termodinámica de este sistema, incluyendo la polarización eléctrica y la constante dieléctrica. Suponga que el sistema es clásico y que el parámetro $\mu E \ll k_B T$.
+	\\
+	
+	\textbf{Respuesta:} Ya que este sistema tiene 5 grados de libertad ($p_{x}, p_{y}, p_{z}, p_{\theta}, p_{\phi}$), el factor será $1/h^{5N}$. La función de partición:
+	\begin{align*}
+		Z(T,V,N) &= \frac{1}{N! h^{5N}}\int e^{-\beta H(\Gamma)} \, d\Gamma \nonumber\\
+		&= \frac{1}{N! h^{5N}} \left[\int e^{-\beta H(\rv,\pv,\theta,\phi,p_\theta,p_\phi)} \, d^3\rv \, d^3\pv \, d\theta \, d\phi \, dp_\theta \, dp_\phi \right]^N \\
+		&= \frac{1}{N! h^{5N}} \left[\int e^{-\beta \left(\frac{p^2}{2 m} + \frac{1}{2 I}\left(p_\theta^2 + \frac{p_\phi^2}{\sin^2\theta}\right) - \mu E \cos\theta\right)} \, d^3\rv \, d^3\pv \, d\theta \, d\phi \, dp_\theta \, dp_\phi \right]^N\\
+		&= \frac{1}{N! h^{5N}} \left[\int \, d^3\rv \, \int e^{-\beta \left(\frac{p^2}{2 m}\right)} \, d^3\pv \, \int e^{-\beta \left(\frac{1}{2 I}\left(p_\theta^2 + \frac{p_\phi^2}{\sin^2\theta}\right) - \mu E \cos\theta \right)} \, d\theta \, dp_\theta \, dp_\phi \, \int \, d\phi \right]^N\\
+		&= \frac{1}{N! h^{5N}} \left[V \cdot \left(\frac{2\pi m}{\beta}\right)^{3/2} \cdot \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \int_{0}^{\pi} e^{-\beta \left(\frac{1}{2 I}\left(p_\theta^2 + \frac{p_\phi^2}{\sin^2\theta}\right) - \mu E \cos\theta \right)} \, d\theta \, dp_\theta \, dp_\phi \cdot 2\pi \right]^N\\
+		&= \frac{1}{N! h^{5N}} \left[2\pi V\left(\frac{2\pi m}{\beta}\right)^{3/2}\right]^{N} \cdot \left[ \int_{0}^{\pi} \frac{2 \pi I e^{\beta E \mu  \cos \theta}}{\beta  | \csc \theta| } \, d\theta\right]^N
+	\end{align*}
+	donde se utilizó \texttt{Mathematica} para resolver las integrales. Ya que los límites de integración de $\theta$ solo inlcuyen la parte positiva de $\csc\theta$, podemos descartar el valor absoluto. Tendremos:
+	\begin{align}
+		Z(T,V,N) &= \frac{1}{N! h^{5N}} \left[2\pi V\left(\frac{2\pi m}{\beta}\right)^{3/2}\right]^{N} \cdot \left[ \int_{0}^{\pi} \frac{2 \pi I e^{\beta E \mu  \cos \theta}}{\beta  \csc \theta } \, d\theta\right]^N\nonumber\\
+		&= \frac{1}{N! h^{5N}} \left[2\pi V\left(\frac{2\pi m}{\beta}\right)^{3/2} \cdot \frac{4 \pi I \sinh\left(\beta E \mu\right)}{\beta^2 E \mu}\right]^{N}\nonumber\\
+		&= \frac{1}{N! h^{5N}} \left[\frac{8 \pi^2  \left(2\pi \right)^{3/2} V m^{3/2} I \sinh\left(\beta E \mu\right)}{\beta^{7/2} E \mu} \right]^{N}
+	\end{align}
+	Ya con una expresión para $Z$ podemos empezar a calcular funciones termodinámicas, tomando el logaritmo:
+	\begin{align*}
+		\ln Z(T,V,N) &= \ln \left\{\frac{1}{N! h^{5N}} \left[\frac{8 \pi^2  \left(2\pi \right)^{3/2} V m^{3/2} I \sinh\left(\beta E \mu\right)}{\beta^{7/2} E \mu} \right]^{N}\right\} \\
+		&= -\ln\left[N! h^{5N}\right] + N \ln \left[\frac{8 \pi^2  \left(2\pi \right)^{3/2} V m^{3/2} I \sinh\left(\beta E \mu\right)}{\beta^{7/2} E \mu} \right] \\
+		&= -\ln\left[N!\right] - \ln\left[h^{5N}\right] + N \ln \left[8 \pi^2  \left(2\pi \right)^{3/2} V m^{3/2} I \sinh\left(\beta E \mu\right) \right] - N \ln \left[\beta^{7/2} E \mu\right] \\
+		&= -\ln\left[N!\right]+ N\ln\left[\sinh\left(\beta E \mu\right)\right] - \frac{7}{2}N \ln \beta + N \ln V + N \ln \left[\frac{8 \pi^2  \left(2\pi \right)^{3/2} m^{3/2} I}{ h^5 E \mu} \right]
+	\end{align*}
+	Con la aproximación de Stirling,
+	\begin{align}
+		\ln Z &\approx N - N \ln N + N\ln\left[\sinh\left(\beta E \mu\right)\right] - \frac{7}{2}N \ln \beta + N \ln V + N \ln \left[\frac{8 \pi^2  \left(2\pi \right)^{3/2} m^{3/2} I}{ h^5 E \mu} \right] \nonumber\\
+		&\approx N \left[1 + \ln\left[\sinh\left(\beta E \mu\right)\right] + \ln V - \ln N - \frac{7}{2} \ln \beta + \ln \left[\frac{8 \pi^2  \left(2\pi \right)^{3/2} m^{3/2} I}{ h^5 E \mu} \right]\right]
+	\end{align}
+	Y las cantidades termodinámicas,
+	\begin{align}
+		F &= -\frac{1}{\beta}\ln Z \nonumber\\
+		&\approx -\frac{N}{\beta} \left[1 + \ln\left[\sinh\left(\beta E \mu\right)\right] + \ln V - \ln N - \frac{7}{2} \ln \beta + \ln \left[\frac{8 \pi^2  \left(2\pi \right)^{3/2} m^{3/2} I}{ h^5 E \mu} \right]\right]\\
+		U &= - \pd{\ln Z}{\beta}\nonumber\\
+		&\approx - N \left[ \frac{E \mu}{\tanh\left(\beta E \mu\right)} - \frac{7}{2\beta}\right]\\
+		p &= \frac{1}{\beta} \pd{\ln Z}{V}\nonumber\\
+		&\approx \frac{N}{V \beta}\\
+		S &= k_B\beta(U - F)\nonumber\\
+		&\approx N k_B \left[\frac{9}{2} - \frac{\beta E \mu}{\tanh\left(\beta E \mu\right)} + \ln\left[\sinh\left(\beta E \mu\right)\right] + \ln V - \ln N - \frac{7}{2} \ln \beta + \ln \left[\frac{8 \pi^2  \left(2\pi \right)^{3/2} m^{3/2} I}{ h^5 E \mu} \right]\right]
+	\end{align}
+	Si ahora tomamos $\beta E \mu \ll 1 \Rightarrow \sinh\left(\beta E \mu\right) \approx \beta E \mu$, los valores se transformarán a
+	\begin{align}
+		F &\approx -\frac{N}{\beta} \left[1 + \ln\left[\beta E \mu \right] + \ln V - \ln N - \frac{7}{2} \ln \beta + \ln \left[\frac{8 \pi^2  \left(2\pi \right)^{3/2} m^{3/2} I}{ h^5 E \mu} \right]\right]\\
+		U &\approx - N \left[ \frac{E \mu}{\beta E \mu} - \frac{7}{2\beta}\right] =  \frac{5 N}{2\beta} \\
+		p &\approx \frac{N}{V \beta}\\
+		S &\approx N k_B \left[\frac{7}{2} + \ln\left[\beta E \mu \right] + \ln V - \ln N - \frac{7}{2} \ln \beta + \ln \left[\frac{8 \pi^2  \left(2\pi \right)^{3/2} m^{3/2} I}{ h^5 E \mu} \right]\right]
+	\end{align}
+	En el caso de la energía interna, recuperamos el resultado del teorema de equipartición.
+	
+	\qed
+	
+	\item[(b)] La molécula de agua, $\mathrm{H_2 O}$, posee un momento dipolar eléctrico de 1.85 Debye. Calcule, sobre la base de la teoría precedente, la constante dieléctrica del vapor de agua a 100$^\circ$C y a presión atmosférica.
+	\\
+	
+	\textbf{Respuesta:} Tenemos los valores, en unidades SI,
+	\begin{align*}
+		\mu &= 1.85 \, \mathrm{[D]} \approx 6.17093\cdot 10^{-30} \, \mathrm{[C\cdot m]} \\
+		p &= 1 \, \mathrm{[atm]} = 101325 \, \mathrm{[Pa]} \\
+		T &= 100 \, \mathrm{^\circ C} = 373.15 \, \mathrm{[K]} \\
+		\Rightarrow \beta &\approx 1.94103\cdot 10^{20} \, \mathrm{[1/J]}
+	\end{align*}
+	
+	La constante dieléctrica se relaciona con el campo eléctrico a través de la densidad de polarización:
+	\begin{equation*}
+		P = \eo (\kappa - 1) E
+	\end{equation*}
+	\begin{equation}
+		\Rightarrow \kappa = \frac{P}{\eo E} + 1
+	\end{equation}
+	Por otro lado, la densidad de polarización de un sistema se define como el momento dipolar promedio por unidad de volumen:
+	\begin{align}
+		P &= \frac{1}{V}\sum_{i}^{N} p_i = \frac{1}{V}\sum_{i}^{N} \mu\cos\theta \nonumber\\
+		&= \frac{1}{V} N \mu \pr{\cos\theta} \nonumber\\
+		&= \frac{N \mu}{V} \frac{\int \cos\theta e^{-\beta H} \, d^5r \, d^5p}{\int e^{-\beta H} \, d^5r \, d^5p} \nonumber\\
+		&= \frac{N \mu}{V} \frac{\int \cos\theta \, e^{-\beta \left(\frac{1}{2 I} \frac{p_\phi^2}{\sin^2\theta} - \mu E \cos\theta \right)} \, d\theta \, dp_\phi}{\int e^{-\beta \left(\frac{1}{2 I}\frac{p_\phi^2}{\sin^2\theta} - \mu E \cos\theta \right)} \, d\theta \, dp_\phi} \nonumber\\
+		&= \frac{N \mu}{V} \frac{\int \cos\theta \, e^{-\beta \left(\frac{1}{2 I} \frac{p_\phi^2}{\sin^2\theta} - \mu E \cos\theta \right)} \, d\theta \, dp_\phi}{\int e^{-\beta \left(\frac{1}{2 I}\frac{p_\phi^2}{\sin^2\theta} - \mu E \cos\theta \right)} \, d\theta \, dp_\phi} \nonumber\\
+		&= \frac{N \mu}{V} \frac{\int \cos\theta \, e^{-\beta \frac{1}{2 I} \frac{p_\phi^2}{\sin^2\theta}} \, e^{ \beta \mu E \cos\theta } \, d\theta \, dp_\phi}{\int e^{-\beta \frac{1}{2 I} \frac{p_\phi^2}{\sin^2\theta}} \, e^{ \beta \mu E \cos\theta } \, d\theta \, dp_\phi} \nonumber\\
+		&= \frac{N \mu}{V} \frac{\int_{0}^{\pi} \cos\theta \sin\theta \, e^{ \beta \mu E \cos\theta } \, d\theta }{\int_{0}^{\pi} \sin\theta \, e^{ \beta \mu E \cos\theta } \, d\theta} \nonumber\\
+		&= \frac{N \mu}{V} \left[\coth(\beta E \mu) - \frac{1}{\beta E \mu }\right]
+	\end{align}
+	Usando la ley de los gases ideales, podemos escribir el factor $N/V$ en términos de la presión,
+	\begin{equation}
+		P = \mu p\beta \left[\coth(\beta E \mu) - \frac{1}{\beta E \mu }\right]
+	\end{equation}
+	Reemplazando en la expresión para la constante dieléctrica, y aproximando para $\beta\mu E \ll 1$
+	\begin{equation}
+		\kappa = \frac{\mu p\beta \left[\coth(\beta E \mu) - \frac{1}{\beta E \mu }\right]}{\eo E} + 1 \approx \frac{p\beta^2 E \mu^2}{3 \eo E} + 1 =  \frac{p\beta^2 \mu^2}{3 \eo} + 1
+	\end{equation}
+	Reemplazando los valores numéricos,
+	\begin{equation}
+		\kappa \approx 1.00547
+	\end{equation}
+	
+	\qed
 \end{enumerate}
+
+\section{Problema 3}
+Gas de Boltzmann relativista.
+\begin{enumerate}
+	\item[(a)] Demuestre que la distribución de momentos de las partículas en un gas relativista de Boltzmann, cuya energía está dada por
+	\begin{equation}
+		\epsilon = c \sqrt{p^2 + m_0^2 c^2}
+	\end{equation}
+	viene dada por
+	\begin{equation}
+		f(p) \, dp = C e^{-\beta c \sqrt{p^2 + m_0^2 c^2}} p^2 \, dp
+	\end{equation}
+	donde la constante de normalización es
+	\begin{equation}
+		C = \frac{\beta}{m_0^2 c \, K_2 (\beta m_0 c^2)}
+	\end{equation}
+	siendo $K_\nu(z)$ una función de Bessel modificada.
+	\\
+	
+	\textbf{Respuesta:} En un sistema representado por el ensamble canónico, la probabilidad de encontrar una partícula en el elemento de espacio de fase $d^3r \, d^3p$ es:
+	\begin{align}
+		dP &\propto e^{-\beta H(\rv,\pv)} \, d^3r \, d^3p \nonumber
+		\intertext{Como el Hamiltoniano $c \sqrt{p^2 + m_0^2 c^2}$ no depende de $\rv$ integrando sobre posiciones dentro del volumen $V$:}
+		dP &\propto V \cdot e^{-\beta c \sqrt{p^2 + m_0^2 c^2}} \, d^3p \nonumber
+		\intertext{Cambiando a coordenadas esféricas, tenemos que $d^3p = p^2\sin\theta \, dp \, d\theta d\phi$:}
+		dP &\propto V \cdot e^{-\beta c \sqrt{p^2 + m_0^2 c^2}} \, p^2\sin\theta \, dp \, d\theta d\phi \nonumber
+		\intertext{Como la energía solo depende de $\pv$, integramos sobre los ángulos:}
+		dP &\propto 4\pi \cdot V \cdot e^{-\beta c \sqrt{p^2 + m_0^2 c^2}} \, p^2 \, dp \nonumber
+		\intertext{Si absorbemos los términos constantes en el factor $C$ de proporcionalidad,}
+		dP &= C \cdot e^{-\beta c \sqrt{p^2 + m_0^2 c^2}} \, p^2 \, dp
+	\end{align}
+	Imponiendo para todo el espacio de $p$ (el cual es radial, por lo que su menor valor es 0)
+	\begin{equation}
+		\int_{0} ^{\infty} dP = \int_{0} ^{\infty} C \cdot e^{-\beta c \sqrt{p^2 + m_0^2 c^2}} \, p^2 \, dp = 1
+	\end{equation}
+	Encontramos que
+	\begin{align}
+		\frac{1}{C} &= \int_{0} ^{\infty} e^{-\beta c \sqrt{p^2 + m_0^2 c^2}} \, p^2 \, dp \nonumber
+		\intertext{Sustituyendo $u = \sqrt{p^2 + m_0^2 c^2} ~\Rightarrow~ p^2 = u^2 - m_0^2 c^2 ~\Rightarrow~ p \, dp = u \, du$, con $u\in [m_0 c, \infty[$. Utilizando \texttt{Mathematica}}
+		\frac{1}{C} &= \int_{m_0 c} ^{\infty} e^{-\beta c u} \, \sqrt{u^2 - m_0^2 c^2} \, u \, du \nonumber\\
+		\frac{1}{C} &= \frac{m_0^2 c \, K_2 (\beta m_0 c^2)}{\beta}\nonumber\\
+		\Rightarrow C &= \frac{\beta}{m_0^2 c \, K_2 (\beta m_0 c^2)}
+	\end{align}
+	
+	\qed
+	\item[(b)] Verifique que en el límite no relativista
+	\begin{equation}
+		kT \ll m_0 c^2
+	\end{equation}
+	se recupera la distribución de Maxwell:
+	\begin{equation}
+		f(p) \, dp = \left(\frac{\beta}{2\pi m_0}\right)^{3/2} e^{-\beta p^2 / 2 m_0} (4\pi p^2 \, dp)
+	\end{equation}
+	mientras que en el límite ultrarrelativista
+	\begin{equation}
+		kT \gg m_0 c^2
+	\end{equation}
+	se obtiene
+	\begin{equation}
+		f(p) \, dp = \frac{(\beta c)^3}{8\pi} e^{-\beta p c} (4\pi p^2 \, dp)
+	\end{equation}
+	\\
+	
+	\textbf{Respuesta:} Tomando la función original
+	\begin{equation}
+		f(p) \, dp = \frac{\beta}{m_0^2 c \, K_2 (\beta m_0 c^2)} e^{-\beta c \sqrt{p^2 + m_0^2 c^2}} p^2 \, dp
+	\end{equation}
+	Y reemplazando $x = \beta m_0 c^2$,
+	\begin{equation}
+		f(p) \, dp = \frac{\beta^2 c}{x m_0 \, K_2 (x)} e^{- \sqrt{\beta x p^2/m_0 + x^2}} p^2 \, dp \label{f(p)_x}
+	\end{equation}
+	tendremos que en el límite $\beta m_0 c^2 \gg 1$ es equivalente a $x \rightarrow \infty$, utilizando \texttt{Mathematica},
+	\begin{align}
+		\lim_{x \rightarrow \infty} \frac{\beta^2 c}{x m_0 \, K_2 (x)} e^{- \sqrt{\beta x p^2/m_0 + x^2}} p^2 \, dp &= \sqrt{\frac{2}{\pi x}} \frac{\beta^2 c}{m_0}  e^{-\frac{\beta}{2 m_0} p^2} p^2 \, dp + \mathcal{O}\left(\frac{1}{x}\right)^{3/2} \nonumber\\
+		&\approx \sqrt{\frac{2}{\pi \beta m_0 c^2}} \frac{\beta^2 c}{m_0}  e^{-\frac{\beta}{2 m_0} p^2} p^2 \, dp \nonumber\\
+		&\approx \sqrt{\frac{2 \beta^3}{\pi m_0^3}}  e^{-\frac{\beta}{2 m_0} p^2} p^2 \, dp \nonumber\\
+		&\approx \left(\frac{2 \beta}{\pi m_0}\right)^{3/2} \frac{\pi}{2} e^{-\frac{\beta}{2 m_0} p^2} p^2 \, dp \nonumber\\
+		&\approx \left(\frac{\beta}{2 \pi m_0}\right)^{3/2} e^{-\frac{\beta}{2 m_0} p^2} \cdot 4 \pi p^2 \, dp
+	\end{align}
+	\qed
+	
+	En el caso ultrarrelativista, $\beta m_0 c^2 \ll 1$ es equivalente a $x\rightarrow0$, por lo que, tomando la ec. \ref{f(p)_x} y aproximando parte por parte, obtenemos
+	\begin{align*}
+		\lim_{x \rightarrow 0} \frac{\beta^2 c}{x m_0 \, K_2 (x)} &= \frac{\beta ^2 c x}{2 m_0} +  \mathcal{O}\left(x^2\right) \\
+		&\approx \frac{\beta ^3 c^3}{2} \\
+		\lim_{x \rightarrow 0} - \sqrt{\beta x p^2/m_0 + x^2} &= -p \sqrt{x} \sqrt{\frac{\beta }{m}}  + \mathcal{O}\left(x^{3/2}\right)\\
+		&\approx - \beta p c
+	\end{align*}
+	Luego, la ecuación general,
+	\begin{align}
+		\frac{\beta^2 c}{x m_0 \, K_2 (x)} \cdot e^{- \sqrt{\beta x p^2/m_0 + x^2}} p^2 \, dp &\approx  \frac{\beta ^3 c^3}{2} \cdot e^{- \beta p c} p^2 \, dp \nonumber\\
+		&\approx \frac{\beta ^3 c^3}{8 \pi} e^{- \beta p c} \cdot 4 \pi p^2 \, dp
+	\end{align}
+	\qed
+	
+	\item[(c)] Verifique que, de manera completamente general,
+	\begin{equation}
+		\pr{p \, u} = 3 k_B T
+	\end{equation}
+	donde $u$ es la velocidad de la partícula.
+	\\
+	
+	\textbf{Respuesta:} De mecánica clásica, sabemos que la velocidad se relaciona con el hamiltoniano a través de
+	\begin{align}
+		u &= \pd{H}{p} \nonumber%\\
+%		&= \pd{}{p}\left(c \sqrt{p^2 + m_0^2 c^2}\right) \nonumber\\
+%		&= \frac{p c}{\sqrt{p^2 + m_0^2 c^2}}
+	\end{align}
+	donde podemos interpretar el hamiltoniano puede ser interpretado como la ecuación de energía. Luego, para el valor promedio $\pr{p \, u}$,
+	\begin{align*}
+		\pr{p \, u} = \frac{\int_{-\infty}^{\infty} p \spd{H}{p} \, e^{-\beta H} \, d^3p}{\int_{-\infty}^{\infty} e^{-\beta H} \, d^3p}
+%		\pr{p \, u} = \frac{\int \frac{p^2 c}{\sqrt{p^2 + m_0^2 c^2}} \, e^{-\beta c \sqrt{p^2 + m_0^2 c^2}} \, d^3p}{\int e^{-\beta c \sqrt{p^2 + m_0^2 c^2}} \, d^3p}
+	\end{align*}
+	Integrando por partes el numerador respecto a $p$, con
+	\begin{equation*}
+		\begin{matrix}
+			u = p, & dv=\pd{H}{p} e^{-\beta H} \, dp = -\dfrac{1}{\beta}\pd{}{p} e^{-\beta H} \, dp\vspace{3mm}\\
+			du = dp, & v = -\dfrac{1}{\beta} e^{-\beta H}
+		\end{matrix}
+	\end{equation*}
+	tendremos
+	\begin{align*}
+		\int_{-\infty}^{\infty} p \spd{H}{p} \, e^{-\beta H} \, dp &= \left[- p \dfrac{1}{\beta} e^{-\beta H}\right]_{-\infty}^{\infty} + \int_{-\infty}^{\infty} \frac{1}{\beta} e^{-\beta H} \, dp\\
+		&= \left[- p \dfrac{1}{\beta} e^{-\beta c \sqrt{p^2 + m_0^2 c^2}}\right]_{-\infty}^{\infty} + \frac{1}{\beta} \int_{-\infty}^{\infty} e^{-\beta c \sqrt{p^2 + m_0^2 c^2}} \, dp\\
+		&= \left[0 - 0\right] + \frac{1}{\beta} \int_{-\infty}^{\infty} e^{-\beta c \sqrt{p^2 + m_0^2 c^2}} \, dp\\
+		&= \frac{1}{\beta} \int_{-\infty}^{\infty} e^{-\beta c \sqrt{p^2 + m_0^2 c^2}} \, dp
+	\end{align*}
+	Volviendo a $\pr{p \, u}$, y considerando las 3 dimensiones del problema (las cuales son independientes entre sí, por lo que podemos separar $\int \, d^3 p$ en $\sum_{i}^{3} \int  \, dp = 3 \int \, dp$)
+	\begin{align}
+		\pr{p \, u} &= \frac{\int_{-\infty}^{\infty} p \spd{H}{p} \, e^{-\beta H} \, d^3p}{\int_{-\infty}^{\infty} e^{-\beta H} \, d^3p} \nonumber\\
+		&= 3\frac{\frac{1}{\beta} \int_{-\infty}^{\infty} e^{-\beta c \sqrt{p^2 + m_0^2 c^2}} \, dp}{\int_{-\infty}^{\infty} e^{-\beta c \sqrt{p^2 + m_0^2 c^2}} \, dp} \nonumber\\
+		&= \frac{3}{\beta} \, \frac{\cancel{\int_{-\infty}^{\infty} e^{-\beta c \sqrt{p^2 + m_0^2 c^2}} \, dp}}{\cancel{\int_{-\infty}^{\infty} e^{-\beta c \sqrt{p^2 + m_0^2 c^2}} \, dp}} \nonumber\\
+		&= 3 k_B T
+	\end{align}
+	\qed
+\end{enumerate}
+
+\section{Problema 4}
+La energía potencial entre los iones de una molécula de hidrógeno está dada por el potencial semiempírico de Morse
+\begin{equation}
+	V(r) = V_0 \left(e^{-2(r - r_0)/a} - 2 e^{-(r - r_0)/a}\right),
+\end{equation}
+donde
+\begin{equation*}
+	V_0 = 7\times 10^{-12} \, \mathrm{[erg]}, ~~~~~ r_0 = 8 \times 10^{-9} \, \mathrm{[cm]}, ~~~~~ a = 5 \times 10^{-9} \, \mathrm{[cm]}
+\end{equation*}
+Evalúe el cuanto rotacional y el cuanto vibracional de energía, y estime las temperaturas a las cuales los modos rotacionales y vibracionales de la molécula comenzarían a contribuir al calor específico del gas hidrógeno.
+\\
+
+\textbf{Respuesta:} Los cuantos de energía rotacionales y vibracionales se pueden definir, respectivamente, como
+\begin{equation}
+	\epsilon_{\mathrm{rot}} = \frac{\hbar^2}{2 I}, ~~~~~ \epsilon_{\mathrm{vib}} = \hbar \omega
+\end{equation}
+Tomando la expansión de Taylor de $V(r)$ alrededor de $r = r_0$ obtenemos:
+\begin{equation}
+	V(r) = -V_0 + \frac{V_0}{a^2}(r - r_0)^2 + \mathcal{O}\left(r-r_0\right)^3
+\end{equation}
+De aquí, al comparar con el potencial de un oscilador armónico $\frac{1}{2} k x^2$, podemos identificar una constante de resorte efectiva
+\begin{equation}
+	k = \frac{2 V_0}{a^2} \approx \frac{2 \cdot 7\times 10^{-12}}{\left(5 \times 10^{-9}\right)^2} \approx 5.6 \times 10^5 \, \mathrm{[erg/cm^2]}
+\end{equation}
+Para vibraciones pequeñas alrededor de la distancia de equilibrio, con masa reducida
+\begin{equation}
+	\mu = \frac{m_H \cdot m_H}{m_H + m_H} = \frac{m_H}{2} \approx 8.35 \times 10^{-25} \, \mathrm{[g]}
+\end{equation}
+y frecuencia
+\begin{equation}
+	\omega = \sqrt{\frac{k}{\mu}} \approx \sqrt{\frac{5.6 \times 10^5 \, \mathrm{[erg/cm^2]}}{8.35 \times 10^{-25} \, \mathrm{[g]}}} \approx 8.19 \times 10^{14} \, \mathrm{[rad/s]}
+\end{equation}
+El cuanto de energía vibracionales será entonces
+\begin{equation}
+	\epsilon_{\mathrm{vib}} = \hbar \omega \approx 8.63694\times 10^{-20} \, \mathrm{[J]}
+\end{equation}
+\qed
+
+Para el momento de inercia,
+\begin{equation}
+	I = \mu r_0^2 \approx 5.344 \times 10^{-41} \, \mathrm{[g \cdot cm^2]} =  5.344 \times 10^{-48} \, \mathrm{[kg \cdot m^2]}
+\end{equation}
+por lo que el cuanto rotacional
+\begin{equation}
+	\epsilon_{\mathrm{rot}} = \frac{\hbar^2}{2 I} \approx 1.04053\times 10^{-21} \, \mathrm{[J]}
+\end{equation}
+\qed
+
+\section{Problema 5}
+Muestre que el cambio fraccionario en la distancia internuclear de una molécula diatómica, como resultado de la rotación, está dado por
+\begin{equation}
+	\frac{\Delta r_0}{r_0} \simeq \left(\frac{\hbar}{\mu r_0^2 \omega}\right)^2 J(J+1) = 4 \left(\frac{\Theta_r}{\Theta_v}\right)^2 J(J+1)
+\end{equation}
+donde $\omega$ es la frecuencia angular de vibración de la molécula. Estime el valor numérico de esta fracción en un caso típico.
+\\
+
+\textbf{Respuesta:} Al rotar con momento angular $L^2 = \hbar^2 J(J+1)$, la molécula experimenta un potencial efectivo que incluye un término por la fuerza centrífuga
+\begin{equation}
+	\eff{V}(r) = \frac{1}{2}k(r-r_0)^2 + \frac{\hbar^2 J(J+1)}{2\mu r^2}
+\end{equation}
+Ya que $r_0$ es la distancia de equilibrio en el caso estático, deberemos introducir una cantidad extra para tomar en cuenta la incluencia de la rotación. La distancia $r_0' = r_0 + \Delta r_0$ deberá satisfacer
+\begin{align*}
+	\left.\dfrac{d\eff{V}}{dr}\right|_{r_0'} &= 0 \\
+	k(r_0' - r_0) - \frac{\hbar^2 J(J+1)}{\mu r_0'^3} &= 0
+\end{align*}
+Al lado izquierdo tenemos $\Delta r_0 = r_0' - r_0$, y, para $\Delta r_0 \ll r_0$, aproximamos $r_0' \approx r_0$ en el lado derecho
+\begin{equation*}
+	k\,\Delta r_0 \approx \frac{\hbar^2 J(J+1)}{\mu r_0^3}
+\end{equation*}
+Usando $k = \mu\omega^2$
+\begin{equation*}
+	\Delta r_0 = \frac{\hbar^2 J(J+1)}{\mu^2 r_0^3\,\omega^2}
+\end{equation*}
+Por tanto
+\begin{equation}
+	\frac{\Delta r_0}{r_0} = \left(\frac{\hbar}{\mu r_0^2\,\omega}\right)^2 J(J+1)
+\end{equation}
+Usando las temperaturas características,
+\begin{equation}
+	\Theta_r = \frac{\hbar^2}{2\mu r_0^2 k_B}, \qquad \Theta_v = \frac{\hbar\omega}{k_B}
+\end{equation}
+Tenemos que
+\begin{equation*}
+	\frac{\Theta_r}{\Theta_v} = \frac{\hbar^2/(2\mu r_0^2 k_B)}{\hbar\omega/k_B} = \frac{\hbar}{2\mu r_0^2\omega}
+\end{equation*}
+Por lo tanto
+\begin{equation*}
+	\left(\frac{\hbar}{\mu r_0^2\omega}\right)^2 = 4\left(\frac{\Theta_r}{\Theta_v}\right)^2
+\end{equation*}
+Finalmente tendremos que
+\begin{equation}
+	\frac{\Delta r_0}{r_0} = 4\left(\frac{\Theta_r}{\Theta_v}\right)^2 J(J+1)
+\end{equation}
+\qed
+
+Usando los valores del Problema 4:
+\begin{align}
+	\Theta_{\mathrm{rot}} &= \frac{\epsilon_{\mathrm{rot}}}{k_B} \approx \frac{1.04053\times 10^{-21} \, \mathrm{[J]}}{1.380649 \times 10^{-23} \, \mathrm{[J/K]}} \approx 75.366 \, \mathrm{[K]}\\
+	\Theta_{\mathrm{vib}} &= \frac{\epsilon_{\mathrm{vib}}}{k_B} \approx \frac{ 8.63694\times 10^{-20} \, \mathrm{[J]}}{1.380649 \times 10^{-23} \, \mathrm{[J/K]}} \approx 6255.71 \, \mathrm{[K]}
+\end{align}
+\begin{equation}
+	\Rightarrow \frac{\Theta_{\mathrm{rot}}}{\Theta_{\mathrm{vib}}} \approx \frac{85}{6215} \approx 1.205\times10^{-2}
+\end{equation}
+Para el primer nivel rotacional $J=1 ~\Rightarrow~ J(J+1) = 2$:
+\begin{equation}
+	\frac{\Delta r_0}{r_0} \approx 4\times(1.205\times10^{-2})^2\times 2 \approx 1.161\times10^{-3} = 0.12\%
+\end{equation}
+\qed
 
 
 
