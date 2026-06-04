@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2025.9.10)  26 MAY 2026 22:17
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2025.9.10)  4 JUN 2026 16:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -542,22 +542,22 @@ Package: esint
 (Tarea2_SFonseca.aux)
 \openout1 = `Tarea2_SFonseca.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 96.
+LaTeX Font Info:    ... okay on input line 96.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 96.
+LaTeX Font Info:    ... okay on input line 96.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 96.
+LaTeX Font Info:    ... okay on input line 96.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 96.
+LaTeX Font Info:    ... okay on input line 96.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 96.
+LaTeX Font Info:    ... okay on input line 96.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 96.
+LaTeX Font Info:    ... okay on input line 96.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 96.
+LaTeX Font Info:    ... okay on input line 96.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 96.
+LaTeX Font Info:    ... okay on input line 96.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -593,30 +593,30 @@ LaTeX Font Info:    ... okay on input line 37.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 38.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 97.
 
 (C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 38.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 97.
 
 
 (C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 38
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 97
 .
 
 (C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Trying to load font information for U+esint on input line 3
-8.
+LaTeX Font Info:    Trying to load font information for U+esint on input line 9
+7.
 
 (C:\Users\sfons\AppData\Local\Programs\MiKTeX\tex/latex/esint\uesint.fd
 File: uesint.fd 
 )
-Underfull \hbox (badness 10000) in paragraph at lines 46--48
+Underfull \hbox (badness 10000) in paragraph at lines 114--116
 
  []
 
@@ -625,47 +625,44 @@ Underfull \hbox (badness 10000) in paragraph at lines 46--48
 [1
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 105--107
+Underfull \hbox (badness 10000) in paragraph at lines 149--151
 
  []
 
 
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 121--124
-
- []
-
-
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 180--182
+Underfull \hbox (badness 10000) in paragraph at lines 214--215
 
  []
 
 
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 227--229
-
- []
-
-
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 250--253
-
+Overfull \hbox (8.55128pt too wide) in paragraph at lines 270--272
+\TU/lmr/m/n/10 the energy levels depend upon the moment of inertia, which for d
+iatomic molecules is $\OML/cmm/m/it/10 O\OT1/cmr/m/n/10 (10[] []$\TU/lmr/m/n/10
+ .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 272--274
+Underfull \hbox (badness 10000) in paragraph at lines 270--272
 
  []
+
+File: grafico414.png Graphic file (type bmp)
+<grafico414.png>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 320--323
+Underfull \hbox (badness 10000) in paragraph at lines 316--318
 
  []
 
@@ -674,64 +671,43 @@ Underfull \hbox (badness 10000) in paragraph at lines 320--323
 [7]
 
 [8]
+Underfull \hbox (badness 10000) in paragraph at lines 384--386
 
-[9]
-Underfull \hbox (badness 10000) in paragraph at lines 427--430
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 414--416
 
  []
 
 
 
+[9]
+
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 481--484
+Underfull \hbox (badness 10000) in paragraph at lines 477--478
 
  []
 
 
 
 [11]
-Underfull \hbox (badness 10000) in paragraph at lines 529--532
-
- []
-
-
 
 [12]
-Underfull \hbox (badness 10000) in paragraph at lines 561--564
 
- []
-
-
-
-[13]
-Underfull \hbox (badness 10000) in paragraph at lines 596--598
-
- []
-
-
-
-[14]
-Underfull \hbox (badness 10000) in paragraph at lines 682--685
-
- []
-
-
-
-[15]
-
-[16] (Tarea2_SFonseca.aux)
+[13] (Tarea2_SFonseca.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-08-13>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 14177 strings out of 403249
- 280542 string characters out of 5460860
- 756999 words of memory out of 5000000
- 42363 multiletter control sequences out of 15000+600000
- 634945 words of font info for 88 fonts, out of 8000000 for 9000
+ 14134 strings out of 403249
+ 278888 string characters out of 5460860
+ 755172 words of memory out of 5000000
+ 42321 multiletter control sequences out of 15000+600000
+ 634937 words of font info for 87 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 102i,20n,107p,491b,657s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,13n,107p,491b,225s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on Tarea2_SFonseca.pdf (16 pages).
+Output written on Tarea2_SFonseca.pdf (13 pages).
