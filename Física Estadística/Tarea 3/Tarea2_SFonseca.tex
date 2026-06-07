@@ -1,0 +1,422 @@
+\documentclass[]{article}
+\usepackage{geometry,tikz,lipsum,amsmath,amssymb,mathrsfs,soul,xcolor,cancel,esint,graphicx}
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+\numberwithin{equation}{section}
+
+\NewDocumentCommand{\caja}{ m O{gray!40} O{gray!10} m }{
+	\begin{figure}[h]
+		\centering
+		\begin{tikzpicture}
+			\node[anchor=text, text width=\columnwidth-1.2cm, draw, rounded corners, line width=1pt, fill=#3, inner sep=5mm] (big) {\\#4};
+			\node[draw, rounded corners, line width=.5pt, fill=#2, anchor=west, xshift=5mm] (small) at (big.north west) {#1};
+		\end{tikzpicture}
+	\end{figure}
+}
+
+\newcommand{\deriv}[3]{\left(\frac{\partial #1}{\partial #2} \right)_{#3}}
+
+\newcommand{\dderiv}[3]{\left(\dfrac{\partial #1}{\partial #2} \right)_{#3}}
+
+\NewDocumentCommand{\indUpDown}{ O{\Lambda} O{\mu} O{\nu} }{
+{#1}^{#2}_{\ #3}
+}
+\NewDocumentCommand{\indDownUp}{ O{\Lambda} O{\mu} O{\nu} }{
+{#1}_{#2}^{\ #3}
+}
+
+\newcommand{\LambdaMuNu}{\indUpDown}
+\newcommand{\0}{\textcolor{gray}{0}}
+\newcommand{\ei}{\mathbf{e}_i}
+\newcommand{\ej}{\mathbf{e}_j}
+\newcommand{\lc}{\epsilon_{ijk}}
+\newcommand{\gr}{\nabla}
+\newcommand{\di}{\nabla\cdot}
+\newcommand{\ro}{\nabla\times}
+\newcommand{\la}{\nabla^2}
+\newcommand{\rv}{\mathbf{r}}
+\newcommand{\pv}{\mathbf{p}}
+\newcommand{\xv}{\mathbf{x}}
+\newcommand{\yv}{\mathbf{y}}
+\newcommand{\zv}{\mathbf{z}}
+\newcommand{\xhat}{\hat{\xv}}
+\newcommand{\yhat}{\hat{\yv}}
+\newcommand{\zhat}{\hat{\zv}}
+\newcommand{\ihat}{\hat{\mathbf{i}}}
+\newcommand{\jhat}{\hat{\mathbf{j}}}
+\newcommand{\khat}{\hat{\mathbf{k}}}
+\newcommand{\rhat}{\hat{\rv}}
+\newcommand{\that}{\hat{\mathbf{\theta}}}
+\newcommand{\phat}{\hat{\mathbf{\varphi}}}
+\newcommand{\rhhat}{\hat{\mathbf{\rho}}}
+\newcommand{\nhat}{\hat{\mathbf{n}}}
+\newcommand{\Rhat}{\hat{\mathbf{R}}}
+\newcommand{\eo}{\epsilon_{0}}
+\newcommand{\uo}{\mu_{0}}
+\NewDocumentCommand{\ke}{ O{1}}{
+\frac{#1}{4\pi\eo}
+}
+\NewDocumentCommand{\ku}{ O{}}{
+\frac{\uo #1}{4\pi}
+}
+%\newcommand{\ke}{\frac{1}{4\pi\eo}}
+%\newcommand{\ku}{\frac{\uo}{4\pi}}
+\newcommand{\rdif}{\rv - \rv'}
+\newcommand{\pd}[2]{\dfrac{\partial #1}{\partial #2}}
+\newcommand{\lpd}[2]{\partial #1/\partial #2}
+\newcommand{\spd}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\td}[2]{\dfrac{d #1}{d #2}}
+\newcommand{\ltd}[2]{d #1/d #2}
+\newcommand{\std}[2]{\frac{d #1}{d #2}}
+\newcommand{\n}[1]{\mathbf{#1}}
+\newcommand{\eff}[1]{#1_\mathrm{eff}}
+\newcommand{\Ueff}{\eff{U}}
+
+\newcommand{\wfrac}[3][3pt]{%
+\frac{\wfracterm{depth}{\dp}{#1}{#2}}{\wfracterm{height}{\ht}{#1}{#3}}%
+}
+\newcommand{\wfracterm}[4]{%
+\sbox0{$\displaystyle#4$}%
+\vrule width 0pt #1 \dimexpr #20+#3\relax
+\usebox{0}%
+}
+
+\newcommand{\pr}[1]{\left\langle #1 \right\rangle }
+
+\newcommand{\qed}{\hfill\(\blacksquare\)}
+\newcommand{\resp}{
+	\\
+	
+	\textbf{Respuesta:} }
+\newcommand{\celsius}{^\circ\mathrm{C}}
+
+%opening
+\title{Tarea 3 Mecánica Estadística Avanzada}
+\author{Simon Fonseca}
+
+\begin{document}
+\maketitle
+
+La tercera tarea de Mecánica Estadística corresponde a realizar los problemas 10-12, 10-13, 10-15 (capítulo 10) del libro de Mc. Quarrie.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Problema 10.12}
+Carry the equation
+\begin{equation}
+	\mu = \mu_0\left[1 - \frac{\pi^2}{12} \eta^2 + \cdots\right]
+\end{equation}
+one term further and show that
+\begin{equation}
+	\mu = \mu_0\left\{1 - \frac{\pi^2}{12} \left(\frac{kT}{\mu_0}\right)^2 - \frac{\pi^4}{80} \left(\frac{kT}{\mu_0}\right)^4 + \cdots \right\}
+\end{equation}
+\resp La expresión
+\begin{equation*}
+	\mu = \mu_0\left[1 - \frac{\pi^2}{12} \eta^2 + \cdots\right]
+\end{equation*}
+viene desde la expansión de $I$
+\begin{equation}
+	I = H(\mu) L_0 + \frac{1}{1!}\left. \td{H}{\varepsilon}\right|_{\varepsilon=\mu} \hspace{-3mm} L_1 + \frac{1}{2!}\left. \td{^2 H}{\varepsilon^2}\right|_{\varepsilon=\mu} \hspace{-3mm} L_2 + \frac{1}{3!}\left. \td{^3 H}{\varepsilon^3}\right|_{\varepsilon=\mu} \hspace{-3mm} L_3 + \frac{1}{4!}\left. \td{^4 H}{\varepsilon^4}\right|_{\varepsilon=\mu} \hspace{-3mm} L_4 + \ldots
+\end{equation}
+donde
+\begin{equation}
+	H(\varepsilon) = \int_{0}^{\varepsilon} h(x) \, dx
+\end{equation}
+y
+\begin{equation}
+	L_j = \frac{1}{\beta^j} \int_{-\infty}^{\infty} \frac{x^j e^x}{\left(1 + e^x\right)^2} \, dx, ~~~~ j = 0,1,2,\ldots
+\end{equation}
+Si utilizamos 
+\begin{equation}
+	h(\varepsilon)= 4 \pi\left(\frac{2 m}{h^2}\right)^{3 / 2} V \cdot \varepsilon^{1 / 2}
+\end{equation}
+entonces $I$ se transforma en $N$, que incluye una dependencia de $\mu$. Reemplazando tal $N$ en la expresión
+\begin{equation*}
+	\mu_0 = \frac{h^2}{2 m}\left(\frac{3}{8 \pi}\right)^{2 / 3}\left(\frac{N}{V}\right)^{2 / 3}
+\end{equation*}
+encontramos la aproximación de $\mu$.
+
+En el libro de Mc. Quarrie se hace una primera aproximación donde se incluyen los términos hasta $L_2$ y, ya que todos los valores impares de $j$ se anulan, ahora lo expandiremos hasta $j=4$. Utilizando \texttt{Mathematica},
+\begin{align*}
+	L_4 &= \frac{1}{\beta^4}\int_{-\infty}^{\infty} \frac{x^4\, e^x}{(1+e^x)^2} \, dx\\
+	&= \frac{7 \pi^4}{15 \beta^4}
+\end{align*}
+por lo que (considerando los valores ya calculados en el libro, $L_0 = 1, L_2 = \pi^2/3$)
+\begin{equation}
+	I \approx H(\mu) + \frac{\pi^2}{6 \beta^2} \left. \td{^2 H}{\varepsilon^2}\right|_{\varepsilon=\mu} \hspace{-3mm} + \frac{7 \pi^4}{360 \beta^4} \left. \td{^4 H}{\varepsilon^4}\right|_{\varepsilon=\mu}
+\end{equation}
+Luego, para $H$ y sus derivadas,
+\begin{align*}
+	H(\varepsilon) &= \int_{0}^{\varepsilon} 4 \pi\left(\frac{2 m}{h^2}\right)^{3 / 2} V x^{1 / 2} \, dx\\
+	&= 4 \pi\left(\frac{2 m}{h^2}\right)^{3 / 2} V \int_{0}^{\varepsilon}  x^{1 / 2} \, dx\\
+	&= 4 \pi\left(\frac{2 m}{h^2}\right)^{3 / 2} V \cdot \frac{2}{3} \varepsilon^{3/2}
+\end{align*}
+por lo que
+\begin{align*}
+	\Rightarrow \left. \td{^2 H}{\varepsilon^2}\right|_{\varepsilon=\mu} \hspace{-3mm} &= 4 \pi\left(\frac{2 m}{h^2}\right)^{3 / 2} V \cdot \frac{1}{2\mu^{1/2}}\\
+	\Rightarrow \left. \td{^4 H}{\varepsilon^4}\right|_{\varepsilon=\mu} \hspace{-3mm} &= 4 \pi\left(\frac{2 m}{h^2}\right)^{3 / 2} V \cdot \frac{3}{8 \mu^{5/2}}
+\end{align*}
+Entonces, la aproximación de $N$ será
+\begin{align}
+	N &\approx 4 \pi\left(\frac{2 m}{h^2}\right)^{3 / 2} V \cdot \frac{2}{3} \mu^{3/2} + \frac{\pi^2}{6 \beta^2} 4 \pi\left(\frac{2 m}{h^2}\right)^{3 / 2} V \cdot \frac{1}{2\mu^{1/2}} + \frac{7 \pi^4}{360 \beta^4} 4 \pi\left(\frac{2 m}{h^2}\right)^{3 / 2} V \cdot \frac{3}{8 \mu^{5/2}} + \ldots \nonumber\\
+	&\approx 4 \pi\left(\frac{2 m}{h^2}\right)^{3 / 2} V \left[\frac{2}{3} \mu^{3/2} + \frac{\pi^2}{6 \beta^2} \frac{1}{2\mu^{1/2}} + \frac{7 \pi^4}{360 \beta^4} \frac{3}{8 \mu^{5/2}} + \ldots \right]  \nonumber\\
+	&\approx 4 \pi\left(\frac{2 m}{h^2}\right)^{3 / 2} V \left[\frac{2}{3} \mu^{3/2} + \frac{\pi^2}{12 \beta^2} \frac{1}{\mu^{1/2}} + \frac{7 \pi^4}{960 \beta^4} \frac{1}{\mu^{5/2}} + \ldots \right] \nonumber\\
+	&\approx 4 \pi\left(\frac{2 m}{h^2}\right)^{3 / 2} V \mu^{3/2} \left[\frac{2}{3} + \frac{\pi^2}{12} (\beta \mu)^{-2} + \frac{7 \pi^4}{960} (\beta \mu)^{-4} + \ldots \right]
+\end{align}
+Reemplazando esta expresión en la ecuación para $\mu_0$
+\begin{align}
+	\mu_0 &= \frac{h^2}{2 m}\left(\frac{3}{8 \pi}\right)^{2 / 3}\left(\frac{N}{V}\right)^{2 / 3}\nonumber\\
+	&\approx\frac{h^2}{2 m}\left(\frac{3}{8 \pi}\right)^{2 / 3}\left(\frac{1}{V} \cdot 4 \pi\left(\frac{2 m}{h^2}\right)^{3 / 2} V \mu^{3/2} \left[\frac{2}{3} + \frac{\pi^2}{12} (\beta \mu)^{-2} + \frac{7 \pi^4}{960} (\beta \mu)^{-4} + \ldots \right]\right)^{2 / 3}\nonumber\\
+	&\approx \left(\frac{3}{2} \mu^{3/2} \left[\frac{2}{3} + \frac{\pi^2}{12} (\beta \mu)^{-2} + \frac{7 \pi^4}{960} (\beta \mu)^{-4} + \ldots \right]\right)^{2 / 3}\nonumber\\
+	&\approx \mu \left[1 + \frac{\pi^2}{8} (\beta \mu)^{-2} + \frac{7 \pi^4}{640} (\beta \mu)^{-4} + \ldots \right]^{2 / 3}\nonumber\\
+	\Rightarrow \frac{\mu_0}{\mu} &\approx \left[1 + \frac{\pi^2}{8} (\beta \mu)^{-2} + \frac{7 \pi^4}{640} (\beta \mu)^{-4} + \ldots \right]^{2 / 3}
+\end{align}
+Podemos aproximar la potencia $2/3$ usando la propiedad $(1+u)^{2/3} = 1 + \frac{2}{3}u - \frac{1}{9}u^2 + \cdots$, donde $u = \frac{\pi^2}{8}(\beta\mu)^{-2} + \frac{7\pi^4}{640}(\beta\mu)^{-4} \ll 1$. Usando \texttt{Mathematica},
+\begin{equation}
+	\frac{\mu_0}{\mu} \approx \left[1 + \frac{\pi^2}{8} (\beta \mu)^{-2} + \frac{7 \pi^4}{640} (\beta \mu)^{-4} + \ldots \right]^{2 / 3} \approx 1 + \frac{\pi ^2}{12} (\beta \mu)^{-2} + \frac{\pi ^4}{180} (\beta \mu)^{-4} + \ldots
+\end{equation}
+Podemos encontrar el recíproco de esta expresión usando la propiedad $(1+w)^{-1} \approx 1 - w + w^2$, donde $w = \frac{\pi^2}{12}(\beta\mu)^{-2} + \frac{\pi^4}{180}(\beta\mu)^{-4} \ll 1$. Usando \texttt{Mathematica},
+\begin{equation}
+	\frac{\mu}{\mu_0} \approx \left[1 + \frac{\pi ^2}{12} (\beta \mu)^{-2} + \frac{\pi ^4}{180} (\beta \mu)^{-4} + \ldots \right]^{-1} \approx 1 - \frac{\pi ^2}{12} (\beta \mu)^{-2} + \frac{\pi ^4}{720} (\beta \mu)^{-4} + \ldots
+\end{equation}
+Utilizando \texttt{Mathematica} y resolviendo para $\mu$ en función de $\mu_0$, con la aproximación hasta el término $\beta^{-4}$ cuando $\beta^{-1} \ll 1$, obtenemos\footnote{Más específicamente, se usó la quinta raíz de la solución. El comando utilizado fue $\texttt{FullSimplify}\left[\texttt{Series}\left[\mu \text{/.}\, \texttt{Solve}\left[\mu = \mu_0 \left(\frac{\pi ^4}{720 \beta ^4 \mu ^4}-\frac{\pi ^2}{12 \beta ^2 \mu ^2}+1\right),\mu \right][[5]][[1]],\{\beta ,\infty ,4\}\right]\right]$. Se adjuntará el cuaderno con cálculos.}
+\begin{equation}
+	\mu \approx \mu_0 \left(1 - \frac{\pi ^2}{12} (\beta \mu_0)^{-2} - \frac{\pi ^4}{80} (\beta \mu_0)^{-4} + \ldots\right)
+\end{equation}
+\qed
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Problema 10.13}
+Show that for an ideal Fermi-Dirac gas that
+\begin{equation}
+	p = \frac{2}{5} \frac{N \mu_0}{V} \left\{1 + \frac{5\pi^2}{12} \left(\frac{kT}{\mu_0}\right)^2 - \frac{\pi^4}{16} \left(\frac{kT}{\mu_0}\right)^4 + \ldots \right\}
+\end{equation}
+\resp Sabemos que, para cualquier gas ideal no-relativista de Fermi-Dirac, se cumplirá la siguiente relación
+\begin{equation}
+	pV = \frac{2}{3} E
+\end{equation}
+por lo que deberemos encontrar $E$ para satisfacer la relación. Al igual que en el problema anterior, usaremos la expansión a 4to orden de $I$, pero con la función $h(\varepsilon)$
+\begin{equation}
+	h(\varepsilon)= 4 \pi\left(\frac{2 m}{h^2}\right)^{3 / 2} V \cdot \varepsilon^{3 / 2}
+\end{equation}
+por lo que, siguiendo el mismo procedimiento, obtendremos
+\begin{align*}
+	H(\mu) &= 4 \pi\left(\frac{2 m}{h^2}\right)^{3 / 2} V \cdot \frac{2 \mu^{5/2}}{5}\\
+	H^{(2)}(\mu) &= 4 \pi\left(\frac{2 m}{h^2}\right)^{3 / 2} V \cdot \frac{3 \mu^{1/2}}{2}\\
+	H^{(4)}(\mu) &= - 4 \pi\left(\frac{2 m}{h^2}\right)^{3 / 2} V \cdot \frac{3}{8 \mu^{3/2}}
+\end{align*}
+Luego, usando la expansión de $I$,
+\begin{align}
+	I &\approx H(\mu) + \frac{\pi^2}{6 \beta^2} H^{(2)}(\mu) + \frac{7 \pi^4}{360 \beta^4} H^{(4)}(\mu) + \ldots \nonumber\\
+	\Rightarrow E &\approx 4 \pi\left(\frac{2 m}{h^2}\right)^{3 / 2} V  \left[\frac{2 \mu^{5/2}}{5} + \frac{\pi^2}{6 \beta^2} \frac{3 \mu^{1/2}}{2} - \frac{7 \pi^4}{360 \beta^4} \frac{3}{8 \mu^{3/2}} + \ldots \right] \nonumber\\
+	&\approx 4 \pi\left(\frac{2 m}{h^2}\right)^{3 / 2} V  \mu^{5/2} \left[\frac{2}{5} + \frac{3 \pi^2}{12} (\beta \mu)^{-2} - \frac{7 \pi^4}{960} (\beta \mu)^{-4} + \ldots \right]
+\end{align}
+Sustituyendo el valor de $\mu$ que encontramos en el problema pasado obtendremos, usando \texttt{Mathematica},
+\begin{align*}
+	E &\approx 4 \pi\left(\frac{2 m}{h^2}\right)^{3 / 2} V \cdot \frac{2}{5} \mu_0^{5/2} \left[1 + \frac{5 \pi^2}{12} (\beta \mu_0)^{-2} - \frac{\pi^4}{16} (\beta \mu_0)^{-4} + \ldots \right]\\
+	&\approx \frac{8\pi}{5} \left(\frac{2 m}{h^2}\right)^{3 / 2} V \mu_0^{5/2} \left[1 + \frac{5 \pi^2}{12} (\beta \mu_0)^{-2} - \frac{\pi^4}{16} (\beta \mu_0)^{-4} + \ldots \right]
+\end{align*}
+pero sabemos que
+\begin{equation}
+	N = \frac{8\pi}{3}\left(\frac{2m}{h^2}\right)^{3/2}V\mu_0^{3/2}
+\end{equation}
+por lo que
+\begin{equation}
+	E \approx \frac{3 N \mu_0}{5} \left[1 + \frac{5 \pi^2}{12} (\beta \mu_0)^{-2} - \frac{\pi^4}{16} (\beta \mu_0)^{-4} + \ldots \right]
+\end{equation}
+Finalmente,
+\begin{align}
+	p &= \frac{2}{3V} E \nonumber\\
+	p &= \frac{2 N \mu_0}{5 V} \left[1 + \frac{5 \pi^2}{12} (\beta \mu_0)^{-2} - \frac{\pi^4}{16} (\beta \mu_0)^{-4} + \ldots \right]
+\end{align}
+\qed
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Problema 10.15}
+Show that for an ideal Fermi-Dirac gas, the Helmholtz free energy is
+\begin{equation}
+	F = \frac{3}{5} N \mu_0 \left\{1 - \frac{5\pi^2}{12} \left(\frac{kT}{\mu_0}\right)^2 + \frac{\pi^4}{48} \left(\frac{kT}{\mu_0}\right)^4 + \ldots \right\}
+\end{equation}
+and that the entropy is
+\begin{equation}
+	S = \frac{N \mu_0}{T} \left\{\frac{\pi^2}{2} \left(\frac{kT}{\mu_0}\right)^2 - \frac{\pi^2}{20} \left(\frac{kT}{\mu_0}\right)^4 + \ldots \right\}
+\end{equation}
+\resp Tenemos que
+\begin{equation*}
+	F = G - pV
+\end{equation*}
+pero, para un gas compuesto por un solo tipo de partícula, se cumplirá que $G = \mu N$, por lo que, reemplazando los valores de $\mu$ y $p$ que encontramos en los problemas pasados,
+\begin{align*}
+	F &= \mu N - pV  \\
+	&= N\mu_0 \left[1 - \frac{\pi ^2}{12} (\beta \mu_0)^{-2} - \frac{\pi ^4}{80} (\beta \mu_0)^{-4} + \ldots \right] - \frac{2 N \mu_0}{5} \left[1 + \frac{5 \pi^2}{12} (\beta \mu_0)^{-2} - \frac{\pi^4}{16} (\beta \mu_0)^{-4} + \ldots \right] \\
+	&= N\mu_0 \left[\frac{3}{5} - \frac{\pi ^2}{4} (\beta \mu_0)^{-2} + \frac{\pi ^4}{80} (\beta \mu_0)^{-4} + \ldots \right]
+\end{align*}
+\begin{equation}
+	\Rightarrow F = \frac{3 N\mu_0}{5} \left[1 - \frac{5 \pi ^2}{12} (\beta \mu_0)^{-2} + \frac{\pi ^4}{48} (\beta \mu_0)^{-4} + \ldots \right]
+\end{equation}
+\qed
+
+La entropía, por otro lado, puede obtenerse derivando la energía libre de Helmholtz por la temperatura a volumen constante
+\begin{equation*}
+	S = -\deriv{F}{T}{V}
+\end{equation*}
+donde tendremos que calcular
+\begin{equation*}
+	\pd{(\beta)^{-1}}{T} = k_B
+\end{equation*}
+entonces
+\begin{align}
+	S &= -\pd{}{T} \left(\frac{3 N\mu_0}{5} \left[1 - \frac{5 \pi ^2}{12} (\beta \mu_0)^{-2} + \frac{\pi ^4}{48} (\beta \mu_0)^{-4} + \ldots \right]\right)\nonumber\\
+	&= -\frac{3 N\mu_0}{5} \left[0 - \frac{5 \pi ^2}{12} \pd{}{T}(\beta \mu_0)^{-2} + \frac{\pi ^4}{48} \pd{}{T}(\beta \mu_0)^{-4} + \ldots \right]\nonumber\\
+	&= \frac{3 N\mu_0}{5} \left[\frac{5 \pi ^2}{12} \cdot 2\frac{k_B}{\mu_0} (\beta \mu_0)^{-1} - \frac{\pi ^4}{48} \cdot 4 \frac{k_B}{\mu_0} (\beta \mu_0)^{-3} + \ldots \right]\nonumber\\
+	&= N k_B \left[\frac{\pi ^2}{2} (\beta \mu_0)^{-1} - \frac{\pi ^4}{20} (\beta \mu_0)^{-3} + \ldots \right]
+\end{align}
+\qed
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%10-2 A STRONGLY DEGENERATE IDEAL FERMI-DIRAC GAS
+%
+%In this section we shall treat the case of an ideal Fermi-Dirac gas at low temperature and/or high density. For concreteness we shall develop the results in terms of the free electron model of metals, where the valence electrons of the atoms of the metal are represented by an ideal gas of electrons. It is possible to understand a number of important physical properties of some metals, in particular the simple monovalent metals, in terms of the free electron model. There are several reasons why such a simple model can be used. One is that although the electrons do indeed interact with each other and with the atomic cores through a Coulombic potential, this potential is so long range ( $1 / r$ ) that the total electronic potential that any one electron "sees" is almost constant from point to point in the metallic crystal. Furthermore, in general many of the physically observable properties of a metallic crystal are due more to quantum statistical effects than to the details of the electron-electron and electronionic core interactions.
+%
+%Consider Eq. (10-3) (with the positive sign in the denominator), which gives the number of particles in the molecular energy state $k$ :
+%
+%\begin{equation*}
+%	\bar{n}_k=\frac{\lambda e^{-\beta \varepsilon_k}}{1+\lambda e^{-\beta \varepsilon_k}}=\frac{1}{1+e^{\beta\left(\varepsilon_k-\mu\right)}} \tag{10-19}
+%\end{equation*}
+%
+%As in the previous section, $\varepsilon_k$ is essentially a continuous parameter, and we can write
+%
+%\begin{equation*}
+%	f(\varepsilon)=\frac{1}{1+e^{\beta(\varepsilon-\mu)}} \tag{10-20}
+%\end{equation*}
+%
+%where $f(\varepsilon)$ is the probability that a given state is occupied. This equation is plotted in Fig. 10-1, where, in particular, $f(\varepsilon)$ is plotted versus $\varepsilon / \mu$ for fixed values of $\beta \mu$. In the extreme limit of low temperatures, that is, $T=0$, the distribution is unity for energies less than $\mu$, and zero for energies greater than $\mu$. The quantity $\mu$ is, in general, a function of temperature, and so we indicate the value of $\mu$ at $T=0$ by $\mu_0$.
+%
+%The zero-temperature limit of $f(\varepsilon)$ is very simple, and it is instructive to understand its behavior. At the absolute zero of temperature, all the states with energy less than $\mu_0$ are occupied and those with energy greater than $\mu_0$ unoccupied. Thus $\mu_0$ has the property of being a cutoff energy. According to Eq. (1-35), the number of states with energy between $\varepsilon$ and $\varepsilon+d \varepsilon$ is
+%
+%\begin{equation*}
+%	\omega(\varepsilon) d \varepsilon=4 \pi\left(\frac{2 m}{h^2}\right)^{3 / 2} V \varepsilon^{1 / 2} d \varepsilon \tag{10-21}
+%\end{equation*}
+%
+%where we have introduced a factor of 2 , since an electron has two spin states $\left( \pm \frac{1}{2}\right)$ associated with each translational state. We can find $\mu_0$ immediately from the fact that all the states below $\varepsilon=\mu_0$ are occupied and all these above are unoccupied. Thus if $N$ is the number of valence electrons,
+%
+%\begin{align*}
+%	N & =4 \pi\left(\frac{2 m}{h^2}\right)^{3 / 2} V \int_0^{\mu_0} \varepsilon^{1 / 2} d \varepsilon \\
+%	& =\frac{8 \pi}{3}\left(\frac{2 m}{h^2}\right)^{3 / 2} V\left(\mu_0\right)^{3 / 2} \tag{10-22}
+%\end{align*}
+%
+%from which we write
+%
+%\begin{equation*}
+%	\mu_0=\frac{h^2}{.2 m}\left(\frac{3}{8 \pi}\right)^{2 / 3}\left(\frac{N}{V}\right)^{2 / 3} \tag{10-23}
+%\end{equation*}
+%
+%Using the fact that the molar volume of Na , say, is $23.7 \mathrm{~cm}^3$ mole, and that a sodium atom has one valence electron, the quantity $\mu_0$ is 3.1 eV . We see, then, that at $T=0^{\circ} \mathrm{K}$, the conduction electrons in sodium metal fill all the energy states up to 3.1 eV according to the Pauli exclusion principle of allowing only two electrons to occupy each state. The quantity $\mu_0$ is called the Fermi energy of a metal and is typically of the order of $1-5 \mathrm{eV}$ (see Problem 10-6).
+%
+%This is a very significant result since a plot as in Fig. 10-1 shows that at room temperature, where $\beta \mu_0$ is of order of $10^2$, the distribution $f(\varepsilon)$ is still essentially a step function like at $T=0^{\circ} \mathrm{K}$. Compared to a characteristic temperature $\mu_0 i k$, room temperature may be considered to be zero, and it is an excellent first approximation to use the distribution
+%
+%\begin{align*}
+%	f(\varepsilon) & =1 & & \varepsilon<\mu_0 \\
+%	& =0 & & \varepsilon>\mu_0 \tag{10-24}
+%\end{align*}
+%at room temperature. The quantity $\mu_0, k$ is called the Fermi temperature and is denoted by $T_F$. Fermi temperatures are typically of the order of thousands of degrees Kelvin. In this approximation, the thermodynamic energy is [cf. Eq. (10-4)]
+%\begin{align*}
+%	E_0 & =4 \pi\left(\frac{2 m}{h^2}\right)^{3 / 2} V \int_0^{\mu_0} \varepsilon^{3 / 2} d \varepsilon \\
+%	& =\frac{3}{5} N \mu_0 \tag{10-25}
+%\end{align*}
+%where we have written $E_0$ to emphasize that this is a $T=0^{\circ} \mathrm{K}$ result. The energy $E_0$ is the zero-point energy of a Fermi-Dirac gas. Equation (10-25) implies that the contribution of the conduction electrons to the heat capacity is zero, in sharp contrast to the equipartition value of $3 k_1 2$ for each electron. The physical explanation of this is that in order to contribute to the heat capacity, the electrons must be excited to higher quantum states, but since $\mu_0$ is so large compared to $k T$, only a small fraction of all the particles will be within $k T$ from the top of the distribution (near $\mu_0$ ), where there are vacant states lying above. Thus a very small fraction of all the electrons can contribute to the heat capacity, and so the experimental heat capacity is almost zero.
+%
+%The pressure is given by [cf. Eq. (10-10) with the additional factor of 2 due to the two allowed spin orientations of an electron]:
+%$$
+%p=4 \pi k T\left(\frac{2 m}{h^2}\right)^{3 / 2} \int_0^{\mu_0} \varepsilon^{1 / 2} \ln \left(1+e^{\beta\left(\mu_0-\varepsilon\right)}\right) d \varepsilon
+%$$
+%
+%In order to evaluate this integral, one can neglect unity compared to $\varepsilon^{\beta\left(\mu_0-\varepsilon\right)}$ since $\beta\left(\mu_0-\varepsilon\right)$ is much larger than one over most of the range of integration. Therefore
+%\begin{align*}
+%	p_0 & =4 \pi\left(\frac{2 m}{h^2}\right)^{3 / 2} \int_0^{\mu_0} \varepsilon^{1 / 2}\left(\mu_0-\varepsilon\right) d \varepsilon \\
+%	& =\frac{2}{5} N \mu_0 / V \tag{10-26}
+%\end{align*}
+%
+%This "zero-point pressure" is $0\left(10^6\right) \mathrm{atm}$. The occurrence of $h$ expression shows that the zero-point pressure is a quantum effect. It follows from $G=N \mu=E-T S+p V$ and Eqs. (10-23), (10-25), and (10-26) that $S_0=0$. This is to be expected, since there is only one way to put the $N$ indistinguishable particles into the lowest possible quantum states.
+%
+%Equations (10-22) through (10-26) are based on the zero-temperature distribution function, Eq. (10-24). It is not difficult to calculate corrections to these zero-temperature results as an expansion in powers of a parameter $\eta=k T / \mu_0$. At room temperature, $\eta=0\left(10^{-2}\right)$, so that such an expansion converges quickly. To determine this expansion, first notice that all the thermodynamic quantities $N, E, p$, can be written as
+%\begin{equation*}
+%	I=\int_0^{\infty} f(\varepsilon) h(\varepsilon) d \varepsilon \tag{10-27}
+%\end{equation*}
+%where the following table gives examples of $I$ and $h(\varepsilon)$ :
+%$$
+%I h(\varepsilon)
+%$$
+%$$
+%\begin{array}{ll}
+%	N & 4 \pi\left(\frac{2 m}{h^2}\right)^{3 / 2} V \varepsilon^{1 / 2} \\
+%	E & 4 \pi\left(\frac{2 m}{h^2}\right)^{3 / 2} V \varepsilon^{3 / 2}
+%\end{array}
+%$$
+%Figure 10-2 shows $f(\varepsilon)$ and the derivative of $f(\varepsilon), f^{\prime}(\varepsilon)$, versus $\varepsilon$ for $\beta \mu=0.10$. This shows that even at $\beta \mu=0.10$ (which, we shall show below, corresponds to a temperature at which most metals are liquid), $f(\varepsilon)$ is a step function with rounded edges, and its derivative therefore is a function that is zero everywhere except around the region in which $\varepsilon=\mu$. Thus it is convenient to express the integral $I$ in Eq. (10-27) in terms of $f^{\prime}(\varepsilon)$. This is done by an integration by parts:
+%\begin{equation*}
+%	I=-\int_0^{\infty} f^{\prime}(\varepsilon) H(\varepsilon) d \varepsilon \tag{10-28}
+%\end{equation*}
+%where
+%\begin{equation*}
+%	H(\varepsilon)=\int_0^{\varepsilon} h(x) d x \tag{10-29}
+%\end{equation*}
+%and we have used the fact that $h(\varepsilon)=0$ at $\varepsilon=0$. Now since $f^{\prime}(\varepsilon)$ is nonzero only for some small region around $\varepsilon=\mu$, the only important values of $H(\varepsilon)$ will be for values of $\varepsilon$ around $\varepsilon=\mu$. Thus we expand $H(\varepsilon)$ in a Taylor series about $\varepsilon=\mu$ :
+%\begin{equation*}
+%	H(\varepsilon)=H(\mu)+(\varepsilon-\mu)\left(\frac{d H}{d \varepsilon}\right)_{\varepsilon=\mu}+\frac{1}{2}(\varepsilon-\mu)^2\left(\frac{d^2 H}{d \varepsilon^2}\right)_{\varepsilon=\mu}+\cdots \tag{10-30}
+%\end{equation*}
+%
+%If we substitute this into Eq. (10-28), we get
+%\begin{equation*}
+%	I=H(\mu) L_0+\left(\frac{d H}{d \varepsilon}\right)_{\varepsilon=\mu} L_1+\frac{1}{2}\left(\frac{d^2 H}{d \varepsilon^2}\right)_{\varepsilon=\mu} L_2+\cdots \tag{10-31}
+%\end{equation*}
+%where
+%\begin{equation*}
+%	L_j \equiv-\int_0^{\infty}(\varepsilon-\mu)^j f^{\prime}(\varepsilon) d \varepsilon \tag{10-32}
+%\end{equation*}
+%
+%The first of these integrals, $L_0$, is simply unity since it is equal to $f(0)-f(\infty)$. In the others, such as $L_1$ and $L_2$, we may replace the lower limit by $-\infty$ since $f^{\prime}(\varepsilon)$ is so small from $-\infty$ to 0 that there is no contribution to the integral. If we let $x=\beta(\varepsilon-\mu)$, we have
+%\begin{equation*}
+%	L_j=\frac{1}{\beta^j} \int_{-\infty}^{\infty} \frac{x^j e^x}{\left(1+e^x\right)^2} d x \quad j=0,1,2, \ldots \tag{10-33}
+%\end{equation*}
+%
+%All of these integrals with odd values of $j$ vanish, since except for the $x^j$, the integrands are even functions of $x$. (See Problem 10-10.) The integral for $L_2$ is standard and may be found in tables:
+%$$
+%\int_{-\infty}^{\infty} \frac{x^2 e^x d x}{\left(1+e^x\right)^2}=\frac{\pi^2}{3}
+%$$
+%This gives $L_2=\pi^2(k T)^2 3$ and, by Eq. (10-31),
+%\begin{equation*}
+%	I=H(\mu)+\frac{\pi^2}{6}(k T)^2 H^{\prime \prime}(\mu)+ \tag{10-34}
+%\end{equation*}
+%
+%As an example of the use of this equation, we calculate $N$. In this case $h(\varepsilon)= 4 \pi\left(2 m h^2\right)^{3 / 2} V \varepsilon^{1 / 2}$, and so
+%\begin{equation*}
+%	N=\frac{8 \pi}{3}\left(\frac{2 m}{h^2}\right)^{3 / 2} V \mu^{3 / 2}\left[1+\frac{\pi^2}{8}(\beta \mu)^{-2}+\cdots\right] \tag{10-35}
+%\end{equation*}
+%
+%Using Eq. (10-23) for $\mu_0$, this becomes
+%$$
+%\begin{aligned}
+%	\mu_0 & =\mu\left[1+\frac{\pi^2}{8}(\beta \mu)^{-2}+\cdots\right]^{2 / 3} \\
+%	& =\mu\left[1+\frac{\pi^2}{12}(\beta \mu)^{-2}+\cdots\right]
+%\end{aligned}
+%$$
+%This gives $\mu_0 ; \mu$ as a power series in $(\beta \mu)^{-2}$. We can get $\mu^{\prime} \mu_0$ as a power series in $\eta=\left(\beta \mu_0\right)^{-1}$ by taking the reciprocal of this equation
+%$$
+%\frac{\mu}{\mu_0}=1-\frac{\pi^2}{12}(\beta \mu)^{-2}+\cdots
+%$$
+%and then substituting $\mu=\mu_0\left(1-\pi^2 ; 12(\beta \mu)^2+\cdots\right)$ into the right-hand side to get
+%\begin{equation*}
+%	\mu=\mu_0\left[1-\frac{\pi^2}{12} \eta^2+\cdots\right] \tag{10-36}
+%\end{equation*}
+%This equation shows that $\mu$ changes slowly with temperature and is approximately $\mu_0$ throughout the entire solid-state range of a metal.
+
+
+
+
+
+
+
+
+
+
+\end{document}
