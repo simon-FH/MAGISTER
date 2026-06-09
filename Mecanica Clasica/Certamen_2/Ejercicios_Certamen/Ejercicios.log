@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2025.9.10)  9 JUN 2026 15:27
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2025.9.10)  9 JUN 2026 19:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -644,19 +644,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 276--277
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 292--293
+Underfull \hbox (badness 10000) in paragraph at lines 293--294
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 297--298
+Underfull \hbox (badness 10000) in paragraph at lines 299--300
 
  []
 
 
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 324--326
+Underfull \hbox (badness 10000) in paragraph at lines 327--329
 
  []
 
@@ -664,7 +664,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 324--326
 
 [6]
 
-[7] (Ejercicios.aux)
+[7]
+
+[8] (Ejercicios.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-08-13>
@@ -673,10 +675,10 @@ L3 programming layer <2025-08-13>
 Here is how much of TeX's memory you used:
  14074 strings out of 403249
  277570 string characters out of 5460860
- 757845 words of memory out of 5000000
+ 760845 words of memory out of 5000000
  42274 multiletter control sequences out of 15000+600000
  634465 words of font info for 77 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 102i,17n,107p,433b,247s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,17n,107p,433b,248s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on Ejercicios.pdf (7 pages).
+Output written on Ejercicios.pdf (8 pages).

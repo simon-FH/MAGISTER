@@ -288,12 +288,14 @@ where $\tau$ is the proper time, $x^\mu (\tau)$ is the trajectory of the particl
 	\tilde{\Lambda} = \frac{1}{2} mc^2 \dot{x}_\mu \dot{x}^\mu + e\dot{x}_\mu A^\mu (x) \label{eq 3.2}
 \end{equation}
 
-\begin{enumerate}
+\begin{enumerate}	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\item[(a)] Demonstrate that the action $S$ is covariant under transformations of the Lorentz group when we use the lagrangian \ref{eq 3.2}.
 	\resp $S$ es covariante porque sus componentes ($\tilde{\Lambda}$ y $\tau$) están escritas usando objetos covariantes.
 	
 	\qed
 	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\item[(b)] Write out the generalized momentum $\mathcal{P}_\mu = \ltd{\tilde{\Lambda}}{\dot{x}^\mu}$ and the equations of motion which correspond to the lagrangian \ref{eq 3.2}.
 	\resp El momento
 	\begin{align*}
@@ -318,6 +320,7 @@ where $\tau$ is the proper time, $x^\mu (\tau)$ is the trajectory of the particl
 	\end{align*}
 	\qed
 	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\item[(c)] Demonstrate that your equations of motion are equivalent to the equations of motion found in lectures 12,13 using the lagrangian \ref{eq 3.1}. Demonstrate that the same equations can be obtained with any lagrangian $\bar{\Lambda}$ given by
 	\begin{equation}
 		\bar{\Lambda} = m c^2 f(\dot{x}_\mu \dot{x}^\mu) + e \dot{x}_\mu A^\mu (x)  \label{eq 3.3}
@@ -328,10 +331,42 @@ where $\tau$ is the proper time, $x^\mu (\tau)$ is the trajectory of the particl
 		\mathcal{P}_\mu &= \td{\Lambda}{\dot{x}^\mu}\\
 		&= \td{}{\dot{x}^\mu} \left[-mc^2 \sqrt{\dot{x}_\mu \dot{x}^\mu} + e \dot{x}_\mu A^\mu (x) \right]\\
 		&= -mc^2 \td{}{\dot{x}^\mu} \sqrt{\eta_{\alpha\beta} \dot{x}^\alpha \dot{x}^\beta} + e A^\lambda (x) \td{}{\dot{x}^\mu} \left(\eta_{\lambda\gamma} \dot{x}^\gamma\right)\\
-		&= -mc^2 \td{}{\dot{x}^\mu} \sqrt{\eta_{\alpha\beta} \dot{x}^\alpha \dot{x}^\beta} + e A^\lambda (x) \eta_{\lambda\gamma} \delta_\mu^\gamma
+		&= -mc^2 \frac{1}{2 \sqrt{\eta_{\alpha\beta} \dot{x}^\alpha \dot{x}^\beta}} \cdot 2\dot{x}_\mu + e A^\lambda (x) \eta_{\lambda\gamma} \delta_\mu^\gamma\\
+		&= -mc^2 \frac{\dot{x}_\mu}{\sqrt{\dot{x}_\alpha \dot{x}^\alpha}} + e A_\mu (x)
 	\end{align}
+	Por lo que las ecuaciones de Euler-Lagrange,
+	\begin{align*}
+		\pd{\Lambda}{x^\mu} &= \td{\mathcal{P}_\mu}{\theta}\\
+		e\dot{x}_\alpha \partial_\mu A^\alpha (x) &= mc^2 \left(\frac{(\dot{x}_\alpha \dot{x}^\alpha) \ddot{x}_\mu - \dot{x}_\mu (\ddot{x}_\beta \dot{x}^\beta + \dot{x}_\gamma \ddot{x}^\gamma) }{\dot{x}_\alpha \dot{x}^\alpha}\right) + e \td{A_\mu (x)}{\tau}\\
+		e\dot{x}_\alpha \partial_\mu A^\alpha (x) &= mc^2 \left(\frac{(\dot{x}_\alpha \dot{x}^\alpha) \ddot{x}_\mu - 2 \dot{x}_\mu (\ddot{x}_\beta \dot{x}^\beta) }{\dot{x}_\alpha \dot{x}^\alpha}\right) + e \td{A_\mu (x)}{\tau}
+	\end{align*}
+	Pero $\ddot{x}_\beta \dot{x}^\beta = 0$ y $\dot{x}_\alpha \dot{x}^\alpha = c^2$
+	\begin{align*}
+		e\dot{x}_\alpha \partial_\mu A^\alpha (x) &= mc^2 \left(\frac{c^2 \ddot{x}_\mu - 0}{c^2}\right) + e \td{A_\mu (x)}{\tau}\\
+		e\dot{x}_\alpha \partial_\mu A^\alpha (x) &= mc^2 \ddot{x}_\mu + e \td{A_\mu (x)}{\tau}
+	\end{align*}
+	Lo cual es el mismo resultado encontrado para el caso anterior, por lo que se sigue que las ecuaciones de movimiento son equivalentes.
 	
+	\qed
 	
+	Para el caso más general, los momentos generalizados
+		\begin{align*}
+		\mathcal{P}_\mu &= \td{\bar{\Lambda}}{\dot{x}^\mu}\\
+		&= \td{}{\dot{x}^\mu} \left[m c^2 f(\dot{x}_\alpha \dot{x}^\alpha) + e \dot{x}_\mu A^\mu (x) \right]\\
+		&= m c^2 \td{}{\dot{x}^\mu} f(\dot{x}_\alpha \dot{x}^\alpha) + e A_\mu (x)\\
+		&= m c^2 \td{\left(\dot{x}_\alpha \dot{x}^\alpha\right)}{\dot{x}^\mu} \td{}{\left(\dot{x}_\alpha \dot{x}^\alpha\right)} f(\dot{x}_\alpha \dot{x}^\alpha) + e A_\mu (x)\\
+		&= m c^2 \cdot 2\dot{x}_\mu \td{}{\left(\dot{x}_\alpha \dot{x}^\alpha\right)} f(\dot{x}_\alpha \dot{x}^\alpha) + e A_\mu (x)
+	\end{align*}
+	Ya que $\lpd{f(y)}{y} = 1/2$ en $y = 1$, y $\dot{x}_\alpha \dot{x}^\alpha = c^2 = 1$ (en unidades naturales), tendremos
+	\begin{align*}
+		\mathcal{P}_\mu &= m c^2 \cdot 2\dot{x}_\mu \cdot \frac{1}{2} + e A_\mu (x)\\
+		&= m c^2 \dot{x}_\mu + e A_\mu (x)
+	\end{align*}
+	lo cual es el mismo resultado para el caso de $\tilde{\Lambda}$ (y de $\Lambda$ si se hacía el reemplazo antes). Ya que el momento no depende de la posición $x_\mu$ y los momentos son idénticos, tendremos que los resultados de las ecuaciones de Euler-Lagrange serán los mismos.
+	
+	\qed
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\item[(d)] Find the nonrelativistic lagrangian $L$ which corresponds to the lagrangian \ref{eq 3.2}. Pay attention that the nonrelativistic lagrangian $L$ contributes to the action as $S = \int L \, dt$.
 \end{enumerate}
 
