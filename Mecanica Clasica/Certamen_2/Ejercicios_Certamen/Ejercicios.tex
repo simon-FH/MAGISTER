@@ -13,19 +13,20 @@
 		\end{tikzpicture}
 	\end{figure}
 }
+
+\newcommand{\deriv}[3]{\left(\frac{\partial #1}{\partial #2} \right)_{#3}}
+
+\newcommand{\dderiv}[3]{\left(\dfrac{\partial #1}{\partial #2} \right)_{#3}}
+
 \NewDocumentCommand{\indUpDown}{ O{\Lambda} O{\mu} O{\nu} }{
 	{#1}^{#2}_{\ #3}
 }
 \NewDocumentCommand{\indDownUp}{ O{\Lambda} O{\mu} O{\nu} }{
 	{#1}_{#2}^{\ #3}
 }
+
 \newcommand{\LambdaMuNu}{\indUpDown}
 \newcommand{\0}{\textcolor{gray}{0}}
-
-\newcommand{\eff}[1]{#1_\mathrm{eff}}
-\newcommand{\Ueff}{\eff{U}}
-
-\newcommand{\rbf}{\mathbf{r}}
 \newcommand{\ei}{\mathbf{e}_i}
 \newcommand{\ej}{\mathbf{e}_j}
 \newcommand{\lc}{\epsilon_{ijk}}
@@ -34,26 +35,60 @@
 \newcommand{\ro}{\nabla\times}
 \newcommand{\la}{\nabla^2}
 \newcommand{\rv}{\mathbf{r}}
+\newcommand{\pv}{\mathbf{p}}
 \newcommand{\xv}{\mathbf{x}}
 \newcommand{\yv}{\mathbf{y}}
 \newcommand{\zv}{\mathbf{z}}
 \newcommand{\xhat}{\hat{\xv}}
 \newcommand{\yhat}{\hat{\yv}}
 \newcommand{\zhat}{\hat{\zv}}
+\newcommand{\ihat}{\hat{\mathbf{i}}}
+\newcommand{\jhat}{\hat{\mathbf{j}}}
+\newcommand{\khat}{\hat{\mathbf{k}}}
 \newcommand{\rhat}{\hat{\rv}}
 \newcommand{\that}{\hat{\mathbf{\theta}}}
 \newcommand{\phat}{\hat{\mathbf{\varphi}}}
 \newcommand{\rhhat}{\hat{\mathbf{\rho}}}
 \newcommand{\nhat}{\hat{\mathbf{n}}}
+\newcommand{\Rhat}{\hat{\mathbf{R}}}
 \newcommand{\eo}{\epsilon_{0}}
 \newcommand{\uo}{\mu_{0}}
-\newcommand{\ke}{\frac{1}{4\pi\eo}}
+\NewDocumentCommand{\ke}{ O{1}}{
+	\frac{#1}{4\pi\eo}
+}
+\NewDocumentCommand{\ku}{ O{}}{
+	\frac{\uo #1}{4\pi}
+}
+%\newcommand{\ke}{\frac{1}{4\pi\eo}}
+%\newcommand{\ku}{\frac{\uo}{4\pi}}
 \newcommand{\rdif}{\rv - \rv'}
 \newcommand{\pd}[2]{\dfrac{\partial #1}{\partial #2}}
 \newcommand{\lpd}[2]{\partial #1/\partial #2}
+\newcommand{\spd}[2]{\frac{\partial #1}{\partial #2}}
 \newcommand{\td}[2]{\dfrac{d #1}{d #2}}
 \newcommand{\ltd}[2]{d #1/d #2}
+\newcommand{\std}[2]{\frac{d #1}{d #2}}
 \newcommand{\n}[1]{\mathbf{#1}}
+\newcommand{\eff}[1]{#1_\mathrm{eff}}
+\newcommand{\Ueff}{\eff{U}}
+
+\newcommand{\wfrac}[3][3pt]{%
+	\frac{\wfracterm{depth}{\dp}{#1}{#2}}{\wfracterm{height}{\ht}{#1}{#3}}%
+}
+\newcommand{\wfracterm}[4]{%
+	\sbox0{$\displaystyle#4$}%
+	\vrule width 0pt #1 \dimexpr #20+#3\relax
+	\usebox{0}%
+}
+
+\newcommand{\pr}[1]{\left\langle #1 \right\rangle }
+
+\newcommand{\qed}{\hfill\(\blacksquare\)}
+\newcommand{\resp}{
+	\\
+	
+	\textbf{Respuesta:} }
+\newcommand{\celsius}{^\circ\mathrm{C}}
 
 \newcommand{\GeV}{\,\text{GeV}}
 
@@ -69,16 +104,16 @@ A point-like nonrelativistic particle of mass $m$ scatters in the time-dependent
 \begin{equation}
 	U(r,t) = \frac{k(t)}{2} r^2, ~~~~~ k(t) = \frac{\kappa}{t^2}, ~~~~~ \kappa > 0
 \end{equation}
-\begin{enumerate}
+\begin{enumerate}	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\item[(a)] Identify all continuous symmetries of the action. Analyze if there are symmetries of type
 	\begin{equation}
 		\rv \rightarrow \alpha \rv, ~~~~~ t\rightarrow \beta t, ~~~~~ \alpha,\beta=\mathrm{const.}
 	\end{equation}
 	which do not change the equations of motion.
-	
-	El lagrangiano será
+	\resp El lagrangiano será
 	\begin{equation}
-		L = \frac{1}{2}m \left(\dot{r}^2 + r^2 \dot{\theta}^2 + r^2\dot{\phi}^2 \sin^2 \theta \right) + \frac{\kappa}{2 t^2} r^2
+		L = \frac{1}{2}m \left(\dot{r}^2 + r^2 \dot{\theta}^2 + r^2\dot{\phi}^2 \sin^2 \theta \right) - \frac{\kappa}{2 t^2} r^2
 	\end{equation}
 	
 	La variable $\phi$ es cíclica, por lo que $M_z$ será conservado. Aun más, el sistema es esféricamente simétrico, por lo que todo el vector de momento angular se conservará:
@@ -92,29 +127,213 @@ A point-like nonrelativistic particle of mass $m$ scatters in the time-dependent
 	\end{equation}
 	Luego en el lagrangiano
 	\begin{align*}
-		L &= \frac{1}{2}m \left(\frac{\alpha^2}{\beta^2} \dot{r}^2 + \frac{\alpha^2}{\beta^2} r^2 \dot{\theta}^2 + \frac{\alpha^2}{\beta^2} r^2\dot{\phi}^2 \sin^2 \theta \right) + \frac{\kappa}{2 \beta^2 t^2} \alpha^2 r^2\\
-		L &= \frac{\alpha^2}{\beta^2} \left[\frac{1}{2}m \left(\dot{r}^2 + r^2 \dot{\theta}^2 + r^2\dot{\phi}^2 \sin^2 \theta \right) + \frac{\kappa}{2 t^2} r^2\right]\\
-		L &= \frac{\alpha^2}{\beta^2} L
+		L' &= \frac{1}{2}m \left(\frac{\alpha^2}{\beta^2} \dot{r}^2 + \frac{\alpha^2}{\beta^2} r^2 \dot{\theta}^2 + \frac{\alpha^2}{\beta^2} r^2\dot{\phi}^2 \sin^2 \theta \right) - \frac{\kappa}{2 \beta^2 t^2} \alpha^2 r^2\\
+		L' &= \frac{\alpha^2}{\beta^2} \left[\frac{1}{2}m \left(\dot{r}^2 + r^2 \dot{\theta}^2 + r^2\dot{\phi}^2 \sin^2 \theta \right) - \frac{\kappa}{2 t^2} r^2\right]\\
+		L' &= \frac{\alpha^2}{\beta^2} L
 	\end{align*}
 	Ya que multiplicar un lagrangiano por una cantidad constante no cambia las ecuaciones de movimiento, tendremos una simetría sí y solo sí $\alpha,\beta \in \mathbb{R}, \beta\neq 0$.
-
+	
+	Sin embargo, al considerar el efecto sobre la acción,
+	\begin{equation*}
+		S = \int L \, dt ~\rightarrow~ S' = \int L' \, dt' = \int \frac{\alpha^2}{\beta^2} L \, \beta dt = \frac{\alpha^2}{\beta} S
+	\end{equation*}
+	Para que podamos usar el teorema de Noether la acción deberá ser invariante, por lo que
+	\begin{equation}
+		\frac{\alpha^2}{\beta} = 1 ~\Rightarrow~ \alpha = \sqrt{\beta}
+	\end{equation}
+	\begin{equation*}
+		\Rightarrow \rv \rightarrow \alpha \rv, ~~~~~ t\rightarrow \alpha^2 t, ~~~~~ \alpha = \mathrm{const.}
+	\end{equation*}
+	\qed
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\item[(b)] Construct the integrals of motion which might exist according to Noether’s theorem. Demonstrate that these quantities are conserved using the equations of motion.
-
-	El momento angular vendrá dado por
+	\resp El momento angular vendrá dado por
 	\begin{equation}
 		\n{M} = m\rv\times\dot{\rv} = \mathrm{const.}
 	\end{equation}
 	
 	Para la simetría de escala, escribiendo las transformaciones en notación con $\varepsilon$
+	\begin{equation*}
+		\alpha = e^{\varepsilon(t)} \approx 1 + \varepsilon(t)
+	\end{equation*}
+	tal que $\alpha$ es generado por cambios infinitesimales $\varepsilon$, los cambios de coordenadas y tiempo será,, entonces
+	\begin{equation*}
+		\rv' \approx \rv + \delta \rv \approx \rv + \varepsilon \, \rv, ~~~~~ t' \approx t + \delta t \approx t + (1 + \varepsilon)^2 t \approx t + 2\varepsilon \, t
+	\end{equation*}
+	\begin{equation*}
+		\delta \rv \approx \varepsilon \rv, ~~~~~ \delta t \approx 2\varepsilon t
+	\end{equation*}
+	\begin{align*}
+		\Rightarrow d \rv' &= d \left(e^{\varepsilon(t)} \rv\right)\\
+		&= e^{\varepsilon} d\rv + \rv e^{\varepsilon} d \varepsilon\\
+		&= e^{\varepsilon} \dot{\rv} dt + \rv e^{\varepsilon} \dot{\varepsilon} dt \\
+		&\approx (1 + \varepsilon) \dot{\rv} dt + \rv (1 + \varepsilon) \dot{\varepsilon} dt \\
+		&\approx \underbrace{\dot{\rv} dt}_{d\rv} + \underbrace{\varepsilon \dot{\rv} dt}_{\mathcal{O}(\varepsilon)} + \underbrace{\rv \dot{\varepsilon} dt}_{\mathcal{O}(\dot{\varepsilon})} + \underbrace{\rv \varepsilon \dot{\varepsilon} dt}_{\mathcal{O}(\varepsilon \dot{\varepsilon})}\\
+		&\\
+		\Rightarrow d t' &= d \left(e^{2\varepsilon(t)} t\right)\\
+		&= e^{2\varepsilon} dt + t e^{2\varepsilon} \cdot 2 d \varepsilon\\
+		&= e^{2\varepsilon} dt + 2 t e^{2\varepsilon} \dot{\varepsilon} dt \\
+		&\approx (1 + \varepsilon)^2 dt + 2 t (1 + \varepsilon)^2 \dot{\varepsilon} dt \\
+		&\approx (1 + 2\varepsilon + \varepsilon^2) dt + 2 t (1 + 2\varepsilon + \varepsilon^2) \dot{\varepsilon} dt \\
+		&\approx dt + \underbrace{2\varepsilon dt}_{\mathcal{O}(\varepsilon)} + \underbrace{\varepsilon^2 dt}_{\mathcal{O}(\varepsilon^2)} + \underbrace{2 t \dot{\varepsilon} dt}_{\mathcal{O}(\dot{\varepsilon})} + \underbrace{4 t \varepsilon \dot{\varepsilon} dt}_{\mathcal{O}(\varepsilon \dot{\varepsilon})} + \underbrace{2 t \varepsilon^2 \dot{\varepsilon} dt}_{\mathcal{O}(\varepsilon^2 \dot{\varepsilon})}
+	\end{align*}
+	Todos los términos $\varepsilon \dot{\varepsilon}, ~ \varepsilon^2, ~ \varepsilon^2 \dot{\varepsilon}$ son insignificantes, y después de esto deberemos diferenciar por $\dot{\varepsilon}$, por lo que solo nos interesarán los términos $\mathcal{O}(\dot{\varepsilon})$
+	\begin{equation*}
+		d \rv' \approx \left(\dot{\rv} + \dot{\varepsilon} \rv\right) dt, ~~~~~ dt' \approx \left(1 + 2 \dot{\varepsilon} t\right) dt
+	\end{equation*}
+	Luego, la velocidad
+	\begin{equation*}
+		\dot{\rv}' \equiv \frac{d \rv'}{d t'} \approx \frac{\left(\dot{\rv} + \dot{\varepsilon} \rv \right) dt}{\left(1 + 2 \dot{\varepsilon} t\right) dt}
+	\end{equation*}
+	Aproximando la división con \texttt{Mathematica},
+	\begin{equation*}
+		\dot{\rv}' \approx \dot{\rv} + \delta \dot{\rv} \approx \dot{\rv} + \dot{\varepsilon}\left(\rv - 2 \dot{\rv} t\right)
+	\end{equation*}
+	\begin{equation*}
+		\delta \dot{\rv} \approx \dot{\varepsilon}\left(\rv - 2 \dot{\rv} t\right)
+	\end{equation*}
+	Luego, aproximando el lagrangiano a primer orden,
+	\begin{align*}
+		L'(\rv',\dot{\rv}',t') &= L'(\rv + \delta \rv, \dot{\rv} + \delta \dot{\rv}, t + \delta t)\\
+		&\approx L(\rv,\dot{\rv},t) + \pd{L}{\rv} \cdot \delta\rv + \pd{L}{\dot{\rv}} \cdot \delta\dot{\rv} + \pd{L}{t} \delta t\\
+		&\approx L(\rv,\dot{\rv},t) + \pd{L}{\rv} \cdot \varepsilon \rv + \pd{L}{\dot{\rv}} \cdot \dot{\varepsilon}\left(\rv - 2 \dot{\rv} t\right) + \pd{L}{t} 2 \varepsilon t
+	\end{align*}
+	De nuevo, solo nos interesarán los términos $\mathcal{O}(\dot{\varepsilon})$, por lo que, considerando que $\lpd{L}{\dot{\rv}} = m \dot{\rv}$
+	\begin{equation*}
+		L' \approx L + m \dot{\rv} \cdot \dot{\varepsilon}\left(\rv - 2 \dot{\rv} t\right) 
+	\end{equation*}
+	Por lo que la acción
+	\begin{align*}
+		S' &= \int L' \, dt'\\
+		&\approx \int \left[L + m \dot{\rv} \cdot \dot{\varepsilon}\left(\rv - 2 \dot{\rv} t\right)\right] \, \left[1 + 2 \dot{\varepsilon} t\right] dt\\
+		&\approx \int L \, dt + \int m \dot{\rv} \cdot \dot{\varepsilon} \left(\rv - 2 \dot{\rv} t\right) \, dt + \int 2 \dot{\varepsilon} t L \, dt + \int 2 m \dot{\rv} \cdot \dot{\varepsilon}^2 t \left(\rv - 2 \dot{\rv} t\right) \, dt
+	\end{align*}
+	El último término es $\mathcal{O}(\dot{\varepsilon}^2)$, por lo que es insignificante. Tendremos entonces
+	\begin{equation*}
+		S' \approx \int \left[L + m \dot{\rv} \cdot \dot{\varepsilon} \left(\rv - 2 \dot{\rv} t\right) + 2 \dot{\varepsilon} t L\right] \, dt
+	\end{equation*}
+	Y la variación de $L$ será
+	\begin{equation*}
+		S' \approx \int \left[L + \delta L\right] dt \approx \int \left[L + \dot{\varepsilon} \left( m \dot{\rv} \cdot \left(\rv - 2 \dot{\rv} t\right) + 2 t L\right)\right] \, dt
+	\end{equation*}
+	\begin{equation*}
+		\delta L \approx \dot{\varepsilon}\left[ m \dot{\rv} \cdot \left(\rv - 2 \dot{\rv} t\right) + 2 t L\right]
+	\end{equation*}
+	Finalmente, la cantidad conservada será
+	\begin{align*}
+		Q &= \pd{\delta L}{\dot{\varepsilon}}\\
+		&= m \dot{\rv} \cdot \left(\rv - 2 \dot{\rv} t\right) + 2 t L\\
+		&= \pv \cdot \rv - 2 m \dot{\rv}^2 t + 2 t \left(\frac{1}{2}m \dot{\rv}^2 - U\right)\\
+		&= \pv \cdot \rv - 2 t \left(\frac{1}{2}m \dot{\rv}^2 + U\right)\\
+		&= \pv \cdot \rv - 2 H t\\
+	\end{align*}
+	\qed
+	
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\item[(c)] We have seen in lectures that in static (time-independent) Coulomb potential the particle's trajectory always remains in the plane (so-called scattering plane). Analyze if this property remains valid in the time-dependent potential given in Eq. (1). Analyze if the Kepler’s laws remain valid in this potential	field.
+	\resp El potencial es central y el momento angular $\n{M}$ es conservado componente por componente, por lo que el plano de rotación será constante.
+	
+	La segunda ley de Kepler se conservará porque el campo es central; la primera y tercera no lo harán, ya que dependen de una trayectoria específica que en este caso será alterada.
+	
+	\qed
 \end{enumerate}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\section{Problema 2}
+A relativistic particle of mass $m$ moves in the spherically symmetric potential $U (r) = \alpha/r + \beta/r^2$.
+\begin{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\item[(a)] Write out the lagrangian of the system, and the corresponding equations of motion.
+	\resp En el marco del laboratorio,
+	\begin{align}
+		L &= -mc^2 \sqrt{1 - \frac{\dot{\rv}^2}{c^2}} - \left(\frac{\alpha}{r} + \frac{\beta}{r^2}\right) \nonumber \\
+		&= -mc \sqrt{c - \dot{r}^2 - r^2 \dot{\theta}^2 - r^2\dot{\phi}^2 \sin^2 \theta} - \frac{\alpha}{r} - \frac{\beta}{r^2}
+	\end{align}
+	Usando \texttt{Mathematica}, los momentos generalizados:
+	\begin{equation*}
+		p_r = \pd{L}{\dot{r}} = \gamma m \dot{r}, ~~~~ p_\theta = \pd{L}{\dot{\theta}} = \gamma m r^2 \dot{\theta}, ~~~~ p_\phi = \pd{L}{\dot{\phi}} = \gamma m r^2 \dot{\phi} \sin^2\theta
+	\end{equation*}
+	Tenemos las ecuaciones de Euler-Lagrange:
+	\begin{equation*}
+		\td{p_i}{t} = \pd{L}{q_i}
+	\end{equation*}
+	\begin{align*}
+		\td{}{t} \left[\gamma m \dot{r}\right] &= \pd{}{r} \left[-mc \sqrt{c - \dot{r}^2 - r^2 \dot{\theta}^2 - r^2\dot{\phi}^2 \sin^2 \theta} - \frac{\alpha}{r} - \frac{\beta}{r^2}\right]
+	\end{align*}
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\item[(b)] Identify all symmetries of the action and construct all integrals of motion which might exist in this problem.
+	\resp
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\item[(c)] Try to integrate the equations of motion and find trajectories of bound orbits.
+	\resp
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\item[(d)] Analyze the behavior of your solution in the limit $c\rightarrow\infty$. Assuming that $c$ is large yet finite, find explicitly the first relativistic correction to the trajectory.
+	\resp
+	
+\end{enumerate}
 
+\section{Problema 3}
+In the lectures 12-13 we discussed that the covariant equations of motion for the massive particle in the electromagnetic field $A^\mu$ may be obtained from the action
+\begin{equation}
+	S = \int d\tau \, \Lambda, ~~~~~~~ \Lambda = -mc^2 \sqrt{\dot{x}_\mu \dot{x}^\mu} + e \dot{x}_\mu A^\mu (x) \label{eq 3.1}
+\end{equation}
+where $\tau$ is the proper time, $x^\mu (\tau)$ is the trajectory of the particle, and $\dot{x}^\mu = \ltd{x^\mu}{\tau}$ is the 4-velocity of the particle. Assume that we replaced the covariant lagrangian \ref{eq 3.1} with
+\begin{equation}
+	\tilde{\Lambda} = \frac{1}{2} mc^2 \dot{x}_\mu \dot{x}^\mu + e\dot{x}_\mu A^\mu (x) \label{eq 3.2}
+\end{equation}
 
-
-
-
-
+\begin{enumerate}
+	\item[(a)] Demonstrate that the action $S$ is covariant under transformations of the Lorentz group when we use the lagrangian \ref{eq 3.2}.
+	\resp $S$ es covariante porque sus componentes ($\tilde{\Lambda}$ y $\tau$) están escritas usando objetos covariantes.
+	
+	\qed
+	
+	\item[(b)] Write out the generalized momentum $\mathcal{P}_\mu = \ltd{\tilde{\Lambda}}{\dot{x}^\mu}$ and the equations of motion which correspond to the lagrangian \ref{eq 3.2}.
+	\resp El momento
+	\begin{align*}
+		\mathcal{P}_\mu &= \td{\tilde{\Lambda}}{\dot{x}^\mu}\\
+		&= \td{}{\dot{x}^\mu} \left[\frac{1}{2} mc^2 \dot{x}_\alpha \dot{x}^\alpha + e\dot{x}_\gamma A^\gamma (x)\right]\\
+		&= \frac{1}{2} mc^2 \td{}{\dot{x}^\mu} \left[\eta_{\alpha\beta} \dot{x}^\beta \dot{x}^\alpha \right] + e A^\gamma (x) \td{}{\dot{x}^\mu} \left[\eta_{\lambda\gamma} \dot{x}^\lambda\right]\\
+		&= \frac{1}{2} mc^2 \eta_{\alpha\beta} \left[\delta_\mu^\beta \dot{x}^\alpha + \dot{x}^\beta \delta_\mu^\alpha \right] + e A^\gamma (x) \eta_{\lambda\gamma} \delta_\mu^\lambda\\
+		&= \frac{1}{2} mc^2 \left[\eta_{\alpha\mu} \dot{x}^\alpha + \eta_{\mu\beta} \dot{x}^\beta \right] + e A^\gamma (x) \eta_{\mu\gamma}\\
+		&= \frac{1}{2} mc^2 \left[\dot{x}_\mu + \dot{x}_\mu \right] + e A_\mu (x)\\
+		&= mc^2 \dot{x}_\mu + e A_\mu (x)
+	\end{align*}
+	Las ecuaciones de Euler-Lagrange:
+	\begin{align*}
+		\pd{\tilde{\Lambda}}{x^\mu} &= \td{\mathcal{P}_\mu}{\theta}\\
+		e\dot{x}_\alpha \partial_\mu A^\alpha (x) &= mc^2 \ddot{x}_\mu + e \td{A_\mu (x)}{\tau}
+	\end{align*}
+	\begin{align*}
+		\Rightarrow mc^2 \ddot{x}_\mu &= e \left(\dot{x}_\alpha \partial_\mu A^\alpha (x) - \pd{A_\mu (x)}{x^\beta} \td{x^\beta}{\tau}\right)\\
+		mc^2 \ddot{x}_\mu &= e \left(\eta_{\alpha\lambda} \dot{x}^\lambda \partial_\mu A^\alpha - \dot{x}^\beta \partial_\beta A_\mu \right)\\
+		mc^2 \ddot{x}_\mu &= e \left(\dot{x}^\lambda \partial_\mu A_\lambda - \dot{x}^\beta \partial_\beta A_\mu \right)\\
+		mc^2 \ddot{x}_\mu &= e \dot{x}^\nu \left(\partial_\mu A_\nu - \partial_\nu A_\mu \right)
+	\end{align*}
+	\qed
+	
+	\item[(c)] Demonstrate that your equations of motion are equivalent to the equations of motion found in lectures 12,13 using the lagrangian \ref{eq 3.1}. Demonstrate that the same equations can be obtained with any lagrangian $\bar{\Lambda}$ given by
+	\begin{equation}
+		\bar{\Lambda} = m c^2 f(\dot{x}_\mu \dot{x}^\mu) + e \dot{x}_\mu A^\mu (x)  \label{eq 3.3}
+	\end{equation}
+	where $f (y)$ is an arbitrary function which satisfies $\lpd{f(y)}{y} = 1/2$ at $y = 1$ (clearly, the lagrangians (\ref{eq 3.1}, \ref{eq 3.2}) correspond to $f (y) = \sqrt{y}$ and $f (y) = y/2$, respectively).
+	\resp Los momentos generalizados del primer lagrangiano serán
+	\begin{align}
+		\mathcal{P}_\mu &= \td{\Lambda}{\dot{x}^\mu}\\
+		&= \td{}{\dot{x}^\mu} \left[-mc^2 \sqrt{\dot{x}_\mu \dot{x}^\mu} + e \dot{x}_\mu A^\mu (x) \right]\\
+		&= -mc^2 \td{}{\dot{x}^\mu} \sqrt{\eta_{\alpha\beta} \dot{x}^\alpha \dot{x}^\beta} + e A^\lambda (x) \td{}{\dot{x}^\mu} \left(\eta_{\lambda\gamma} \dot{x}^\gamma\right)\\
+		&= -mc^2 \td{}{\dot{x}^\mu} \sqrt{\eta_{\alpha\beta} \dot{x}^\alpha \dot{x}^\beta} + e A^\lambda (x) \eta_{\lambda\gamma} \delta_\mu^\gamma
+	\end{align}
+	
+	
+	\item[(d)] Find the nonrelativistic lagrangian $L$ which corresponds to the lagrangian \ref{eq 3.2}. Pay attention that the nonrelativistic lagrangian $L$ contributes to the action as $S = \int L \, dt$.
+\end{enumerate}
 
 
 
