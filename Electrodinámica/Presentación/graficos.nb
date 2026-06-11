@@ -1,0 +1,115 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      3905,        105]
+NotebookOptionsPosition[      3411,         88]
+NotebookOutlinePosition[      3821,        104]
+CellTagsIndexPosition[      3778,        101]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Manipulate", "[", 
+   RowBox[{
+    RowBox[{"VectorPlot3D", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"x", ",", "y", ",", 
+        RowBox[{"Bz", "-", 
+         RowBox[{"2", "z"}]}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", 
+        RowBox[{"-", "2"}], ",", "2"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"y", ",", 
+        RowBox[{"-", "2"}], ",", "2"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"z", ",", 
+        RowBox[{"-", "2"}], ",", "2"}], "}"}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"Bz", ",", 
+      RowBox[{"-", "3"}], ",", "3"}], "}"}]}], "]"}], 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.990116832571068*^9, 3.9901169551114826`*^9}},
+ CellLabel->"In[2]:=",ExpressionUUID->"ed08fd6b-c4a6-0744-959a-9d65a0904c4a"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`Bz$$ = -0.18999999999999995`, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"sin t\[IAcute]tulo\"", Typeset`specs$$ = {{
+      Hold[$CellContext`Bz$$], -3, 3, ControlType -> Manipulator}}, 
+    Typeset`size$$ = {360., {195.40944101274968`, 201.14137481674575`}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = True, 
+    Typeset`keyframeActionsQ$$ = False, Typeset`keyframeList$$ = {}}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`Bz$$ = -3}, 
+      "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$, Typeset`keyframeActionsQ$$, 
+        Typeset`keyframeList$$}, "Body" :> 
+      VectorPlot3D[{$CellContext`x, $CellContext`y, $CellContext`Bz$$ - 
+         2 $CellContext`z}, {$CellContext`x, -2, 2}, {$CellContext`y, -2, 
+         2}, {$CellContext`z, -2, 2}], 
+      "Specifications" :> {{$CellContext`Bz$$, -3, 3}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{402.6, {238.27028085649968`, 244.00221466049575`}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.9901169558679695`*^9, 3.990117060077589*^9},
+ CellLabel->"Out[2]=",ExpressionUUID->"49b995e6-1b17-be41-9268-97fefecb9a26"]
+}, Open  ]]
+},
+WindowSize->{569.25, 561.75},
+WindowMargins->{{Automatic, 129.75}, {52.5, Automatic}},
+FrontEndVersion->"14.3 para Microsoft Windows (64-bit) (July 8, 2025)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"31f18f22-5f1a-a543-8919-a66d2f3e1d4c"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 830, 24, 82, "Input",ExpressionUUID->"ed08fd6b-c4a6-0744-959a-9d65a0904c4a"],
+Cell[1409, 48, 1986, 37, 518, "Output",ExpressionUUID->"49b995e6-1b17-be41-9268-97fefecb9a26"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
