@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2025.9.10)  8 JUN 2026 11:55
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2025.9.10)  13 JUN 2026 19:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -622,6 +622,11 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 227--227
+[]\TU/lmr/bx/n/12 Condensados de Bosé-Einstein
+ []
+
+
 
 [1
 
@@ -641,7 +646,7 @@ L3 programming layer <2025-08-13>
 Here is how much of TeX's memory you used:
  14170 strings out of 403249
  279931 string characters out of 5460860
- 787666 words of memory out of 5000000
+ 788666 words of memory out of 5000000
  42354 multiletter control sequences out of 15000+600000
  635872 words of font info for 91 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
