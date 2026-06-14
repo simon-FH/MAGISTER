@@ -208,11 +208,11 @@
 	\end{equation}
 	Si bien este sistema se comporta como un monopolo magnético, ahora tenemos el problema de una línea de flujo infinito que nunca se ha detectado experimentalmente. Para que ambas aserciones sean ciertas al mismo tiempo podemos recurrir a la mecánica cuántica, que nos da una forma de hacer que un artefacto matemático de este tipo sea invisible.
 	
-	Si la fase de una partícula de carga $q$ moviéndose a través de un potencial $\n{A}$ en una trayectoria cerrada alrededor de la línea es trivial (es decir, igual a 1), entonces  el \textit{Dirac string} no es observable:
+	Si la fase de una partícula de carga $q$ moviéndose a través de un potencial $\n{A}$ en una trayectoria cerrada alrededor de la línea es trivial (es decir, igual a 1), entonces  el \textit{Dirac string} no producirá efectos sobre ella y será, por tanto, no observable:
 	\begin{equation}
 		\exp\left[\frac{i q}{\hbar c} \oint \n{A} \cdot d\n{l}\right] = \exp\left[\frac{i q \cdot 4\pi g}{\hbar c} \right] = 1
 	\end{equation}
-	En consecuencia:
+	En consecuencia, la fase será un múltiplo de $2\pi$
 	\begin{equation}
 		\frac{ 4\pi q g}{\hbar c} = 2\pi n, ~~ n \in \mathbb{Z},
 	\end{equation}
@@ -224,10 +224,19 @@
 	
 	Se han encontrado análogos a monopolos magnéticos en sistemas como \textit{spin ice} exóticos, como una propiedad emergente del sistema, pero no hay evidencia experimental de monopolos de Dirac en medios descritos por un campo cuántico.
 	
-	\subsection{Condensados de Bosé-Einstein (BEC)}
+	\subsection{Condensado de Bosé-Einstein (BEC)}
 	Un BEC es un estado de la materia formado cuando un gas conformado por partículas bosónicas es enfriado hasta cerca del cero absoluto. Al llegar a este punto, el conjunto de partículas empieza a ser gobernado por la estadística de Bosé-Einstein y puede ser descrito completamente por una sola ecuación de onda para todo el sistema.
 	
-	En el caso específico de este artículo, se utiliza un gas compuesto por $\sim 1.8 \times 10^5$ átomos de Rubidio-87 para crear un condensado de Bosé Einstein espinorial, es decir, la ecuación de onda podrá ser descompuesta en una fase escalar y una de espín. Gracias a esta fase de espín, tendremos un campo espinorial o \textit{textura espinorial}, la cual asignará, en cada punto del espacio, una probabilidad a los valores de momento posibles.
+	En el caso específico de este artículo, se utiliza un gas compuesto por $\sim 1.8 \times 10^5$ átomos de Rubidio-87 para crear un condensado de Bosé Einstein espinorial, es decir, la ecuación de onda $\Psi$ podrá ser descompuesta en una fase escalar $\psi$ y una de espín $\zeta$
+	\begin{equation}
+		\Psi(\rv,t) = \psi(\rv,t) \, \zeta(\rv,t)
+	\end{equation}
+	Gracias a esta fase de espín, tendremos un campo espinorial o \textit{textura espinorial} ($\zeta(\rv,t)$), la cual asignará, en cada punto del espacio, una probabilidad a los valores de momento posibles.
+	
+	Ya que el fluido es bosónico, el BEC tendrá 3 posibles estados para su espín: $\{|+1\rangle, |0\rangle, |-1\rangle\}$. El fluido estará inicialmente espín-polarizado en $|+1\rangle$, tal que la textura espinorial, en $t = 0$ será
+	\begin{equation}
+		\zeta(\rv,0) = (1,0,0)^T
+	\end{equation}
 	
 	\subsection{Campos sintéticos}
 	Algunos sistemas exóticos compuestos por partículas neutras, como grupos de fotones, átomos ultrafríos o condensados de Bosé-Eisntein, pueden ser diseñados y manipulados para que se comporten como si estuvieran siendo influenciados por un campo electromagnético y fuerza de Lorentz.
@@ -237,7 +246,27 @@
 	\begin{equation}
 		B(\mathbf{r}) = \left(b_q x, ~ b_q y, ~ B_z(t) - 2 b_q z\right)
 	\end{equation}
-	donde $b_q > 0$ es la fuerza del campo cuadrupolar, y $B_z(t)$ es un campo uniforme que será podrá ser variado para efectivamente mover verticalmente es
+	donde $b_q > 0$ es la fuerza del campo cuadrupolar, y $B_z(t)$ es un campo uniforme que será podrá ser variado para efectivamente mover verticalmente el punto cero del campo total.
+	
+	Partiendo con el punto cero del campo magnético fuera de los límites del BEC, se variará muy lentamente al componente $B_z(t)$, con tal de girar adiabáticamente los espines del condensado y que, en cada instante, coincidan con las líneas de campo magnético.
+	
+	Por comodidad, podemos hacer un cambio de coordenadas $(r,\theta,\phi) \rightarrow (r',\theta',\phi')$ que escale el eje $z$ por 2 y mueva el origen de coordenadas con tal de que coincida con el cero del campo magnético.
+	
+	Al final de este movimiento, los espines habrán rotado una cantidad $\pi - \theta'$ alrededor del eje $\hat{\mathbf{\phi}} '$, tal que la textura espinorial será
+	\begin{equation}
+		\zeta(\theta',\phi') = \begin{pmatrix}
+			(1 - \cos\theta')/2\\
+			-e^{i\phi'} (\sin\theta')/2\\
+			-e^{2i\phi'} (1 + \cos\theta')/2
+		\end{pmatrix}
+	\end{equation}
+	
+	En el caso de condesados de Bosé-Einstein espinoriales, tendremos que la velocidad superfluida $v_s$ dependerá, en parte, de la variación espacial del espinor. En nuestro caso, tal contribución será
+	\begin{equation}
+		v_s^{\phi'} = \frac{\hbar}{M}\,\mathrm{Im}\!\left(\zeta^\dagger \frac{\partial\zeta}{\partial\phi'}\right)\frac{1}{r'\sin\theta'} = \frac{\hbar}{M}\,\frac{1+\cos\theta'}{r'\sin\theta'}
+	\end{equation}
+	
+%	Ya que ahora tenemos un campo cuántico de espines que encierra a un punto nulo y direcciones específicas (incluir imagen del campo), tendremos que, al recorrer un circuito cerrado alrededor del centro, acumularemos una fase cuántica
 	
 	\section{Herramientas utilizadas}
 	
