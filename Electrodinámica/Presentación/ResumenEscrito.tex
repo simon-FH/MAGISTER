@@ -208,13 +208,13 @@
 	\end{equation}
 	Si bien este sistema se comporta como un monopolo magnético, ahora tenemos el problema de una línea de flujo infinito que nunca se ha detectado experimentalmente. Para que ambas aserciones sean ciertas al mismo tiempo podemos recurrir a la mecánica cuántica, que nos da una forma de hacer que un artefacto matemático de este tipo sea invisible.
 	
-	Si la fase de una partícula de carga $q$ moviéndose a través de un potencial $\n{A}$ en una trayectoria cerrada alrededor de la línea es trivial (es decir, igual a 1), entonces  el \textit{Dirac string} no producirá efectos sobre ella y será, por tanto, no observable:
+	Si la fase $\phi$ de una partícula de carga $q$ moviéndose a través de un potencial $\n{A}$ en una trayectoria cerrada alrededor de la línea es trivial (es decir, igual a 1), entonces  el \textit{Dirac string} no producirá efectos sobre ella y será, por tanto, no observable:
 	\begin{equation}
-		\exp\left[\frac{i q}{\hbar c} \oint \n{A} \cdot d\n{l}\right] = \exp\left[\frac{i q \cdot 4\pi g}{\hbar c} \right] = 1
+		\exp\left[i \Delta \phi \right] = \exp\left[\frac{i q}{\hbar c} \oint \n{A} \cdot d\n{l}\right] = \exp\left[\frac{i q \cdot 4\pi g}{\hbar c} \right] = 1
 	\end{equation}
 	En consecuencia, la fase será un múltiplo de $2\pi$
 	\begin{equation}
-		\frac{ 4\pi q g}{\hbar c} = 2\pi n, ~~ n \in \mathbb{Z},
+		\Delta \phi = \frac{ 4\pi q g}{\hbar c} = 2\pi n, ~~ n \in \mathbb{Z}, \label{2pin}
 	\end{equation}
 	lo que nos da la condición de cuantización de Dirac
 	\begin{equation}
@@ -261,21 +261,54 @@
 		\end{pmatrix}
 	\end{equation}
 	
-	En el caso de condesados de Bosé-Einstein espinoriales, tendremos que la velocidad superfluida $v_s$ dependerá, en parte, de la variación espacial del espinor. En nuestro caso, tal contribución será
+	En el caso de condesados de Bosé-Einstein espinoriales, tendremos que la velocidad superfluida $v_s$ dependerá, en parte, de la variación espacial del espinor. En nuestro caso, tal contribución tendrá dirección angular y será
 	\begin{equation}
 		v_s^{\phi'} = \frac{\hbar}{M}\,\mathrm{Im}\!\left(\zeta^\dagger \frac{\partial\zeta}{\partial\phi'}\right)\frac{1}{r'\sin\theta'} = \frac{\hbar}{M}\,\frac{1+\cos\theta'}{r'\sin\theta'}
 	\end{equation}
+	mientras que su vorticidad $\Omega$,
+	\begin{equation}
+		\n{\Omega} = \ro v_s = -\frac{\hbar}{Mr'^2}\rhat' + \frac{4\pi\hbar}{M}\delta(x')\delta(y')\Theta(z')\rhat'
+	\end{equation}
+	es decir, una estructura monopolar alrededor del origen y una línea singular en el eje $z$ positivo, lo que corresponderá a una línea de vórtice con densidad nula. La acumulación de fase alrededor de la línea de vórtice podrá calcularse como
+	\begin{equation*}
+		\Delta \phi = \frac{M}{\hbar} \oint \n{v}_s \cdot d\n{l} = \iint \n{\Omega} \cdot d\n{A} =  - 2 \pi (1 - \cos\theta') + 4 \pi \Theta(z')
+	\end{equation*}
+	donde el primer término corresponde a la contribución del monopolo y el segundo a la de la línea de vórtice. Si nos fijamos solo en el segundo término, y los comparamos con la ec. \ref{2pin}, obtendremos que la acumulación de fase, debido a la línea de vórtice, en la región $+z'$ es
+	\begin{equation}
+		\Delta \phi = 4 \pi
+	\end{equation}
 	
-%	Ya que ahora tenemos un campo cuántico de espines que encierra a un punto nulo y direcciones específicas (incluir imagen del campo), tendremos que, al recorrer un circuito cerrado alrededor del centro, acumularemos una fase cuántica
+	Ya que tenemos un campo de velocidades, podemos definir un potencial vectorial
+	\begin{equation}
+		\n{A}^* = -\frac{M}{\hbar} \n{v}_s
+	\end{equation}
+	Y un campo construido a partir de él
+	\begin{equation*}
+		\n{B}^* = \ro\n{A}^* = -M \n{\Omega} = \frac{\hbar}{r'^2}\rhat' - 4\pi\hbar \delta(x')\delta(y')\Theta(z')\rhat'
+	\end{equation*}
+	Pero, ya que el segundo término es dependiente de gauge, no es física y puede anularse. El campo será entonces
+	\begin{equation}
+		\n{B}^* = \frac{\hbar}{r'^2}\rhat'
+	\end{equation}
+	Ya que tanto el potencial como el campo tienen la misma estructura que un monopolo en un campo magnético real, podemos entonces tratarlo como un campo magnético sintético, con la línea de vórtice cumpliendo el rol de línea de Dirac y el centro el monopolo.
+	
+	\subsection{Medición}
+	Una vez el sistema llega a este punto, el campo $B_z$ es elevado rápida y no adiabáticamente, con tal de que los espines son aproximadamente proyectados y separados a los valores propios del hamiltoniano.
+	
+	Luego, el campo es apagado y al condensado se le deja expandirse libremente para ser finalmente medido. Los tres componentes $\{|+1\rangle, |0\rangle, |-1\rangle\}$ se distribuyen distintivamente, acorde a las predicciones de las simulaciones.
 	
 	\section{Herramientas utilizadas}
+	Este artículo combina fuertemente elementos de mecánica estadística, mecánica cuántica y electrodinámica. Algunas de las herramientas de electrodinámica utilizadas son el teorema de Stokes, la ley de Faraday, los potenciales vectoriales, y las ecuaciones de Maxwell.
 	
 	\section{Resultados principales e Interpretación física}
+	El resultado principal de este estudio fue la formación confirmada de monopolos de Dirac en un campo sintético. Si bien estos no corresponden a monopolos de los campos reales, su existencia y medición dan una confirmación empírica desde un campo cuántico al marco teórico desarrollado por Dirac.
+	
+	EL artículo mismo también reconoce que este logro abre la puerta a estudiar varias propiedades del sistema, como la evolución temporal y decaimiento, así también como otros tipos de monopolos.
 	
 	\section{Conexión con la asignatura}
+	Una de las cosas más destacadas del desarrollo teórico de este artículo es 
 	
 \end{document}
-
 
 
 
