@@ -1624,7 +1624,7 @@ donde \(\n{P}\) y \(\n{M}\) son la polarización y magnetización, respectivamen
 En términos de \(\n{D}\) y \(\n{H}\), las ecuaciones diferenciales de Maxwell toman la forma
 \begin{align}
 	\di\n{D} &= \rho_{f} \label{Maxwell_Coulomb_Aux}\\
-	\ro\n{E} &= \pd{\n{B}}{t}\nonumber\\
+	\ro\n{E} &= -\pd{\n{B}}{t}\nonumber\\
 	\di\n{B} &= 0\nonumber\\
 	\ro\n{H} &= \n{J}_{f} + \pd{\n{D}}{t} \label{Maxwell_Ampere_Aux}
 \end{align}
@@ -2159,21 +2159,38 @@ es un vector polar bajo paridad y cambia de signo bajo inversión temporal. La d
 \end{equation*}
 tiene las mismas propiedades de transformación que el momento mecánico: es polar y cambia de signo bajo inversión temporal.
 
+\section{Ondas electromagnéticas}
+En las clases anteriores se estableció la forma local de las leyes de conservación de energía y momento del campo electromagnético. Ahora pasamos a la propagación de ondas.
 
+Trabajaremos en unidades SI y usaremos campos complejos como notación auxiliar. La parte física siempre es la parte real:
+\begin{equation}
+	\n{E}(\rv,t) = \Re\left[\n{E}_0 \, e^{i(\n{k}\cdot\rv - \omega t)}\right], \quad \n{B}(\rv,t) = \Re\left[\n{B}_0 \, e^{i(\n{k}\cdot\rv - \omega t)}\right]
+\end{equation}
+En un medio lineal, homogéneo, isótropo y sin fuentes libres
+\begin{equation}
+	\n{D} = \epsilon \n{E}, \quad \n{B} = \mu \n{H}, \quad \rho_f = 0, \quad \n{J}_f = 0.
+\end{equation}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+\subsection{Ondas planas en un medio no conductor}
+En un medio lineal, homogéneo e isótropo sin cargas ni corrientes libres,
+\begin{align*}
+	\di\n{D} &= 0, & \ro\n{E} &= -\pd{\n{B}}{t}\\
+	\di\n{B} &= 0, & \ro\n{H} &= \pd{\n{D}}{t}
+\end{align*}
+Combinando las ecuaciones y usando $\n{D} = \epsilon \n{E}, ~ \n{B} = \mu \n{H}$ obtenemos las ecuaciones de onda
+\begin{align}
+	\la\n{E} - \mu\epsilon\pd{^2\n{E}}{t^2} &= 0\\
+	\la\n{H} - \mu\epsilon\pd{^2\n{H}}{t^2} &= 0
+\end{align}
+donde la velocidad de propagación es
+\begin{equation}
+	v = \frac{1}{\sqrt{\mu\epsilon}}
+\end{equation}
+Definimos el índice de refracción y la impedancia del medio como
+\begin{equation}
+	n = \frac{c}{v} = \sqrt{\frac{\mu\epsilon}{\uo\eo}}, \quad Z = \sqrt{\frac{\mu}{\epsilon}}
+\end{equation}
+Para medios no magnéticos, $\mu \simeq \uo$ $n \simeq \sqrt{\epsilon/\eo}$.
 
 
 
