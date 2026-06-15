@@ -30,7 +30,7 @@
 \setbeamerfont{block title}{series=\bfseries}
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{footline}{%
-	\hfill{\color{gris}\scriptsize\insertframenumber/\inserttotalframenumber\hspace{6pt}}%
+	\hfill{\color{gris}\scriptsize\insertframenumber/19 \hspace{6pt}}%
 	\vspace{4pt}%
 }
 
@@ -46,7 +46,7 @@
 \title[Monopolos de Dirac]{Observación de monopolos de Dirac\\en un campo magnético sintético}
 \subtitle{M. W. Ray, E. Ruokokoski, S. Kandel, M. Möttönen \& D. S. Hall.}
 \author{Simón Fonseca}
-\date{2026}
+\date{Junio 2026}
 
 \begin{document}
 	
@@ -751,7 +751,7 @@
 			\begin{column}{0.47\textwidth}
 				\begin{block}{\centering Condición de Dirac}
 					\[
-					e^{i\,\Delta\phi} = e^{i\cdot 4\pi} = 1\;\;\checkmark
+					e^{i\,\Delta\phi} = e^{i\cdot 4\pi} = 1
 					\]
 					La línea de vórtice ($4\pi$ winding)\\
 					es la \textbf{Dirac string}: no observable.
@@ -924,4 +924,76 @@
 		La frase de cierre: mencionar que la ingeniería de campos sintéticos abre puertas a estudiar monopolos no-Abelianos, efecto Hall cuántico, y otros fenómenos topológicos en sistemas cuánticos controlados.
 	}
 	
+	\appendix
+	
+	\begin{frame}
+		\titlepage
+	\end{frame}
+	
+	\begin{frame}
+		\centering
+		\Huge
+		\vspace{10mm}
+		Backup slides
+	\end{frame}
+	
+	
+	%--- B1 ---
+	\begin{frame}{Derivación de $\mathbf{A}$}
+		Flujo a través del casquete esférico hasta ángulo $\theta$:
+		\[ \Phi(\theta) = \iint_\text{cap} \frac{g}{r^2}\hat{r}\cdot d\mathbf{A}
+		= 2\pi g(1-\cos\theta) \]
+		Por Stokes: $\oint \mathbf{A}\cdot d\mathbf{l} = \Phi$, con $|\mathbf{l}| = 2\pi r\sin\theta$:
+		\[ A_\phi = \frac{g(1-\cos\theta)}{r\sin\theta}
+		\;\;\Rightarrow\;\; \nabla\times\mathbf{A} = \frac{g}{r^2}\hat{r} \]
+		Singularidad en $\theta=\pi$: la \textit{Dirac string}.
+	\end{frame}
+	
+	%--- B2 ---
+	\begin{frame}{Condición de cuantización de Dirac}
+		Fase Aharonov-Bohm al rodear la cuerda (flujo $= 4\pi g$):
+		\[ \exp\!\left[\frac{iq}{\hbar c}\oint\mathbf{A}\cdot d\mathbf{l}\right]
+		= \exp\!\left[\frac{4\pi i qg}{\hbar c}\right] = 1 \]
+		La función de onda del electrón debe ser univaluada:
+		\[ \frac{4\pi qg}{\hbar c} = 2\pi n
+		\;\;\Rightarrow\;\; \boxed{qg = \frac{n\hbar c}{2}} \]
+	\end{frame}
+	
+	%--- B3 ---
+	\begin{frame}{$\Delta\phi = 4\pi$}
+		Rotación de $(1,0,0)^T$ por $\pi-\theta'$ alrededor de $\hat{\varphi}'$
+		(matrices de Wigner $d^{(1)}$):
+		\[ \zeta = \begin{pmatrix}(1-\cos\theta')/2 \\
+			-e^{i\phi'}\sin\theta'/\sqrt{2} \\
+			e^{2i\phi'}(1+\cos\theta')/2 \end{pmatrix} \]
+		La componente $\zeta_{-1}$ lleva fase $e^{2i\phi'}$:
+		al dar una vuelta completa en $\phi'$, acumula $4\pi$.\\[6pt]
+		En $\theta'\to 0$: $\zeta_{-1}\to 1$ (dominante) $\Rightarrow \Delta\phi = 4\pi$.
+	\end{frame}
+	
+	%--- B4 ---
+	\begin{frame}{Fase de Berry $\to$ velocidad superfluida}
+		Variación del espinor genera una fase geométrica:
+		\[ \zeta^\dagger\frac{\partial\zeta}{\partial\phi'}
+		= i(1+\cos\theta') \]
+		Velocidad superfluida = gradiente de esa fase:
+		\[ v_s^{\phi'} = \frac{\hbar}{M}
+		\mathrm{Im}\!\left(\zeta^\dagger\frac{\partial\zeta}{\partial\phi'}\right)
+		\frac{1}{r'\sin\theta'}
+		= \frac{\hbar}{M}\frac{1+\cos\theta'}{r'\sin\theta'} \]
+	\end{frame}
+	
+	%--- B5 ---
+	\begin{frame}{Gauge}
+		Bajo $\mathbf{A}^* \to \mathbf{A}^* + \nabla\chi$, la singularidad
+		se mueve de dirección.\\[8pt]
+		\textbf{Wu-Yang (ref. 20):} usar dos parches de gauge superpuestos
+		(hemisferio norte y sur), cada uno con $\mathbf{A}^*$ regular.
+		En la superposición, se relacionan por una transformación de gauge.\\[8pt]
+		Resultado: \textbf{ninguna} singularidad en $\mathbf{A}^*$, pero la
+		línea de vórtice física (densidad nula) permanece.\\[8pt]
+%		\centering
+%		Gauge-dependiente: dirección de la cuerda.\\
+%		Gauge-invariante: el extremo (el monopolo).
+	\end{frame}
 \end{document}
