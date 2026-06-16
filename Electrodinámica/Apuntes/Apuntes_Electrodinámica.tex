@@ -1,64 +1,11 @@
+% !TeX spellcheck = es_CL
 \documentclass[]{article}
 \usepackage{geometry,tikz,lipsum,amsmath,amssymb,soul,xcolor,cancel,esint}
-\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+\usepackage{../../simonPackage}
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt
 \numberwithin{equation}{section}
 
-\NewDocumentCommand{\caja}{ m O{gray!40} O{gray!10} m }{
-	\begin{figure}[h]
-		\centering
-		\begin{tikzpicture}
-			\node[anchor=text, text width=\columnwidth-1.2cm, draw, rounded corners, line width=1pt, fill=#3, inner sep=5mm] (big) {\\#4};
-			\node[draw, rounded corners, line width=.5pt, fill=#2, anchor=west, xshift=5mm] (small) at (big.north west) {#1};
-		\end{tikzpicture}
-	\end{figure}
-}
-\NewDocumentCommand{\indUpDown}{ O{\Lambda} O{\mu} O{\nu} }{
-	{#1}^{#2}_{\ #3}
-}
-\NewDocumentCommand{\indDownUp}{ O{\Lambda} O{\mu} O{\nu} }{
-	{#1}_{#2}^{\ #3}
-}
-\newcommand{\LambdaMuNu}{\indUpDown}
-\newcommand{\0}{\textcolor{gray}{0}}
-\newcommand{\ei}{\mathbf{e}_i}
-\newcommand{\ej}{\mathbf{e}_j}
-\newcommand{\lc}{\epsilon_{ijk}}
-\newcommand{\gr}{\nabla}
-\newcommand{\di}{\nabla\cdot}
-\newcommand{\ro}{\nabla\times}
-\newcommand{\la}{\nabla^2}
-\newcommand{\rv}{\mathbf{r}}
-\newcommand{\xv}{\mathbf{x}}
-\newcommand{\yv}{\mathbf{y}}
-\newcommand{\zv}{\mathbf{z}}
-\newcommand{\xhat}{\hat{\xv}}
-\newcommand{\yhat}{\hat{\yv}}
-\newcommand{\zhat}{\hat{\zv}}
-\newcommand{\ihat}{\hat{\mathbf{i}}}
-\newcommand{\jhat}{\hat{\mathbf{j}}}
-\newcommand{\khat}{\hat{\mathbf{k}}}
-\newcommand{\rhat}{\hat{\rv}}
-\newcommand{\that}{\hat{\mathbf{\theta}}}
-\newcommand{\phat}{\hat{\mathbf{\varphi}}}
-\newcommand{\rhhat}{\hat{\mathbf{\rho}}}
-\newcommand{\nhat}{\hat{\mathbf{n}}}
-\newcommand{\Rhat}{\hat{\mathbf{R}}}
-\newcommand{\eo}{\epsilon_{0}}
-\newcommand{\uo}{\mu_{0}}
-\NewDocumentCommand{\ke}{ O{1}}{
-	\frac{#1}{4\pi\eo}
-}
-\NewDocumentCommand{\ku}{ O{}}{
-	\frac{\uo #1}{4\pi}
-}
-%\newcommand{\ke}{\frac{1}{4\pi\eo}}
-%\newcommand{\ku}{\frac{\uo}{4\pi}}
-\newcommand{\rdif}{\rv - \rv'}
-\newcommand{\pd}[2]{\dfrac{\partial #1}{\partial #2}}
-\newcommand{\lpd}[2]{\partial #1/\partial #2}
-\newcommand{\td}[2]{\dfrac{d #1}{d #2}}
-\newcommand{\ltd}[2]{d #1/d #2}
-\newcommand{\n}[1]{\mathbf{#1}}
 %opening
 \title{Electrodinámica Avanzada}
 \author{Simon Fonseca}
@@ -1482,7 +1429,7 @@ De aquí reconocemos que \(\sin\theta' \cos\varphi'\) es directamente proporcion
 	Y_{1,1}(\theta',\phi') = -\frac{1}{2}\sqrt{\frac{3}{2 \pi}} e^{i \varphi} \sin\theta'
 \end{equation}
 \begin{equation}
-	\Rightarrow \sin\theta' \cos\varphi' = -2\sqrt{\frac{2 \pi}{3}} \Re \left[Y_{1,1}(\theta',\phi')\right] = \sqrt{\frac{2 \pi}{3}}\left[Y_{1,-1} - Y_{1,1} \right]
+	\Rightarrow \sin\theta' \cos\varphi' = -2\sqrt{\frac{2 \pi}{3}} \mathrm{Re}\!\left[Y_{1,1}(\theta',\phi')\right] = \sqrt{\frac{2 \pi}{3}}\left[Y_{1,-1} - Y_{1,1} \right]
 \end{equation}
 Realizando el mismo procedimiento que con el potencial escalar llegamos a que
 \begin{equation*}
@@ -1962,7 +1909,7 @@ En medios lineales, homogéneos y sin dispersión, conviene usar las ecs. \ref{D
 \end{equation*}
 La densidad de energía y el vector de Poynting se escriben como:
 \begin{equation}
-	u = \frac{1}{2}\left(\n{E}\cdot\n{D} + \n{B}\cdot\n{H}\right), ~~~~~~~ \n{S} = \n{E}\times\n{H}
+	u = \frac{1}{2}\left(\n{E}\cdot\n{D} + \n{B}\cdot\n{H}\right), ~~~~~~~ \n{S} = \n{E}\times\n{H} \label{u_S}
 \end{equation}
 
 \subsubsection{Lectura física del vector de Poynting}
@@ -2164,7 +2111,7 @@ En las clases anteriores se estableció la forma local de las leyes de conservac
 
 Trabajaremos en unidades SI y usaremos campos complejos como notación auxiliar. La parte física siempre es la parte real:
 \begin{equation}
-	\n{E}(\rv,t) = \Re\left[\n{E}_0 \, e^{i(\n{k}\cdot\rv - \omega t)}\right], \quad \n{B}(\rv,t) = \Re\left[\n{B}_0 \, e^{i(\n{k}\cdot\rv - \omega t)}\right]
+	\n{E}(\rv,t) = \mathrm{Re}\!\left[\n{E}_0 \, e^{i(\n{k}\cdot\rv - \omega t)}\right], \quad \n{B}(\rv,t) = \mathrm{Re}\!\left[\n{B}_0 \, e^{i(\n{k}\cdot\rv - \omega t)}\right]
 \end{equation}
 En un medio lineal, homogéneo, isótropo y sin fuentes libres
 \begin{equation}
@@ -2192,12 +2139,140 @@ Definimos el índice de refracción y la impedancia del medio como
 \end{equation}
 Para medios no magnéticos, $\mu \simeq \uo$ $n \simeq \sqrt{\epsilon/\eo}$.
 
+La solución de estas ODEs serán ondas planas. Si tomamos el ansatz
+\begin{equation}
+	\n{E}(\rv,t) = \n{E}_0 \, e^{i(\n{k}\cdot\rv - \omega t)}, \quad \n{B}(\rv,t) = \n{B}_0 \, e^{i(\n{k}\cdot\rv - \omega t)}
+\end{equation}
+Tendremos que, para una onda plana,
+\begin{equation}
+	\nabla \to i\n{k}, \quad \pd{}{t} \to -i\omega
+\end{equation}
+Las ecuaciones de Maxwell indicarán entonces
+\begin{align*}
+	\n{k}\cdot\n{E}_0 &= 0, & \n{k}\times\n{E}_0 &=  \omega\n{B}_0\\
+	\n{k}\cdot\n{B}_0 &= 0, & \n{k}\times\n{H}_0 &= -\omega\n{D}_0
+\end{align*}
+Por lo que $\n{E}, \n{B}$ y $\n{k}$ son \textbf{mutuamente perpendiculares}. Además,
+\begin{equation}
+	\n{B}_0 = \frac{1}{\omega} \n{k}\times\n{E}_0 = \frac{1}{v}\khat\times\n{E}_0
+\end{equation}
+Pero, como $\n{H}_0 = \n{B}_0/\mu$,
+\begin{equation}
+	\n{H}_0 = \frac{1}{Z} \khat\times\n{E}_0
+\end{equation}
+La relación de dispersión en un medio no dispersivo es
+\begin{equation}
+	k^2 = \mu\epsilon\omega^2, \quad \omega = v k
+\end{equation}
 
+\subsubsection{Energía, flujo e intensidad}
+La densidad de energía electromagnética instantánea en un medio lineal no dispersivo es, como en la ec. \ref{u_S}
+\begin{equation*}
+	u = \frac{1}{2}\left(\n{E}\cdot\n{D} + \n{B}\cdot\n{H}\right) = \frac{1}{2} \epsilon E^2 + \frac{1}{2} \frac{1}{\mu} B^2
+\end{equation*}
+Para una onda plana, $B = E/v$ y $v^{-2} = \mu\epsilon$. Entonces
+\begin{equation*}
+	\frac{1}{2} \frac{1}{\mu} B^2 = \frac{1}{2} \epsilon E^2 ~\Rightarrow~ u = \epsilon E^2 = \frac{1}{\mu} B^2
+\end{equation*}
+Por otro lado, el vector de Poynting es
+\begin{equation*}
+	\n{S} = \n{E}\times\n{H}
+\end{equation*}
+Para una onda monocromática, el promedio temporal de la potencia por unidad de área es
+\begin{equation}
+	\pr{\n{S}} = \frac{1}{2} \mathrm{Re}\!\left[{\n{E}_0\times\n{H}^*_0}\right] = \frac{|\n{E}_0|^2}{2 Z}\khat
+\end{equation}
+En medios no dispersivos,
+\begin{equation}
+	\pr{S} = v \pr{u} \khat
+\end{equation}
+En un medio no dispersivo, la velocidad de transporte de energía coincide con la velocidad de fase. En medios dispersivos, hay que distinguir velocidad de fase, velocidad de grupo y velocidad de señal.
 
+En el vacío, una onda plana tiene densidad promedio de energía
+\begin{equation*}
+	\pr{u} = \frac{1}{2}\eo|\n{E}_0|^2
+\end{equation*}
+y flujo promedio
+\begin{equation*}
+	\pr{\n{S}} = c\pr{u}\khat
+\end{equation*}
+La densidad de momento electromagnético en el vacío es
+\begin{equation}
+	\n{g} = \eo \n{E}\times\n{B} = \frac{\n{S}}{c^2}, \quad \pr{\n{g}} = \frac{\pr{u}}{c} \khat
+\end{equation}
+Por tanto, una onda no sólo transporta energía: también transporta momento lineal. Si una onda incide normalmente sobre una superficie perfectamente absorbente, la presión de radiación es
+\begin{equation}
+	P_\mathrm{abs} = \frac{\pr{S}}{c}
+\end{equation}
+Si la superficie es perfectamente reflectante, el momento normal cambia de signo y la presión se duplica:
+\begin{equation}
+	P_\mathrm{ref} = \frac{2 \pr{S}}{c}
+\end{equation}
 
+\subsection{Polarización}
+\subsubsection{Descomposición transversal y vector de Jones}
+Tomemos una onda que se propaga en la dirección $\zhat$. La transversalidad implica
+\begin{equation*}
+	\n{E}_0 = E_x\xhat + E_y\yhat
+\end{equation*}
+donde los números complejos $E_x$ y $E_y$ contienen amplitudes y fases:
+\begin{equation*}
+	E_x = a_x e^{i\delta_x}, \quad E_y = a_y e^{i\delta_y}
+\end{equation*}
+El vector de Jones será
+\begin{equation}
+	\n{J} = \begin{pmatrix}
+		E_x\\
+		E_y
+	\end{pmatrix}
+\end{equation}
+Multiplicar $\n{J}$ por una fase global no cambia la polarización física; sólo importa la razón compleja $E_y/E_x$. La onda real es
+\begin{equation}
+	\n{E}(z,t) = a_x \cos\left(kz - \omega t + \delta_x\right) \, \xhat +  a_y \cos\left(kz - \omega t + \delta_y\right) \, \yhat \label{E_en_z}
+\end{equation}
+La trayectoria que describe la punta del vector $\n{E}$ en el plano transversal define el estado de polarización.
 
+\subsubsection{Polarización lineal, circular y elíptica}
+Si la diferencia de fase
+\begin{equation}
+	\Delta = \delta_y - \delta_x
+\end{equation}
+es 0 o $\pi$, los componentes oscilan en fase o en oposición de fase. La punta de $\n{E}$ se mueve sobre una línea: la \textbf{polarización es lineal}.
 
+Si $a_x = a_y y \Delta = \pm \pi/2$, la punta de $\n{E}$ describe un círculo: la \textbf{polarización es circular}. Una base conveniente es
+\begin{equation}
+	\n{e}_\pm = \frac{1}{\sqrt{2}} (\xhat  \pm i \yhat)
+\end{equation}
+con
+\begin{equation}
+	\n{E}_0 = E_+ \n{e}_+ + E_-\n{e}_-
+\end{equation}
 
+En el caso general, la \textbf{polarización es elíptica}. Eliminando la fase común en la ec. \ref{E_en_z}, se obtiene la ecuación de una elipse en el plano transversal
+\begin{equation}
+	\frac{E_x^2}{a_x^2} + \frac{E_y^2}{a_y^2} - 2 \frac{E_x E_y}{a_x a_y} \cos\Delta = \sin^2 \Delta 
+\end{equation}
+Los ejes principales de la elipse no coinciden en general con los ejes $x$ e $y$.
+
+\subsubsection{Parámetros de Stokes}
+Una descripción útil, especialmente en óptica y en experimentos, se obtiene con los parámetros de Stokes. Para un campo monocromático con componentes complejos $E_x$ y $E_y$, definimos
+\begin{align}
+	S_0 &= |E_x|^2 + |E_y|^2,\\
+	S_1 &= |E_x|^2 - |E_y|^2,\\
+	S_2 &= 2 \mathrm{Re}\!\left[E_x E_y^*\right],\\
+	S_3 &= -2 \mathrm{Im}\!\left[E_x E_y^*\right]
+\end{align}
+El signo de $S_3$ depende de la convención para la fase temporal y para la base circular. Con la convención de estos apuntes, el signo indicado es consistente con $e^{- i \omega t}$.
+
+Para luz completamente polarizada,
+\begin{equation}
+	S_0^2 = S_1^2 + S_2^2 + S_3^2
+\end{equation}
+Para luz parcialmente polarizada,
+\begin{equation}
+	S_0^2 \geq S_1^2 + S_2^2 + S_3^2
+\end{equation}
+El vector $(S_1, S_2, S_3)$ puede representarse en la esfera de Poincaré. Estados lineales corresponden al ecuador, mientras que estados circulares corresponden a los polos.
 
 
 
