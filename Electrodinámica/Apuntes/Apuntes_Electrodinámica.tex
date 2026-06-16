@@ -2522,22 +2522,41 @@ Para un paquete estrecho de frecuencias, la velocidad de grupo es
 Se habla de dispersión normal cuando $\ltd{n}{\omega} > 0$ y de dispersión anómala cuando $\ltd{n}{\omega} < 0$. Cerca de resonancias, $n(\omega)$ cambia rápidamente y el paquete puede deformarse de manera significativa.
 
 \subsubsection{Paquetes de onda y ensanchamiento dispersivo}
+Una onda plana monocromática es una idealización infinita en el espacio y en el tiempo. Una señal física se construye superponiendo frecuencias alrededor de una frecuencia central $\omega_0$
+\begin{equation}
+	E(z,t) = \mathrm{Re}\!\left[\int_{-\infty}^{\infty} A(\omega) e^{ik(\omega)z - i \omega t} \, d\omega\right]
+\end{equation}
+Si $A(\omega)$ está fuertemente concentrada cerca de $\omega_0$, expandimos
+\begin{equation*}
+	k(\omega) \approx k_0 + k_0' (\omega - \omega_0) + \frac{1}{2} k_0'' (\omega - \omega_0)^2 + \ldots
+\end{equation*}
+El término lineal determina la velocidad del envolvente,
+\begin{equation}
+	v_g = \frac{1}{k_0'} = \left[\td{k}{\omega}\right]^{-1}_{\omega_0}
+\end{equation}
+El término cuadrático produce ensanchamiento y chirp del paquete: distintas componentes de frecuencia dentro del ancho espectral viajan con velocidades de grupo ligeramente distintas.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\subsection{Causalidad y relaciones de Kramers–Kronig}
+En un medio lineal pero dispersivo, $\n{D}(t)$ no tiene por qué depender sólo de $\n{E}(t)$ en el mismo instante. La polarización del medio tiene memoria. En el dominio temporal, una relación lineal general puede escribirse como
+\begin{equation}
+	\n{D}(t) = \eo\n{E}(t) + \eo\int_{-\infty}^{\infty} \chi_e(\tau) \n{E}(t - \tau) \, d\tau
+\end{equation}
+La causalidad exige que el medio no responda antes de que se aplique el campo:
+\begin{equation}
+	\chi_e(\tau) = 0, ~~~ \mathrm{para \ \tau<0}
+\end{equation}
+Por tanto
+\begin{equation*}
+	\n{D}(t) = \eo\n{E}(t) + \eo\int_{0}^{\infty} \chi_e(\tau) \n{E}(t - \tau) \, d\tau
+\end{equation*}
+En frencuencia,
+\begin{equation}
+	\n{D}(\omega) = \epsilon(\omega)\n{E}(\omega)
+\end{equation}
+con
+\begin{equation}
+	\epsilon(\omega) = \eo \left[1 + \int_{0}^{\infty} \chi_e(\tau) e^{i\omega\tau} \, d\tau\right]
+\end{equation}
 
 
 
