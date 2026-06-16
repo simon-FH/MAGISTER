@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.15)  15 JUN 2026 22:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.15)  16 JUN 2026 14:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -647,18 +647,21 @@ Pcita us-ando la \OT1/cmr/bx/n/10 de-scom-posici^^Son de Helmholtz\OT1/cmr/m/n/
 10 .
  []
 
-[28] [29] [30] [31] [32] [33] [34] [35] [36] [37] [38] [39] [40] [41] [42]
-(Apuntes_Electrodinámica.aux)
+[28] [29] [30] [31] [32] [33] [34] [35] [36] [37] [38] [39] [40] [41]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[42] [43] [44] [45] [46] [47] (Apuntes_Electrodinámica.aux)
  ***********
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-05-26>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 14726 strings out of 467509
- 297452 string characters out of 5408780
+ 14744 strings out of 467509
+ 297888 string characters out of 5408780
  785734 words of memory out of 5000000
- 43687 multiletter control sequences out of 15000+600000
+ 43705 multiletter control sequences out of 15000+600000
  637074 words of font info for 79 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,18n,107p,664b,722s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -694,9 +697,9 @@ grams/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/simon/AppData/
 Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/simon
 /AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/latxfont/line10.pfb>
 
-Output written on Apuntes_Electrodinámica.pdf (42 pages, 469218 bytes).
+Output written on Apuntes_Electrodinámica.pdf (47 pages, 487587 bytes).
 PDF statistics:
- 285 PDF objects out of 1000 (max. 8388607)
+ 302 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

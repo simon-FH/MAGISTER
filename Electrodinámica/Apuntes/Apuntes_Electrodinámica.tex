@@ -2274,6 +2274,259 @@ Para luz parcialmente polarizada,
 \end{equation}
 El vector $(S_1, S_2, S_3)$ puede representarse en la esfera de Poincaré. Estados lineales corresponden al ecuador, mientras que estados circulares corresponden a los polos.
 
+\subsection{Reflexión y refracción en una interfaz plana}
+Considere una interfaz plana $z = 0$ que separa dos medios lineales, homogéneos e isótropos. El medio 1 ocupa $z < 0$ y el medio 2 ocupa $z > 0$. Una onda plana incide desde el medio 1. La normal a la interfaz es $\nhat = \zhat$.
+
+\begin{figure}[h!]
+	\centering
+	\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+		%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+		
+		%Shape: Rectangle [id:dp20504419286116604] 
+		\draw  [draw opacity=0][fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=0.1 ] (35,15) -- (215,15) -- (215,85) -- (35,85) -- cycle ;
+		%Shape: Rectangle [id:dp2130724349901213] 
+		\draw  [draw opacity=0][fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=0.1 ] (35,85) -- (215,85) -- (215,155) -- (35,155) -- cycle ;
+		%Straight Lines [id:da9852865438470844] 
+		\draw    (35,85) -- (215,85) ;
+		%Straight Lines [id:da7239701187612091] 
+		\draw  [dash pattern={on 3pt off 3pt}]  (125,18) -- (125,155) ;
+		\draw [shift={(125,15)}, rotate = 90] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (7.14,-3.43) -- (0,0) -- (7.14,3.43) -- (4.74,0) -- cycle    ;
+		%Straight Lines [id:da0765703574199953] 
+		\draw [color={rgb, 255:red, 11; green, 81; blue, 173 }  ,draw opacity=1 ]   (55,125) -- (125,85) ;
+		\draw [shift={(95.21,102.02)}, rotate = 150.26] [color={rgb, 255:red, 11; green, 81; blue, 173 }  ,draw opacity=1 ][line width=0.75]    (10.93,-4.9) .. controls (6.95,-2.3) and (3.31,-0.67) .. (0,0) .. controls (3.31,0.67) and (6.95,2.3) .. (10.93,4.9)   ;
+		%Straight Lines [id:da16597971427792513] 
+		\draw [color={rgb, 255:red, 11; green, 81; blue, 173 }  ,draw opacity=1 ]   (125,85) -- (195,125) ;
+		\draw [shift={(165.21,107.98)}, rotate = 209.74] [color={rgb, 255:red, 11; green, 81; blue, 173 }  ,draw opacity=1 ][line width=0.75]    (10.93,-4.9) .. controls (6.95,-2.3) and (3.31,-0.67) .. (0,0) .. controls (3.31,0.67) and (6.95,2.3) .. (10.93,4.9)   ;
+		%Shape: Arc [id:dp057512241503142825] 
+		\draw  [draw opacity=0] (125,115) .. controls (113.9,115) and (104.2,108.97) .. (99.01,100) -- (125,85) -- cycle ; \draw    (125,115) .. controls (114.95,115) and (106.06,110.06) .. (100.61,102.48) ; \draw [shift={(99.01,100)}, rotate = 56.1] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (5.36,-2.57) -- (0,0) -- (5.36,2.57) -- (3.56,0) -- cycle    ; 
+		%Shape: Arc [id:dp14203118648450352] 
+		\draw  [draw opacity=0] (125,55) .. controls (125,55) and (125,55) .. (125,55) .. controls (131.4,55) and (137.34,57.01) .. (142.21,60.42) -- (125,85) -- cycle ; \draw    (125,55) .. controls (125,55) and (125,55) .. (125,55) .. controls (130.35,55) and (135.37,56.4) .. (139.71,58.85) ; \draw [shift={(142.21,60.42)}, rotate = 205.98] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (5.36,-2.57) -- (0,0) -- (5.36,2.57) -- (3.56,0) -- cycle    ; 
+		%Straight Lines [id:da6606689345971548] 
+		\draw [color={rgb, 255:red, 157; green, 0; blue, 21 }  ,draw opacity=1 ]   (125,85) -- (170,20) ;
+		\draw [shift={(150.92,47.57)}, rotate = 124.7] [color={rgb, 255:red, 157; green, 0; blue, 21 }  ,draw opacity=1 ][line width=0.75]    (10.93,-4.9) .. controls (6.95,-2.3) and (3.31,-0.67) .. (0,0) .. controls (3.31,0.67) and (6.95,2.3) .. (10.93,4.9)   ;
+		
+		% Text Node
+		\draw (61,98) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 11; green, 81; blue, 173 }  ,opacity=1 ] [align=left] {$\displaystyle \mathbf{k}_{i}$};
+		% Text Node
+		\draw (173,98) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 11; green, 81; blue, 173 }  ,opacity=1 ] [align=left] {$\displaystyle \mathbf{k}_{r}$};
+		% Text Node
+		\draw (156,40) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 157; green, 0; blue, 21 }  ,opacity=1 ] [align=left] {$\displaystyle \mathbf{k}_{t}$};
+		% Text Node
+		\draw (107,97) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \theta _{i}$};
+		% Text Node
+		\draw (124,57) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \theta _{t}$};
+		% Text Node
+		\draw (108,15) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \hat{n}$};
+		% Text Node
+		\draw (158,137) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 11; green, 81; blue, 173 }  ,opacity=1 ] [align=left] {medio 1};
+		% Text Node
+		\draw (39,67) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 157; green, 0; blue, 21 }  ,opacity=1 ] [align=left] {medio 2};
+		% Text Node
+		\draw (218,78) node [anchor=north west][inner sep=0.75pt]   [align=left] {interfaz};
+	\end{tikzpicture}
+\end{figure}
+
+Los campos son suma de onda incidente, reflejada y transmitida
+\begin{align*}
+	\n{E}_1 &= \n{E}_i + \n{E}_r, & \n{H}_1 &= \n{H}_i + \n{H}_r\\
+	\n{E}_2 &= \n{E}_t, & \n{H}_2 &= \n{H}_t
+\end{align*}
+Las condiciones de borde sin cargas ni corrientes libres superficiales son
+\begin{align*}
+	\nhat \times(\n{E}_2 - \n{E}_1) &= 0, & \nhat \times(\n{H}_2 - \n{H}_1) &= 0\\
+	\nhat \cdot (\n{D}_2 - \n{D}_1) &= 0, & \nhat \cdot (\n{B}_2 - \n{B}_1) &= 0
+\end{align*}
+Las condiciones tangenciales son suficientes para derivar las amplitudes de reflexión y transmisión. La fase debe ser continua sobre toda la interfaz. Por tanto, las componentes tangenciales de los vectores de onda deben coincidir:
+\begin{equation}
+	\n{k}_{i,\parallel} = \n{k}_{r,\parallel} = \n{k}_{t,\parallel}
+\end{equation}
+Esto implica la ley de reflexión,
+\begin{equation}
+	\theta_{r} = \theta_{i}
+\end{equation}
+y la ley de Snell
+\begin{equation}
+	n_1 \sin\theta_{i} = n_2 \sin\theta_{t}
+\end{equation}
+
+\subsubsection{Polarización $s$ y $p$}
+El plano de incidencia es el plano que contiene a $\n{k}_i$ y a $\nhat$. Se distinguen dos polarizaciones:
+\begin{itemize}
+	\item Polarización $s$: el campo eléctrico es perpendicular al plano de incidencia.
+	\item Polarización $p$: el campo eléctrico está contenido en el plano de incidencia.
+\end{itemize}
+Estas dos polarizaciones no se mezclan en una interfaz plana isotrópica. Por eso los coeficientes de Fresnel se derivan separadamente. Para medios no magnéticos, $\mu_1 = \mu_2 = \mu_0$, los coeficientes de reflexión y transmisión para amplitudes de $\n{E}$ son
+\begin{align}
+	r_s &= \frac{n_1\cos\theta_{i} - n_2\cos\theta_{t}}{n_1\cos\theta_{i} + n_2\cos\theta_{t}}, & t_s &= \frac{2 n_1 \cos\theta_{i}}{n_1\cos\theta_{i} + n_2\cos\theta_{t}}\\
+	r_p &= \frac{n_2\cos\theta_{i} - n_1\cos\theta_{t}}{n_2\cos\theta_{i} + n_1\cos\theta_{t}}, & t_p &= \frac{2 n_1 \cos\theta_{i}}{n_2\cos\theta_{i} + n_1\cos\theta_{t}}
+\end{align}
+La diferencia entre $s$ y $p$ proviene de cómo las condiciones de borde acoplan las componentes tangenciales de $\n{E}$ y $\n{H}$.
+
+Los coeficientes $r$ y $t$ son cocientes de amplitudes de campo eléctrico. Los cocientes de potencia requieren considerar el flujo normal del vector de Poynting. Para medios no absorbentes,
+\begin{align}
+	R_{s,p} &= |r_{s,p}|^2, & T_{s,p} &= \frac{n_2 \cos\theta_{t}}{n_1\cos\theta_{i}} |t_{s,p}|^2
+\end{align}
+Se verifica
+\begin{equation}
+	R_{s,p} + T_{s,p} = 1
+\end{equation}
+si no hay absorción.
+
+\subsection{Polarización por reflexión y reflexión interna total}
+\subsubsection{Ángulo de Brewster}
+El coeficiente $r_p$ se anula cuando
+\begin{equation}
+	n_2 \cos\theta_{i} = n_1 \cos\theta_{t}
+\end{equation}
+Junto con la ley de Snell, esto implica que
+\begin{equation}
+	\theta_{i} + \theta_{t} = \frac{\pi}{2}
+\end{equation}
+El ángulo de incidencia correspondiente es el \textbf{ángulo de Brewster} (para $\mu_1 = \mu_2$):
+\begin{equation}
+	\tan\theta_B = \frac{n_2}{n_1}
+\end{equation}
+A ese ángulo, la onda reflejada no contiene polarización $p$. Por tanto, una onda no polarizada reflejada cerca de $\theta_B$ queda parcialmente polarizada en la dirección $s$.
+
+\subsubsection{Reflexión interna total}
+Si $n_1 > n_2$, existe un ángulo crítico
+\begin{equation}
+	\sin\theta_c = \frac{n_2}{n_1}
+\end{equation}
+Para $\theta_{i} > \theta_c$, la ley de Snell requeriría $\sin\theta_{t} > 1$. La onda transmitida ya no es propagante en la dirección normal. En cambio, aparece una onda evanescente en el medio 2.
+
+El vector de onda transmitido puede escribirse como
+\begin{equation}
+	\n{k}_t = k_x \xhat + i \kappa \zhat
+\end{equation}
+con
+\begin{align}
+	k_x &= k_0 \, n_1 \sin\theta_{i}, & \kappa &= k_0 \sqrt{n_1^2 \sin^2\theta_{i} - n_2^2}, & k_0 &= \frac{\omega}{c}
+\end{align}
+La dependencia espacial en $z > 0$ contiene el factor $e^{-\kappa z}$. La profundidad de penetración es
+\begin{equation}
+	\delta_\mathrm{ev} = \kappa^{-1}
+\end{equation}
+
+\subsubsection{Fases de reflexión y cambio de polarización}
+En reflexión interna total, $|r_s| = |r_p| = 1$, pero los coeficientes adquieren fases:
+\begin{align}
+	r_s &= e^{i\phi_s}, & r_p &= e^{i\phi_p}
+\end{align}
+
+\subsection{Medios dispersivos, conductores y plasma}
+
+\subsubsection{Permitividad y conductividad compleja}
+En un medio conductor lineal, $\n{J}=\sigma\n{E}$, la ley de Ampere-Maxwell es
+\begin{equation*}
+	\ro\n{H} = \sigma\n{E} + \epsilon\pd{\n{E}}{t}
+\end{equation*}
+Para campos con dependencia temporal $e^{-i \omega t}$,
+\begin{equation}
+	\ro\n{H} = (\sigma - i \omega t) \n{E}
+\end{equation}
+Esto puede escribirse como si el medio tuviera una permitividad compleja
+\begin{equation}
+	\epsilon_c(\omega) = \epsilon + i\frac{\sigma}{\omega}
+\end{equation}
+La relación de dispersión pasa a ser
+\begin{equation}
+	k^2 = \omega^2 \mu \epsilon_c(\omega)
+\end{equation}
+En general,
+\begin{equation}
+	k = \beta + i \alpha
+\end{equation}
+de modo que
+\begin{equation}
+	e^{i(kz - \omega t)} = e^{-\alpha z} \, e^{i(\beta z - \omega t)}
+\end{equation}
+La parte real $\beta$ controla la fase y la parte imaginaria $\alpha$ controla la atenuación.
+
+En una descripción más general, la conductividad también puede depender de la frecuencia y ser compleja:
+\begin{equation}
+	\sigma(\omega) = \sigma_1(\omega) + i\sigma_2(\omega)
+\end{equation}
+La relación constitutiva en frecuencia se escribe como
+\begin{equation}
+	\n{J}(\omega) = \sigma(\omega) \n{E}(\omega)
+\end{equation}
+En esta convención, la parte real $\sigma_1$ corresponde a la componente de la corriente que está en fase con el campo eléctrico, mientras que la parte imaginaria $\sigma_2$ corresponde a la componente en cuadratura, es decir, desfasada en 90°.
+
+Sólo la parte en fase produce disipación neta promediada en el tiempo. Para un campo monocromático escrito como
+\begin{align*}
+	\n{E}(t) &= \mathrm{Re}\!\left[\n{E}_0 e^{-i \omega t}\right], & \n{J}(t) &= \mathrm{Re}\!\left[\sigma(\omega) \n{E}_0 e^{-i \omega t}\right]
+\end{align*}
+el promedio temporal de la potencia por unidad de volumen entregada por el campo a las cargas es
+\begin{equation}
+	\pr{p} = \pr{\n{J}\cdot\n{E}} = \frac{1}{2} \sigma_1 (\omega) |\n{E}_0|^2
+\end{equation}
+Por tanto, $\sigma_1(\omega) > 0$ describe absorción. La parte imaginaria $\sigma_2$ no contribuye directamente a $\pr{p}$, representa energía que se almacena temporalmente en el medio y luego se devuelve al campo durante el ciclo de oscilación.
+
+La permitividad podrá escribirse entonces como
+\begin{equation}
+	\sigma_c(\omega) = \left[\epsilon - \frac{\sigma_2(\omega)}{\omega}\right] + i \frac{\sigma_1(\omega)}{\omega}
+\end{equation}
+
+\subsubsection{Buenos conductores y profundidad de piel}
+Un buen conductor satisface $\sigma \gg \omega \epsilon$, entonces
+\begin{align*}
+	\epsilon_c &\simeq i \frac{\sigma}{\omega}, & k^2 &\simeq i \omega \mu \sigma
+\end{align*}
+Tomando la rama con atenuación positiva,
+\begin{align}
+	k &\simeq \frac{1 + i}{\delta}, & \delta &= \sqrt{\frac{2}{\omega\mu\sigma}}
+\end{align}
+La longitud $\delta$ es la profundidad de piel. Después de una distancia $\delta$, la amplitud del campo disminuye por un factor $e^{-1}$.
+
+La impedancia de un buen conductor es compleja:
+\begin{equation}
+	Z_c = \sqrt{\frac{\mu}{\epsilon_c}} \simeq (1 - i)\sqrt{\frac{\omega\mu}{2\sigma}}
+\end{equation}
+
+\subsubsection{Modelo de plasma}
+Un plasma frío sin colisiones responde de manera dispersiva. Si los electrones de densidad $n_e$ obedecen
+\begin{equation*}
+	m \td{\n{v}}{t} = -e \n{E}
+\end{equation*}
+para campos armónicos se obtiene
+\begin{equation*}
+	\n{J} = -n_e e \n{v} = i \frac{n_e e^2}{m \omega} \n{E}
+\end{equation*}
+La permitividad efectiva toma la forma
+\begin{align}
+	\epsilon(\omega) &= \eo\left(1 - \frac{\omega_p^2}{\omega^2}\right), & \omega_p^2 &= \frac{n_e e^2}{m \eo}
+\end{align}
+La dispersión de ondas transversales es
+\begin{equation}
+	\omega^2 = \omega_p^2 + c^2 k^2
+\end{equation}
+Para $\omega < \omega_p$, el número de onda es imaginario, la onda no se propaga en el plasma y es reflejada o evanescente. Para $\omega > \omega_p$, la onda se propaga con velocidad de fase
+\begin{equation}
+	v_\phi = \frac{\omega}{k} = \frac{c}{\sqrt{1 - \omega_p^2/\omega^2}} > c
+\end{equation}
+y la velocidad de grupo
+\begin{equation}
+	v_g = \td{\omega}{k} = c\sqrt{1 - \frac{\omega_p^2}{\omega^2}} < c
+\end{equation}
+
+\subsubsection{Dispersión normal y anómala}
+Un medio dispersivo tiene $n = n(\omega)$. La velocidad de fase es
+\begin{equation}
+	v_\phi = \frac{\omega}{k} = \frac{c}{n(\omega)}
+\end{equation}
+Para un paquete estrecho de frecuencias, la velocidad de grupo es
+\begin{equation}
+	v_g = \td{\omega}{k} = \frac{c}{n(\omega) + \omega \std{n}{\omega}}
+\end{equation}
+Se habla de dispersión normal cuando $\ltd{n}{\omega} > 0$ y de dispersión anómala cuando $\ltd{n}{\omega} < 0$. Cerca de resonancias, $n(\omega)$ cambia rápidamente y el paquete puede deformarse de manera significativa.
+
+\subsubsection{Paquetes de onda y ensanchamiento dispersivo}
+
+
+
+
+
 
 
 
