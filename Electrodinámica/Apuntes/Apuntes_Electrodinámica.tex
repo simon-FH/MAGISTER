@@ -2695,20 +2695,237 @@ Cerca de la frecuencia de corte, $v_g \to 0$ y $v_\phi \to \infty$. Físicamente
 
 \subsubsection{Guía rectangular}
 Consideremos una guía rectangular de lados $a$ y $b$, con $0 < x < a$, $0 < y < b$, propagación en la dirección $z$ y paredes conductoras perfectas.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{diagram-20260617}
+	\label{fig:diagram-20260617}
+\end{figure}
+Para modos TM, $E_z$ satisface Dirichlet:
+\begin{equation}
+	E_z(x,y) = E_0 \sin\frac{m \pi x}{a} \sin\frac{n\pi y}{b}, \quad m,n = 1,2,3,\ldots
+\end{equation}
+Por tanto
+\begin{equation}
+	k_{\perp,m,n}^2 = \left(\frac{m\pi}{a}\right)^2 + \left(\frac{n\pi}{b}\right)^2
+\end{equation}
+No existen modos TM con $m = 0$ o $n = 0$, porque entonces $E_z$ se anula completamente.
+
+Para modos TE, $H_z$ satisface Neumann:
+\begin{equation}
+	H_z(x,y) = H_0 \cos\frac{m \pi x}{a} \cos\frac{n\pi y}{b}, \quad m,n = 1,2,3,\ldots
+\end{equation}
+con la condición de que no ambos índices sean cero. El valor transversal es el mismo,
+\begin{equation*}
+	k_{\perp,m,n}^2 = \left(\frac{m\pi}{a}\right)^2 + \left(\frac{n\pi}{b}\right)^2
+\end{equation*}
+El modo dominante en una guía rectangular con $a > b$ es normalmente el modo TE$_10$, con
+\begin{align}
+	k_\perp &= \frac{\pi}{a}, & \omega_c &= \frac{\pi}{a \sqrt{\mu\epsilon}}
+\end{align}
 
 \subsubsection{Guía cilíndrica y funciones de Bessel}
+Para una guía circular de radio $a$, se usan coordenadas cilíndricas $(\rho, \varphi, z).$ La ecuación transversal para $E_z$ o $H_z$ es
+\begin{equation}
+	\left[\frac{1}{\rho} \pd{}{\rho}\left(\rho \pd{}{\rho}\right) + \frac{1}{\rho^2}\pd{^2}{\varphi^2} + k_\perp^2\right] \psi(\rho,\varphi) = 0
+\end{equation}
+Separando variables
+\begin{equation}
+	\psi(\rho,\varphi) = R_m(\rho) e^{i m \varphi}
+\end{equation}
+se obtiene la ecuación de Bessel. Las soluciones regulares en el origen son
+\begin{equation}
+	R_m(\rho) = J_m (k_\perp \rho)
+\end{equation}
+
+Para modos TM,
+\begin{equation}
+	E_z(a,\varphi) = 0 ~\Rightarrow~ J_m (k_\perp a) = 0
+\end{equation}
+Por tanto,
+\begin{equation}
+	k_\perp = \frac{x_{mn}}{a}
+\end{equation}
+donde $x_{mn}$ es el $n$-ésimo cero de $J_m(x)$.
+
+Para modos TE,
+\begin{equation}
+	\left.\pd{H_z}{\rho}\right|_{\rho=a} = 0 ~\Rightarrow~ J_m' (k_\perp a) = 0
+\end{equation}
+Por tanto,
+\begin{equation}
+	k_\perp = \frac{x_{mn}'}{a}
+\end{equation}
+donde $x_{mn}'$ es el $n$-ésimo cero de $J_m' (x)$.
 
 \subsubsection{Potencia transportada por un modo}
+La potencia media transportada a lo largo de una guía se obtiene integrando el vector de Poynting promedio sobre la sección transversal:
+\begin{align}
+	P &= \int_{S} \pr{\n{S}} \cdot \zhat \, da, & \pr{\n{S}} &= \frac{1}{2} \mathrm{Re}\!\left[\n{E}\times\n{H}^*\right]
+\end{align}
+Para un modo propagante sin pérdidas, $P$ es independiente de $z$. Para un modo evanescente, $k_z = i\alpha$ y no hay transporte neto de potencia a largas distancias, aunque sí puede haber energía almacenada localmente.
+
+La energía por unidad de longitud se define como
+\begin{equation}
+	U = \int_{S} \frac{1}{4} \left(\epsilon |\n{E}|^2 + \mu |\n{H}|^2\right) \, da
+\end{equation}
+donde el factor $1/4$ aparece porque usamos amplitudes complejas y promedio temporal. En una guía ideal, la velocidad de transporte de energía se relaciona con
+\begin{equation}
+	v_E = \frac{P}{U}
+\end{equation}
+Para un modo normal sin pérdidas, esta velocidad coincide con la velocidad de grupo $v_g$.
+
+\subsection{radiación de fuentes localizadas}
+\subsubsection{Potenciales retardados para fuentes armónicas}
+Consideremos fuentes localizadas que oscilan armónicamente con frecuencia $\omega$:
+\begin{align*}
+	\rho(\rv,t) &= \mathrm{Re}\!\left[\rho(\rv) e^{-i \omega t}\right], & \n{J}(\rv,t) &= \mathrm{Re}\!\left[\n{J}(\rv) e^{-i \omega t}\right]
+\end{align*}
+En el gauge de Lorenz, los potenciales satisfacen ecuaciones de Helmholtz inhomogéneas:
+\begin{align*}
+	(\la + k^2)\Phi(\rv) &= -\frac{\rho(\rv)}{\eo}, & (\la + k^2)\n{A} &= -\uo\n{J}(\rv)
+\end{align*}
+con
+\begin{equation*}
+	k = \frac{\omega}{c}
+\end{equation*}
+
+La función de Green saliente satisface
+\begin{align*}
+	(\la + k^2)G(\rv,\rv') &= -\delta^{(3)}(\rdif), & G(\rv,\rv') &= \frac{e^{i k |\rdif|}}{4\pi|\rdif|}
+\end{align*}
+Por tanto,
+\begin{align*}
+	\Phi(\rv) &= \ke \int \frac{\rho(\rv') e^{i k |\rdif|}}{|\rdif|} \, d^3 r', & \n{A}(\rv) &= \ku \int \frac{\n{J}(\rv') e^{i k |\rdif|}}{|\rdif|} \, d^3 r'
+\end{align*}
+La región de radiación corresponde $r \gg r'$ donde $r'$ está dentro de la fuente. Entonces
+\begin{align*}
+	|\rdif| &\simeq r - \rhat\cdot\rv', & \frac{1}{|\rdif|} &\simeq \frac{1}{r}
+\end{align*}
+Así,
+\begin{equation}
+	\n{A}(\rv) \simeq \frac{\uo e^{i k r}}{4 \pi r} \int \n{J}(\rv') e^{- i k \rhat\cdot\rv'} \, d^3 r' \label{A_107}
+\end{equation}
+
+\subsubsection{Zona cercana, zona intermedia y zona de radiación}
+Si $d$ es el tamaño típico de la fuente, hay tres escalas relevantes:
+\begin{itemize}
+	\item $r \sim d$ zona cercana geométrica, donde los detalles de la fuente son importantes.
+	\item $d \ll r \ll \lambda$ zona cuasiestática, donde los campos pueden tener términos $1/r^3$ y $1/r^2$.
+	\item $r \gg \lambda$ zona de radiación, donde dominan los campos $1/r$ y el flujo de energía promedio es radial.
+\end{itemize}
+
+En la zona de radiación, los campos son transversales:
+\begin{align}
+	\n{E}_\mathrm{rad} \cdot \rhat &= 0, & \n{B}_\mathrm{rad} \cdot \rhat &= 0, & \n{B}_\mathrm{rad} &= \frac{1}{c} \rhat\times\n{E}_\mathrm{rad}
+\end{align}
+El vector de Poynting promedio es
+\begin{equation}
+	\pr{\n{S}}_\mathrm{rad} = \frac{1}{2\uo} \mathrm{Re}\!\left[\n{E}_\mathrm{rad}\times\n{B}_\mathrm{rad}^*\right] = \frac{1}{2 Z_0} |\n{E}_\mathrm{rad}|^2 \rhat
+\end{equation}
+donde $Z_0 = \sqrt{\uo/\eo}$ es la impedancia del vacío.
+
+\subsubsection{Dipolo oscilante}
+Supongamos que la fuente es pequeña comparada con la longitud de onda:
+\begin{equation*}
+	kd \ll 1
+\end{equation*}
+El primer término de la expansión de la corriente se relaciona con el momento dipolar eléctrico. Definimos
+\begin{equation}
+	\n{p} = \int \rv' \rho(\rv') \, d^3 r'
+\end{equation}
+Usando la ecuación de continuidad armónica,
+\begin{equation*}
+	-i \omega \rho + \di\n{J} = 0
+\end{equation*}
+se obtiene
+\begin{equation}
+	\int \n{J}(\rv') \, d^3 r' = -i\omega\n{p} 
+\end{equation}
+Por tanto, en la aproximación dipolar eléctrica,
+\begin{equation}
+	\n{A}(\rv) \simeq -i\omega \ku \frac{e^{ikr}}{r} \n{p}
+\end{equation}
+El campo eléctrico radiativo es transversal a $\rhat$ y está dado por
+\begin{equation}
+	\n{E}_\mathrm{rad} (\rv) = \ke[k^2] \frac{e^{ikr}}{r} \rhat\times(\n{p}\times\rhat)
+\end{equation}
+El campo magnético radiativo es
+\begin{equation}
+	\n{B}_\mathrm{rad} (\rv) =\frac{1}{c} \rhat\times\n{E}_\mathrm{rad}
+\end{equation}
+Si el dipolo apunta a lo largo del eje $z$, $\n{p} = p \zhat$, entonces $\rhat\times(\n{p}\times\rhat) = p \sin\theta$. La distribución angular de potencia es
+\begin{equation}
+	\td{P}{\Omega} = \frac{\uo\omega^4 |p|^2}{32\pi^2 c} \sin^2\theta
+\end{equation}
+La potencia total radiada es
+\begin{equation}
+	P = \frac{\uo\omega^4 |p|^2}{12 \pi c}
+\end{equation}
+La radiación máxima ocurre en el plano perpendicular al dipolo.
+
+\subsection{Campos completos del dipolo y significado físico}
+El campo de un dipolo eléctrico oscilante no contiene sólo el término radiativo $1/r$. También hay términos cercanos:
+\begin{align}
+	\n{E}(\rv) &= \ke[e^{ikr}] \left\{k^2 \frac{\rhat \times (\n{p} \times \rhat)}{r} + \left[3\rhat (\rhat\cdot\n{p}) - \n{p}\right] \left(\frac{1}{r^3} - \frac{ik}{r^2}\right)\right\}\\
+	\n{B}(\rv) &= \ku[\omega e^{ikr}] \left(\rhat\times\n{p}\right) \left(\frac{k}{r} + \frac{i}{r^2}\right)
+\end{align}
+Los términos tienen interpretaciones distintas:
+\begin{itemize}
+	\item El término $1/r^3$ es el campo cuasiestático de un dipolo eléctrico instantáneo.
+	\item El término $1/r^2$ representa la zona de inducción. No transporta energía neta hasta infinito, pero almacena e intercambia energía con la fuente.
+	\item El término $1/r$ es el campo radiativo. Es el único que contribuye a una potencia total finita a través de una esfera de radio grande.
+\end{itemize}
+
+\subsubsection{Expansión multipolar de fuentes localizadas}
+Cuando $kd$ no es estrictamente cero, o cuando el dipolo eléctrico se anula por simetría, es necesario considerar términos multipolares superiores. La expansión del factor de fase en la ec. \ref{A_107} es
+\begin{equation}
+	e^{i k \rhat\cdot\rv'} = 1 - i k \rhat\cdot\rv' - \frac{k^2}{2} (\rhat\cdot\rv')^2 + \cdots
+\end{equation}
+Cada término genera combinaciones de momentos multipolares eléctricos y magnéticos. Los primeros son
+\begin{align}
+	\n{p} &= \int\rv' \rho(\rv') \, d^3 r'\\
+	\n{m} &= \frac{1}{2}\int \rv'\times\n{J} \, d^3 r'\\
+	Q_{ij} &= \int \rho(\rv') \left(3x'_i x'_j - r'^2 \delta_{ij}\right) \, d^3 r
+\end{align}
+En la zona lejana, los campos radiativos asociados tienen escalamiento típico
+\begin{align}
+	E_{E1} &\sim k^2p/r, & E_{M1} &\sim k^2 m / c r, & E_{E2} &\sim k^3 Q/r
+\end{align}
+Esto muestra por qué la radiación dipolar eléctrica suele dominar a bajas frecuencias, salvo que el momento dipolar se anule por simetría.
+
+\subsubsection{Dipolo magnético y cuadrupolo eléctrico}
+El campo radiativo de un dipolo magnético m puede escribirse en una forma análoga al dipolo eléctrico:
+\begin{equation}
+	\n{B}_\mathrm{rad}^{(M1)} = \ku[k^2] \frac{e^{ikr}}{r} \rhat\times(\n{m}\times\rhat)
+\end{equation}
+con
+\begin{equation}
+	\n{E}_\mathrm{rad}^{(M1)} = -c \, \rhat\times\n{B}_\mathrm{rad}^{(M1)}
+\end{equation}
+
+La potencia radiada por un dipolo magnético armónico es
+\begin{equation}
+	P_{M1} = \frac{\uo\omega^4|\n{m}|^2}{12 \pi c^3}
+\end{equation}
+La diferencia de potencias de $c$ respecto de la fórmula dipolar eléctrica se debe a que $\n{m}$ tiene unidades distintas a $\n{p}$.
+
+Para el cuadrupolo eléctrico, el patrón angular depende de la contracción de $Q_{ij}$ con la dirección de observación. Es útil definir
+\begin{equation}
+	\n{Q}(\rhat)_i = Q_{ij} \rhat_j
+\end{equation}
+La parte transversal que irradia es
+\begin{equation}
+	\n{Q}_\perp(\rhat) = \rhat\times\left[\n{Q}(\rhat)\times\rhat\right]
+\end{equation}
+El campo radiativo cuadrupolar eléctrico tiene la estructura
+\begin{equation}
+	\n{E}_\mathrm{rad}^{(E2)} \propto k^3 \frac{e^{ikr}}{r} \n{Q}_\perp(\rhat)
+\end{equation}
+lo que muestra su supresión adicional por $kd$ frente al dipolo eléctrico.
 
 
 
-
-
-
-
-
-
-
+\section{Electrodinámica covariante}
 
 
 
