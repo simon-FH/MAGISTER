@@ -2469,20 +2469,38 @@ La permitividad podrá escribirse entonces como
 \end{equation}
 
 \subsubsection{Buenos conductores y profundidad de piel}
+Al interior de un conductor ideal el campo eléctrico se anula y la superficie puede sostener una densidad de carga superficial y una corriente superficial. Las condiciones de borde ideales serán entonces
+\begin{align*}
+	\nhat \times \n{E} &= 0, & \nhat \times \n{H} &= \n{K}\\
+	\nhat \cdot  \n{D} &= \sigma, & \nhat \cdot  \n{B} &= 0
+\end{align*}
+En un conductor real, la conductividad $\sigma_c$ es grande pero finita. Para un campo armónico, la corriente de conducción se escribe como $\n{J} = \sigma_c \n{E}$. En el interior del conductor, la ecuación de onda para el campo eléctrico toma la forma
+\begin{equation}
+	\la\n{E} + \omega^2\mu\epsilon\n{E} + i\omega\mu\sigma_c\n{E} = 0
+\end{equation}
 Un buen conductor satisface $\sigma \gg \omega \epsilon$, entonces
 \begin{align*}
-	\epsilon_c &\simeq i \frac{\sigma}{\omega}, & k^2 &\simeq i \omega \mu \sigma
+	\epsilon_c &\simeq i \frac{\sigma}{\omega}, & k_c^2 &\simeq i \omega \mu \sigma
 \end{align*}
 Tomando la rama con atenuación positiva,
 \begin{align}
-	k &\simeq \frac{1 + i}{\delta}, & \delta &= \sqrt{\frac{2}{\omega\mu\sigma}}
+	k_c &\simeq \frac{1 + i}{\delta}, & \delta &= \sqrt{\frac{2}{\omega\mu\sigma}}
 \end{align}
-La longitud $\delta$ es la profundidad de piel. Después de una distancia $\delta$, la amplitud del campo disminuye por un factor $e^{-1}$.
+La longitud $\delta$ es la profundidad de piel. Si $x$ es la coordenada normal hacia el interior, el campo se comporta aproximadamente como
+\begin{equation}
+	\n{E}(x) \propto e^{-x/\delta} e^{i x/\delta}
+\end{equation}
+La parte real del exponente describe la atenuación y la parte imaginaria describe el desfase dentro del conductor
 
 La impedancia de un buen conductor es compleja:
 \begin{equation}
-	Z_c = \sqrt{\frac{\mu}{\epsilon_c}} \simeq (1 - i)\sqrt{\frac{\omega\mu}{2\sigma}}
+	Z_s = \sqrt{\frac{\mu}{\epsilon_c}} \simeq (1 - i)\sqrt{\frac{\omega\mu}{2\sigma}}
 \end{equation}
+Su parte real determina la potencia disipada por unidad de área,
+\begin{equation}
+	\frac{P_\mathrm{dis}}{A} = \frac{1}{2} \, \mathrm{Re}\!\left[Z_s\right] |\n{H}_t|^2
+\end{equation}
+donde $\n{H}_t$ es el campo magnético tangencial en la superficie
 
 \subsubsection{Modelo de plasma}
 Un plasma frío sin colisiones responde de manera dispersiva. Si los electrones de densidad $n_e$ obedecen
@@ -2588,12 +2606,115 @@ Usando las propiedades de paridad, también pueden escribirse sólo con frecuenc
 \end{align}
 Aquí $\mathcal{P}$ denota valor principal de Cauchy.
 
-\subsubsection{Conductores, guías de onda y modos normales}
-Al interior de un conductor ideal el campo eléctrico se anula y la superficie puede sostener una densidad de carga superficial y una corriente superficial. Las condiciones de borde ideales serán entonces
-\begin{align*}
-	\nhat \times \n{E} &= 0, & \nhat \times \n{H} &= \n{K}\\
-	\nhat \cdot  \n{D} &= \sigma, & \nhat \cdot  \n{B} &= 0
-\end{align*}
+\subsection{Conductores, guías de onda y modos normales}
+\subsubsection{Descomposición longitudinal y transversal}
+Consideremos una guía uniforme a lo largo del eje $z$, con una sección transversal arbitraria. Buscamos soluciones armónicas de la forma
+\begin{align}
+	\n{E}(\rv) &= \n{E}(x,y) e^{i k_z z}, & \n{B}(\rv) &= \n{B}(x,y)e^{i k_z z}
+\end{align}
+Es útil separar los campos en partes longitudinales y transversales
+\begin{align}
+	\n{E} &= \n{E}_\perp + E_z\zhat, & \n{B} &= \n{B}_\perp + B_z\zhat
+\end{align}
+y escribir
+\begin{equation}
+	\nabla = \nabla_\perp + \zhat\pd{}{z} = \nabla_\perp + i k_z \zhat
+\end{equation}
+La ecuación de onda se convierte en
+\begin{align}
+	\left(\la_\perp + k^2 - k_z^2\right) \n{E} &= 0, & \left(\la_\perp + k^2 - k_z^2\right) \n{B} &= 0
+\end{align}
+donde $k^2=\omega^2\mu\epsilon$. Definimos
+\begin{equation}
+	k_\perp^2 = k^2 - k_z^2
+\end{equation}
+Entonces los campos longitudinales satisfacen ecuaciones escalares de Helmholtz en la sección transversal
+\begin{align}
+	\left(\la_\perp + k_\perp^2\right) \n{E} &= 0, & \left(\la_\perp + k_\perp^2\right) \n{B} &= 0
+\end{align}
+Los campos transversales se reconstruyen a partir de $E_z$ y $B_z$
+\begin{align}
+	\n{E}_\perp &= \frac{i}{k_\perp^2}\left[k_z\gr_\perp E_z + \omega\mu\zhat\times\gr_\perp H_z\right], & \n{H}_\perp &= \frac{i}{k_\perp^2}\left[k_z\gr_\perp H_z - \omega\epsilon\zhat\times\gr_\perp E_z\right]
+\end{align}
+
+\subsubsection{Modos TM, TE y TEM}
+Los modos se clasifican según sus componentes longitudinales
+\begin{itemize}
+	\item \textbf{Modos TM} (transversal magnético) respecto de $z$: el campo magnético longitudinal se anula, el campo magnético es completamente transversal
+	\begin{align}
+		H_z &= 0, & E_z &\neq 0
+	\end{align}
+	\item \textbf{Modos TE} (transversal eléctrico) respecto de $z$: el campo eléctrico longitudinal se anula, el campo eléctrico es completamente transversal
+	\begin{align}
+	H_z &\neq 0, & E_z &= 0
+	\end{align}
+	\item \textbf{Modos TEM}: ambos campos longitudinales se anulan,
+	\begin{align}
+		H_z &= 0, & E_z &= 0
+	\end{align}
+	Estos modos sólo pueden existir en guías con dos o más conductores, por ejemplo una línea	coaxial o una línea de transmisión de placas paralelas
+\end{itemize}
+Para un modo TM, las condiciones de borde en una pared conductora perfecta exigen que el campo eléctrico tangencial sea cero. Como $E_z$ es tangencial a la pared lateral, se obtiene
+\begin{equation}
+	E_z = 0, \mathrm{\ sobre \ la \ pared}
+\end{equation}
+Por tanto, los modos TM se obtienen de un problema de Dirichlet para $E_z$. Para un modo TE, $E_z = 0$ y el campo relevante es $H_z$. La condición $\nhat\times\n{E} = 0$ conduce a
+\begin{equation}
+	\pd{H_z}{n} = 0, \mathrm{\ sobre \ la \ pared}
+\end{equation}
+Por tanto, los modos TE se obtienen de un problema de Neumann para $H_z$.
+
+\subsubsection{Frecuencia de corte y velocidades}
+La relación de dispersión longitudinal es
+\begin{equation}
+	k_z^2 = \omega^2\mu\epsilon - k_\perp^2
+\end{equation}
+Para cada modo transversal, $k_\perp$ queda fijado por la geometría. El modo se propaga sólo si $k_z$ es real, es decir,
+\begin{equation}
+	\omega > \omega_c, \quad \omega = \frac{k_\perp}{\sqrt{\mu\epsilon}}
+\end{equation}
+Si $\omega < \omega_c$, entonces $k_z$ es imaginario y el modo no transporta potencia a largas distancias, es decir, se vuelve evanescente.
+
+La velocidad de fase longitudinal es
+\begin{equation}
+	v_\phi = \frac{\omega}{k_z} = \frac{1}{\sqrt{\mu\epsilon}} \frac{1}{\sqrt{1 - \omega_c^2/\omega^2}}
+\end{equation}
+Esta velocidad es mayor que $1/\sqrt{\mu\epsilon}$, e incluso puede ser mayor que $c$ en vacío.
+
+La velocidad de grupo es
+\begin{equation}
+	v_g = \pd{\omega}{k_z} = \frac{1}{\sqrt{\mu\epsilon}} \sqrt{1 - \frac{\omega_c^2}{\omega^2}}
+\end{equation}
+En una guía sin pérdidas,
+\begin{equation}
+	v_\phi \, v_g = \frac{1}{\mu\epsilon}
+\end{equation}
+En vacío esto da $v_\phi \, v_g = c^2$.
+
+Cerca de la frecuencia de corte, $v_g \to 0$ y $v_\phi \to \infty$. Físicamente, la onda no avanza eficientemente a lo largo de la guía, su campo se organiza como una oscilación transversal que apenas transporta energía longitudinal.
+
+\subsubsection{Guía rectangular}
+Consideremos una guía rectangular de lados $a$ y $b$, con $0 < x < a$, $0 < y < b$, propagación en la dirección $z$ y paredes conductoras perfectas.
+
+\subsubsection{Guía cilíndrica y funciones de Bessel}
+
+\subsubsection{Potencia transportada por un modo}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 \end{document}
