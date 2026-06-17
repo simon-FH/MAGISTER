@@ -2558,15 +2558,42 @@ con
 	\epsilon(\omega) = \eo \left[1 + \int_{0}^{\infty} \chi_e(\tau) e^{i\omega\tau} \, d\tau\right]
 \end{equation}
 
+\subsubsection{Analiticidad}
+La analiticidad (es decir, el hecho de que sea diferenciable en la región alrededor de un punto) en el semiplano superior codifica causalidad. Si la respuesta del medio se conoce para todos los tiempos posteriores a la perturbación, su transformada en frecuencia no puede tener singularidades en $\mathrm{Im}\!\left[\omega\right] > 0$. Singularidades en el semiplano superior producirían contribuciones que crecen exponencialmente para tiempos positivos o respuestas anticipadas incompatibles con causalidad.
 
+Además, si el campo y la respuesta son reales en el dominio temporal, entonces
+\begin{equation}
+	\epsilon(-\omega) = \epsilon^*(\omega)
+\end{equation}
+para $\omega$ real. En consecuencia
+\begin{equation*}
+	\mathrm{Re}\!\left[\epsilon(\omega)\right] \mathrm{\ es \ par}, \quad \mathrm{Im}\!\left[\epsilon(\omega)\right] \mathrm{\ es \ impar}, 
+\end{equation*}
+La parte imaginaria describe absorción o ganancia, mientras que la parte real describe dispersión. Causalidad impide elegirlas de manera independiente.
 
+\subsubsection{Relaciones de Kramers–Kronig}
+Bajo hipótesis físicas usuales de causalidad, estabilidad y decaimiento adecuado a alta frecuencia, se obtienen las relaciones de Kramers–Kronig. Para la susceptibilidad
+\begin{equation}
+	\chi(\omega) = \frac{\epsilon(\omega)}{\eo} - 1
+\end{equation}
+se tiene
+\begin{align}
+	\mathrm{Re}\!\left[\chi(\omega)\right] &= \frac{1}{\pi} \mathcal{P} \int_{-\infty}^{\infty} \frac{\mathrm{Im}\! \left[\chi(\omega') \right]}{\omega' - \omega} \, d\omega'\\
+	\mathrm{Im}\!\left[\chi(\omega)\right] &= -\frac{1}{\pi} \mathcal{P} \int_{-\infty}^{\infty} \frac{\mathrm{Re}\! \left[\chi(\omega') \right]}{\omega' - \omega} \, d\omega'
+\end{align}
+Usando las propiedades de paridad, también pueden escribirse sólo con frecuencias positivas:
+\begin{align}
+	\mathrm{Re}\!\left[\chi(\omega)\right] &= \frac{2}{\pi} \mathcal{P} \int_{0}^{\infty} \frac{\omega' \mathrm{Im}\! \left[\chi(\omega') \right]}{\omega'^2 - \omega^2} \, d\omega'\\
+	\mathrm{Im}\!\left[\chi(\omega)\right] &= -\frac{2\omega}{\pi} \mathcal{P} \int_{0}^{\infty} \frac{\mathrm{Re}\! \left[\chi(\omega') \right]}{\omega'^2 - \omega^2} \, d\omega'
+\end{align}
+Aquí $\mathcal{P}$ denota valor principal de Cauchy.
 
-
-
-
-
-
-
+\subsubsection{Conductores, guías de onda y modos normales}
+Al interior de un conductor ideal el campo eléctrico se anula y la superficie puede sostener una densidad de carga superficial y una corriente superficial. Las condiciones de borde ideales serán entonces
+\begin{align*}
+	\nhat \times \n{E} &= 0, & \nhat \times \n{H} &= \n{K}\\
+	\nhat \cdot  \n{D} &= \sigma, & \nhat \cdot  \n{B} &= 0
+\end{align*}
 
 
 \end{document}
