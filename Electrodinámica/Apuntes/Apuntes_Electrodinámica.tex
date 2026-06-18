@@ -2924,8 +2924,380 @@ El campo radiativo cuadrupolar eléctrico tiene la estructura
 lo que muestra su supresión adicional por $kd$ frente al dipolo eléctrico.
 
 
-
 \section{Electrodinámica covariante}
+\subsection{Cosas importantes}
+Las cantidades
+\begin{align}
+	\beta &= \frac{v}{c}, & \gamma &= \frac{1}{\sqrt{1 - \beta^2}}
+\end{align}
+Rapidez $\xi$ define boosts:
+\begin{align}
+	\beta &= \tanh\xi, & \gamma &= \cosh\xi, & \beta\gamma &= \sinh\xi
+\end{align}
+Para boosts en $x$
+\begin{equation}
+	\Lambda(\xi) = \begin{pmatrix}
+		\cosh\xi  & -\sinh\xi & 0 & 0\\
+		-\sinh\xi &  \cosh\xi & 0 & 0\\
+		0 & 0 & 1 & 0\\
+		0 & 0 & 0 & 1
+	\end{pmatrix}
+\end{equation}
+La rapidez se suma linealmente para boosts colineales.
+
+Las derivadas:
+\begin{align}
+	\partial_\mu &= \pd{}{x^\mu} = \left(\frac{1}{c}\pd{}{t}, \nabla\right), & \partial^\mu &= \left(\frac{1}{c}\pd{}{t}, -\nabla\right)
+\end{align}
+El operador d'Alembertiano es
+\begin{equation}
+	\square \equiv \partial_\mu\partial^\mu = \frac{1}{c^2} \pd{^2}{t^2} - \la
+\end{equation}
+Con esta convención, la ecuación de onda homogénea se escribe
+\begin{equation}
+	\square f = 0
+\end{equation}
+
+El cuadripotencial 
+\begin{align}
+	A^\mu &= \left(\frac{\Phi}{c}, \n{A}\right), & A_\mu &= \left(\frac{\Phi}{c}, -\n{A}\right)
+\end{align}
+La cuadricorriente
+\begin{align}
+	J^\mu &= \left(c\rho, \n{J}\right), & J_\mu &= \left(c\rho, -\rho\right)
+\end{align}
+La ecuación de continuidad se vuelve
+\begin{equation}
+	\partial_\mu J^\mu = 0
+\end{equation}
+Las ecuaciones de potenciales
+\begin{equation}
+	\square A^\mu = \uo J^\mu
+\end{equation}
+
+La condición de gauge de Lorenz es
+\begin{equation}
+	\partial_\mu A^\mu = 0
+\end{equation}
+
+El tensor electromagnético
+\begin{equation}
+	F^{\mu\nu} = \partial^\mu A^\nu - \partial^\nu A^\mu
+\end{equation}
+es antisimétrico
+\begin{equation}
+	F^{\mu\nu} = -F^{\nu\mu}
+\end{equation}
+En forma matricial,
+\begin{equation}
+	F^{\mu\nu} = \begin{pmatrix}
+		0 & -E_x/c & -E_y/c & -E_z/c\\
+		E_x/c & 0 & -B_z & B_y\\
+		E_y/c & B_z & 0 & -B_x\\
+		E_z/c & -B_y & B_x & 0
+	\end{pmatrix}
+\end{equation}
+El tensor dual se define como
+\begin{equation}
+	\tilde{F}^{\mu\nu} = \frac{1}{2} \epsilon^{\mu\nu\alpha\beta} F_{\alpha\beta}
+\end{equation}
+En forma matricial,
+\begin{equation}
+	\tilde{F}^{\mu\nu} = \begin{pmatrix}
+		0 & -B_x & -B_y & -B_z\\
+		B_x & 0 & E_z/c & -E_y/c\\
+		B_y & -E_z/c & 0 & E_x/c\\
+		B_z & E_y/c & -E_x/c & 0
+	\end{pmatrix}
+\end{equation}
+
+Las dos ecuaciones de Maxwell con fuentes son
+\begin{equation}
+	\partial_\mu F^{\mu\nu} = \uo J^\nu
+\end{equation}
+Las dos ecuaciones sin fuentes magnéticas 
+\begin{equation}
+	\partial_\mu \tilde{F}^{\mu\nu} = 0
+\end{equation}
+
+\subsection{Invariantes electromagnéticos}
+A partir de $F^{\mu\nu}$ se pueden construir dos invariantes independientes:
+\begin{align}
+	F_{\mu\nu} F^{\mu\nu} &= 2 \left(B^2 - \frac{E^2}{c^2}\right)\\
+	\tilde{F}_{\mu\nu} F^{\mu\nu} &= -\frac{4}{c} \n{E}\cdot\n{B}
+\end{align}
+Estos invariantes permiten clasificar campos electromagnéticos:
+\begin{itemize}
+	\item Si $\n{E} \cdot \n{B} \neq 0$, no existe un sistema donde $\n{E}$ y $\n{B}$ sean perpendiculares.
+	\item Si $\n{E} \cdot \n{B} = 0$ y $E^2 > c^2 B^2$, existe un sistema donde $\n{B}' = 0$: el campo es de tipo puramente eléctrico.
+	\item Si $\n{E} \cdot \n{B} = 0$ y $E^2 < c^2 B^2$, existe un sistema donde $\n{B}' = 0$: el campo es de tipo puramente magnético.
+	\item Si $\n{E} \cdot \n{B} = 0$ y $E^2 = c^2 B^2$, el campo es de tipo radiativo o nulo, como una onda plana en el vacío.
+\end{itemize}
+
+\subsubsection{Onda plana como campo nulo}
+Para una onda plana en el vacío,
+\begin{align*}
+	\n{B} &= \frac{1}{c} \khat\times\n{E}, & \khat\cdot\n{E} &= 0
+\end{align*}
+Entonces
+\begin{align}
+	\n{E} \cdot \n{B} &= 0, & E^2 &= c^2 B^2
+\end{align}
+Los dos invariantes son cero. Esto quiere decir que ningún boost puede transformar una onda electromagnética en un campo puramente eléctrico o puramente magnético.
+
+\subsubsection{Campos paralelos}
+Si $\n{E}\parallel\n{B}$, entonces $\n{E} \cdot \n{B} \neq 0$ salvo que alguno de los dos campos sea cero. Como $\n{E} \cdot \n{B}$ es invariante, ningún observador puede ver esos campos como perpendiculares
+
+\subsection{Transformación de los campos eléctricos y magnéticos}
+\subsubsection{Transformación por un boost}
+Como $F^{\mu\nu}$ es un tensor, bajo una transformación de Lorentz
+\begin{equation}
+	F'^{\mu\nu} = \Lambda^\mu_{\, \alpha} \Lambda^\nu_{\, \beta} F^{\alpha\beta}
+\end{equation}
+Para un boost con velocidad $\n{v}$, se obtiene
+\begin{align}
+	\n{E}'_\parallel &= \n{E}_\parallel\\
+	\n{B}'_\parallel &= \n{B}_\parallel\\
+	\n{E}'_\perp &= \gamma \left(\n{E}_\perp + \n{v}\times\n{B}\right)\\
+	\n{B}'_\perp &= \gamma \left(\n{B}_\perp - \frac{1}{c^2} \n{v}\times\n{E}\right)
+\end{align}
+En forma vectorial completa,
+\begin{align}
+	\n{E}' &= \gamma\left(\n{E} + \n{v}\times\n{B}\right) - \frac{\gamma^2}{\gamma + 1} \frac{\n{v}}{c^2} \left(\n{v}\cdot\n{E}\right)\\
+	\n{B}' &= \gamma\left(\n{B} - \frac{1}{c^2} \n{v}\times\n{E}\right) - \frac{\gamma^2}{\gamma + 1} \frac{\n{v}}{c^2} \left(\n{v}\cdot\n{B}\right)
+\end{align}
+
+\subsection{Campo de una carga con movimiento uniforme}
+Consideremos una carga $q$ en reposo en el sistema $K'$. Su campo es Coulombiano
+\begin{align*}
+	\n{E}' &= \ke[q] \frac{\rv'}{r'^3}, & \n{B}' &= 0
+\end{align*}
+Después de simplificar, el campo eléctrico puede escribirse en forma compacta como
+\begin{equation}
+	\n{E}(\rv,t) = \ke[q] \frac{1 - \beta^2}{(1 - \beta^2 \sin^2\theta)^{3/2}} \frac{\hat{\n{R}}}{R^2}
+\end{equation}
+Aquí $\n{R}$ es el vector desde la posición instantánea de la carga hasta el punto de observación, $R = |\n{R}|$, y $\theta$ es el ángulo entre $\n{R}$ y $\n{v}$. El campo magnético es
+\begin{equation}
+	\n{B} = \frac{1}{c^2} \n{v}\times\n{E}
+\end{equation}
+
+\subsubsection{Compresión transversal del campo}
+Cuando $\beta \to 1$, el campo se concentra en la dirección transversal al movimiento. Para $\theta = \pi/2$,
+\begin{align}
+	E_\perp &\sim \gamma \ke[q]\frac{1}{R^2}, & E_\parallel &= \frac{1}{\gamma^2} \ke[q]\frac{1}{R^2}
+\end{align}
+Físicamente, el campo de una carga ultrarrelativista parece un pulso transversal muy intenso y muy estrecho
+
+\subsection{Fuerza de Lorentz en forma covariante}
+La cuadrifuerza electromagnética
+\begin{equation}
+	\td{p^\mu}{\tau} = q F^{\mu\nu} u_\nu
+\end{equation}
+donde $u_\nu$ es la cuadrivelocidad $u = \ltd{x^\mu}{\tau} = \gamma (c,\n{v})$. 
+
+\subsection{Partícula cargada en campos electromagnéticos externos}
+El Lagrangiano relativista 
+\begin{equation}
+	L = -mc^2 \sqrt{1 - v^2/c^2} + q\n{v}\cdot\n{A} - q\Phi
+\end{equation}
+El término de interacción puede escribirse covariantemente como
+\begin{equation}
+	S = -mc^2\int \, d\tau - q\int A_\mu \, dx^\mu
+\end{equation}
+
+\subsubsection{Ecuaciones de Euler-Lagrange}
+El momento canónico es
+\begin{equation}
+	\n{P} = \pd{L}{\n{v}} = \gamma m \n{v} + q\n{A}
+\end{equation}
+Sustituyendo en las ecuaciones de Euler-Lagrange 
+\begin{equation}
+	\td{}{t} \left(\gamma m \n{v}\right) = q(\n{E} + \n{v}\times\n{B})
+\end{equation}
+
+\subsubsection{Hamiltoniano relativista}
+El Hamiltoniano se define como
+\begin{equation}
+	H = \n{P}\cdot\n{v} - L = \sqrt{m^2 c^4 + c^2 (\n{P} - q\n{A})^2} + q\Phi
+\end{equation}
+
+\subsection{Movimiento relativista en un campo magnético uniforme}
+Sea $\n{B} = B_0\zhat$ uniforme y $\n{E} = 0$. La ecuación de movimiento es
+\begin{equation*}
+	\td{\n{p}}{t} = q\n{v}\times\n{B}
+\end{equation*}
+La componente paralela $v_z$ es constante, mientras que la componente perpendicular rota con frecuencia ciclotrón relativista
+\begin{equation}
+	\omega_c = \frac{|q|B_0}{\gamma m}
+\end{equation}
+El radio de Larmor relativista es
+\begin{equation}
+	r_L = \frac{p_\perp}{|q| B_0} = \frac{\gamma m v_\perp}{|q| B_0}
+\end{equation}
+La trayectoria es una hélice alrededor de las líneas de campo.
+
+\subsubsection{Forma covariante del movimiento}
+Si el campo es uniforme, la ecuación covariante
+\begin{equation*}
+	\td{u^\mu}{\tau} = \frac{q}{m} F^{\mu\nu} u_\nu
+\end{equation*}
+es lineal en $u^\mu$. Formalmente
+\begin{equation}
+	u^\mu(\tau) = \left[\exp\left(\frac{q}{m} F \tau\right)\right]^\mu_{\, \nu} u^\nu (0)
+\end{equation}
+Para un campo magnético puro, esta exponencial contiene rotaciones espaciales en el plano perpendicular al campo.
+
+\subsection{Campos eléctricos y magnéticos uniformes}
+\subsubsection{Marcos donde E o B desaparecen}
+Si $\n{E} \cdot \n{B} = 0$ y $E < cB$, existe un sistema que se mueve con velocidad
+\begin{equation}
+	\n{v}_D = \frac{\n{E}\times\n{B}}{B^2} \label{v_drift}
+\end{equation}
+respecto del cual el campo eléctrico se anula. Esta velocidad es menor que $c$ precisamente cuando $E < cB$.
+
+Si en cambio $E > cB$, existe un marco donde $\n{B}' = 0$; en ese marco la partícula acelera en un campo eléctrico puro.
+
+\subsubsection{Caso $\n{E} \perp \n{B}$}
+Para $\n{E} = E \yhat$ y $\n{B} = B \zhat$, la velocidad de drift es
+\begin{equation}
+	\n{v}_D = \frac{E}{B} \xhat
+\end{equation}
+
+\subsection{Campos lentamente variables y drifts}
+\subsubsection{Separación de escalas}
+Cuando el campo magnético varía poco sobre una órbita de Larmor, podemos separar el movimiento rápido de giro del movimiento lento del centro guía. Las condiciones son
+\begin{align}
+	r_L &\ll L_B, & \omega_c^{-1} &\ll T_B 
+\end{align}
+donde $L_B$ y $T_B$ son escalas características de variación espacial y temporal del campo.
+
+El movimiento se descompone como
+\begin{equation}
+	\rv(t) = \n{R}_g(t) + \n{\rho}(t)
+\end{equation}
+con $\n{R}_g$ centro guía y $\n{\rho}$ radio de Larmor. Promediando sobre el giro rápido se obtienen drifts efectivos.
+
+\subsubsection{Drift por fuerza externa}
+Si existe una fuerza lenta $\n{F}$ perpendicular a $\n{B}$, además de la fuerza magnética, el centro guía deriva con
+\begin{equation}
+	\n{v}_F = \frac{\n{F}\times\n{B}}{qB^2}
+\end{equation}
+Para $\n{F} = q \n{E}$, esto reproduce la ec. \ref{v_drift}. Para una fuerza gravitatoria $m \n{g}$, se obtiene un drift que sí depende del signo de la carga.
+
+\subsubsection{Drift $\gr B$}
+Si $ B$ cambia espacialmente, la partícula experimenta una fuerza efectiva asociada al momento magnético orbital. En el límite no relativista,
+\begin{equation}
+	\mu = \frac{m v_\perp^2}{2 B}
+\end{equation}
+La fuerza promedio es
+\begin{equation}
+	\n{F}_{\gr B} = -\mu\gr B
+\end{equation}
+Por tanto,
+\begin{equation}
+	\n{v}_{\gr B} = \frac{\n{F}_{\gr B}\times\n{B}}{qB^2} = \frac{\mu}{q B^2}  \n{B}\times\gr B
+\end{equation}
+En forma relativista, se reemplaza $m v_\perp^2 / 2$ por la energía perpendicular apropiada. La estructura geométrica del drift permanece.
+
+\subsubsection{Drift de curvatura}
+Si las líneas de campo son curvas, una partícula que se mueve paralelamente al campo experimenta una aceleración centrífuga asociada al radio de curvatura $R_c$. La fuerza efectiva es aproximadamente
+\begin{equation}
+	\n{F}_c = \gamma m v_\parallel^2 \n{\kappa}
+\end{equation}
+donde $\n{\kappa} = \left(\hat{\n{b}}\cdot\nabla\right) \hat{\n{b}}$ es la curvatura de las líneas de campo y $\hat{\n{b}} = \n{B}/B$. El drift correspondiente es
+\begin{equation}
+	\n{v}_c = \frac{\gamma m v_\parallel^2}{q B} \hat{\n{b}}\times\n{\kappa}
+\end{equation}
+
+\subsection{Invariante adiabático magnético}
+\subsubsection{Momento magnético como invariante}
+Para variaciones lentas del campo, el momento magnético
+\begin{equation}
+	\mu = \frac{p_\perp^2}{2 \gamma m B}
+\end{equation}
+es aproximadamente invariante. En el límite no relativista reduce a
+\begin{equation}
+	\mu = \frac{m v_\perp^2}{2 B}
+\end{equation}
+La conservación de $\mu$ significa que si una partícula entra en una región de mayor $B$, su energía perpendicular aumenta. Si la energía total se conserva, la energía paralela disminuye.
+
+\subsubsection{Condición de espejo}
+Si $\n{E} = 0$ y el campo magnético es estacionario, la energía total se conserva. Entonces
+\begin{equation}
+	\frac{p_\perp^2}{2 \gamma m B} = \mathrm{const.}
+\end{equation}
+En el límite no relativista, si una partícula parte de una región con campo $B_0$ y ángulo de pitch $\alpha_0$, se refleja cuando
+\begin{equation}
+	\sin^2\alpha_0 = \frac{B_0}{B_\mathrm{max}}
+\end{equation}
+Partículas con $\alpha_0$ suficientemente grande quedan atrapadas entre dos espejos magnéticos.
+
+\subsection{Lagrangiano de Darwin}
+El Lagrangiano exacto de partículas cargadas interactuando mediante campos electromagnéticos contiene retardos y radiación. Si las velocidades son pequeñas comparadas con $c$, pero queremos conservar las primeras correcciones relativistas de orden $v^2/c^2$, podemos integrar los grados de libertad radiativos de manera aproximada. El resultado es el Lagrangiano de Darwin.
+
+Para $N$ partículas, el Lagrangiano tiene la forma
+\begin{equation}
+	L = \sum_{i}\left[-m_i c^2 \sqrt{1 - v^2/c^2}\right] - \frac{1}{2}\sum_{i \neq j} \frac{q_i q_j}{4 \pi \eo r_{ij}} + L_\mathrm{Darwin}
+\end{equation}
+con
+\begin{equation}
+	L_\mathrm{Darwin} = \frac{1}{4} \sum_{i \neq j} \frac{q_i q_j}{4\pi\eo c^2 r_{ij}} \left[\n{v}_i\cdot\n{v}_j + \left(\n{v}_i\cdot\rhat_{ij}\right) \left(\n{v}_j\cdot\rhat_{ij}\right) \right]
+\end{equation}
+Aquí $\rv_{ij} = \rv_i - \rv_j, ~ r_{ij} = |\rv_{ij}|$ y $\rhat_{ij} = \rv_{ij}/r_{ij}$. 
+
+El primer término de interacción es Coulombiano instantáneo. El término de Darwin contiene la primera corrección magnética y retardada compatible con relatividad especial al orden $v^2/c^2$. No describe radiación real, la radiación aparece a órdenes superiores y requiere términos disipativos o condiciones de radiación.
+
+Es útil cuando el sistema es no relativista, pero las correcciones magnéticas entre cargas en movimiento no son despreciables.
+
+\subsection{Densidad lagrangiana del campo electromagnético}
+La acción del campo electromagnético acoplado a una corriente externa es
+\begin{equation}
+	S = \int\mathcal{L} \, d^4 x
+\end{equation}
+con densidad lagrangiana
+\begin{equation}
+	\mathcal{L} = - \frac{1}{4\uo} F_{\mu\nu} F^{\mu\nu} - J_\mu A^\mu
+\end{equation}
+Como
+\begin{equation}
+	F_{\mu\nu} F^{\mu\nu} = 2 \left(B^2 - \frac{E^2}{c^2}\right)
+\end{equation}
+la parte libre se escribe
+\begin{equation}
+	\mathcal{L}_\mathrm{EM} = \frac{\eo}{2} E^2 - \frac{1}{2\uo} B^2
+\end{equation}
+El término de fuente es
+\begin{equation}
+	- J_\mu A^\mu = \n{J}\cdot\n{A} - \rho\Phi
+\end{equation}
+
+\subsubsection{Ecuaciones de Euler-Lagrange para $A_\mu$}
+Consideremos $A_\mu$ como campo dinámico. Las ecuaciones de Euler-Lagrange son
+\begin{equation}
+	\partial_\alpha \left(\pd{\mathcal{L}}{(\partial_\alpha A_\beta)}\right) - \pd{\mathcal{L}}{A_\beta} = 0
+\end{equation}
+De la definición del tensor $F_{\mu\nu}$ y de que $\pd{\mathcal{L}}{A_\beta} = -J^\beta$, se tiene
+\begin{equation}
+	\partial_\alpha F^{\alpha\beta} = \uo J^\beta
+\end{equation}
+que son las ecuaciones inhomogéneas de Maxwell.
+
+\subsubsection{Simetría de gauge y conservación de carga}
+Bajo una transformación de gauge, el tensor $F_{\mu\nu}$ no cambia. El término de fuente cambia por una derivada total sólo si
+\begin{equation}
+	\partial_\mu J^\mu = 0
+\end{equation}
+
+\subsection{Tensor energía-momento electromagnético}
+El tensor energía-momento simétrico del campo electromagnético es
+\begin{equation}
+	T^{\mu\nu} = \frac{1}{\uo} \left[-F^{\mu\alpha} F^{\nu}_{\, \alpha} + \frac{1}{4} \eta^{\mu\nu} F_{\alpha\beta}F^{\alpha\beta}\right]
+\end{equation}
+Sus componentes contienen la densidad de energía, el vector de Poynting y el tensor de esfuerzos de Maxwell.
+
+
+
+
 
 
 

@@ -1,4 +1,4 @@
-# mycommands completion list for TeXstudio
+# simonPackage completion list for TeXstudio
 
 \caja{title}[accent color][bg color]{content}
 \qed
