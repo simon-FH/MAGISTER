@@ -3295,15 +3295,49 @@ El tensor energía-momento simétrico del campo electromagnético es
 \end{equation}
 Sus componentes contienen la densidad de energía, el vector de Poynting y el tensor de esfuerzos de Maxwell.
 
+La componente 00 es
+\begin{equation}
+	T^{00} = \frac{\eo}{2} E^2 + \frac{1}{2\uo}B^2 = u
+\end{equation}
+Las componentes $0i$ y $i0$ contienen el flujo de energía y la densidad de momento:
+\begin{align*}
+	\n{S} &= \frac{1}{\uo} \n{E}\times\n{B}, & \n{g} &= \frac{\n{S}}{c^2} = \eo \n{E}\times\n{B}
+\end{align*}
+Las componentes espaciales son el tensor de esfuerzos de Maxwell,
+\begin{equation}
+	\sigma_{ij} = \eo \left(E_i E_j - \frac{1}{2}\delta_{ij}E^2\right) + \frac{1}{\uo} \left(B_i B_j - \frac{1}{2}\delta_{ij} B^2\right)
+\end{equation}
 
+\subsubsection{Conservación con fuentes}
+Usando las ecuaciones de Maxwell, se encuentra
+\begin{equation}
+	\partial_\mu T^{\mu\nu} = - F^{\nu\lambda} J_{\lambda} 
+\end{equation}
+El lado derecho es la fuerza ejercida por el campo sobre las cargas con signo opuesto, representa intercambio de energía y momentum entre campo y materia. Para $\nu = 0$, se obtiene el teorema de Poynting:
+\begin{equation}
+	\pd{u}{t} + \di\n{S} = -\n{J}\cdot\n{E}
+\end{equation}
+Para $\nu = i$, se obtiene la conservación de momentum con el tensor de esfuerzos de Maxwell.
 
+\subsection{Término de masa para el fotón y ecuaciones de Proca}
+La densidad lagrangiana de Maxwell es invariante bajo transformaciones de gauge. Un término de masa para el potencial tendría la forma
+\begin{equation}
+	\mathcal{L}_\mathrm{m} = \frac{1}{2} \frac{\mu_\gamma^2}{\uo} A_\mu A^\mu
+\end{equation}
+con una constante $\mu_\gamma$ de dimensión inversa de longitud. Este término no es invariante bajo
+$A_\mu \to A_\mu + \partial_\mu \Lambda$. Por lo tanto, rompe la simetría de gauge.
 
+\subsubsection{Ecuaciones de Proca}
+Si se agrega el término de masa, la ecuación de movimiento toma la forma
+\begin{equation}
+	\partial_\mu F^{\mu\nu} + \mu_\gamma^2 A^\nu = \uo J^\nu
+\end{equation}
+Tomando la divergencia y usando conservación de carga,
+\begin{equation}
+	\mu_\gamma^2 \partial_\nu A^\nu = 0
+\end{equation}
+Para $\mu_\gamma \neq 0$, la condición de Lorenz ya no es una elección de gauge, sino una consecuencia dinámica. La masa elimina la libertad de gauge y agrega un grado de libertad longitudinal.
 
-
-
-
-
-
-
+En superconductores aparece una masa efectiva para el campo electromagnético dentro del material. Esto no significa que el fotón fundamental en el vacío tenga masa; es una masa efectiva asociada a la respuesta colectiva del condensado y al efecto Meissner.
 
 \end{document}
