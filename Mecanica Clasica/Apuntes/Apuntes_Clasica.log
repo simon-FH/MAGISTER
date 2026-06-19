@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.15)  17 JUN 2026 13:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.15)  18 JUN 2026 22:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -530,9 +530,9 @@ File: dvipsnam.def 2026-05-17 v3.0m Driver-dependent file (DPC,SPQR)
 (../../simonPackage.sty
 
 LaTeX Warning: You have requested package `../../simonPackage',
-               but the package provides `mycommands'.
+               but the package provides `simonPackage'.
 
-Package: mycommands 2026/06/15 Custom Layout and Math Commands
+Package: simonPackage 2026/06/15 Custom Layout and Math Commands
 ) (Apuntes_Clasica.aux)
 \openout1 = `Apuntes_Clasica.aux'.
 
@@ -718,18 +718,27 @@ Overfull \hbox (2.66278pt too wide) in paragraph at lines 2770--2772
  pero pode-mos usar in-te-grales de movimiento
  []
 
-[47] [48] [49] [50] [51] [52] [53] (Apuntes_Clasica.aux)
+[47] [48] [49] [50] [51] [52] [53] [54] [55] [56]
+Overfull \hbox (40.42657pt too wide) in paragraph at lines 3232--3234
+\OT1/cmr/m/n/10 donde $\OML/cmm/m/it/10 H[]$ \OT1/cmr/m/n/10 es solu-cionable a
+nal^^S^^Pticamente y $^^A\OML/cmm/m/it/10 H \OMS/cmsy/m/n/10 ^^\ \OML/cmm/m/it/
+10 H[]$\OT1/cmr/m/n/10 . Asum-i-mos que cono-ce-mos $\OML/cmm/m/it/10 f[]\OT1/c
+mr/m/n/10 (\OML/cmm/m/it/10 q[]; [] ; q[]\OT1/cmr/m/n/10 ;  \OML/cmm/m/it/10 [
+]; [] ; []; t\OT1/cmr/m/n/10 )$
+ []
+
+[57] (Apuntes_Clasica.aux)
  ***********
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-05-26>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 14838 strings out of 467509
- 301186 string characters out of 5408780
- 818463 words of memory out of 5000000
- 43799 multiletter control sequences out of 15000+600000
- 637751 words of font info for 78 fonts, out of 8000000 for 9000
+ 14841 strings out of 467509
+ 301219 string characters out of 5408780
+ 818492 words of memory out of 5000000
+ 43801 multiletter control sequences out of 15000+600000
+ 638110 words of font info for 79 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,16n,107p,968b,809s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\simon\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
@@ -737,36 +746,37 @@ Here is how much of TeX's memory you used:
 ts/cm/cmbx10.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/publ
 ic/amsfonts/cm/cmbx12.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/t
 ype1/public/amsfonts/cm/cmbx7.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX
-/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/simon/AppData/Local/Progra
-ms/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><C:/Users/simon/AppData
-/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/simo
-n/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Us
-ers/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pf
+/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Users/simon/AppData/Local/Prog
+rams/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/simon/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><C:/Users/si
+mon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:
+/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5
+.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
+cm/cmmi6.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
+msfonts/cm/cmmi7.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/
+public/amsfonts/cm/cmmi8.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/font
+s/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/simon/AppData/Local/Programs/MiK
+TeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/simon/AppData/Local/Prog
+rams/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/simon/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/simon/App
+Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/si
+mon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/U
+sers/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pf
 b><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
-cmmi7.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
-onts/cm/cmmi8.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/pub
-lic/amsfonts/cm/cmr10.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/t
-ype1/public/amsfonts/cm/cmr12.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX
-/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/simon/AppData/Local/Program
-s/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/simon/AppData/Local/
-Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/simon/AppData
-/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/simon/
-AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users
-/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-<C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cm
-sy5.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
-ts/cm/cmsy7.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/publi
-c/amsfonts/cm/cmsy8.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/typ
-e1/public/amsfonts/cm/cmti10.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/
-fonts/type1/public/amsfonts/euler/eufm10.pfb><C:/Users/simon/AppData/Local/Prog
-rams/MiKTeX/fonts/type1/public/amsfonts/latxfont/line10.pfb><C:/Users/simon/App
-Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/U
-sers/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/ms
-bm10.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
-nts/symbols/msbm7.pfb>
-Output written on Apuntes_Clasica.pdf (53 pages, 637903 bytes).
+cmsy10.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
+fonts/cm/cmsy5.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/pu
+blic/amsfonts/cm/cmsy7.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/
+type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/simon/AppData/Local/Programs/MiKTe
+X/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/simon/AppData/Local/Progr
+ams/MiKTeX/fonts/type1/public/amsfonts/euler/eufm10.pfb><C:/Users/simon/AppData
+/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/latxfont/line10.pfb><C:/User
+s/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam1
+0.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
+/symbols/msbm10.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/p
+ublic/amsfonts/symbols/msbm7.pfb>
+Output written on Apuntes_Clasica.pdf (57 pages, 663812 bytes).
 PDF statistics:
- 323 PDF objects out of 1000 (max. 8388607)
+ 341 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  28 words of extra memory for PDF output out of 10000 (max. 10000000)
 

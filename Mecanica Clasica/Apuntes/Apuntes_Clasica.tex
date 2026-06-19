@@ -2572,7 +2572,7 @@ Ahora veremos ejemplos menos triviales.
 \subsection{Invariantes como generadores}
 Usaremos la operación \textbf{corchete de Poisson} entre dos funciones \(f(q,p), \, g(q,p)\):
 \begin{equation}
-	[f, g] = \sum_{a} \left( \pd{f}{p_a}\pd{g}{q_a} - \pd{f}{q_a}\pd{g}{p_a} \right)
+	[f, g] = \sum_{a} \left( \pd{f}{p_a}\pd{g}{q_a} - \pd{f}{q_a}\pd{g}{p_a} \right) \label{poisson}
 \end{equation}
 donde \(q_a, p_a\) son las coordenadas y momentos generalizados del sistema. Tendremos entonces que
 \begin{equation}
@@ -3017,6 +3017,244 @@ donde \(\Gamma^\mu_{\alpha\beta}\) son los \textbf{símbolos de Christoffel} (v�
 donde el lado derecho puede ser interpretado como la 4-fuerza covariante.
 
 \section{Formalismo Hamiltoniano}
+El hamiltoniano $H$ es la transformada de Legendre del lagrangiano
+\begin{equation}
+	H = \sum p_a \dot{q}_a - L
+\end{equation}
+Y las ecuaciones canónicas de Hamilton
+\begin{align}
+	\dot{p}_a &= - \pd{H(p,q,t)}{q_a}, & \dot{q}_a &= \pd{H(p,q,t)}{p_a}, & \pd{H}{t} &= - \pd{L}{t}
+\end{align}
+
+\subsection{Hamiltoniano como generador}
+Recordando la definción del corchete de Poisson (ec. \ref{poisson})
+\begin{equation*}
+	[f, g] = \sum_{a} \left( \pd{f}{p_a}\pd{g}{q_a} - \pd{f}{q_a}\pd{g}{p_a} \right)
+\end{equation*}
+Si tenemos una función arbitraria $f(p,q,t)$ que depende de $p,q,t$, su derivada temporal puede ser expresada como
+\begin{equation}
+	\td{f}{t} = \pd{f}{t} + [H,f]
+\end{equation} 
+Si $f(p,q)$ es una integral de movimiento, y $f$ no depende del tiempo, entonces
+\begin{equation}
+	[H,f] = 0
+\end{equation}
+
+\subsubsection{Teorema de Poisson}
+Si $f,g$ sin integrales de movimiento, entonces
+\begin{equation}
+	h = [f,g]
+\end{equation}
+es una integral de movimiento.
+
+\subsection{Formulación simpléctica}
+Definiendo un vector $\eta$ para el espacio de fase $2N$,
+\begin{equation}
+	\eta = \begin{pmatrix}
+		q_1\\
+		\vdots\\
+		q_N\\
+		p_1\\
+		\vdots\\
+		p_N
+	\end{pmatrix}
+\end{equation}
+Las ecuaciones de movimiento se pueden escribir entonces como
+\begin{equation}
+	\dot{\eta} = [H,\eta]
+\end{equation}
+Además, el corchete entre dos $\eta$
+\begin{equation}
+	[\eta_a,\eta_b] = J_{ab} ~\Leftrightarrow~ [\n{\eta},\n{\eta}] = \n{J}
+\end{equation}
+donde
+\begin{equation}
+	\n{J} = \begin{pmatrix}
+		& I_N\\
+		-I_N &
+	\end{pmatrix} = \begin{pmatrix}
+	&   & & 1 & 0 & 0\\
+	& 0 & & 0 & \ddots & 0\\
+	&   & & 0 & 0 & 1\\
+	-1 & 0      &  0 & &   &\\
+	 0 & \ddots &  0 & & 0 &\\
+	 0 & 0      & -1 & &   &
+	\end{pmatrix}
+\end{equation}
+La matriz $\n{J}$ nos permite reescribir los corchetes de Poisson
+\begin{equation}
+	[f,g] = \sum_{a,b} \pd{f}{\eta_a} J_{ab} \pd{g}{\eta_b}
+\end{equation}
+por lo que
+\begin{equation}
+	\dot{\eta}_a = [H,\eta_a] = J_{ab}\pd{H}{\eta_b} ~~\Leftrightarrow~~ \dot{\n{\eta}} = [H,\n{\eta}] = \n{J}\pd{H}{\n{\eta}}
+\end{equation}
+
+\subsubsection{Formas diferenciales}
+
+\subsection{Transformaciones canónicas}
+Una transformación de coordenadas
+\begin{equation}
+	(q,p,t) \to (Q,P,t)
+\end{equation}
+es canónica sí y solo sí conserva la forma de las ecuaciones canónicas de Hamilton, es decir,
+\begin{align}
+	\dot{P}_a &= - \pd{\tilde{H}(P,Q,t)}{Q_a}, & \dot{Q}_a &= \pd{\tilde{H}(P,Q,t)}{Q_a}, & \pd{\tilde{H}}{t} &= - \pd{L}{t}
+\end{align}
+La transformación identida$(P_a = p_a, ~ Q_a = q_a)$ es canónica. Si la transformación es canónica, su inversa también lo es. La superposición de dos transformaciones canónicas es también canónica.
+
+Las transformaciones que solo afectan a las coordenadas y no las mezclan con momentos (\textbf{\textit{point transformations}}), como cambiar entre cartesianas, esféricas o cilíndricas, siempre son canónicas. 
+
+Si $(p,q) \to (P,Q)$ es una transformación canónica, entonces el corchete de Poisson es invariante
+\begin{equation}
+	[f,g]_{p,q} = [f,g]_{P,Q}
+\end{equation}
+Como consecuencia, si $(p,q) \to (P,Q)$ es canónica, entonces
+\begin{align}
+	[Q_a,Q_b]_{p,q} &= 0, & [P_a,P_b]_{p,q} &= 0, & [P_a,Q_b]_{p,q} &= \delta_{ab}
+\end{align}
+
+\subsection{Función generatriz}
+Una función generatriz nos permite relacionar coordenadas viejas y nuevas, tal que
+\begin{equation}
+	dF = \sum p_a \, dq_a - \sum P_a \, dQ_a + (\tilde{H} - H) \, dt
+\end{equation}
+de aquí
+\begin{align}
+	F_1(q,Q,t) &&& \Rightarrow & p_a &=  \pd{F_1}{q_a}, & P_a &= -\pd{F_1}{Q_a}, & \tilde{H} &= H + \pd{F_1}{t}\\
+	F_2(q,P,t) &&& \Rightarrow & p_a &=  \pd{F_2}{q_a}, & Q_a &=  \pd{F_2}{P_a}, & \tilde{H} &= H + \pd{F_2}{t}\\
+	F_3(p,Q,t) &&& \Rightarrow & q_a &= -\pd{F_3}{p_a}, & P_a &= -\pd{F_3}{Q_a}, & \tilde{H} &= H + \pd{F_3}{t}\\
+	F_4(p,P,t) &&& \Rightarrow & q_a &= -\pd{F_4}{p_a}, & Q_a &=  \pd{F_4}{P_a}, & \tilde{H} &= H + \pd{F_4}{t}
+\end{align}
+
+\subsection{Variables acción-ángulo}
+Para un sistema conservativo, podemos definir con $E$ la energía del sistema
+\begin{align}
+	S_0(q,E) &= \int^{q} p \, dq, & I(E) &= \oint \frac{p \, dq}{2\pi}
+\end{align}
+donde $p$ es el momento, que, para un potencial $U(q)$, puede ser escrito como
+\begin{equation}
+	p = p(q,E) = \sqrt{2m (E - U(q))}
+\end{equation}
+Tomando $S_0$ como una generatriz $F_2$, tal que $I$ juega el rol del momento transformado $P$, obtenemos
+\begin{equation}
+	w = \pd{S_0}{I}
+\end{equation}
+$I$ es llamada \textbf{acción} y $w$ \textbf{ángulo}. Ya que el hamiltoniano solo depende del momento canónico pero no de $w$, $w$ es cíclica, y
+\begin{align}
+	\dot{I} &= -\pd{H}{w} = 0, & \dot{w} &= \pd{H}{I} = \pd{E}{I} = \mathrm{const.}
+\end{align}
+\begin{equation}
+	\Rightarrow w = \td{E}{I} t + \mathrm{const.}
+\end{equation}
+
+\subsubsection{Ejemplo: Oscilador armónico}
+Para un oscilador armónico de frecuencia $\omega$ de hamiltoniano
+\begin{equation*}
+	H = \frac{1}{2m}p^2 + \frac{1}{2} m \omega^2 q^2
+\end{equation*}
+Tomamos la transformación
+\begin{equation*}
+	F(q,Q) = \frac{1}{2}m \omega q^2 \cot Q
+\end{equation*}
+tal que
+\begin{align*}
+	p &= \pd{F}{q} = m \omega q \cot Q, & P &= -\pd{F}{Q} = \frac{1}{2}m\omega \frac{q^2}{\sin^2 Q	}
+\end{align*}
+Solucionando algebraicamente, 
+\begin{align*}
+	q &= \sqrt{\frac{2P}{m\omega}} \sin Q, & p &= \sqrt{2 m \omega P} \cos Q
+\end{align*}
+Y el hamiltoniano,
+\begin{equation*}
+	H_\mathrm{new}(P,Q) = H_\mathrm{old}(p(P,Q), q(P,Q)) + \underbrace{\pd{F}{t}}_0 = \omega P
+\end{equation*}
+Es decir, no hay dependencia de $Q$, por lo que $Q$ es cíclica. Las ecuaciones de movimiento,
+\begin{equation*}
+	\dot{P} = -\pd{H}{Q} = 0 ~~\Rightarrow~~ P = \frac{E}{\omega} = \mathrm{const.}
+\end{equation*}
+\begin{equation*}
+	\dot{Q} = \pd{H}{P} = \omega ~~\Rightarrow~~ Q = \omega t + \mathrm{const.}
+\end{equation*}
+
+En este caso, $I = P, ~ w = \omega$.
+
+\subsection{Evolución como transformación canónica}
+La evolución temporal para coordenadas $(p^{(i)},q^{(i)}) \to (p^{(f)},q^{(f)})$ en instantes $t^{(i)}$ y $t^{(f)}$, respectivamente, es una transformación canónica.
+
+La función generatriz de esta transformación es la acción $S$:
+\begin{equation}
+	dS = \sum p_a^{(f)} \, dq_a^{(f)} - \sum p_a^{(i)} \, dq_a^{(i)} + \left(H^{(i)} - H^{(f)}\right) \, dt
+\end{equation}
+tal que
+\begin{align}
+	\pd{S}{q_a^{(f)}} &= p_a^{(f)}, & \pd{S}{q_a^{(i)}} &= -p_a^{(i)}, & \pd{S}{t^{(f)}} &= - H^{(f)}, & \pd{S}{t^{(i)}} &= H^{(i)}, & 
+\end{align}
+
+\subsection{Teorema de Liouville}
+Las transformaciones canónicas no cambian el elemento de volumen del espacio de fase
+\begin{equation}
+	dp_1 \ldots dp_N dq_1 \ldots dq_N = dP_1 \ldots dP_N dQ_1 \ldots dQ_N
+\end{equation}
+La evolución del sistema no cambia el elemento de volumen del espacio de fase 
+\begin{align}
+	d\Omega &\equiv dp_1(t_1) \ldots dp_N(t_1) dq_1(t_1) \ldots dq_N(t_1) \nonumber\\
+	&\equiv dp_1(t_2) \ldots dp_N(t_2) dq_1(t_2) \ldots dq_N(t_2)
+\end{align}
+
+\subsubsection{En notación simpléctica}
+
+\subsection{Formalismo de Hamilton-Jacobi}
+La ecuación de Hamilton-Jacobi
+\begin{equation}
+	\pd{S}{t} + H\left(p_a, q_a, t\right) = 0
+\end{equation}
+donde
+\begin{equation}
+	p_a = \pd{S}{q_a}
+\end{equation}
+En el caso de sistemas conservativos
+\begin{equation}
+	S = f(q_1,\ldots,q_N;\,\alpha_1,\ldots,\alpha_N) - Et
+\end{equation}
+donde $\alpha_i$ son constantes que se fijan dependiendo de las condiciones iniciales.
+
+Si $S(q_1,\ldots,q_N;\,\alpha_1,\ldots,\alpha_N,t)$ es la solución de la ecuación de Hamilton-Jacobi, entonces el sistema tiene $N$ integrales de movimiento, tal que
+\begin{equation}
+	Q_a = \pd{S}{\alpha_a} = \beta_a = \mathrm{const.}
+\end{equation}
+Formalmente, esto es un sistema de $N$ ecuaciones algebraicas (no diferenciales), por lo que la extracción de la trayectoria es un ejercicio de álgebra.
+
+\subsection{Teoría de perturbaciones}
+Asumimos que
+\begin{equation}
+	H = H_0 + \Delta H
+\end{equation}
+donde $H_0$ es solucionable analíticamente y $\Delta H \ll H_0$. Asumimos que conocemos $f_0 (q_1,\ldots,q_N;\,\alpha_1,\ldots,\alpha_N,t)$ de $H_0$. Tenemos que
+\begin{align}
+	\alpha &\approx \alpha_0 + \alpha_1(t) + \alpha_2(t) + \ldots, & |\alpha_2| &\ll |\alpha_1| \ll |\alpha_0|\\
+	\beta &\approx \beta_0 + \beta_1(t) + \beta_2(t) + \ldots, & |\beta_2| &\ll |\beta_1| \ll |\beta_0|
+\end{align}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
