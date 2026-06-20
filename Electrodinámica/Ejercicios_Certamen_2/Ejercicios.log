@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.15)  19 JUN 2026 13:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.15)  20 JUN 2026 00:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -611,30 +611,65 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 (C:\Users\simon\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.c
 fg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
-)) [1
+))
+LaTeX Font Info:    Trying to load font information for U+msa on input line 17.
 
-{C:/Users/simon/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-(Ejercicios.aux)
+ (C:\Users\simon\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 17.
+
+
+(C:\Users\simon\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Trying to load font information for U+esint on input line 1
+7.
+
+(C:\Users\simon\AppData\Local\Programs\MiKTeX\tex/latex/esint\uesint.fd
+File: uesint.fd 
+)
+[1
+
+{C:/Users/simon/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2]
+[3] [4] [5] [6] [7] [8] [9] [10] (Ejercicios.aux)
  ***********
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-05-26>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 14388 strings out of 467509
- 290340 string characters out of 5408780
- 759392 words of memory out of 5000000
- 43382 multiletter control sequences out of 15000+600000
- 628631 words of font info for 43 fonts, out of 8000000 for 9000
+ 14459 strings out of 467509
+ 291705 string characters out of 5408780
+ 776390 words of memory out of 5000000
+ 43432 multiletter control sequences out of 15000+600000
+ 632063 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,5n,107p,477b,188s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
-cmr10.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
-onts/cm/cmr12.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/pub
-lic/amsfonts/cm/cmr17.pfb>
-Output written on Ejercicios.pdf (1 page, 33564 bytes).
+ 102i,18n,107p,477b,351s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\simon\AppData\Local\MiKTeX\fonts/pk/ljfour/public/esint/dpi600\esi
+nt10.pk><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
+ts/cm/cmbx10.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/publ
+ic/amsfonts/cm/cmbx12.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/public/amsfonts/cm/cmbx7.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX
+/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/simon/AppData/Local/Progra
+ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/simon/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/simon/App
+Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/s
+imon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:
+/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12
+.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
+cm/cmr17.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
+msfonts/cm/cmr5.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/p
+ublic/amsfonts/cm/cmr7.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/
+type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/simon/AppData/Local/Programs/MiKT
+eX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/simon/AppData/Local/Progr
+ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/simon/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/amsfonts/latxfont/line10.pfb><C:/Users/si
+mon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pf
+b>
+Output written on Ejercicios.pdf (10 pages, 238381 bytes).
 PDF statistics:
- 24 PDF objects out of 1000 (max. 8388607)
+ 129 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

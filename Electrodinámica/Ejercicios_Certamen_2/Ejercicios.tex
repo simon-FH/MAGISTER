@@ -11,6 +11,482 @@
 
 \begin{document}
 \maketitle
+\section{Ondas electromagnéticas}
+\begin{enumerate}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\item Considere una onda plana monocromática en un medio lineal no conductor con permitividad $\epsilon$ y permeabilidad $\mu$.
+	\begin{enumerate}
+		% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+		\item[(a)] Use las ecuaciones de Maxwell para demostrar que $\n{k} \cdot \n{E}_0 = \n{k} \cdot \n{B}_0 = 0$.
+		\resp Tenemos que
+		\begin{equation}
+			\n{E}(\rv,t) = \n{E}_0 \, e^{i(\n{k}\cdot\rv - \omega t)}, \quad \n{B}(\rv,t) = \n{B}_0 \, e^{i(\n{k}\cdot\rv - \omega t)}
+		\end{equation}
+		entonces, para estos campos tendremos
+		\begin{equation}
+			\nabla \to i\n{k}, \quad \pd{}{t} \to -i\omega
+		\end{equation}
+		
+		De las ecuaciones de Maxwell sin fuentes,
+		\begin{align}
+			\di\n{D} &= 0, & \di\n{B} &= 0
+		\end{align}
+		Reemplazando
+		\begin{align}
+			\di\n{D} &= 0, & \di\n{B} &= 0\nonumber\\
+			i\n{k}\cdot\epsilon\n{E} &= 0, & i\n{k}\cdot\n{B} &= 0\nonumber\\
+			\underbrace{i\epsilon \, e^{i(\n{k}\cdot\rv - \omega t)}}_{\neq 0} (\n{k}\cdot\n{E}_0) &= 0, & \underbrace{i \, e^{i(\n{k}\cdot\rv - \omega t)}}_{\neq 0} (\n{k}\cdot\n{B}_0) &= 0\nonumber\\
+			\Rightarrow \n{k}\cdot\n{E}_0 &= 0, & \Rightarrow \n{k}\cdot\n{B}_0 &= 0
+		\end{align}
+		\qed
+		
+		% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+		\item[(b)] Derive $\n{B}_0 = (1/\omega)\n{k} \times \n{E}_0$.
+		\resp De la ecuación
+		\begin{equation}
+			\ro\n{E} = -\pd{\n{B}}{t}
+		\end{equation}
+		Y reemplazando 
+		\begin{align}
+			i\n{k}\times\left(\n{E}_0 \, e^{i(\n{k}\cdot\rv - \omega t)}\right) &= - \pd{}{t}\n{B}_0 \, e^{i(\n{k}\cdot\rv - \omega t)} \nonumber\\
+			i \, \cancel{e^{i(\n{k}\cdot\rv - \omega t)}} \n{k} \times \n{E}_0 &= \n{B}_0 \cdot i \omega \, \cancel{e^{i(\n{k}\cdot\rv - \omega t)}} \nonumber\\
+			\n{k} \times \n{E}_0 &= \omega \n{B}_0
+		\end{align}
+		\qed
+		
+		% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+		\item[(c)] Muestre que las contribuciones eléctrica y magnética a la energía promedio son iguales.
+		\resp Tenemos
+		\begin{equation}
+			u = \epsilon E^2 = \frac{1}{\mu} B^2
+		\end{equation}
+		\qed
+		
+		% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+		\item[(d)] Calcule $\pr{\n{S}}$ en términos de $|\n{E}_0|^2$ y la impedancia $Z$.
+		\resp
+		
+		\qed
+	\end{enumerate}
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\item Partiendo de
+	\begin{equation}
+		E_x = a_x \cos(\psi), \quad E_y = a_y \cos(\psi + \Delta)
+	\end{equation}
+	demuestre que la punta de $\n{E}$ satisface
+	\begin{equation}
+		\frac{E_x^2}{a_x^2} + \frac{E_y^2}{a_y^2} - 2\frac{E_x E_y}{a_x a_y} \cos\Delta = \sin^2 \Delta
+	\end{equation}
+	Identifique los casos de polarización lineal y circular.
+	\resp Del primer componente
+	\begin{equation*}
+		\cos\psi = \frac{E_x}{a_x}
+	\end{equation*}
+	Del segundo
+	\begin{equation*}
+		\frac{E_y}{a_y} = \cos(\psi + \Delta) = \cos\psi\cos\Delta - \sin\psi\sin\Delta
+	\end{equation*}
+	Sustituyendo
+	\begin{equation*}
+		\frac{E_y}{a_y} - \frac{E_x}{a_x}\cos\Delta = -\sin\psi\sin\Delta
+	\end{equation*}
+	Elevando al cuadrado
+	\begin{equation*}
+		\left(\frac{E_y}{a_y} - \frac{E_x}{a_x}\cos\Delta\right)^2 = \sin^2\!\psi\,\sin^2\!\Delta
+	\end{equation*}
+	Expandiendo a la izquierda
+	\begin{equation*}
+		\frac{E_y^2}{a_y^2} - 2\frac{E_x E_y}{a_x a_y}\cos\Delta + \frac{E_x^2}{a_x^2}\cos^2\!\Delta = \sin^2\!\psi\,\sin^2\!\Delta
+	\end{equation*}
+	Reemplazando $\sin^2\psi = 1 - \cos^2\psi = 1 - E_x^2/a_x^2$ a la derecha
+	\begin{equation*}
+		\frac{E_y^2}{a_y^2} - 2\frac{E_x E_y}{a_x a_y}\cos\Delta + \frac{E_x^2}{a_x^2}\cos^2\!\Delta = \left(1 - \frac{E_x^2}{a_x^2}\right)\sin^2\!\Delta
+	\end{equation*}
+	Expandiendo a la derecha y moviendo $\frac{E_x^2}{a_x^2}\sin^2\Delta$ a la izquierda
+	\begin{equation*}
+		\frac{E_y^2}{a_y^2} - 2\frac{E_x E_y}{a_x a_y}\cos\Delta + \frac{E_x^2}{a_x^2}\underbrace{(\cos^2\!\Delta + \sin^2\!\Delta)}_{=\,1} = \sin^2\!\Delta
+	\end{equation*}
+	\begin{equation*}
+		\Rightarrow \frac{E_x^2}{a_x^2} + \frac{E_y^2}{a_y^2} - 2\frac{E_x E_y}{a_x a_y}\cos\Delta = \sin^2\!\Delta
+	\end{equation*}
+	\qed
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\item Para el vector de Jones
+	\begin{equation}
+		\n{J} = E_0 \begin{pmatrix}
+			1\\
+			i\alpha
+		\end{pmatrix}
+	\end{equation}
+	con $\alpha$ real, calcule $S_0, S_1, S_2, S_3$. Determine para qué valor de $\alpha$ la polarización es circular.
+	\resp Los parámetros de Stokes
+	\begin{align}
+		S_0 &= |E_x|^2 + |E_y|^2 = 1 + \alpha^2,\\
+		S_1 &= |E_x|^2 - |E_y|^2 = 1 - \alpha^2,\\
+		S_2 &=  2 \mathrm{Re}\!\left[E_x E_y^*\right] = 0,\\
+		S_3 &= -2 \mathrm{Im}\!\left[E_x E_y^*\right] = 2\alpha
+	\end{align}
+	\qed
+	
+	Para que la polarización sea circular se deberá cumplir $|E_x| = |E_y|$, por lo que
+	\begin{equation*}
+		\alpha = \pm 1
+	\end{equation*}
+	\qed
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\item Derive los coeficientes $r_s$ y $t_s$ aplicando las condiciones de continuidad de los campos tangenciales $\n{E}$ y $\n{H}$ en la interfaz $z = 0$ entre dos medios no magnéticos.
+	\resp Los coeficientes
+	\begin{align}
+		r_s &= \frac{n_1\cos\theta_{i} - n_2\cos\theta_{t}}{n_1\cos\theta_{i} + n_2\cos\theta_{t}}, & t_s &= \frac{2 n_1 \cos\theta_{i}}{n_1\cos\theta_{i} + n_2\cos\theta_{t}}
+	\end{align}
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\item Muestre que $r_p = 0$ implica $\theta_i + \theta_t = \pi/2$ y derive
+	\begin{equation}
+		\tan \theta_B = \frac{n_2}{n_1}
+	\end{equation}
+	Discuta qué ocurre si $n_2 < n_1$.
+	\resp Tenemos que
+	\begin{equation}
+		r_p = \frac{n_2\cos\theta_{i} - n_1\cos\theta_{t}}{n_2\cos\theta_{i} + n_1\cos\theta_{t}} = 0 ~~\Rightarrow~~ n_2\cos\theta_{i} = n_1\cos\theta_{t}
+	\end{equation}
+	Y la ley de Snell
+	\begin{equation}
+		n_1 \sin\theta_{i} = n_2 \sin\theta_{t}
+	\end{equation}
+	Combinando ambas
+	\begin{align*}
+		n_1 \frac{\sin\theta_{i}}{\sin\theta_{t}}\cos\theta_i &= n_1\cos\theta_{t}\\
+		\Rightarrow \sin\theta_{i}\cos\theta_i &= \sin\theta_{t}\cos\theta_{t}\\
+		\frac{1}{2} \sin 2\theta_i &= \frac{1}{2} \sin 2\theta_t\\
+		\sin 2\theta_i &= \sin 2\theta_t
+	\end{align*}
+	Por lo que
+	\begin{align}
+		2\theta_i &= \pi - 2\theta_t\\
+		\Rightarrow \theta_i + \theta_t = \pi/2
+	\end{align}
+	\qed
+	
+	Sustituyendo esto en la ley de Snell,
+	\begin{align}
+		n_1 \sin\theta_{i} &= n_2 \sin\left(\pi/2 - \theta_i\right)\nonumber\\
+		n_1 \sin\theta_{i} &= n_2 \cos\left(\theta_i\right)\nonumber\\
+		\Rightarrow \frac{\sin\theta_{i}}{\cos\theta_{i}} &= \frac{n_2}{n_1}
+	\end{align}
+	\qed
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\item Para $n_1 > n_2$ y $\theta_i > \theta_c$, derive el número de decaimiento
+	\begin{equation}
+		\kappa = k_0 \sqrt{n_1^2 \sin^2\theta_i - n_2^2}
+	\end{equation}
+	Explique por qué el campo transmitido no transporta potencia promedio en la dirección normal.
+	\resp Los vectores de onda
+	\begin{equation}
+		\n{k}_i = k_0 n_1(\sin\theta_i\,\xhat + \cos\theta_i\,\zhat), \quad \n{k}_t = k_{tx}\xhat + k_{tz}\zhat
+	\end{equation}
+	Como el campo tangente debe ser continuo, $k_{tx} = k_{ix}$, por lo que
+	\begin{equation}
+		k_{tx} = k_0 n_1 \sin\theta_i
+	\end{equation}
+	La relación de dispersión para el componente perpendicular
+	\begin{equation}
+		k_{tx}^2 + k_{tz}^2 = k_0^2 n_2^2 ~~\Rightarrow~~ k_{tz}^2 = k_0^2 \left(n_2^2 - n_1^2\sin^2\theta_i\right)
+	\end{equation}
+	
+	El ángulo crítico es $\theta_c = \arcsin(n_2/n_1)$, para $\theta_i > \theta_c$:
+	\begin{equation}
+		n_1\sin\theta_i > n_2 ~~\Rightarrow~~ n_2^2 - n_1^2\sin^2\theta_i < 0 ~~\Rightarrow~~ k_{tz}^2 < 0
+	\end{equation}
+	
+	Por lo que $k_{tz}$ is imaginario. Tomando $k_{tz} = i\kappa$ con $\kappa > 0$
+	\begin{equation}
+		-\kappa^2 = k_0^2(n_2^2 - n_1^2\sin^2\theta_i)
+	\end{equation}
+	\begin{equation}
+		\Rightarrow \kappa = k_0\sqrt{n_1^2\sin^2\theta_i - n_2^2}
+	\end{equation}
+	El campo transmitido es una onda evanescente, por lo que se propaga en el medio 2 decayendo exponencialmente.
+	\begin{equation}
+		\n{E}_t = E_t e^{i k_x x} e^{-\kappa z} \yhat = E_t e^{ik_0 n_1\sin\theta_i\cdot x}\,e^{-\kappa z} \yhat
+	\end{equation}
+	\qed
+	
+	Por otro lado, la potencia promedio en la dirección normal puede ser representada por
+	\begin{equation}
+		\pr{S_z} = \frac{1}{2}\mathrm{Re}\!\left[\n{E}_t\times\n{H}_t^*\right]_z
+	\end{equation}
+	A partir de $\ro\n{E} = -i\omega\uo\n{H}$ tenemos
+	\begin{align*}
+		\n{H}_t^* &= -\frac{i}{\omega\uo}\ro\n{E}_t\\
+		&= -\frac{i}{\omega\uo} \left[\kappa\xhat + i k_x\zhat\right]|\n{E}_t|
+	\end{align*}
+	Luego
+	\begin{equation*}
+		\left[\n{E}_t\times\n{H}_t^*\right]_z = \frac{i}{\omega\uo}|\n{E}_t|^2 \kappa
+	\end{equation*}
+	Ya que esto es es puramente imaginario tenemos
+	\begin{equation}
+		\pr{S_z} = \frac{1}{2}\cancel{\mathrm{Re}\!\left[\n{E}_t\times\n{H}_t^*\right]_z} = 0
+	\end{equation}
+	No hay transmisión de energía normal a la superficie.
+	
+	\qed
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\item Suponga que la susceptibilidad de un medio satisface causalidad y que $\chi(\omega)$ decrece suficientemente rápido para $|\omega| \to \infty$. Explique porque $\chi(\omega)$ es analítica en el semiplano superior y derive formalmente la primera relación de Kramers–Kronig usando el teorema de Cauchy.
+	\resp La susceptibilidad en el tiempo conecta la polarización con el campo:
+	
+	$$P(t) = \epsilon_0 \int_{-\infty}^{\infty} \tilde{\chi}(\tau)\, E(t-\tau)\, d\tau$$
+	Causalidad exige que el medio no responda antes del estímulo
+	$$\tilde{\chi}(\tau) = 0 \quad \text{para } \tau < 0$$
+	Por lo tanto, la transformada de Fourier es en realidad una integral sobre el semirrecta positiva:
+	$$\chi(\omega) = \int_0^{\infty} \tilde{\chi}(\tau)\, e^{i\omega\tau}\, d\tau$$
+	Para $\omega = \omega' + i\omega''$ con $\omega'' > 0$:
+	$$\chi(\omega) = \int_0^{\infty} \tilde{\chi}(\tau)\, e^{i\omega'\tau}\, \underbrace{e^{-\omega''\tau}}_{\text{converge}} d\tau$$
+	El factor $e^{-\omega''\tau}$ garantiza convergencia absoluta para todo $\tau > 0$. La derivación bajo la integral es válida, por lo que $\chi(\omega)$ es analítica en todo el semiplano superior $\text{Im}(\omega) > 0$.
+	
+	\qed
+	
+	Considere la integral de contorno de $\dfrac{\chi(\omega')}{\omega' - \omega}$ sobre el contorno $C$ en el semiplano superior:
+	
+	$$\oint_C \frac{\chi(\omega')}{\omega' - \omega}\, d\omega' = 0$$
+	
+	ya que $\chi$ es analítica allí y el integrando no tiene polos en el interior. El contorno consiste en cuatro partes:
+	$$\underbrace{\int_{-R}^{\omega-\epsilon}}_{\text{eje real izq.}} + \underbrace{\int_{\Gamma_\epsilon}}_{\text{semicírculo pequeño}} + \underbrace{\int_{\omega+\epsilon}^{R}}_{\text{eje real der.}} + \underbrace{\int_{\Gamma_R}}_{\text{semicírculo grande}} = 0$$
+	Semicírculo grande $\Gamma_R$: Por hipótesis $|\chi(\omega)| \to 0$ cuando $|\omega|\to\infty$, así que:
+	$$\int_{\Gamma_R} \frac{\chi(\omega')}{\omega'-\omega}\,d\omega' \xrightarrow{R\to\infty} 0$$
+	Semicírculo pequeño $\Gamma_\epsilon$ (rodea $\omega$ por arriba, $\theta: \pi \to 0$): con $\omega' = \omega + \epsilon e^{i\theta}$:
+	$$\int_{\Gamma_\epsilon} \frac{\chi(\omega')}{\omega'-\omega}\,d\omega' = i\int_\pi^0 \chi(\omega + \epsilon e^{i\theta})\,d\theta \xrightarrow{\epsilon\to 0} -i\pi\,\chi(\omega)$$
+	Tomando $R\to\infty$, $\epsilon\to 0$, los dos tramos del eje real se convierten en el valor principal de Cauchy:
+	$$\mathcal{P}\int_{-\infty}^{\infty} \frac{\chi(\omega')}{\omega' - \omega}\,d\omega' - i\pi\,\chi(\omega) = 0$$
+	
+	Despejando:
+	
+	$$\boxed{\chi(\omega) = \frac{1}{i\pi}\,\mathcal{P}\!\int_{-\infty}^{\infty} \frac{\chi(\omega')}{\omega'-\omega}\,d\omega'}$$
+	
+	
+	Escribiendo $\chi = \chi_1 + i\chi_2$ y usando $\frac{1}{i} = -i$:
+	
+	$$\chi_1 + i\chi_2 = \frac{-i}{\pi}\mathcal{P}\!\int\frac{\chi_1(\omega') + i\chi_2(\omega')}{\omega'-\omega}\,d\omega' = \frac{1}{\pi}\mathcal{P}\!\int\frac{\chi_2(\omega')}{\omega'-\omega}\,d\omega' \;-\; \frac{i}{\pi}\mathcal{P}\!\int\frac{\chi_1(\omega')}{\omega'-\omega}\,d\omega'$$
+	
+	Igualando partes real e imaginaria:
+	
+	$$\boxed{\chi_1(\omega) = \frac{1}{\pi}\,\mathcal{P}\!\int_{-\infty}^{\infty} \frac{\chi_2(\omega')}{\omega'-\omega}\,d\omega'} \qquad \textbf{(primera relación K–K)}$$
+	
+	$$\chi_2(\omega) = -\frac{1}{\pi}\,\mathcal{P}\!\int_{-\infty}^{\infty} \frac{\chi_1(\omega')}{\omega'-\omega}\,d\omega' \qquad \text{(segunda)}$$
+	
+	La estructura es la de una transformada de Hilbert: la parte real y la imaginaria de $\chi$ no son independientes; conocer una determina completamente la otra. Físicamente, esto es una consecuencia directa de causalidad — la dispersión (parte real) y la absorción (parte imaginaria) están inextricablemente ligadas.
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\item Una guía rectangular de paredes conductoras perfectas tiene dimensiones $a > b$ y está llena de vacío.
+	\begin{enumerate}
+		% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+		\item[(a)] Calcule las frecuencias de corte de los modos ${T\!E}_{10}, {T\!E}_{01}, {T\!E}_{20}$ y ${T\!M}_{11}$.
+		\resp Las frecuencias de corte
+		\begin{equation}
+			\omega_c = \frac{k_\perp}{\sqrt{\mu\epsilon}} = c \sqrt{\left(\frac{m\pi}{a}\right)^2 + \left(\frac{n\pi}{b}\right)^2 }
+		\end{equation}
+		Por lo que
+		\begin{align*}
+			\omega_{{T\!E}_{10}} &= c \left(\frac{\pi}{a}\right)\\
+			\omega_{{T\!E}_{01}} &= c \left(\frac{\pi}{b}\right)\\
+			\omega_{{T\!E}_{20}} &= c \left(\frac{2\pi}{a}\right)\\
+			\omega_{{T\!M}_{11}} &= c \sqrt{\left(\frac{\pi}{a}\right)^2 + \left(\frac{\pi}{b}\right)^2 }
+		\end{align*}
+		\qed
+		
+		% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+		\item[(b)] Determine una ventana de frecuencias en la cual sólo se propaga el modo ${T\!E}_{10}$.
+		\resp Ya que $a > b$,
+		\begin{equation}
+			\omega_{{T\!E}_{10}} < \omega_{{T\!E}_{01}}, \quad \omega_{{T\!E}_{10}} < \omega_{{T\!E}_{20}} = 2 \omega_{{T\!E}_{10}}, \quad \omega_{{T\!E}_{10}} < \omega_{{T\!M}_{11}}
+		\end{equation}
+		Por lo que solo se propagará el modo ${{T\!E}_{10}}$ si
+		\begin{equation}
+			\frac{c \pi}{a} < \omega < \min\left(\frac{c \pi}{b}, \frac{2 c \pi}{a}\right)
+		\end{equation}
+		
+		% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+		\item[(c)] Discuta qué ocurre si se intercambian las dimensiones $a$ y $b$.
+		\resp 
+	\end{enumerate}
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\item Para una guía rectangular con $a > b$, tome
+	\begin{equation}
+		H_z = H_0 \cos(\pi x/a) e ^{i k_z z}
+	\end{equation}
+	\begin{enumerate}
+		% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+		\item[(a)] Use las ecuaciones de reconstrucción para obtener $\n{E}_\perp$ y $\n{H}_\perp$.
+		\resp Los campos transversales
+		\begin{align*}
+			\n{E}_\perp &= \frac{i}{k_\perp^2}\left[k_z\gr_\perp E_z + \omega\mu\zhat\times\gr_\perp H_z\right], & \n{H}_\perp &= \frac{i}{k_\perp^2}\left[k_z\gr_\perp H_z - \omega\epsilon\zhat\times\gr_\perp E_z\right]
+		\end{align*}
+		Ya que
+		\begin{equation*}
+			H_z = H_0 \cos(\pi x/a) e ^{i k_z z}
+		\end{equation*}
+		entonces es el modo ${{T\!E}_{10}}$, por lo que
+		\begin{equation*}
+			E_z = 0
+		\end{equation*}
+		Además considerando
+		\begin{equation}
+			\nabla_\perp = \nabla - i k_z \zhat
+		\end{equation}
+		Tenemos
+		\begin{align*}
+			\nabla_\perp H_z &= \nabla H_z - i k_z H_z \zhat\\
+			&= - H_0 \frac{\pi}{a} \sin(\pi x/a) e ^{i k_z z}\xhat + i k_z H_z \zhat - i k_z H_z \zhat\\
+			&= - H_0 \frac{\pi}{a} \sin(\pi x/a) e ^{i k_z z}\xhat
+		\end{align*}
+		Los campos transversales entonces
+		\begin{align*}
+			\n{E}_\perp &= \frac{i}{k_\perp^2}\left[\omega\mu\zhat\times\gr_\perp H_z\right], & \n{H}_\perp &= \frac{i}{k_\perp^2}\left[k_z\gr_\perp H_z \right]\\
+			&= \frac{i}{k_\perp^2} \left[-\omega\mu  H_0 \frac{\pi}{a} \sin(\pi x/a) e ^{i k_z z} \yhat\right], & &= \frac{i}{k_\perp^2}\left[- k_z H_0 \frac{\pi}{a} \sin(\pi x/a) e ^{i k_z z}\xhat \right]\\
+			&= -\frac{i \omega\mu\pi  H_0}{a k_\perp^2} \sin(\pi x/a) e ^{i k_z z} \yhat, & &= -\frac{i k_z H_0 \pi}{a k_\perp^2} \sin(\pi x/a) e ^{i k_z z}\xhat
+		\end{align*}
+		\qed
+		
+		% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+		\item[(b)] Verifique explícitamente que $\nhat \times \n{E} = 0$ en las paredes conductoras.
+		\resp
+		
+		% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+		\item[(c)] Calcule la dependencia espacial del vector de Poynting promedio.
+		\resp
+		
+	\end{enumerate}
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\item Una guía circular de radio $a$ está en vacío.
+	\begin{enumerate}	
+		% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+		\item[(a)] Escriba la ecuación transversal para $E_z$ en modos $T\!M$ y para $H_z$ en modos $T\!E$.
+		\resp Los campos transversales
+		\begin{align*}
+			\n{E}_\perp &= \frac{i}{k_\perp^2}\left[k_z\gr_\perp E_z + \omega\mu\zhat\times\gr_\perp H_z\right], & \n{H}_\perp &= \frac{i}{k_\perp^2}\left[k_z\gr_\perp H_z - \omega\epsilon\zhat\times\gr_\perp E_z\right]
+		\end{align*}
+		En modo $T\!M$, $H_z = 0$ y $k_\perp = x_{mn}/a$, entonces
+		\begin{align*}
+			\n{E}_\perp &= \frac{i}{k_\perp^2}\left[k_z\gr_\perp E_z\right], & \n{H}_\perp &= \frac{i}{k_\perp^2}\left[- \omega\epsilon\zhat\times\gr_\perp E_z\right]
+		\end{align*}
+		
+		% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+		\item[(b)] Explique por qué aparecen ceros de $J_m$ para $T\!M$ y ceros de $J'm$ para $T\!E$.
+		\resp
+		
+		% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+		\item[(c)] Compare cualitativamente las frecuencias de corte de los primeros modos.
+		\resp
+		
+	\end{enumerate}
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\item Un dipolo eléctrico armónico apunta en la dirección $z$:
+	\begin{equation}
+		\n{p}(t) = \mathrm{Re}\!\left[p_0 e^{-i \omega t}\right]\zhat
+	\end{equation}
+	\begin{enumerate}
+		% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+		\item[(a)] Escriba el campo eléctrico radiativo.
+		\resp El campo eléctrico radiativo
+		\begin{equation}
+			\n{E}_\mathrm{rad} (\rv) = \ke[k^2] \frac{e^{ikr}}{r} \rhat\times(\n{p}\times\rhat)
+		\end{equation}
+		Tomando $\zhat\times\rhat = \sin\theta\,\phat ~\Rightarrow~ \rhat\times(\zhat\times\rhat) = -\sin\theta\,\that$. Finalmente
+		\begin{equation}
+			\n{E}_\mathrm{rad} (\rv) = -\ke[k^2] \frac{e^{ikr}}{r} \mathrm{Re}\!\left[p_0 e^{-i \omega t}\right] \sin\theta\,\that
+		\end{equation}
+		\qed
+		
+		% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+		\item[(b)] Calcule $\ltd{P}{\Omega}$.
+		\resp Tenemos
+		\begin{equation}
+			\td{P}{\Omega} = \frac{\uo\omega^4 |p|^2}{32\pi^2 c} \sin^2\theta
+		\end{equation}
+		por lo que, considerando $|p| = \left|\mathrm{Re}\!\left[p_0 e^{-i \omega t}\right]\right| = p_0$ (asumiendo que $p_0$ es real), tendremos
+		\begin{equation}
+			\td{P}{\Omega} = \frac{\uo\omega^4 p_0^2}{32\pi^2 c} \sin^2\theta
+		\end{equation}
+		\qed
+		
+		% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+		\item[(c)] Integre sobre el ángulo sólido y obtenga la potencia total.
+		\resp La potencia total radiada es
+		\begin{equation}
+			P = \frac{\uo\omega^4 |p|^2}{12 \pi c} = \frac{\uo\omega^4 p_0^2}{12 \pi c}
+		\end{equation}
+		\qed
+		
+	\end{enumerate}	
+\end{enumerate}
+
+\section{Electrodinámica covariante}
+\begin{enumerate}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\item Una distribución tiene densidad de carga $\rho'$ en reposo en $K'$. Encuentre $\rho$ y $\n{J}$ en un sistema $K$ donde se mueve con velocidad $v\xhat$. Interprete el resultado en términos de contracción de Lorentz.
+	\resp En el marco $K'$ tenemos la cuadricorriente
+	\begin{equation}
+		J^{\mu} = (c\rho',0)
+	\end{equation}
+	Por lo que, con un boost $v\xhat$, tenemos
+	\begin{align*}
+		\beta &= v/c, & \gamma = \frac{1}{\sqrt{1 - v^2/c^2}}
+	\end{align*}
+	Así que
+	\begin{equation}
+		\Lambda^\mu_{\,\nu} \, J^\mu = \begin{pmatrix}
+			\gamma & \beta\gamma & 0 & 0\\
+			\beta\gamma & \gamma & 0 & 0\\
+			0 & 0 & 1 & 0\\
+			0 & 0 & 0 & 1
+		\end{pmatrix} \, \begin{pmatrix}
+			c\rho'\\
+			0\\
+			0\\
+			0
+		\end{pmatrix} = \begin{pmatrix}
+			c \cdot \gamma \rho'\\
+			\beta \gamma c \rho'\\
+			0\\
+			0
+		\end{pmatrix}
+	\end{equation}
+	Por lo que
+	\begin{align}
+		\rho &= \frac{1}{\sqrt{1 - v^2/c^2}} \rho', & J_x = \frac{v}{\sqrt{1 - v^2/c^2}} \rho'
+	\end{align}
+	\qed
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\item Partiendo de $A_\mu = (\Phi/c, \n{A})$, derive explícitamente la matriz $F^{\mu\nu}$ en términos de $\n{E}$ y $\n{B}$. Compruebe que $F^{\mu\nu}$ es antisimétrico.
+	\resp 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+\end{enumerate}
+
+
+
+
+
+
+
+
 
 
 
