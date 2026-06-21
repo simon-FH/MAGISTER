@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.15)  20 JUN 2026 12:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.15)  21 JUN 2026 03:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**./Ejercicios.tex
-(Ejercicios.tex
+**./Tarea4_SFonseca.tex
+(Tarea4_SFonseca.tex
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-05-26>
 (C:\Users\simon\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
@@ -528,29 +528,49 @@ Package: cancel 2013/04/12 v2.2 Cancel math terms
 Package: esint 
 \symlargesymbolsA=\mathgroup6
 )
-(../../simonPackage.sty
+(C:\Users\simon\AppData\Local\Programs\MiKTeX\tex/latex/eso-pic\eso-pic.sty
+Package: eso-pic 2026/05/31 v3.0e eso-pic (RN)
+\ESO@tempdima=\dimen285
+\ESO@tempdimb=\dimen286
+)
+(C:\Users\simon\AppData\Local\Programs\MiKTeX\tex/latex/graphics\dvipsnam.def
+File: dvipsnam.def 2026-05-17 v3.0m Driver-dependent file (DPC,SPQR)
+)
+(C:\Users\simon\AppData\Local\Programs\MiKTeX\tex/latex/tikzmark\tikzlibrarytik
+zmark.code.tex
+File: tikzlibrarytikzmark.code.tex 2026/05/31 v1.16 TikZ library for marking po
+sitions in a document
+\l__sn_x_dim=\dimen287
+\l__sn_y_dim=\dimen288
+\l__sn_xa_dim=\dimen289
+\l__sn_ya_dim=\dimen290
+)
+(C:\Users\simon\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibraryfit.code.tex
+File: tikzlibraryfit.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (../../../simonPackage.sty
 
-LaTeX Warning: You have requested package `../../simonPackage',
+LaTeX Warning: You have requested package `../../../simonPackage',
                but the package provides `simonPackage'.
 
 Package: simonPackage 2026/06/15 Custom Layout and Math Commands
-) (Ejercicios.aux)
-\openout1 = `Ejercicios.aux'.
+) (Tarea4_SFonseca.aux)
+\openout1 = `Tarea4_SFonseca.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -591,13 +611,13 @@ LaTeX Font Info:    ... okay on input line 12.
 ii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count328
-\scratchdimen=\dimen285
+\scratchdimen=\dimen291
 \scratchbox=\box66
 \nofMPsegments=\count329
 \nofMParguments=\count330
 \everyMPshowfont=\toks42
 \MPscratchCnt=\count331
-\MPscratchDim=\dimen286
+\MPscratchDim=\dimen292
 \MPnumerator=\count332
 \makeMPintoPDFobject=\count333
 \everyMPtoPDFconversion=\toks43
@@ -612,64 +632,65 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 fg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-LaTeX Font Info:    Trying to load font information for U+msa on input line 17.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 24.
 
  (C:\Users\simon\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 17.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 24.
 
 
 (C:\Users\simon\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+esint on input line 1
-7.
+LaTeX Font Info:    Trying to load font information for U+esint on input line 2
+4.
 
 (C:\Users\simon\AppData\Local\Programs\MiKTeX\tex/latex/esint\uesint.fd
 File: uesint.fd 
 )
+Overfull \hbox (0.11317pt too wide) detected at line 48
+[]
+ []
+
 [1
 
 {C:/Users/simon/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2]
-[3] [4] [5] [6] [7] [8] [9] [10] (Ejercicios.aux)
+[3] [4] [5] [6] [7] [8] (Tarea4_SFonseca.aux)
  ***********
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-05-26>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 14459 strings out of 467509
- 291705 string characters out of 5408780
- 776392 words of memory out of 5000000
- 43432 multiletter control sequences out of 15000+600000
- 632063 words of font info for 59 fonts, out of 8000000 for 9000
+ 14868 strings out of 467509
+ 300564 string characters out of 5408780
+ 795376 words of memory out of 5000000
+ 43826 multiletter control sequences out of 15000+600000
+ 632231 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,18n,107p,477b,351s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,17n,107p,479b,255s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\simon\AppData\Local\MiKTeX\fonts/pk/ljfour/public/esint/dpi600\esi
 nt10.pk><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
 ts/cm/cmbx10.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/publ
 ic/amsfonts/cm/cmbx12.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/t
-ype1/public/amsfonts/cm/cmbx7.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX
-/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/simon/AppData/Local/Progra
-ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/simon/AppData/Loc
-al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/simon/App
-Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/s
-imon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:
-/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12
+ype1/public/amsfonts/cm/cmex10.pfb><C:/Users/simon/AppData/Local/Programs/MiKTe
+X/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/simon/AppData/Local/Progr
+ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/simon/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/simon/App
+Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/s
+imon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:
+/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17
 .pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
-cm/cmr17.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
-msfonts/cm/cmr5.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/p
-ublic/amsfonts/cm/cmr7.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/
-type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/simon/AppData/Local/Programs/MiKT
-eX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/simon/AppData/Local/Progr
-ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/simon/AppData/Loc
-al/Programs/MiKTeX/fonts/type1/public/amsfonts/latxfont/line10.pfb><C:/Users/si
-mon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pf
-b>
-Output written on Ejercicios.pdf (10 pages, 237043 bytes).
+cm/cmr5.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
+sfonts/cm/cmr7.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/pu
+blic/amsfonts/cm/cmsy10.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts
+/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/simon/AppData/Local/Programs/MiKT
+eX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/simon/AppData/Local/Prog
+rams/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on Tarea4_SFonseca.pdf (8 pages, 220400 bytes).
 PDF statistics:
- 129 PDF objects out of 1000 (max. 8388607)
+ 113 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,0 +1,336 @@
+% !TeX spellcheck = es_CL
+\documentclass[]{article}
+\usepackage{geometry,tikz,lipsum,amsmath,amssymb,soul,cancel,esint,eso-pic}
+\usepackage[dvipsnames]{xcolor}
+
+\definecolor{verde}{rgb}{0.844, 1.000, 0.753}
+\definecolor{azul}{rgb}{ 0.858, 0.930, 1.000}
+\definecolor{rojo}{rgb}{ 1.000, 0.788, 0.730}
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt
+\usetikzlibrary{tikzmark,fit}
+
+\numberwithin{equation}{section}
+
+\usepackage{../../../simonPackage}
+
+%opening
+\title{Tarea 4 Mecánica Clásica Avanzada}
+\author{Simon Fonseca}
+
+\begin{document}
+\maketitle
+\section{Pregunta 1}
+Using hamiltonian formalism, analyze the motion of the axially symmetric rigid body ("symmetric top") in the homogeneous gravitational field. Assume that the orientation of the rigid body is parametrized in terms of the Euler angles $\alpha$, $\beta$, $\gamma$ in $ZXZ$ convention, so the components of the angular velocity $\Omega$ are given by
+\begin{align}
+	\Omega_1 &= \dot{\alpha} \sin\beta \sin\gamma + \dot{\beta} \cos\gamma, & \Omega_2 &= \dot{\alpha} \sin\beta \cos\gamma - \dot{\beta} \sin\gamma, & \Omega_3 &= \dot{\alpha} \cos\beta + \dot{\gamma}
+\end{align}
+in the body’s rest frame (can get this result making geometric projections).
+\begin{enumerate}
+	\item[a.] Construct the lagrangian and the hamiltonian for this system
+	\resp Ya que el cuerpo es simétrico axialmente, los términos de inercia cumplirán $I_1 = I_2 \neq I_3$, por lo que la energía cinética 
+	\begin{align*}
+		T &= \frac{1}{2}I_1 \Omega_1^2 + \frac{1}{2}I_2 \Omega_2^2 + \frac{1}{2}I_3 \Omega_3^2\\
+		&= \frac{1}{2} I_1 \left[\left(\dot{\alpha} \sin\beta \sin\gamma + \dot{\beta} \cos\gamma\right)^2 + \left(\dot{\alpha} \sin\beta \cos\gamma - \dot{\beta} \sin\gamma\right)^2 \right] + \frac{1}{2} I_3 \left(\dot{\alpha} \cos\beta + \dot{\gamma}\right)^2\\
+		&= \frac{1}{2} I_1 \left(\dot{\alpha}^2 \sin^2\beta + \dot{\beta}^2 \right) + \frac{1}{2} I_3 \left(\dot{\alpha} \cos\beta + \dot{\gamma}\right)^2
+	\end{align*}
+	El campo gravitatorio homogéneo nos dará un potencial que dependerá de la altura del centro de masa, que, para un objeto de largo $l$ en ángulos de Euler, es $z = l\cos\beta$
+	\begin{equation*}
+		U(z) = m g z = m g l\cos\beta
+	\end{equation*}
+	Por lo que el lagrangiano
+	\begin{equation}
+		L = \frac{1}{2} I_1 \left(\dot{\alpha}^2 \sin^2\beta + \dot{\beta}^2 \right) + \frac{1}{2} I_3 \left(\dot{\alpha} \cos\beta + \dot{\gamma}\right)^2 - m g l\cos\beta
+	\end{equation}
+	Los momentos conjugados serán
+	\begin{align}
+		p_\alpha &= \pd{L}{\dot{\alpha}} = I_1\dot{\alpha}\sin^2\beta + I_3\left(\dot{\alpha} \cos\beta + \dot{\gamma}\right)\cos\beta, & p_\beta &= \pd{L}{\dot{\beta}} = I_1\dot{\beta}, & p_\gamma &= \pd{L}{\dot{\gamma}} = I_3\left(\dot{\alpha} \cos\beta + \dot{\gamma}\right)
+	\end{align}
+	Y el hamiltoniano
+	\begin{align*}
+		H &= \dot{\alpha}\left[I_1\dot{\alpha}\sin^2\beta + I_3\left(\dot{\alpha} \cos\beta + \dot{\gamma}\right)\cos\beta\right] + \dot{\beta}\left[I_1\dot{\beta}\right] + \dot{\gamma}\left[I_3\left(\dot{\alpha} \cos\beta + \dot{\gamma}\right)\right] - L\\
+		&= I_1\dot{\alpha}^2\sin^2\beta + I_3 \dot{\alpha}^2\cos^2\beta + I_3 \dot{\alpha} \dot{\gamma} \cos\beta + I_1\dot{\beta}^2 + I_3 \dot{\gamma} \left(\dot{\alpha} \cos\beta + \dot{\gamma}\right) - L\\
+		&= I_1 \left(\dot{\alpha}^2\sin^2\beta + \dot{\beta}^2\right) + I_3 \left(\dot{\alpha}^2\cos^2\beta + 2 \dot{\alpha} \dot{\gamma} \cos\beta +  \dot{\gamma}^2 \right) - L\\
+		&= \frac{1}{2} I_1 \left(\dot{\alpha}^2 \sin^2\beta + \dot{\beta}^2 \right) + \frac{1}{2} I_3 \left(\dot{\alpha} \cos\beta + \dot{\gamma}\right)^2 + m g l\cos\beta
+	\end{align*}
+	Escribiendo las velocidades en términos de los momentos
+	\begin{align}
+		\frac{p_\gamma}{I_3} &= \dot{\alpha}\cos\beta + \dot{\gamma}, & \dot{\beta} &= \frac{p_\beta}{I_1} & \implies \dot{\alpha} &= \frac{p_\alpha - p_\gamma \cos\beta}{I_1 \sin^2\beta} \label{1.4}
+	\end{align}
+	Tenemos
+	\begin{align}
+		H &= \frac{1}{2} I_1 \left(\frac{\left(p_\alpha - p_\gamma \cos\beta\right)^2}{I_1^2 \sin^2\beta} + \frac{p_\beta^2}{I_1^2} \right) + \frac{1}{2 I_3} p_\gamma^2 + m g l\cos\beta\nonumber\\
+		&= \frac{1}{2 I_1} \frac{\left(p_\alpha - p_\gamma \cos\beta\right)^2}{\sin^2\beta} + \frac{1}{2 I_1} p_\beta^2 + \frac{1}{2 I_3} p_\gamma^2 + m g l\cos\beta
+	\end{align}
+	
+	\qed
+	
+	\item[b.] Write out the canonical equations of motion. Identify the cyclic variables and the integrals of motion.
+	\resp Ya que $\alpha$ y $\gamma$ son variables cíclicas, sus ecuaciones canónicas nos darán integrales de movimiento en sus ejes correspondientes:
+	\begin{align}
+		\dot{p}_\alpha &= - \pd{H}{\alpha} = 0 \implies p_\alpha = \mathrm{const}, &\dot{p}_\gamma &= - \pd{H}{\gamma} = 0 \implies p_\gamma = \mathrm{const}
+	\end{align}
+	Para $\dot{p}_\beta$, usando \texttt{Mathematica},
+	\begin{equation}
+		\dot{p}_\beta = - \pd{H}{\beta} = \frac{1}{I_1 \sin^3\beta} \left(p_\alpha \cos\beta - p_\gamma\right) \left(p_\alpha - p_\gamma \cos\beta\right) + m g l \sin\beta
+	\end{equation}
+	
+	Dos de las ecuaciones del segundo trío ya fueron encontradas en la ec. \ref{1.4}. Para la tercera,
+	\begin{equation}
+		\dot{\gamma} = \pd{H}{p_\gamma} = \frac{p_\gamma}{I_3} - \frac{\cos\beta \left(p_\alpha - p_\gamma\cos\beta\right)}{I_1 \sin^2\beta}
+	\end{equation}
+	
+	Por último, como el tiempo no aparece explícitamente en el hamiltoniano, este se conservará como la energía dentro de una trayectoria definida.
+	
+	\qed
+	
+	\item[c.] Write out the Hamilton-Jacobi equation for this system and integrate it.
+	\resp Ya que el sistema es conservativo,
+	\begin{equation}
+		S = f - E t
+	\end{equation}
+	La ecuación de Hamilton-Jacobi entonces
+	\begin{equation}
+		H - E = 0
+	\end{equation}
+	Reemplazando en el hamiltoniano
+	\begin{equation*}
+		\frac{1}{2 I_1 \sin^2\beta} \left(\pd{f}{\alpha} - \pd{f}{\gamma} \cos\beta\right)^2 + \frac{1}{2 I_1} \left(\pd{f}{\beta}\right)^2 + \frac{1}{2 I_3} \left(\pd{f}{\gamma}\right)^2 + m g l\cos\beta - E = 0
+	\end{equation*}
+	Utilizando separación de variables $f = f_\alpha(\alpha) + f_\beta(\beta) + f_\gamma(\gamma)$, donde
+	\begin{align}
+		\pd{f_\alpha}{\alpha} &= p_\alpha = \mathrm{const} \implies f_\alpha = \alpha p_\alpha, & \pd{f_\gamma}{\gamma} &= p_\gamma = \mathrm{const} \implies f_\gamma = \gamma p_\gamma
+	\end{align}
+	por lo que
+	\begin{equation*}
+		\frac{1}{2 I_1} \frac{\left(p_\alpha - p_\gamma \cos\beta\right)^2}{\sin^2\beta} + \frac{1}{2 I_1} \left(\pd{f_\beta}{\beta}\right)^2 + \frac{1}{2 I_3} p_\gamma^2 + m g l\cos\beta - E = 0
+	\end{equation*}
+	\begin{align*}
+		\implies \pd{f_\beta}{\beta} = \sqrt{2 I_1 E - \frac{I_1}{I_3} p_\gamma^2 - \frac{\left(p_\alpha - p_\gamma \cos\beta\right)^2}{\sin^2\beta} - 2 I_1 m g l\cos\beta }
+	\end{align*}
+	Por lo que la acción
+	\begin{align}
+		S = \alpha p_\alpha + \gamma p_\gamma + \int d\beta \, \sqrt{2 I_1 E - \frac{I_1}{I_3} p_\gamma^2 - \frac{\left(p_\alpha - p_\gamma \cos\beta\right)^2}{\sin^2\beta} - 2 I_1 m g l\cos\beta } - E t
+	\end{align}
+	Usando \texttt{Mathematica} para diferenciar respecto las constantes $E, p_\alpha, p_\gamma$
+	\begin{align}
+		\beta_E = \pd{S}{E} &= \int \frac{I_1}{\sqrt{2 I_1 E - \frac{I_1}{I_3} p_\gamma^2 - \frac{\left(p_\alpha - p_\gamma \cos\beta\right)^2}{\sin^2\beta} - 2 I_1 m g l\cos\beta }} \, d\beta - t\\
+		\beta_\alpha = \pd{S}{p_\alpha} &= \alpha + \int \frac{p_\gamma \cos\beta - p_\alpha}{\sin^2\beta \sqrt{2 I_1 E - \frac{I_1}{I_3} p_\gamma^2 - \frac{\left(p_\alpha - p_\gamma \cos\beta\right)^2}{\sin^2\beta} - 2 I_1 m g l\cos\beta }} \, d\beta\\
+		\beta_\gamma = \pd{S}{p_\gamma} &= \gamma + \int \frac{I_3 p_\alpha \cos\beta - p_\gamma \left(I_1 \sin^2\beta + I_3 \cos^2\beta\right)}{I_3 \sin^2\beta \sqrt{2 I_1 E - \frac{I_1}{I_3} p_\gamma^2 - \frac{\left(p_\alpha - p_\gamma \cos\beta\right)^2}{\sin^2\beta} - 2 I_1 m g l\cos\beta }} \, d\beta
+	\end{align}
+%	Sustituyendo $\zeta = \cos\beta, ~ \sin^2\beta = 1 - \zeta^2, ~ d\beta = - \dfrac{d\zeta}{\sqrt{1 - \zeta^2}}$ en las tres integrales
+%	\begin{align}
+%		\beta_E = \pd{S}{E} &= \int \frac{I_1}{\sqrt{2 I_1 E - \frac{I_1}{I_3} p_\gamma^2 - \frac{\left(p_\alpha - p_\gamma \cos\beta\right)^2}{\sin^2\beta} - 2 I_1 m g l\cos\beta }} \, d\beta - t\\
+%		\beta_\alpha = \pd{S}{p_\alpha} &= \alpha + \int \frac{p_\gamma \cos\beta - p_\alpha}{\sin^2\beta \sqrt{2 I_1 E - \frac{I_1}{I_3} p_\gamma^2 - \frac{\left(p_\alpha - p_\gamma \cos\beta\right)^2}{\sin^2\beta} - 2 I_1 m g l\cos\beta }} \, d\beta\\
+%		\beta_\gamma = \pd{S}{p_\gamma} &= \gamma + \int \frac{I_3 p_\alpha \cos\beta - p_\gamma \left(I_1 \sin^2\beta + I_3 \cos^2\beta\right)}{I_3 \sin^2\beta \sqrt{2 I_1 E - \frac{I_1}{I_3} p_\gamma^2 - \frac{\left(p_\alpha - p_\gamma \cos\beta\right)^2}{\sin^2\beta} - 2 I_1 m g l\cos\beta }} \, d\beta
+%	\end{align}
+	\qed
+\end{enumerate}
+
+\section{Problema 2}
+A relativistic pointlike mass $m$ moves in the Coulomb field $U = -\kappa/r$. Assume now that the particle moves slowly $(v \ll c)$, so the difference between the relativistic and nonrelativistic hamiltonians can be considered as a small perturbation.
+\begin{equation}
+	\Delta H = H - H_0 = \sqrt{p^2 c^2 + m^2 c^4} - \left(m c^2 + \frac{\n{p}^2}{2m}\right) \approx - \frac{\left(\n{p}^2\right)^2}{8 \left(m^3 c^2\right)}
+\end{equation}
+\begin{equation}
+	H_0 = m c^2 + \frac{\n{p}^2}{2 m} + U(r)
+\end{equation}
+where $\n{p}$ is the momentum of the particle.
+\begin{enumerate}
+	\item[a.] Using canonical perturbation theory, find explicitly the first correction to the trajectory of the particle. Find the precession of the periapsis (closest point) due to this correction.
+	\resp El hamiltoniano de forma explícita	
+	\begin{equation}
+		H_0 = mc^2 + \frac{\mathbf{p}^2}{2m} - \frac{\kappa}{r}, \qquad \Delta H = -\frac{(\mathbf{p}^2)^2}{8m^3c^2}
+	\end{equation}
+	Tomando $M \equiv I_\theta + I_\varphi$, tenemos
+	\begin{equation}
+		H_0(I) = mc^2 - \frac{2\pi^2 m\kappa^2}{\left(I_r + I_\theta + I_\varphi\right)^2}
+	\end{equation}
+	La trayectoria viene dada por
+	\begin{align}
+		r &= a(1 - e\cos\psi), & w_r &= \frac{\psi - e\sin\psi}{2\pi}, & a &= \frac{\left(I_r + I_\theta + I_\varphi\right)^2}{4\pi^2 m\kappa}, & e &= \sqrt{1 - \frac{M^2}{\left(I_r + I_\theta + I_\varphi\right)^2}}
+	\end{align}
+	La conservación de energía nos dice
+	\begin{equation}
+		\frac{\mathbf{p}^2}{2m} - \frac{\kappa}{r} = \varepsilon, \qquad \varepsilon \equiv E - mc^2 = -\frac{2\pi^2 m\kappa^2}{\left(I_r + I_\theta + I_\varphi\right)^2}
+	\end{equation}
+	Por lo que $\n{p}^2 = 2m(\varepsilon + \kappa/r)$, y la perturbación se convierte en
+	\begin{equation}
+		\Delta H = -\frac{(\mathbf{p}^2)^2}{8m^3c^2} = -\frac{1}{2mc^2}\left(\varepsilon + \frac{\kappa}{r}\right)^2
+	\end{equation}
+	Como esto solo depende de $r$, promediar sobre todos los ángulos se reduce a promediar solo sobre $w_r$
+	\begin{equation}
+		h_1(I) = \int_0^1 dw_r\, \Delta H(r(w_r))
+	\end{equation}
+	Haciendo un cambio de variables $w_r \to \psi$, con $dw_r = \frac{1-e\cos\psi}{2\pi}d\psi$ y reemplazando
+	\begin{align}
+		h_1 &= -\frac{1}{4\pi mc^2}\int_0^{2\pi}(1-e\cos\psi)\left(\varepsilon + \frac{\kappa}{a(1-e\cos\psi)}\right)^2 d\psi\nonumber\\
+		&= -\frac{1}{4\pi mc^2}\int_0^{2\pi} \left[\varepsilon^2(1-e\cos\psi) + \frac{2\varepsilon\kappa}{a} + \frac{\kappa^2}{a^2(1-e\cos\psi)}\right] d\psi\nonumber\\
+		&= -\frac{1}{4\pi mc^2} \left\{\varepsilon^2 \int_0^{2\pi} (1-e\cos\psi) \, d\psi + \frac{2\varepsilon\kappa}{a} \int_0^{2\pi} \, d\psi + \frac{\kappa^2}{a^2} \int_0^{2\pi} \frac{1}{1 - e\cos\psi} \, d\psi \right\}\nonumber\\
+		&= -\frac{1}{4\pi mc^2} \left\{\varepsilon^2 \cdot 2\pi + \frac{2\varepsilon\kappa}{a} \cdot 2\pi + \frac{\kappa^2}{a^2} \cdot \frac{2\pi}{\sqrt{1-e^2}} \right\}\nonumber\\
+		&= -\frac{1}{2mc^2}\left[\varepsilon^2 + \frac{2\varepsilon\kappa}{a} + \frac{\kappa^2}{a^2 \sqrt{1-e^2}}\right]
+	\end{align}
+	Usando \texttt{Mathematica} para reemplazar $\varepsilon, a, e$ en términos de las acciones
+	\begin{equation}
+		\implies h_1 = \frac{2 \pi^4 m \kappa^4}{c^2} \left[\frac{3}{\left(I_r + I_\theta + I_\varphi\right)^4} - \frac{4}{M \left(I_r + I_\theta + I_\varphi\right)^3}\right]
+	\end{equation}
+	Luego, como la precesión por unidad de tiempo del periapsis es conjugada a $M$:
+	\begin{equation}
+		\overline{\dot{\omega}} = \pd{h_1}{M} = \frac{8 \pi^4 m \kappa^4}{c^2 M^2 \left(I_r + I_\theta + I_\varphi\right)^3}
+	\end{equation}
+	Finalmente, para obtener la precesión después de una órbita multiplicamos $\overline{\dot{\omega}}$ por el periodo orbital $2\pi/\omega_r^{(0)}$, donde $\omega_r^{(0)}$ es la primera aproximación de la frecuencia radial,
+	\begin{equation}
+		\omega_r^{(0)} = \pd{H_0}{I_r} = \frac{4\pi^2 m\kappa^2}{\left(I_r + I_\theta + I_\varphi\right)^3}
+	\end{equation}
+	Entonces, tomando $M = 2\pi M_z$
+	\begin{equation}
+		\Delta \phi = \frac{8 \pi^4 m \kappa^4}{c^2 M^2 \left(I_r + I_\theta + I_\varphi\right)^3} \cdot \frac{\left(I_r + I_\theta + I_\varphi\right)^3}{2\pi m\kappa^2} = \frac{4\pi^3\kappa^2}{c^2 M^2} = \frac{\pi\kappa^2}{c^2 M_z^2}
+	\end{equation}
+	\qed
+	
+	\item[b.] In Lecture 15 we solved the relativistic Kepler problem exactly, and afterwards made expansion in the final solution in the $c \to \infty$ limit. Analyze if the two methods of solution give equivalent results for the first correction.
+	\resp En la clase 15 se obtuvo (reemplaznado $\alpha$ por $\kappa$)
+	\begin{align}
+		\dot{r}^2 &= c
+		^2 - \frac{m^2 c^6 + c^4 M_z^2 / r^2}{\left(E + \kappa/r\right)^2} , & \dot{\phi} &= \frac{c^2 M_z}{r^2 (E + \kappa/r)}
+	\end{align}
+	Por lo que los puntos de mayor y menor cercanía en la órbita, $r_\mathrm{min}$ y $r_\mathrm{max}$, respectivamente, corresponderán a las soluciones de $\dot{r} = 0$
+	\begin{align*}
+		\dot{r}^2 &= c^2 - \frac{m^2 c^6 + c^4 M_z^2 / r^2}{\left(E + \kappa/r\right)^2}\\
+		&= \frac{\left(E + \kappa/r\right)^2 c^2 - m^2 c^6 - c^4 M_z^2 / r^2}{\left(E + \kappa/r\right)^2}\\
+		&= \frac{\left(E^2 c^2 + 2 E c^2 \kappa/r + c^2 \kappa^2/r^2\right) - m^2 c^6 - c^4 M_z^2 / r^2}{\left(E + \kappa/r\right)^2}\\
+		&= \frac{E^2 c^2 r^2 + 2 E c^2 \kappa r + c^2 \kappa^2 - m^2 c^6 r^2 - c^4 M_z^2}{r^2 \left(E + \kappa/r\right)^2}\\
+		&= c^2 \frac{\left(E^2 - m^2 c^4\right) r^2 + 2 E \kappa r + \kappa^2 - c^2 M_z^2}{r^2 \left(E + \kappa/r\right)^2}
+	\end{align*}
+	Por lo tanto, $r_\mathrm{min}$ y $r_\mathrm{max}$ son las soluciones de
+	\begin{equation}
+		\underbrace{\left(E^2 - m^2 c^4\right)}_{A} r_\mathrm{min,max}^2 + \underbrace{2 E \kappa}_{B} r_\mathrm{min,max} + \underbrace{\kappa^2 - c^2 M_z^2}_{C} = 0
+	\end{equation}
+	Entonces la trayectoria
+	\begin{align}
+		\td{\phi}{r} &= \frac{c^2 M_z}{r^2 (E + \kappa/r)} \cdot \frac{1}{\sqrt{c^2 - \frac{m^2 c^6 + c^4 M_z^2 / r^2}{\left(E + \kappa/r\right)^2} }}\nonumber\\
+		&= \frac{c M_z}{r^2 \sqrt{\left(E + \kappa/r\right)^2 - m^2 c^4 - c^2 M_z^2 / r^2 }}\nonumber\\
+		&= \frac{c M_z}{r^2 \sqrt{E^2 - m^2 c^4 + 2E\kappa/r + \left(\kappa^2 - c^2 M_z^2\right) / r^2 }}\nonumber\\
+		&= \frac{c M_z}{\sqrt{\underbrace{\left(E^2 - m^2 c^4\right)}_{A} r^4 + \underbrace{2 E \kappa}_{B} r^3 + \underbrace{\left(\kappa^2 - c^2 M_z^2\right)}_{C} r^2 }}
+	\end{align}
+	Por lo que, para encontrar la precesión después de una órbita deberemos integrar
+	\begin{equation}
+		\Delta\phi = 2 \int_{r_\mathrm{min}}^{r_\mathrm{max}} \frac{c M_z}{\sqrt{A r^4 + B r^3 + C r^2}} \, dr
+	\end{equation}
+	donde $r_\mathrm{min}$ es el punto más cercano de la órbita y $r_\mathrm{max}$ el más lejano, multiplicado por 2 para contar el tiempo de ida y vuelta. Utilizando \texttt{Mathematica} para integrar
+	\begin{equation}
+		\Delta\phi = 2 \frac{c M_z}{\sqrt{C}} \mathrm{arctanh}\! \left[\frac{\sqrt{A r^2 + B r + C} - \sqrt{A} \, r }{\sqrt{C}} \right]_{r_\mathrm{min} }^{r_\mathrm{max} }
+	\end{equation}
+	Ya que $A r_\mathrm{min,max}^2 + B r_\mathrm{min,max} + C = 0$, y utilizando \texttt{Mathematica}, tenemos
+	\begin{equation}
+		\Delta\phi = \frac{2 \pi c M_z}{\sqrt{M_z^2 c^2 - \kappa^2}}
+	\end{equation}
+	Expandiendo para $c \to \infty$
+	\begin{equation}
+		\Delta\phi \approx 2 \pi + \frac{\pi \kappa ^2}{c^2 M_z^2} + \frac{3 \pi  \kappa ^4}{4 c^4 M_z^4} + \mathcal{O}\left(\frac{1}{c^6}\right)
+	\end{equation}
+	De donde reconocemos el segundo término como el resultado de la teoría de perturbaciones canónica. Es decir, en el paso anterior conseguimos el equivalente a la primera aproximación de $\Delta\Phi$.
+	
+	\qed
+\end{enumerate}
+
+\section{Problema 3}
+A pointlike mass $m$ moves in the field of time-dependent spherical harmonic oscillator
+\begin{equation}
+	U(r) = - \frac{k(t) \, r^2}{2}
+\end{equation}
+where the parameter $k$ increases very slowly (adiabatically) as a function of time. Analyze how the trajectory of the mass will change as a function of time.
+\begin{enumerate}
+	\item[a.] Identify the adiabatic invariants for this system and express them in terms of the parameters which characterize the orbit of the particle (its size, shape and period of motion).
+	\resp Ya que el potencial es central, el momento angular $\n{M}$ se conserva y, por ende, la trayectoria ocurre dentro en un plano, que elegiremos $xy$. Escribiendo su lagrangiano
+	\begin{equation}
+		L = \frac{1}{2} m \left(\dot{r}^2 + r^2 \dot{\phi}^2\right) + \frac{k(t) \, r^2}{2} = \frac{1}{2} m \left(\dot{x}^2 + \dot{y}^2 \right) + \frac{k(t) \, \left(x^2 + y^2\right)}{2} 
+	\end{equation}
+	con momentos generalizados
+	\begin{align}
+		p_\phi &= \pd{L}{\dot{\phi}} = m r^2 \dot{\phi}, & p_x &= \pd{L}{\dot{x}} = m \dot{x}, & p_y &= \pd{L}{\dot{y}} = m \dot{y}
+	\end{align}
+	Por lo que el hamiltoniano podrá escribirse
+	\begin{equation}
+		H = \frac{p_x^2}{2m} + \frac{p_y^2}{2m} - \frac{1}{2} k(t) \left(x^2 + y^2\right)
+	\end{equation}
+	Ya que los términos de $x$ e $y$ están desacoplados, podemos tratar este problema como dos subsistemas de osciladores armónicos en $x$ e $y$,
+	\begin{equation}
+		H = H_x + H_y = \left[\frac{p_x^2}{2m} - \frac{1}{2} k(t) x^2\right] + \left[\frac{p_y^2}{2m} - \frac{1}{2} k(t) y^2\right]
+	\end{equation}
+	Ya que $k$ depende del tiempo, el hamiltoniano no es conservativo y, por ende, la energía $E(t) = H(t)$ no se conserva. Para que existan órbitas, el término potencial en el hamiltoniano debe ser positivo, por lo que definiendo $\omega$ tal que
+	\begin{equation}
+		k(t) = - m \omega^2(t)
+	\end{equation}
+	tenemos
+	\begin{equation}
+		H = \left[\frac{p_x^2}{2m} + \frac{m}{2} \omega^2(t) x^2\right] + \left[\frac{p_y^2}{2m} + \frac{m}{2} \omega^2(t) y^2\right]
+	\end{equation}
+	
+	Ya que sabemos que, para osciladores armónicos en 1 dimensión se cumple $I = E/\omega$, tendremos
+	\begin{align}
+		I_x &= \frac{1}{2\pi} \oint p_x \, dx = \frac{E_x}{\omega(t)}\\
+		I_y &= \frac{1}{2\pi} \oint p_y \, dy = \frac{E_y}{\omega(t)}
+	\end{align}
+	
+	En el caso sin perturbaciones ($\dot{k} = 0$) las trayectorias de este sistema son elipses de ejes $a, b$ centradas en el origen, tal que
+	\begin{align}
+		x(t) &= a \cos\omega t, & y(t) &= b \sin\omega t
+	\end{align}
+	Por lo que las energías en ambos ejes
+	\begin{align*}
+		E_x &= H_x = \left[\frac{p_x^2}{2m} + \frac{m}{2} \omega^2 a^2 \cos^2\omega t \right], & E_y &= H_y = \left[\frac{p_y^2}{2m} + \frac{m}{2} \omega^2 b^2 \sin^2\omega t\right]
+	\end{align*}
+	Tomando el caso cuando el momento es cero y la energía potencial es igual a la energía total
+	\begin{align}
+		E_x &= \frac{1}{2} m \omega^2 a^2 \implies I_x = \frac{1}{2} m \omega a^2, & E_y &= \frac{1}{2} m \omega^2 b^2 \implies I_y = \frac{1}{2} m \omega b^2
+	\end{align}
+	Tomando el periodo orbital $T = 2\pi/\omega$ y la excentricidad $e = \sqrt{1 - \frac{b^2}{a^2}} \implies b^2 = a^2 (1 - e^2)$, tendremos
+	\begin{align}
+		I_x &= \frac{\pi m a^2}{T}, & I_y &= \frac{\pi m a^2}{T} (1 - e^2)
+	\end{align}
+	Por último, el momento angular también es conservado, por lo que
+	\begin{align}
+		I_\phi = M &= \frac{1}{2\pi} \oint p_\phi \, d\phi \nonumber\\
+		&= \frac{2\pi}{2\pi} p_\phi \nonumber\\
+		&= m r^2 \dot{\phi}\nonumber\\
+		&= m (x \dot{y} - y \dot{x})\nonumber\\
+		&= m (a \cos\omega t \cdot b \omega \cos\omega t + b \sin\omega t \cdot a \omega \sin\omega t) \nonumber\\
+		&= m a b\omega \nonumber\\
+		&= \frac{2\pi m a^2 \sqrt{\left(1 - e^2\right)}}{T} = 2\sqrt{I_x I_y}
+	\end{align}
+	
+	\qed
+	
+	\item[b.] Analyze how the energy $E$ and angular momentum $M$ of the system depend on time.
+	\resp Ya que el potencial es central, el momento angular se conserva exactamente a través del tiempo sin importar que tan rápido cambie $k(t)$.
+	
+	En el caso de la energía, tendremos, a partir de los invariantes adiabáticos,
+	\begin{align}
+		E_x &= I_x \omega(t), & E_y &= I_y \omega(t)
+	\end{align}
+	por lo que
+	\begin{equation}
+		E = E_x + E_y = \left(I_x + I_y\right) \omega(t) = \frac{\pi m a^2}{T} (2 - e^2) \, \omega(t) \propto \omega(t)
+	\end{equation}
+	Ya que tomamos $\omega(t) = \sqrt{- k(t)/m}$ y $k(t)$ aumenta con el tiempo (o, de otra forma, $-k(t)$ se reduce con el tiempo), tenemos que $\omega(t)$ se reduce lentamente. Todo esto no s dice que la energía se reduce lentamente con el paso del tiempo.
+	
+	\qed
+	
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
