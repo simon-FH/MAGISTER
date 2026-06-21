@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.15)  20 JUN 2026 12:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.15)  21 JUN 2026 19:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -632,17 +632,17 @@ File: uesint.fd
 [1
 
 {C:/Users/simon/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2]
-[3] [4] [5] [6] [7] [8] [9] [10] (Ejercicios.aux)
+[3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] (Ejercicios.aux)
  ***********
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-05-26>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 14459 strings out of 467509
- 291705 string characters out of 5408780
- 776392 words of memory out of 5000000
- 43432 multiletter control sequences out of 15000+600000
+ 14464 strings out of 467509
+ 291776 string characters out of 5408780
+ 778485 words of memory out of 5000000
+ 43437 multiletter control sequences out of 15000+600000
  632063 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,18n,107p,477b,351s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -667,9 +667,9 @@ ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/simon/AppData/Loc
 al/Programs/MiKTeX/fonts/type1/public/amsfonts/latxfont/line10.pfb><C:/Users/si
 mon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pf
 b>
-Output written on Ejercicios.pdf (10 pages, 237043 bytes).
+Output written on Ejercicios.pdf (13 pages, 252903 bytes).
 PDF statistics:
- 129 PDF objects out of 1000 (max. 8388607)
+ 139 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

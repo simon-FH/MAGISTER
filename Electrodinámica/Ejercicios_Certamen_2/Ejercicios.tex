@@ -427,6 +427,168 @@
 		\qed
 		
 	\end{enumerate}	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\item Considere un medio dieléctrico lineal, homogéneo, isotrópico, no magnético y sin dispersión espacial. La respuesta del medio se describe mediante una susceptibilidad eléctrica causal $\chi(t)$, de modo que la polarización inducida por un campo eléctrico externo satisface
+	\begin{equation}
+		\n{P}(t) = \eo \int_{-\infty}^{t} \chi(t - t') \n{E}(t') \, dt'
+	\end{equation}
+	En el dominio de frecuencias
+	\begin{equation}
+		\n{P}(\omega) = \eo \chi(\omega)\n{E}(\omega), \qquad \epsilon(\omega) = 1 + \chi(\omega)
+	\end{equation}
+	La causalidad implica que $\epsilon(\omega)$ es una función analítica en el semiplano superior del plano complejo de frecuencias. Como consecuencia, sus partes real e imaginaria no son independientes, sino que están relacionadas por las relaciones de Kramers-Kronig.
+	
+	Para hacer el modelo más concreto, suponga que la respuesta microscópica proviene de un conjunto continuo de osciladores de Lorentz. Cada oscilador representa una carga ligada con frecuencia propia $\Omega$, amortiguamiento $\Gamma$ y desplazamiento $x_\Omega(t)$, que obedece
+	\begin{equation}
+		m \ddot{x}_\Omega + m \Gamma \dot{x}_\Omega + m\Omega^2 x_\Omega = - e E(t)
+	\end{equation}
+	Para campos armónicos con convención temporal $e^{-i \omega t}$, la contribución de un oscilador a la susceptibilidad tiene la forma
+	\begin{equation}
+		\chi_\Omega(\omega) = \frac{f(\Omega)}{\Omega^2 - \omega^2 - i \Gamma \omega}
+	\end{equation}
+	donde $f(\Omega) \, d\Omega$ es la densidad de fuerza osciladora, incluyendo la densidad de osciladores, la carga y la masa. Por tanto,
+	\begin{equation}
+		\chi(\omega) = \int_{0}^{\infty} \frac{f(\Omega)}{\Omega^2 - \omega^2 - i \Gamma \omega} \, d\Omega \label{(5)}
+	\end{equation}
+	Suponga que la densidad espectral de osciladores está concentrada en la ventana $\omega_0 < \Omega < \omega_1$ y viene dada por
+	\begin{equation}
+		f(\Omega) = \frac{2 A}{\pi} \Omega \, \Theta(\Omega - \omega_0) \, \Theta( \omega_1 - \Omega) \label{(6)}
+	\end{equation}
+	donde $A > 0, \, 0 < \omega_0 < \omega_1$ y $\Theta$ es la función escalón. En el límite de amortiguamiento débil, $\Gamma \to 0^{+}$, este modelo produce la banda rectangular de absorción
+	\begin{equation}
+		\mathrm{Im} \, \epsilon(\omega) = \left\{\begin{matrix}
+			A, & \omega_0 < \omega < \omega_1,\\
+			0, & \text{en otro caso}
+		\end{matrix}\right. \label{(7)}
+	\end{equation}
+	para $\omega > 0 $.
+	Use además la relación de Kramers-Kronig para frecuencias positivas
+	\begin{equation}
+		\mathrm{Re} \, \epsilon(\omega) - 1 = \frac{2}{\pi} \mathcal{P} \int_{0}^{\infty} \frac{\Omega \mathrm{Im}\, \epsilon(\Omega)}{\Omega^2 - \omega^2} \, d\Omega
+	\end{equation}
+	donde $\mathcal{P}$ denota el valor principal de Cauchy.
+	\begin{enumerate}
+		% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+		\item[1.] Derive la forma \ref{(5)} de la susceptibilidad a partir del modelo de osciladores de Lorentz y explique el significado físico de la densidad espectral $f (\Omega)$.
+		\resp Sabemos que
+		\begin{equation}
+			\n{P} = \eo \chi(\omega) \n{E}
+		\end{equation}
+		Por lo que, para poder encontrar $\chi(\omega)$ tendremos que desarrollar $\n{P}$. Ya que conocemos el comportamiento de un oscilador microscópico, podemos usar esto para encontrar la polarización macroscópica integrando
+		\begin{equation}
+			dP = p \cdot n(\Omega) \, d\Omega
+		\end{equation}
+		donde $n(\Omega)$ es la densidad de osciladores por unidad de volumen $d\Omega$ y $p$ el momento dipolar de cada oscilador. Para encontrar el momento dipolar podemos usar
+		\begin{equation}
+			p = q \cdot x
+		\end{equation}
+		donde $q$ es la carga y $x$ el desplazamiento. Para encontrar el desplazamiento usaremos la ecuación
+		\begin{equation*}
+			m \ddot{x}_\Omega + m \Gamma \dot{x}_\Omega + m\Omega^2 x_\Omega = - e E(t)
+		\end{equation*}
+		Tomando el ansatz
+		\begin{equation*}
+			E = E_0 e^{i \omega t}, \qquad x_\Omega (t) = x_\Omega(\omega) e^{-i \omega t}
+		\end{equation*}
+		tal que
+		\begin{equation*}
+			\dot{x}_\Omega = -i\omega x_\omega, \qquad \ddot{x}_\Omega = - \omega^2 x_\omega
+		\end{equation*}
+		E introduciendo esto en
+		\begin{align*}
+			m \ddot{x}_\Omega + m \Gamma \dot{x}_\Omega + m\Omega^2 x_\Omega &= - e E(t)\\
+			m \omega^2 x_\Omega - i m \Gamma \omega x_\Omega - m\Omega^2 x_\Omega &= - e E_0 e^{i \omega t}\\
+			\left(m \omega^2 - i m \Gamma \omega - m\Omega^2 \right) x_\Omega &= - e E_0
+		\end{align*}
+		\begin{equation*}
+			\implies x_\Omega(\omega) = - \frac{e E_0}{m \left(\omega^2 - i \Gamma \omega - \Omega^2\right)}
+		\end{equation*}
+		Luego el momento dipolar de cada oscilador de carga $-e$ será
+		\begin{equation*}
+			p_\Omega = -e \cdot x_\Omega (\omega) = \frac{e^2 E_0}{m \left(\omega^2 - i \Gamma \omega - \Omega^2\right)}
+		\end{equation*}
+		Y la polarización
+		\begin{align*}
+			P &= \int_{0}^{\infty} \frac{e^2 E_0}{m \left(\omega^2 - i \Gamma \omega - \Omega^2\right)} n(\Omega) \, d\Omega\\
+			&= \int_{0}^{\infty} \frac{e^2 E_0 n(\Omega)}{m} \frac{1 }{\omega^2 - i \Gamma \omega - \Omega^2} \, d\Omega
+		\end{align*}
+		Finalmente
+		\begin{align}
+			\chi(\omega) &= \frac{P}{\eo E}\nonumber\\
+			&= \int_{0}^{\infty} \underbrace{\frac{e^2 n(\Omega)}{m \eo}}_{f(\Omega)} \frac{1 }{\omega^2 - i \Gamma \omega - \Omega^2} \, d\Omega\nonumber\\
+			&= \int_{0}^{\infty} \frac{f(\Omega)}{\omega^2 - i \Gamma \omega - \Omega^2} \, d\Omega
+		\end{align}
+		\qed
+		
+		% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+		\item[2.] Muestre que la elección \ref{(6)} produce la banda rectangular \ref{(7)} en el límite $\Gamma \to 0^{+}$.
+		\resp Tenemos que
+		\begin{align*}
+			\epsilon(\omega) &= 1 + \chi(\omega)\\
+			&= 1 + \int_{0}^{\infty} \frac{f(\Omega)}{\omega^2 - i \Gamma \omega - \Omega^2} \, d\Omega
+		\end{align*}
+		Si elegimos
+		\begin{equation*}
+			f(\Omega) = \frac{2 A}{\pi} \Omega \, \Theta(\Omega - \omega_0) \, \Theta( \omega_1 - \Omega)
+		\end{equation*}
+		Tendremos
+		\begin{align*}
+			\epsilon(\omega) &= 1 + \int_{0}^{\infty} \frac{2 A}{\pi} \Omega \, \Theta(\Omega - \omega_0) \, \Theta( \omega_1 - \Omega) \cdot \frac{1}{\omega^2 - i \Gamma \omega - \Omega^2} \, d\Omega\\
+			&= 1 + \frac{2 A}{\pi} \int_{\omega_0}^{\omega_1} \frac{\Omega }{\omega^2 - i \Gamma \omega - \Omega^2} \, d\Omega\\
+			&= 1 + \frac{2 A}{\pi} \int_{\omega_0}^{\omega_1} \frac{\Omega \left(\omega^2 - i \Gamma \omega - \Omega^2\right) }{\left(\omega^2 - \Omega^2\right)^2 + \left(\Gamma \omega\right)^2} \, d\Omega\\
+			&= 1 + \frac{2 A}{\pi} \int_{\omega_0}^{\omega_1} \frac{\Omega \left(\omega^2 - \Omega^2\right) }{\left(\omega^2 - \Omega^2\right)^2 + \left(\Gamma \omega\right)^2} \, d\Omega - i \frac{2 A}{\pi} \int_{\omega_0}^{\omega_1} \frac{\Omega \Gamma \omega }{\left(\omega^2 - \Omega^2\right)^2 + \left(\Gamma \omega\right)^2} \, d\Omega \\
+		\end{align*}
+		Por lo que la parte imaginaria será
+		\begin{align*}
+			\mathrm{Im} \, \epsilon(\omega) &= \frac{2 A}{\pi} \int_{\omega_0}^{\omega_1} \frac{\Omega \Gamma \omega }{\left(\omega^2 - \Omega^2\right)^2 + \left(\Gamma \omega\right)^2} \, d\Omega
+		\end{align*}
+		Pero tenemos que, para $\Gamma \to 0^+$, la identidad
+		\begin{equation}
+			\lim_{\Gamma \to 0^+} \frac{\Gamma \omega }{\left(\omega^2 - \Omega^2\right)^2 + \left(\Gamma \omega\right)^2} = \lim_{\beta \to 0^+} \frac{\beta}{\alpha^2 + \beta^2} = \pi \delta\left(\alpha\right) = \pi \delta\left(\omega^2 - \Omega^2\right)
+		\end{equation}
+		además,
+		\begin{equation}
+			\delta\left(\omega^2 - \Omega^2\right) = \left(\frac{\delta(\Omega -\omega)}{2\omega} + \frac{\cancel{\delta(\Omega + \omega)}}{2\omega}\right)
+		\end{equation}
+		donde cancelamos el segundo término, ya que implica que $\Omega < 0$, y los límites de integración son estrictamente positivos. Entonces se dará
+		\begin{align*}
+			\mathrm{Im} \, \epsilon(\omega) &= \frac{2 A}{\pi} \int_{\omega_0}^{\omega_1} \Omega \cdot \pi \frac{\delta(\Omega -\omega)}{2\omega} \, d\Omega\\
+			&= \frac{A}{\omega} \int_{\omega_0}^{\omega_1} \Omega \delta(\Omega -\omega) \, d\Omega\\
+			&= \frac{A}{\omega} \cdot \omega\\
+			&= A
+		\end{align*}
+		\qed
+		
+		% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+		\item[3.] Calcule explícitamente $\mathrm{Re} \, \epsilon(\omega)$ para $\omega > 0$. Indique con claridad dónde debe entenderse la integral en el sentido de valor principal.
+		\resp Podemos usar 
+		\begin{equation*}
+			\mathrm{Re} \, \epsilon(\omega) - 1 = \frac{2}{\pi} \mathcal{P} \int_{0}^{\infty} \frac{\Omega \mathrm{Im}\, \epsilon(\Omega)}{\Omega^2 - \omega^2} \, d\Omega
+		\end{equation*}
+		separando la integral para encontrar singularidades (que es lo que $\mathcal{P}$ significa), tenemos
+		\begin{align*}
+			\mathrm{Re} \, \epsilon(\omega) - 1 &= \frac{2}{\pi} \left[\mathcal{P} \int_{0}^{\omega_0} \frac{\Omega \mathrm{Im}\, \epsilon(\Omega)}{\Omega^2 - \omega^2} \, d\Omega + \mathcal{P} \int_{\omega_0}^{\omega_1} \frac{\Omega \mathrm{Im}\, \epsilon(\Omega)}{\Omega^2 - \omega^2} \, d\Omega + \mathcal{P} \int_{\omega_1}^{\infty} \frac{\Omega \mathrm{Im}\, \epsilon(\Omega)}{\Omega^2 - \omega^2} \, d\Omega\right]
+		\end{align*}
+		Pero $\mathrm{Im}\, \epsilon(\Omega) = A$ solo en la integral de al medio, por lo que
+		\begin{align*}
+			\mathrm{Re} \, \epsilon(\omega) - 1 &= \frac{2}{\pi} \left[0 + \mathcal{P} \int_{\omega_0}^{\omega_1} \frac{\Omega A}{\Omega^2 - \omega^2} \, d\Omega + 0\right]\\
+			&= \frac{A}{\pi} \ln\left|\frac{\omega_1^2 - \omega^2}{\omega_0^2 - \omega^2}\right|
+		\end{align*}
+		
+		
+		% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+		\item[4.] Dibuje esquemáticamente $\mathrm{Im} \, \epsilon(\omega)$ y $\mathrm{Re} \epsilon(\omega)$ como funciones de $\omega$. Señale el comportamiento cerca de $\omega_0$, cerca de $\omega_1$, en $\omega = 0$ y cuando $\omega \to \infty$.
+		\resp
+		
+		
+		% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+		\item[5.] Discuta físicamente por qué una banda de absorción con bordes abruptos produce singularidades logarítmicas en la parte real de la respuesta. ¿Qué cambiaría cualitativamente si los bordes de la banda fueran suaves?
+		\resp
+		
+		
+	\end{enumerate}
+	
 \end{enumerate}
 
 \section{Electrodinámica covariante}
@@ -467,9 +629,12 @@
 	\qed
 	
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\item 
-	
-	
+	\item Considere el tensor de Belinfante-Hilbert corregido
+	\begin{equation}
+		\Theta^{\mu\nu} = T_\mathrm{can}^{\mu\nu} + F^{\mu\rho} \partial_\rho A^\nu
+	\end{equation}
+	Muestre que este objeto también satisface cuatro corrientes conservadas. Además, demuestre que este nuevo tensor de energía-momento es simétrico, invariante de gauge y tiene traza nula
+	\resp 
 	
 	
 	
