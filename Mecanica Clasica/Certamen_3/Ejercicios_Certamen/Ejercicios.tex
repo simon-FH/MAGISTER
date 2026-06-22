@@ -1,0 +1,42 @@
+% !TeX spellcheck = es_CL
+\documentclass[]{article}
+\usepackage{geometry,tikz,lipsum,amsmath,amssymb,soul,xcolor,cancel,esint}
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+\numberwithin{equation}{section}
+
+\usepackage{../../../simonPackage}
+%opening
+\title{Ejercicios Certamen 3 Mecánica Clásica}
+\author{Simon Fonseca}
+
+\begin{document}
+	\maketitle
+	\section{Problema 1}
+	The transformation of coordinates and momenta has a form
+	\begin{align}
+		P &= \alpha\frac{p^2 q}{\sqrt{1 + p^{2}q^{2}}}, & Q &= \beta \frac{\sqrt{1 + p^2 q^2}}{p}, & \alpha, \beta &= \mathrm{const}
+	\end{align}
+	\begin{enumerate}
+		\item[a.] Find the values of constants $\alpha, \beta$ for which the transformation is canonical. For these values of $\alpha, \beta$, find explicitly the generating function $F$ which corresponds to the transformation.
+		\resp Podemos calcular el corchete de Poisson entre $[P,Q]_{p,q}$, es cual deberá ser cero. Usando \texttt{Mathematica} tenemos
+		\begin{equation}
+			[P,Q]_{p,q} = \alpha\beta
+		\end{equation}
+		Por lo tanto, para que la transformación sea canónica deberá cumplirse que
+		\begin{equation}
+			\beta = \frac{1}{\alpha}
+		\end{equation}
+		
+		\qed
+		
+		\item[b.] Apply the transformation found in the previous item to the hamiltonian of harmonic oscillator $H (p, q) = \frac{p^2}{2m} + \frac{kq^2}{2}$ and find the hamiltonian $\tilde{H} (P, Q)$ in terms of the new variables $(P, Q)$. Write out the canonical equations in terms of these new variables.
+		\resp
+		
+		\qed
+		
+	\end{enumerate}
+	
+	
+	
+	
+\end{document}
