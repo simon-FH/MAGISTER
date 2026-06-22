@@ -279,4 +279,40 @@
 		\Theta^{\mu\nu} = T_{\text{can}}^{\mu\nu} + \frac{1}{\mu_0}F^{\mu\rho}\partial_\rho A^\nu = \frac{1}{\mu_0}\left(F^{\mu\rho}F^\nu{}_\rho + \frac{1}{4}\eta^{\mu\nu}F_{\alpha\beta}F^{\alpha\beta}\right)
 	\end{equation*}
 	
+	\subsection*{1. Guías de Onda Rectangulares ($0 \le x \le a$, $0 \le y \le b$)}
+	Ecuación de Helmholtz: $(\nabla_\perp^2 + \gamma^2) \psi = 0$, con $\gamma^2 = \frac{\omega^2}{c^2} - k^2$.
+	\begin{enumerate}
+		\item {\bf Modo TM:} $B_z = 0$, hallar $E_z$. Condición de Dirichlet: $E_z|_{\partial\Omega} = 0$.
+		$$E_z(x,y) = E_0 \sin\left(\frac{m\pi x}{a}\right)\sin\left(\frac{n\pi y}{b}\right) \quad (m,n \ge 1)$$
+		\item {\bf Modo TE:} $E_z = 0$, hallar $B_z$. Condición de Neumann: $\frac{\partial B_z}{\partial n}|_{\partial\Omega} = 0$.
+		$$B_z(x,y) = B_0 \cos\left(\frac{m\pi x}{a}\right)\cos\left(\frac{n\pi y}{b}\right) \quad (m,n \ge 0, m+n > 0)$$
+		\item {\bf Corte:} Frecuencia de corte límite $\omega_{mn} = c \sqrt{(\frac{m\pi}{a})^2 + (\frac{n\pi}{b})^2}$.
+		\item {\bf Transversales:} Hallar $\mathbf{E}_\perp, \mathbf{B}_\perp$ derivando componentes longitudinales:
+		$$\mathbf{E}_\perp = \frac{1}{\gamma^2} [ik\nabla_\perp E_z - i\omega(\hat{z}\times\nabla_\perp B_z)]$$
+	\end{enumerate}
+	
+	\subsection*{2. Transformación de Campos ($F^{\mu\nu}$)}
+	Métrica $\eta_{\mu\nu}=\text{diag}(1,-1,-1,-1)$. Transformación tensorial: $F' = \Lambda F \Lambda^T$.
+	\begin{enumerate}
+		\item {\bf Tensor $F^{\mu\nu}$:} $F^{0i} = -E_i/c$, $F^{ij} = -\epsilon_{ijk}B_k$.
+		\item {\bf Boost (eje $x$):} $\Lambda^0_{\ 0}=\gamma, \Lambda^0_{\ 1}=\Lambda^1_{\ 0}=-\beta\gamma, \Lambda^1_{\ 1}=\gamma$.
+		\item {\bf Campos Rotados / Transformados:}
+		$$E'_x = E_x, \quad E'_y = \gamma(E_y - vB_z), \quad E'_z = \gamma(E_z + vB_y)$$
+		$$B'_x = B_x, \quad B'_y = \gamma(B_y + \frac{v}{c^2}E_z), \quad B'_z = \gamma(B_z - \frac{v}{c^2}E_y)$$
+		\item {\bf Invariantes:} Evaluar $E^2-c^2B^2$ y $\mathbf{E}\cdot\mathbf{B}$ para chequear consistencia.
+	\end{enumerate}
+	
+	\subsection*{3. Radiación de Dipolo Eléctrico Oscilante}
+	Fuente armónica $\rho(\mathbf{r},t)=\rho_0(\mathbf{r})e^{-i\omega t}$. Zona lejana ($r \gg \lambda \gg d$).
+	\begin{enumerate}
+		\item {\bf Momento Dipolar:} $\mathbf{p} = \int \mathbf{r}\rho_0(\mathbf{r})d^3r$.
+		\item {\bf Campos de Radiación:} $\mathbf{B} = \frac{\mu_0\omega^2}{4\pi c}(\hat{r}\times\mathbf{p})\frac{e^{ikr}}{r}$ y $\mathbf{E} = c(\mathbf{B}\times\hat{r})$.
+		\item {\bf Vector de Poynting:} $\langle\mathbf{S}\rangle = \frac{\mu_0\omega^4|p|^2}{32\pi^2 c}\frac{\sin^2\theta}{r^2}\hat{r}$ (si $\mathbf{p}=p\hat{z}$).
+		\item {\bf Potencia Total:} Integral de flujo angular $\implies P = \frac{\mu_0\omega^4|p|^2}{12\pi c}$.
+	\end{enumerate}
+	
+	\subsection*{4. Relaciones de Kramers-Kronig}
+	Consecuencia directa de la causalidad lineal ($\chi(t)=0$ para $t<0$).
+	$$\text{Re }\epsilon(\omega) - 1 = \frac{2}{\pi}\mathcal{P}\int_0^\infty \frac{\Omega \text{Im }\epsilon(\Omega)}{\Omega^2-\omega^2}d\Omega$$
+	
 \end{document}
