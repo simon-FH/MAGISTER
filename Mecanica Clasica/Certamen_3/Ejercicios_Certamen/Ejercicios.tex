@@ -404,31 +404,59 @@ Assuming that $\Delta H = H - H_0$ is a small perturbation, and using canonical 
 	\end{equation}
 	Para hacer que $A,B$ sean un par de variables $\alpha, \beta$ canónicas estas deben cumplir con $[\alpha,\beta] = 1$. En nuestro caso
 	\begin{equation}
-		[A,B] = -\frac{1}{\sqrt{m^2 x^2 \omega_0 ^2+p^2}}
+		[A,B] = \frac{1}{\sqrt{m^2 x^2 \omega_0 ^2+p^2}} = \frac{1}{m \omega_0 A}
 	\end{equation}
-	Por lo que multiplicando $A$ por un factor $-\frac{\sqrt{m^2 x^2 \omega_0 ^2+p^2}}{2}$ obtenemos un par canónico, tal que
+	Para encontrar el par canónico $\alpha$ de $B$ tendremos que resolver
 	\begin{equation}
-		\alpha = -\frac{\sqrt{m^2 x^2 \omega_0 ^2+p^2}}{2} A, \qquad \beta = B
+		[\alpha(A),B] = \td{\alpha}{A} \cdot [A, B] = 1 \implies \td{\alpha}{A} = m \omega_0 A
 	\end{equation}
-	Reemplazando todo en el hamiltoniano de perturbación
 	\begin{equation}
-		\Delta H = k \frac{b}{4 a^3} \left(A \sin\left[\omega_0 t + B\right]\right)^4 = 2 k \frac{b}{4 a^3 \sqrt{m^2 x^2 \omega_0 ^2+p^2}} \alpha^4 \sin^4\left[\omega_0 t + \beta\right]
+		\implies \alpha = \frac{m \omega_0 A^2}{2}
+	\end{equation}
+	Por lo que obtenemos un par canónico, tal que
+	\begin{equation}
+		\alpha = \frac{m \omega_0 A^2}{2}, \qquad \beta = B
+	\end{equation}
+	Con $\alpha$ relacionado a la amplitud y $\beta$ a la fase y frecuencia. Reemplazando todo en el hamiltoniano de perturbación
+	\begin{equation*}
+		\Delta H = k \frac{b}{4 a^3} \left(A \sin\left[\omega_0 t + B\right]\right)^4 = k \frac{b}{4 a^3} \left(\sqrt{\frac{2 \alpha}{m \omega_0}} \sin\left[\omega_0 t + \beta\right]\right)^4
+	\end{equation*}
+	\begin{equation}
+		\implies \Delta H = \frac{b k}{a^3 m^2 \omega_0^2} \alpha^2 \sin^4\left[\omega_0 t + \beta\right]
 	\end{equation}
 	Y las ecuaciones canónicas para $\alpha,\beta$ usando \texttt{Mathematica}
 	\begin{align}
-		\dot{\alpha} &= - \pd{\Delta H}{\beta} = -\frac{\alpha ^4 b k }{a^3 \sqrt{m^2 x^2 \omega_0 ^2+p^2}} \sin ^3(\beta + \omega_0 t) \cos (\beta + \omega_0 t)\\
-		\dot{\beta} &= \pd{\Delta H}{\alpha} = \frac{\alpha ^3 b k}{a^3 \sqrt{m^2 x^2 \omega_0 ^2+p^2}} \sin ^4(\beta + \omega_0 t)
+		\dot{\alpha} &= - \pd{\Delta H}{\beta} = -\frac{4 b k }{a^3 m^2 \omega_0 ^2} \alpha ^2 \sin ^3(\beta + \omega_0 t) \cos (\beta + \omega_0 t)\\
+		\dot{\beta} &= \pd{\Delta H}{\alpha} = \frac{2 b k }{a^3 m^2 \omega_0 ^2} \alpha \sin ^4(\beta + \omega_0 t )
 	\end{align}	
 	Tomando $\alpha \approx \alpha_0 + \alpha_1(t), ~ \beta \approx \beta_0 + \beta_1(t)$ tenemos
 	\begin{align}
-		\dot{\alpha}_1 &\approx -\frac{\alpha_0 ^4 b k }{a^3} \sin ^3(\beta_0 + \omega_0 t) \cos (\beta_0 + \omega_0 t)\\
-		\dot{\beta}_1 &\approx \frac{\alpha_0 ^3 b k}{a^3} \sin ^4(\beta_0 + \omega_0 t)
+		\dot{\alpha}_1 &\approx -\frac{4 b k }{a^3 m^2 \omega_0 ^2} \alpha_0 ^2 \sin ^3(\beta_0 + \omega_0 t) \cos (\beta_0 + \omega_0 t)\\
+		\dot{\beta}_1 &\approx \frac{2 b k }{a^3 m^2 \omega_0 ^2} \alpha_0 \sin ^4(\beta_0 + \omega_0 t )
 	\end{align}
 	Integrando
 	\begin{align}
-		\alpha_1 &\approx -\frac{b k}{4 a^3 \omega_0} \alpha_0^4  \sin ^4 \left[\beta_0 + \omega_0 t\right] \\
-		\beta_1 &\approx \frac{3 b k}{8 a^3} \omega_0 \alpha_0^3 \left[\beta_0 + \omega_0 t\right] + \frac{b k }{32 a^3 \omega_0} \alpha_0 ^3  \left\{\sin (4 \left[\beta_0 + \omega_0 t\right]) - 8 \sin (2 \left[\beta_0 + \omega_0 t\right])\right\}
+		\alpha_1 &\approx -\frac{b k }{a^3 m^2 \omega_0 ^3} \alpha_0 ^2 \sin ^4(\beta_0 + \omega_0 t )\\
+		\beta_1 &\approx \frac{3 b k}{4 a^3 m^2 \omega_0 ^3} \alpha_0 \left[\beta_0 + \omega_0 t\right] + \frac{b k }{16 a^3 m^2 \omega_0 ^3} \alpha_0 \left[\sin (4 \beta_0 + 4 \omega_0 t) - 8 \sin (2 \beta_0 +2 \omega_0 t )\right]
 	\end{align}
+	Reemplazando en la ecuación de trayectoria,
+	\begin{align*}
+		x_0(t) &= A \sin\left[\omega_0 t + B\right] \nonumber \\
+		&= \sqrt{\frac{2 \alpha}{m \omega_0}} \sin \left[\omega_0 t + \beta\right]\\
+		&= \sqrt{\frac{2 \alpha_0 + 2 \alpha_1}{m \omega_0}} \sin \left[\omega_0 t + \beta_0 + \beta_1\right]\\
+		&\approx \left(\sqrt{\frac{2 \alpha_0}{m \omega_0}} + \sqrt{\frac{1}{2 m \omega_0 \alpha_0}} \alpha_1\right) \left(\sin \left[\omega_0 t + \beta_0\right] + \beta_1 \cos\left[\omega_0 t + \beta_0\right]\right)\\
+		&\approx \left(\sqrt{\frac{2 \alpha_0}{m \omega_0}} - \sqrt{\frac{m \omega_0 \alpha_0^3}{2}} \frac{b k \sin ^4\left[\omega_0 t + \beta_0\right]}{a^3 m^3 \omega_0 ^4}\right) \left(\sin \left[\omega_0 t + \beta_0\right] + \underbrace{\beta_1 \cos\left[\omega_0 t + \beta_0\right]}_{\Gamma}\right)\\
+		&\approx \sqrt{\frac{2 \alpha_0}{m \omega_0}} \sin \left[\omega_0 t + \beta_0\right] - \sqrt{\frac{\alpha_0^3}{2 m^5 \omega_0 ^7}} \frac{b k }{a^3} \sin ^5\left[\omega_0 t + \beta_0\right] + \sqrt{\frac{2 \alpha_0}{m \omega_0}} \Gamma
+	\end{align*}
+	\begin{equation}
+		\Gamma = \frac{\alpha_0 b k \left\{12 \left[\omega_0 t + \beta_0\right] - 8 \sin (2\left[\omega_0 t + \beta_0\right]) +\sin (4 \left[\omega_0 t + \beta_0\right]) \right\}}{16 a^3 m^2 \omega_0 ^3} \cos \left[\omega_0 t + \beta_0\right]
+	\end{equation}
+%	\begin{equation}
+%		\Lambda = \sqrt{\frac{2 \alpha_0}{m \omega_0} - \frac{2 b k }{a^3 m^3 \omega_0 ^4} \alpha_0 ^2 \sin ^4(\beta_0 + \omega_0 t )}
+%	\end{equation}
+%	\begin{equation}
+%		\Gamma = \left(\frac{3 b k}{4 a^3 m^2 \omega_0 ^2} \alpha_0 + \omega_0\right) t + \left(\frac{3 b k}{4 a^3 m^2 \omega_0 ^3} \alpha_0 + 1\right)\beta_0 + \frac{b k }{16 a^3 m^2 \omega_0 ^3} \alpha_0 \left[\sin (4 \beta_0 + 4 \omega_0 t) - 8 \sin (2 \beta_0 +2 \omega_0 t )\right]
+%	\end{equation}
 	\qed
 	
 	\item[b.] The first nonvanishing correction to the frequency of oscillations.
