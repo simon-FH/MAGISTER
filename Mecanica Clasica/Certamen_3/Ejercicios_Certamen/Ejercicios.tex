@@ -2,6 +2,8 @@
 \documentclass[]{article}
 \usepackage{geometry,tikz,lipsum,amsmath,amssymb,soul,xcolor,cancel,esint}
 \tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+\usetikzlibrary{patterns}
+
 \numberwithin{equation}{section}
 
 \usepackage{../../../simonPackage}
@@ -10,33 +12,442 @@
 \author{Simon Fonseca}
 
 \begin{document}
-	\maketitle
-	\section{Problema 1}
-	The transformation of coordinates and momenta has a form
+\maketitle
+\section{Problema 1}
+The transformation of coordinates and momenta has a form
+\begin{align}
+	P &= \alpha\frac{p^2 q}{\sqrt{1 + p^{2}q^{2}}}, & Q &= \beta \frac{\sqrt{1 + p^2 q^2}}{p}, & \alpha, \beta &= \mathrm{const}
+\end{align}
+\begin{enumerate}
+	\item[a.] Find the values of constants $\alpha, \beta$ for which the transformation is canonical. For these values of $\alpha, \beta$, find explicitly the generating function $F$ which corresponds to the transformation.
+	\resp Podemos calcular el corchete de Poisson entre $[P,Q]_{p,q}$, es cual deberá ser cero. Usando \texttt{Mathematica} tenemos
+	\begin{equation}
+		[P,Q]_{p,q} = \alpha\beta
+	\end{equation}
+	Por lo tanto, para que la transformación sea canónica deberá cumplirse que
+	\begin{equation}
+		\beta = \frac{1}{\alpha}
+	\end{equation}
+	
+	Para la ecuación generatriz, buscaremos una ecuación del tipo $F_1(q,Q,t)$ (porque las revisé todas y esta se ve la más simple de resolver :p). Escribiendo $p = p(q,Q), ~ P = P(q,Q)$ con \texttt{Mathematica}
+	\begin{equation}
+		\pd{F_1}{q} = p = \frac{1}{\sqrt{\alpha ^2 Q^2 - q^2}}, \qquad -\pd{F_1}{Q} = P = \frac{q}{Q \sqrt{\alpha ^2 Q^2 - q^2}}
+	\end{equation}
+	Usando \texttt{Mathematica} para integrar $p$ por $q$ y $P$ por $-Q$ llegamos al mismo resultado
+	\begin{equation}
+		F_1(q,Q) = \arctan\left[\frac{q}{\sqrt{\alpha ^2 Q^2-q^2}}\right]
+	\end{equation}
+	
+	\qed
+	
+	\item[b.] Apply the transformation found in the previous item to the hamiltonian of harmonic oscillator $H (p, q) = \frac{p^2}{2m} + \frac{kq^2}{2}$ and find the hamiltonian $\tilde{H} (P, Q)$ in terms of the new variables $(P, Q)$. Write out the canonical equations in terms of these new variables.
+	\resp Usando la función generatriz, podemos transformar el hamiltoniano utilizando
+	\begin{equation}
+		\tilde{H} = H + \pd{F_1}{t}
+	\end{equation}
+	Pero $\ltd{F}{t} = 0$. Primero, para escribir el hamiltoniano original en función de $P,Q$, necesitamos $p(P,Q), ~ q(P,Q)$. Usando \texttt{Mathematica}
+	\begin{equation}
+		q = \frac{\alpha  P Q^2}{\sqrt{P^2 Q^2+1}}, \qquad p = \frac{\sqrt{P^2 Q^2+1}}{\alpha  Q}
+	\end{equation}
+	por lo que el hamiltoniano
+	\begin{equation}
+		\tilde{H} = \frac{p^2}{2m} + \frac{kq^2}{2} = \frac{1}{2 m \alpha^2} \frac{P^2 Q^2 + 1}{ Q^2} + \frac{k\alpha^2}{2} \frac{P^2 Q^4}{P^2 Q^2 + 1}
+	\end{equation}
+	Y las ecuaciones canónicas, con \texttt{Mathematica}
+	\begin{equation}
+		\dot{P} = - \pd{\tilde{H}}{Q} = \frac{1}{\alpha ^2 m Q^3}-\frac{\alpha ^2 k P^2 Q^3 \left(P^2 Q^2+2\right)}{\left(P^2 Q^2+1\right)^2}, \qquad \dot{Q} = \pd{\tilde{H}}{P} = \frac{\alpha^2 k P Q^4}{ \left(P^2 Q^2+1\right)^2} + \frac{P}{\alpha ^2 m}
+	\end{equation}
+	\qed	
+\end{enumerate}
+
+\section{Problema 2}
+A nonrelativistic charged particle of mass $m$ is constrained to move in a horizontal plane, in the field of the harmonic oscillator $U = kr^2/2$ and the constant magnetic field $\n{B}$ perpendicular to the plane. The vector potential $\n{A}$ may be chosen as
+\begin{equation}
+	\n{A} = \frac{1}{2} \n{B}\times\rv
+\end{equation}
+Analyze this system in polar coordinates:
+\begin{enumerate}
+	\item[a.] Write out the lagrangian, the generalized momenta and construct the hamiltonian.
+	\resp Asumiendo que la partícula tiene carga $q$, el potencial magnético:
+	\begin{equation*}
+		U_A = - q \dot{\rv}\cdot\n{A} = - q \dot{\rv}\cdot\frac{1}{2} (\n{B}\times\rv)
+	\end{equation*}
+	Como $\n{B}$ es perpendicular a $\rv$, $\n{B}\times\rv = B r \phat$
+	\begin{equation}
+		U_A = - \frac{1}{2} q B r \dot{\rv}\cdot\phat = - \frac{q B}{2} r^2 \dot{\varphi}
+	\end{equation}
+	Entonces el lagrangiano
+	\begin{equation}
+		L = \frac{m}{2} \left(\dot{r}^2 + r^2 \dot{\varphi}^2\right) - \frac{ k}{2} r^2 + \frac{q B}{2} r^2 \dot{\varphi}
+	\end{equation}
+	Y los momentos generalizados
+	\begin{equation}
+		p_r = \pd{L}{\dot{r}} = m\dot{r}, \qquad p_\varphi = \pd{L}{\dot{\phi}} = m r^2 \dot{\varphi} + \frac{q B}{2} r^2
+	\end{equation}
+	Ya que $\varphi$ no aparece, es cíclica y $p_{\varphi}$ se conserva. El hamiltoniano entonces
+	\begin{align*}
+		H &= m \dot{r}^2 + m r^2 \dot{\varphi}^2 + \frac{q B }{2} r^2 \dot{\varphi} - \frac{m}{2} \left(\dot{r}^2 + r^2 \dot{\varphi}^2\right) + \frac{k}{2} r^2 - \frac{q B }{2} r^2 \dot{\varphi}\\
+		&= \frac{m }{2} \dot{r}^2 + \frac{m }{2} r^2 \dot{\varphi}^2 + \frac{k}{2} r^2
+	\end{align*}
+	Usando los momentos
+	\begin{equation}
+		H = \frac{1}{2 m} p_r^2 + \frac{1}{2 m} \left(\frac{p_\varphi}{r} - \frac{ q B}{2} r\right)^2 + \frac{k}{2} r^2
+	\end{equation}
+	
+	\qed
+	
+	\item[b.] Write out the canonical equations of motion.
+	\resp Las ecuaciones canónicas
 	\begin{align}
-		P &= \alpha\frac{p^2 q}{\sqrt{1 + p^{2}q^{2}}}, & Q &= \beta \frac{\sqrt{1 + p^2 q^2}}{p}, & \alpha, \beta &= \mathrm{const}
+		\dot{p}_r &= - \pd{H}{r} = - \frac{1}{m} \left(\frac{p_\varphi}{r} - \frac{ q B}{2} r\right) \left(- \frac{p_\varphi}{r^2} - \frac{ q B}{2}\right) - k r = \frac{1}{m} \frac{p_\varphi^2}{r^3} - \left[\frac{q^2 B^2 }{4 m} + k\right] r\\
+		\dot{p}_\varphi &= - \pd{H}{\varphi} = 0 \\
+		\dot{r} &= \pd{H}{p_r} = \frac{1}{m} p_r\\
+		\dot{\varphi} &= \pd{H}{p_\varphi} = \frac{1}{m} \left(\frac{p_\varphi}{r} - \frac{ q B}{2} r\right) \cdot \frac{1}{r} = \frac{1}{m} \frac{p_\varphi}{r^2} - \frac{ q B}{2 m}
 	\end{align}
-	\begin{enumerate}
-		\item[a.] Find the values of constants $\alpha, \beta$ for which the transformation is canonical. For these values of $\alpha, \beta$, find explicitly the generating function $F$ which corresponds to the transformation.
-		\resp Podemos calcular el corchete de Poisson entre $[P,Q]_{p,q}$, es cual deberá ser cero. Usando \texttt{Mathematica} tenemos
-		\begin{equation}
-			[P,Q]_{p,q} = \alpha\beta
-		\end{equation}
-		Por lo tanto, para que la transformación sea canónica deberá cumplirse que
-		\begin{equation}
-			\beta = \frac{1}{\alpha}
-		\end{equation}
-		
-		\qed
-		
-		\item[b.] Apply the transformation found in the previous item to the hamiltonian of harmonic oscillator $H (p, q) = \frac{p^2}{2m} + \frac{kq^2}{2}$ and find the hamiltonian $\tilde{H} (P, Q)$ in terms of the new variables $(P, Q)$. Write out the canonical equations in terms of these new variables.
-		\resp
-		
-		\qed
-		
-	\end{enumerate}
+	
+	\qed
+	
+	\item[c.] Write out the equation of Hamilton-Jacobi and integrate it using separation of variables.
+	\resp La ecuación de Hamilton-Jacobi
+	\begin{equation}
+		\pd{S}{t} + \frac{1}{2 m} \left(\pd{S}{r}\right)^2 + \frac{1}{2 m} \left(\frac{1}{r} \pd{S}{\varphi} - \frac{ q B}{2} r\right)^2 + \frac{k}{2} r^2 = 0
+	\end{equation}
+	Como el hamiltoniano no depende del tiempo, el sistema es conservativo y la acción se puede escribir como
+	\begin{equation}
+		S = f_r(r) + f_\varphi(\varphi) - E t
+	\end{equation}
+	donde
+	\begin{equation}
+		\pd{f_\varphi}{\varphi} = p_\varphi = \mathrm{const} \implies f_\varphi = \varphi p_\varphi
+	\end{equation}
+	Por lo que
+	\begin{align*}
+		\frac{1}{2 m} \left(\pd{f_r}{r}\right)^2 + \frac{1}{2 m} \left(\frac{1}{r} \pd{f_\varphi}{\varphi} - \frac{ q B}{2} r\right)^2 + \frac{k}{2} r^2 = E\\
+		\frac{1}{2 m} \left(\pd{f_r}{r}\right)^2 + \frac{1}{2 m} \left(\frac{1}{r}p_\varphi - \frac{ q B}{2} r\right)^2 + \frac{k}{2} r^2 = E
+	\end{align*}
+	\begin{equation*}
+		\implies \left(\pd{f_r}{r}\right)^2 = 2 m E + q B p_\varphi - \left[\frac{ q^2 B^2}{4} + m k \right] r^2 - \frac{1}{r^2} p_\varphi^2
+	\end{equation*}
+	Resolviendo la integral
+	\begin{align*}
+		f_r(r) &= \int^r \sqrt{2 m E + q B p_\varphi - \left[\frac{ q^2 B^2}{4} + m k \right] r^2 - \frac{1}{r^2}} p_\varphi^2 \, dr
+	\end{align*}
+	Por lo que
+	\begin{equation}
+		S = f_r(r) + \varphi p_\varphi - E t
+	\end{equation}
+	\begin{equation}
+		\implies \pd{S}{E} = - t_0 = \mathrm{const}, \qquad \implies \pd{S}{p_\varphi} = -\varphi_0 = \mathrm{const}
+	\end{equation}
+	\qed
+	
+\end{enumerate}
+
+\section{Problema 3}
+A particle of mass $m$ is constrained to move along a horizontal straight rail without friction. Two springs of elasticity $k$ are attached to the spring as shown in the Figure. The lengths of unstretched springs $b < a$. The system might oscillate near its position of equilibrium.
+
+\begin{figure}[h!]
+	\centering
 	
 	
+	% Pattern Info
 	
+	\tikzset{
+		pattern size/.store in=\mcSize, 
+		pattern size = 5pt,
+		pattern thickness/.store in=\mcThickness, 
+		pattern thickness = 0.3pt,
+		pattern radius/.store in=\mcRadius, 
+		pattern radius = 1pt}
+	\makeatletter
+	\pgfutil@ifundefined{pgf@pattern@name@_a12smcd06}{
+		\pgfdeclarepatternformonly[\mcThickness,\mcSize]{_a12smcd06}
+		{\pgfqpoint{0pt}{0pt}}
+		{\pgfpoint{\mcSize+\mcThickness}{\mcSize+\mcThickness}}
+		{\pgfpoint{\mcSize}{\mcSize}}
+		{
+			\pgfsetcolor{\tikz@pattern@color}
+			\pgfsetlinewidth{\mcThickness}
+			\pgfpathmoveto{\pgfqpoint{0pt}{0pt}}
+			\pgfpathlineto{\pgfpoint{\mcSize+\mcThickness}{\mcSize+\mcThickness}}
+			\pgfusepath{stroke}
+	}}
+	\makeatother
 	
+	% Pattern Info
+	
+	\tikzset{
+		pattern size/.store in=\mcSize, 
+		pattern size = 5pt,
+		pattern thickness/.store in=\mcThickness, 
+		pattern thickness = 0.3pt,
+		pattern radius/.store in=\mcRadius, 
+		pattern radius = 1pt}
+	\makeatletter
+	\pgfutil@ifundefined{pgf@pattern@name@_w1llqonaa}{
+		\pgfdeclarepatternformonly[\mcThickness,\mcSize]{_w1llqonaa}
+		{\pgfqpoint{0pt}{0pt}}
+		{\pgfpoint{\mcSize+\mcThickness}{\mcSize+\mcThickness}}
+		{\pgfpoint{\mcSize}{\mcSize}}
+		{
+			\pgfsetcolor{\tikz@pattern@color}
+			\pgfsetlinewidth{\mcThickness}
+			\pgfpathmoveto{\pgfqpoint{0pt}{0pt}}
+			\pgfpathlineto{\pgfpoint{\mcSize+\mcThickness}{\mcSize+\mcThickness}}
+			\pgfusepath{stroke}
+	}}
+	\makeatother
+	
+	% Pattern Info
+	
+	\tikzset{
+		pattern size/.store in=\mcSize, 
+		pattern size = 5pt,
+		pattern thickness/.store in=\mcThickness, 
+		pattern thickness = 0.3pt,
+		pattern radius/.store in=\mcRadius, 
+		pattern radius = 1pt}
+	\makeatletter
+	\pgfutil@ifundefined{pgf@pattern@name@qfla7k4ta}{
+		\pgfdeclarepatternformonly[\mcThickness,\mcSize]{qfla7k4ta}
+		{\pgfqpoint{0pt}{0pt}}
+		{\pgfpoint{\mcSize+\mcThickness}{\mcSize+\mcThickness}}
+		{\pgfpoint{\mcSize}{\mcSize}}
+		{
+			\pgfsetcolor{\tikz@pattern@color}
+			\pgfsetlinewidth{\mcThickness}
+			\pgfpathmoveto{\pgfqpoint{0pt}{0pt}}
+			\pgfpathlineto{\pgfpoint{\mcSize+\mcThickness}{\mcSize+\mcThickness}}
+			\pgfusepath{stroke}
+	}}
+	\makeatother
+	
+	% Pattern Info
+	
+	\tikzset{
+		pattern size/.store in=\mcSize, 
+		pattern size = 5pt,
+		pattern thickness/.store in=\mcThickness, 
+		pattern thickness = 0.3pt,
+		pattern radius/.store in=\mcRadius, 
+		pattern radius = 1pt}
+	\makeatletter
+	\pgfutil@ifundefined{pgf@pattern@name@f2y3vdiig}{
+		\pgfdeclarepatternformonly[\mcThickness,\mcSize]{f2y3vdiig}
+		{\pgfqpoint{0pt}{0pt}}
+		{\pgfpoint{\mcSize+\mcThickness}{\mcSize+\mcThickness}}
+		{\pgfpoint{\mcSize}{\mcSize}}
+		{
+			\pgfsetcolor{\tikz@pattern@color}
+			\pgfsetlinewidth{\mcThickness}
+			\pgfpathmoveto{\pgfqpoint{0pt}{0pt}}
+			\pgfpathlineto{\pgfpoint{\mcSize+\mcThickness}{\mcSize+\mcThickness}}
+			\pgfusepath{stroke}
+	}}
+	\makeatother
+	\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+		%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+		
+		%Shape: Spring [id:dp53259554849826] 
+		\draw  [color={rgb, 255:red, 0; green, 98; blue, 220 }  ,draw opacity=1 ] (414.47,30.15) .. controls (412.4,31.6) and (410.88,34.13) .. (412.19,37.18) .. controls (414.92,43.54) and (424.41,39.47) .. (423.05,36.29) .. controls (421.69,33.11) and (412.19,37.18) .. (414.92,43.54) .. controls (417.64,49.9) and (427.14,45.82) .. (425.78,42.65) .. controls (424.41,39.47) and (414.92,43.54) .. (417.64,49.9) .. controls (420.36,56.25) and (429.86,52.18) .. (428.5,49) .. controls (427.14,45.82) and (417.64,49.9) .. (420.36,56.25) .. controls (423.09,62.61) and (432.59,58.54) .. (431.22,55.36) .. controls (429.86,52.18) and (420.36,56.25) .. (423.09,62.61) .. controls (425.81,68.96) and (435.31,64.89) .. (433.95,61.72) .. controls (432.59,58.54) and (423.09,62.61) .. (425.81,68.96) .. controls (428.54,75.32) and (438.03,71.25) .. (436.67,68.07) .. controls (435.31,64.89) and (425.81,68.96) .. (428.54,75.32) .. controls (429.86,78.41) and (432.78,79.04) .. (435.28,78.5) ;
+		%Straight Lines [id:da5257696864685524] 
+		\draw [color={rgb, 255:red, 0; green, 98; blue, 220 }  ,draw opacity=1 ]   (415.2,30.68) -- (410.66,20.08) ;
+		%Straight Lines [id:da7803345021560975] 
+		\draw [color={rgb, 255:red, 0; green, 98; blue, 220 }  ,draw opacity=1 ]   (440.63,90) -- (435.64,78.35) ;
+		
+		%Straight Lines [id:da9446141450672763] 
+		\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=0.39 ] [dash pattern={on 0.84pt off 2.51pt}]  (20,90) -- (240,90) ;
+		%Shape: Rectangle [id:dp47237567306895245] 
+		\fill [pattern=_a12smcd06,pattern size=6pt,pattern thickness=0.75pt,pattern radius=0pt, pattern color={rgb, 255:red, 0; green, 0; blue, 0}] (20,10) -- (240,10) -- (240,20) -- (20,20) -- cycle ;
+		%Straight Lines [id:da4900092439256558] 
+		\draw    (20,20) -- (240,20) ;
+		%Shape: Rectangle [id:dp16331107475739504] 
+		\fill [pattern=_w1llqonaa,pattern size=6pt,pattern thickness=0.75pt,pattern radius=0pt, pattern color={rgb, 255:red, 0; green, 0; blue, 0}] (20,160) -- (240,160) -- (240,170) -- (20,170) -- cycle ;
+		%Straight Lines [id:da03613928276067302] 
+		\draw    (20,160) -- (240,160) ;
+		%Shape: Spring [id:dp501028428027761] 
+		\draw  [color={rgb, 255:red, 0; green, 98; blue, 220 }  ,draw opacity=1 ] (129.53,150.67) .. controls (127.05,150.22) and (124.67,148.72) .. (124.67,145.84) .. controls (124.67,139.84) and (135,139.84) .. (135,142.84) .. controls (135,145.84) and (124.67,145.84) .. (124.67,139.84) .. controls (124.67,133.84) and (135,133.84) .. (135,136.84) .. controls (135,139.84) and (124.67,139.84) .. (124.67,133.84) .. controls (124.67,127.84) and (135,127.84) .. (135,130.84) .. controls (135,133.84) and (124.67,133.84) .. (124.67,127.84) .. controls (124.67,121.84) and (135,121.84) .. (135,124.84) .. controls (135,127.84) and (124.67,127.84) .. (124.67,121.84) .. controls (124.67,115.84) and (135,115.84) .. (135,118.84) .. controls (135,121.84) and (124.67,121.84) .. (124.67,115.84) .. controls (124.67,109.84) and (135,109.84) .. (135,112.84) .. controls (135,115.84) and (124.67,115.84) .. (124.67,109.84) .. controls (124.67,106.93) and (127.11,105.43) .. (129.61,105) ;
+		%Straight Lines [id:da8531889205095659] 
+		\draw [color={rgb, 255:red, 0; green, 98; blue, 220 }  ,draw opacity=1 ]   (130,150) -- (130,160) ;
+		%Straight Lines [id:da052776111103064904] 
+		\draw [color={rgb, 255:red, 0; green, 98; blue, 220 }  ,draw opacity=1 ]   (130,94) -- (130,105) ;
+		%Straight Lines [id:da06896083335241132] 
+		\draw    (30,93) -- (30,157) ;
+		\draw [shift={(30,160)}, rotate = 270] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- (5.93,0) -- cycle    ;
+		\draw [shift={(30,90)}, rotate = 90] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- (5.93,0) -- cycle    ;
+		%Shape: Circle [id:dp9045751750185275] 
+		\draw  [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ] (126.17,90.17) .. controls (126.17,88.05) and (127.88,86.33) .. (130,86.33) .. controls (132.12,86.33) and (133.83,88.05) .. (133.83,90.17) .. controls (133.83,92.28) and (132.12,94) .. (130,94) .. controls (127.88,94) and (126.17,92.28) .. (126.17,90.17) -- cycle ;
+		%Shape: Rectangle [id:dp7377629223825203] 
+		\fill [pattern=qfla7k4ta,pattern size=6pt,pattern thickness=0.75pt,pattern radius=0pt, pattern color={rgb, 255:red, 0; green, 0; blue, 0}] (300,10) -- (520,10) -- (520,20) -- (300,20) -- cycle ;
+		%Straight Lines [id:da2679287882458603] 
+		\draw    (300,20) -- (520,20) ;
+		%Shape: Rectangle [id:dp4919027389501487] 
+		\fill  [pattern=f2y3vdiig,pattern size=6pt,pattern thickness=0.75pt,pattern radius=0pt, pattern color={rgb, 255:red, 0; green, 0; blue, 0}] (300,160) -- (520,160) -- (520,170) -- (300,170) -- cycle ;
+		%Straight Lines [id:da6165706589545695] 
+		\draw    (300,160) -- (520,160) ;
+		%Shape: Spring [id:dp7577904625132904] 
+		\draw  [color={rgb, 255:red, 0; green, 98; blue, 220 }  ,draw opacity=1 ] (414.03,149.93) .. controls (411.96,148.48) and (410.44,145.95) .. (411.75,142.9) .. controls (414.48,136.54) and (423.97,140.61) .. (422.61,143.79) .. controls (421.25,146.97) and (411.75,142.9) .. (414.48,136.54) .. controls (417.2,130.19) and (426.7,134.26) .. (425.34,137.44) .. controls (423.97,140.61) and (414.48,136.54) .. (417.2,130.19) .. controls (419.93,123.83) and (429.42,127.9) .. (428.06,131.08) .. controls (426.7,134.26) and (417.2,130.19) .. (419.93,123.83) .. controls (422.65,117.47) and (432.15,121.55) .. (430.78,124.72) .. controls (429.42,127.9) and (419.93,123.83) .. (422.65,117.47) .. controls (425.37,111.12) and (434.87,115.19) .. (433.51,118.37) .. controls (432.15,121.55) and (422.65,117.47) .. (425.37,111.12) .. controls (428.1,104.76) and (437.6,108.83) .. (436.23,112.01) .. controls (434.87,115.19) and (425.37,111.12) .. (428.1,104.76) .. controls (429.42,101.67) and (432.34,101.05) .. (434.84,101.58) ;
+		%Straight Lines [id:da4140309902189445] 
+		\draw [color={rgb, 255:red, 0; green, 98; blue, 220 }  ,draw opacity=1 ]   (414.77,149.41) -- (410.23,160) ;
+		%Straight Lines [id:da7697785365895794] 
+		\draw [color={rgb, 255:red, 0; green, 98; blue, 220 }  ,draw opacity=1 ]   (440.19,90.08) -- (435.2,101.74) ;
+		
+		%Straight Lines [id:da15315760114012733] 
+		\draw [color={rgb, 255:red, 87; green, 164; blue, 0 }  ,draw opacity=1 ]   (410,90) -- (433.36,90.07) ;
+		\draw [shift={(436.36,90.08)}, rotate = 180.18] [fill={rgb, 255:red, 87; green, 164; blue, 0 }  ,fill opacity=1 ][line width=0.08]  [draw opacity=0] (7.14,-3.43) -- (0,0) -- (7.14,3.43) -- (4.74,0) -- cycle    ;
+		\draw [shift={(410,90)}, rotate = 180.18] [color={rgb, 255:red, 87; green, 164; blue, 0 }  ,draw opacity=1 ][line width=0.75]    (0,3.35) -- (0,-3.35)   ;
+		%Shape: Circle [id:dp5811990316587482] 
+		\draw  [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ] (436.36,90.08) .. controls (436.36,87.97) and (438.07,86.25) .. (440.19,86.25) .. controls (442.31,86.25) and (444.03,87.97) .. (444.03,90.08) .. controls (444.03,92.2) and (442.31,93.92) .. (440.19,93.92) .. controls (438.07,93.92) and (436.36,92.2) .. (436.36,90.08) -- cycle ;
+		%Straight Lines [id:da43760073372248687] 
+		\draw    (458.63,92.68) -- (431.17,157.24) ;
+		\draw [shift={(430,160)}, rotate = 293.04] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (5.36,-2.57) -- (0,0) -- (5.36,2.57) -- (3.56,0) -- cycle    ;
+		\draw [shift={(459.81,89.92)}, rotate = 113.04] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (5.36,-2.57) -- (0,0) -- (5.36,2.57) -- (3.56,0) -- cycle    ;
+		%Straight Lines [id:da6493867768122974] 
+		\draw    (30,23) -- (30,87) ;
+		\draw [shift={(30,90)}, rotate = 270] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- (5.93,0) -- cycle    ;
+		\draw [shift={(30,20)}, rotate = 90] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- (5.93,0) -- cycle    ;
+		%Shape: Spring [id:dp4686258213858774] 
+		\draw  [color={rgb, 255:red, 0; green, 98; blue, 220 }  ,draw opacity=1 ] (129.53,76.67) .. controls (127.05,76.22) and (124.67,74.72) .. (124.67,71.84) .. controls (124.67,65.84) and (135,65.84) .. (135,68.84) .. controls (135,71.84) and (124.67,71.84) .. (124.67,65.84) .. controls (124.67,59.84) and (135,59.84) .. (135,62.84) .. controls (135,65.84) and (124.67,65.84) .. (124.67,59.84) .. controls (124.67,53.84) and (135,53.84) .. (135,56.84) .. controls (135,59.84) and (124.67,59.84) .. (124.67,53.84) .. controls (124.67,47.84) and (135,47.84) .. (135,50.84) .. controls (135,53.84) and (124.67,53.84) .. (124.67,47.84) .. controls (124.67,41.84) and (135,41.84) .. (135,44.84) .. controls (135,47.84) and (124.67,47.84) .. (124.67,41.84) .. controls (124.67,35.84) and (135,35.84) .. (135,38.84) .. controls (135,41.84) and (124.67,41.84) .. (124.67,35.84) .. controls (124.67,32.93) and (127.11,31.43) .. (129.61,31) ;
+		%Straight Lines [id:da6944654160215641] 
+		\draw [color={rgb, 255:red, 0; green, 98; blue, 220 }  ,draw opacity=1 ]   (130,76) -- (130,86) ;
+		%Straight Lines [id:da9206243920862129] 
+		\draw [color={rgb, 255:red, 0; green, 98; blue, 220 }  ,draw opacity=1 ]   (130,20) -- (130,31) ;
+		%Shape: Spring [id:dp6754763544889653] 
+		\draw  [color={rgb, 255:red, 0; green, 98; blue, 220 }  ,draw opacity=1 ] (250,200.37) .. controls (250.49,198.08) and (251.88,196) .. (254.39,196) .. controls (259.99,196) and (259.99,206.33) .. (256.99,206.33) .. controls (253.99,206.33) and (253.99,196) .. (259.59,196) .. controls (265.19,196) and (265.19,206.33) .. (262.19,206.33) .. controls (259.19,206.33) and (259.19,196) .. (264.79,196) .. controls (270.39,196) and (270.39,206.33) .. (267.39,206.33) .. controls (264.39,206.33) and (264.39,196) .. (269.99,196) .. controls (275.59,196) and (275.59,206.33) .. (272.59,206.33) .. controls (269.59,206.33) and (269.59,196) .. (275.19,196) .. controls (280.79,196) and (280.79,206.33) .. (277.79,206.33) .. controls (274.79,206.33) and (274.79,196) .. (280.39,196) .. controls (285.99,196) and (285.99,206.33) .. (282.99,206.33) .. controls (279.99,206.33) and (279.99,196) .. (285.59,196) .. controls (288.14,196) and (289.53,198.14) .. (290,200.47) ;
+		%Straight Lines [id:da9916068738049867] 
+		\draw [color={rgb, 255:red, 0; green, 98; blue, 220 }  ,draw opacity=1 ]   (250,200) -- (240,200) ;
+		%Straight Lines [id:da9355632602617793] 
+		\draw [color={rgb, 255:red, 0; green, 98; blue, 220 }  ,draw opacity=1 ]   (300,200) -- (290,200) ;
+		%Shape: Circle [id:dp7409569044789499] 
+		\draw  [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ] (241,200.13) .. controls (241,199.51) and (240.49,199) .. (239.87,199) .. controls (239.24,199) and (238.73,199.51) .. (238.73,200.13) .. controls (238.73,200.76) and (239.24,201.27) .. (239.87,201.27) .. controls (240.49,201.27) and (241,200.76) .. (241,200.13) -- cycle ;
+		%Shape: Circle [id:dp8350986472797184] 
+		\draw  [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ] (301,200.13) .. controls (301,199.51) and (300.49,199) .. (299.87,199) .. controls (299.24,199) and (298.73,199.51) .. (298.73,200.13) .. controls (298.73,200.76) and (299.24,201.27) .. (299.87,201.27) .. controls (300.49,201.27) and (301,200.76) .. (301,200.13) -- cycle ;
+		%Straight Lines [id:da49436540390934514] 
+		\draw    (243,216) -- (297,216) ;
+		\draw [shift={(300,216)}, rotate = 180] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- (5.93,0) -- cycle    ;
+		\draw [shift={(240,216)}, rotate = 0] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- (5.93,0) -- cycle    ;
+		%Straight Lines [id:da6693051338332142] 
+		\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=0.39 ] [dash pattern={on 0.84pt off 2.51pt}]  (300,90) -- (520,90) ;
+		%Straight Lines [id:da9471519781539011] 
+		\draw    (310,93) -- (310,157) ;
+		\draw [shift={(310,160)}, rotate = 270] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- (5.93,0) -- cycle    ;
+		\draw [shift={(310,90)}, rotate = 90] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- (5.93,0) -- cycle    ;
+		%Straight Lines [id:da6249324777600708] 
+		\draw    (310,23) -- (310,87) ;
+		\draw [shift={(310,90)}, rotate = 270] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- (5.93,0) -- cycle    ;
+		\draw [shift={(310,20)}, rotate = 90] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- (5.93,0) -- cycle    ;
+		%Straight Lines [id:da5535504527705088] 
+		\draw    (458.82,87.24) -- (431.18,22.76) ;
+		\draw [shift={(430,20)}, rotate = 66.8] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (5.36,-2.57) -- (0,0) -- (5.36,2.57) -- (3.56,0) -- cycle    ;
+		\draw [shift={(460,90)}, rotate = 246.8] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (5.36,-2.57) -- (0,0) -- (5.36,2.57) -- (3.56,0) -- cycle    ;
+		
+		% Text Node
+		\draw (38,119) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle a$};
+		% Text Node
+		\draw (415,77) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 87; green, 164; blue, 0 }  ,opacity=1 ] [align=left] {$\displaystyle x$};
+		% Text Node
+		\draw (450,52) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \sqrt{a^{2} +x^{2}}$};
+		% Text Node
+		\draw (451,115) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \sqrt{a^{2} +x^{2}}$};
+		% Text Node
+		\draw (111,120) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 0; green, 98; blue, 220 }  ,opacity=1 ] [align=left] {$\displaystyle k$};
+		% Text Node
+		\draw (405,113) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 0; green, 98; blue, 220 }  ,opacity=1 ] [align=left] {$\displaystyle k$};
+		% Text Node
+		\draw (38,49) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle a$};
+		% Text Node
+		\draw (111,46) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 0; green, 98; blue, 220 }  ,opacity=1 ] [align=left] {$\displaystyle k$};
+		% Text Node
+		\draw (266,218) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle b$};
+		% Text Node
+		\draw (318,119) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle a$};
+		% Text Node
+		\draw (318,49) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle a$};
+		% Text Node
+		\draw (407,52) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 0; green, 98; blue, 220 }  ,opacity=1 ] [align=left] {$\displaystyle k$};
+		
+		
+	\end{tikzpicture}
+	
+\end{figure}
+
+Assuming that $\Delta H = H - H_0$ is a small perturbation, and using canonical perturbation theory, calculate:
+\begin{enumerate}
+	\item[a.] The first nonvanishing correction to the trajectory of the particle
+	\resp El potencial de este problema
+	\begin{align}
+		U(x) &= \frac{1}{2} k \left(\sqrt{a^2 + x^2} - b\right)^2 + \frac{1}{2} k \left(\sqrt{a^2 + x^2} - b\right)^2\nonumber\\
+		&= k \left(\sqrt{a^2 + x^2} - b\right)^2
+	\end{align}
+	Por lo que el hamiltoniano
+	\begin{equation}
+		H = \frac{1}{2 m} p^2 + k \left(\sqrt{a^2 + x^2} - b\right)^2
+	\end{equation}
+	Expandiendo el binomio cuadrado a los 2 primeros órdenes no constantes
+	\begin{equation}
+		H \approx \underbrace{\frac{1}{2 m} p^2 + k \frac{a - b}{a} x^2}_{H_0} + \underbrace{k \frac{b}{4 a^3} x^4}_{\Delta H}
+	\end{equation}
+	Para $H_0$, las ecuaciones canónicas
+	\begin{equation*}
+		\dot{p}_0 = -\pd{H}{x} = - 2 k \frac{a - b}{a} x, \qquad \dot{x}_0 = \pd{H}{p} = \frac{1}{m} p
+	\end{equation*}
+	\begin{equation*}
+		\implies \ddot{x}_0 = -\frac{2 k}{m} \frac{a - b}{a} x_0
+	\end{equation*}
+	por lo que la solución es un oscilador armónico 
+	\begin{equation}
+		x_0(t) = A \sin\left[\omega_0 t + B\right], \qquad p_0(t) = m A \omega_0 \cos\left[\omega_0 t + B\right] , \qquad \omega_0 = \sqrt{\frac{2 k}{m} \frac{a - b}{a}}
+	\end{equation}
+	Donde $A, B$ vienen de la integración. Utilizando \texttt{Mathematica} tenemos
+	\begin{equation}
+		A = \frac{\sqrt{m^2 x^2 \omega_0 ^2+p^2}}{m \omega_0 }, \qquad B = \arctan \left(\frac{p}{m x \omega_0 }\right) - \omega_0 t
+	\end{equation}
+	Para hacer que $A,B$ sean un par de variables $\alpha, \beta$ canónicas estas deben cumplir con $[\alpha,\beta] = 1$. En nuestro caso
+	\begin{equation}
+		[A,B] = -\frac{1}{\sqrt{m^2 x^2 \omega_0 ^2+p^2}}
+	\end{equation}
+	Por lo que multiplicando $A$ por un factor $-\frac{\sqrt{m^2 x^2 \omega_0 ^2+p^2}}{2}$ obtenemos un par canónico, tal que
+	\begin{equation}
+		\alpha = -\frac{\sqrt{m^2 x^2 \omega_0 ^2+p^2}}{2} A, \qquad \beta = B
+	\end{equation}
+	Reemplazando todo en el hamiltoniano de perturbación
+	\begin{equation}
+		\Delta H = k \frac{b}{4 a^3} \left(A \sin\left[\omega_0 t + B\right]\right)^4 = 2 k \frac{b}{4 a^3 \sqrt{m^2 x^2 \omega_0 ^2+p^2}} \alpha^4 \sin^4\left[\omega_0 t + \beta\right]
+	\end{equation}
+	Y las ecuaciones canónicas para $\alpha,\beta$ usando \texttt{Mathematica}
+	\begin{align}
+		\dot{\alpha} &= - \pd{\Delta H}{\beta} = -\frac{\alpha ^4 b k }{a^3 \sqrt{m^2 x^2 \omega_0 ^2+p^2}} \sin ^3(\beta + \omega_0 t) \cos (\beta + \omega_0 t)\\
+		\dot{\beta} &= \pd{\Delta H}{\alpha} = \frac{\alpha ^3 b k}{a^3 \sqrt{m^2 x^2 \omega_0 ^2+p^2}} \sin ^4(\beta + \omega_0 t)
+	\end{align}	
+	Tomando $\alpha \approx \alpha_0 + \alpha_1(t), ~ \beta \approx \beta_0 + \beta_1(t)$ tenemos
+	\begin{align}
+		\dot{\alpha}_1 &\approx -\frac{\alpha_0 ^4 b k }{a^3} \sin ^3(\beta_0 + \omega_0 t) \cos (\beta_0 + \omega_0 t)\\
+		\dot{\beta}_1 &\approx \frac{\alpha_0 ^3 b k}{a^3} \sin ^4(\beta_0 + \omega_0 t)
+	\end{align}
+	Integrando
+	\begin{align}
+		\alpha_1 &\approx -\frac{b k}{4 a^3 \omega_0} \alpha_0^4  \sin ^4 \left[\beta_0 + \omega_0 t\right] \\
+		\beta_1 &\approx \frac{3 b k}{8 a^3} \omega_0 \alpha_0^3 \left[\beta_0 + \omega_0 t\right] + \frac{b k }{32 a^3 \omega_0} \alpha_0 ^3  \left\{\sin (4 \left[\beta_0 + \omega_0 t\right]) - 8 \sin (2 \left[\beta_0 + \omega_0 t\right])\right\}
+	\end{align}
+	\qed
+	
+	\item[b.] The first nonvanishing correction to the frequency of oscillations.
+	\resp
+	
+	\qed
+	
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
 \end{document}
