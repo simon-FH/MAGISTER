@@ -1,0 +1,104 @@
+% !TeX spellcheck = es_CL-SpanishChile
+\documentclass[aspectratio=169]{beamer}
+
+\usepackage{../../SimonPackage}
+\newcommand{\Ev}{\Vec{E}}
+\newcommand{\kv}{\Vec{\kappa}}
+
+\definecolor{myaccent}{HTML}{356AE6}
+\usetheme[
+accent=myaccent,
+progressbar=foot,
+sectionpage=progressbar,
+subsectionpage=progressbar,
+numbering=fraction,
+block=fill
+]{cookie}
+
+\title{Radiación de Cuerpo Negro, Física Estadística}
+\author{Simón Fonseca}
+\date{25 Junio, 2026}
+
+\begin{document}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Estados cuánticos de una partícula}
+\begin{frame}{Estadística fotónica}{}
+	\begin{itemize}
+		\item Consideremos radiación electromagnética, una colección de fotones indistinguibles, dentro de una caja de lados $L_x,L_y,L_z$.
+		% Deben ser indistinguibles, obviamente
+		\item La cantidad total de fotones no es fija, depende de la temperatura $T$ de las paredes.\pause
+		\item El campo de radiación en equilibrio térmico dentro de una caja está completamente descrito la distribución de Planck, que se expresa como:
+		\begin{equation}
+			\bar{n}_s = \frac{1}{e^{\beta \epsilon_s}-1},
+			\label{eq:planck}
+		\end{equation}
+		donde $\bar{n}_s$ es el número promedio de fotones en el estado $s$, y $\epsilon_s$ es la energía asociada a tal estado.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Debido a la naturaleza periódica de la ecuación de onda espacial de los fotones $\vec{\psi}(\vec{r})=e^{i\kv\cdot\vec{r}}$, se requiere que
+		\begin{equation}
+			\kappa_i=\frac{2\pi}{L_i}n_i ,
+		\end{equation}
+		donde $i$ es cualquier dirección del espacio, y $n_i$ es un número entero.\pause
+		\item Luego, el número $\Delta n_i$ de posibles enteros $n_i$ para los cuales $\kappa_i$ está dentro del rango $\kappa_i$ y $\kappa_i+d\kappa_i$ es igual a
+		\begin{equation}
+			\Delta n_i=\frac{L_i}{2\pi}d\kappa_i
+		\end{equation}\pause
+		\item Por lo que, finalmente, el número de estados $\rho(\kv)d^3\kv$, para los cuales $\kv$ se encuentra dentro del rango $\kv$ y $\kv+d\kv$, estará dado por
+	\end{itemize}
+	
+	\begin{equation}
+		\rho \, d^3\kv = \Delta n_x \Delta n_y \Delta n_z = \left(\frac{L_x}{2\pi}d\kappa_x \right) \left(\frac{L_y}{2\pi}d\kappa_y \right) \left(\frac{L_y}{2\pi}d\kappa_y \right) = \frac{V}{(2\pi)^3}d^3\kv
+		\label{eq:NumEstados}
+	\end{equation}
+\end{frame}
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Radiación en equilibrio térmico}
+\begin{frame}{Radiación en equilibrio}
+	\begin{itemize}
+		\item Para especificar con más detalle los estados de energía, consideraremos la ecuación de onda del campo eléctrico $\Ev$
+		\begin{equation}
+			\nabla^2\Ev=\frac{1}{c^2}\frac{\partial \Ev}{\partial t}
+			\label{eq:EWave}
+		\end{equation}\pause
+		\item La cual es satisfecha por
+		\begin{equation}
+			\Ev = \Vec{A} e^{i (\kv\cdot\Vec{r}-\omega t)} = \Ev_0 e^{-i \omega t},
+			\label{eq:ESol}
+		\end{equation}
+		donde $\Vec{A}$ es cualquier constante, y $\kv$ cumple con la condición
+		\begin{equation}
+			\kappa = \frac{\omega}{c}, \qquad \kappa = |\kv|
+			\label{eq:kappa}
+		\end{equation}
+	\end{itemize}
+\end{frame}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+\end{document}

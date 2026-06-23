@@ -1,0 +1,379 @@
+% Template for Universidad de La Frontera presentations with LaTeX beamer.
+% Adapted, modified, expanded and translated by Simón Fonseca (s.fonseca03@ufromail.cl)
+%
+% Based on LIU Qi-long, qilong-kirov.liu@connect.hit.cn template and
+% Federico Zenith, federico.zenith@sintef.no.
+% Derived (through several iterations) from Håvard Berland's
+% beamerthementnu class.
+%
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+%
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+%
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+\ProvidesPackage{beamerthemesintef}[2021/11/02]
+
+\RequirePackage{etoolbox,tikz,listings,setspace,graphicx,sintefcolor}
+\usepackage[spanish]{babel}
+\usepackage{csquotes,amsfonts,amsmath,oldgerm,lmodern,animate,verbatim,bm}
+
+% Fuerza el formato 16:9
+\RequirePackage{geometry}
+\geometry{paperwidth=16cm,paperheight=9cm}
+
+% Caladea es un clon de Cambria, Carlito es un clon de Calibri
+\RequirePackage{caladea}
+%\RequirePackage{carlito}
+\renewcommand{\familydefault}{\sfdefault}
+
+% Descomentar para fuente más elegante (serif)
+% \usefonttheme{serif}
+
+% Quita los símbolos de navegación
+\setbeamertemplate{navigation symbols}{}
+
+% Comando para dejar una pequeña cita en la parte de abajo de la diapositiva
+\newcommand{\citar}[1]{\vfill{\scriptsize #1}}
+
+% Comando para configurar email
+\newcommand{\email}[1]{\providecommand{\insertemail}{#1}}
+
+\newcommand{\@footlinepayoffL}{}
+\newcommand{\@footlinepayoffC}{}
+\newcommand{\@footlinepayoffR}{}
+
+% Configura pie de página
+\setbeamertemplate{footline}{%
+  \begin{beamercolorbox}[wd=\textwidth,ht=4mm,dp=2mm,rightskip=6mm]{footline}
+  \usebeamerfont{footline}\hspace{6mm}\@footlinepayoffL
+  \usebeamerfont{footline}\hfill\@footlinepayoffC
+  \usebeamerfont{footline}\hfill\@footlinepayoffR
+  \end{beamercolorbox}
+}
+
+\newcommand{\footlinecolor}[1]{
+  % si #1 está vacío, hace el pie de página transparente
+  \ifstrempty{#1}{%
+    \renewcommand{\@footlinepayoffL}{}
+    \renewcommand{\@footlinepayoffC}{}
+    \renewcommand{\@footlinepayoffR}{}
+    \setbeamercolor{footline}{bg=}
+    \setbeamercolor{block title}{fg=white,bg=UFROblue}
+    \setbeamercolor{block body}{fg=white,bg=UFROblue}
+  }{
+  % Define textos del pie de página (título, nombre (o correo) y número de página)
+    \renewcommand{\@footlinepayoffL}{\inserttitle}
+    \renewcommand{\@footlinepayoffC}{\insertauthor}
+    % \renewcommand{\@footlinepayoffC}{\insertemail}
+    \renewcommand{\@footlinepayoffR}{Pag. \insertframenumber}
+    \setbeamercolor{footline}{fg=white,bg=#1}
+    \setbeamercolor{block title}{fg=white,bg=#1}
+    \setbeamercolor{block body}{fg=white,bg=#1}
+  }%
+}
+
+% Default: pie de página azul. Para quitar pie de página dejar el comando vacío
+\footlinecolor{UFROblue}
+
+% Logos de la esquina superior izquierda
+\pgfdeclareimage[width=0.11\paperwidth]{bluelogo}{images/LogoUfro.png}
+\pgfdeclareimage[width=0.11\paperwidth]{whitelogo}{images/LogoUfroInverso.png}
+
+% Comandos para cambiar logo (será útil más tarde)
+\newcommand{\OGlogo}{
+    \pgfdeclareimage[width=0.11\paperwidth]{bluelogo}{images/LogoUfro.png}}
+\newcommand{\shortlogo}{
+    \pgfdeclareimage[width=0.11\paperwidth]{bluelogo}{images/LogoSinTitulo.png}}
+
+\newcommand{\@SINTEFlogo}{bluelogo}
+
+% Configura colores
+\newcommand{\themecolor}[1]{
+	\ifstrequal{#1}{blue}{%
+		\setbeamercolor{normal text}{fg=white,bg=UFROblue}
+		\setbeamercolor{structure}{fg=white}
+		\renewcommand{\@SINTEFlogo}{whitelogo}
+		\setbeamercolor{block title}{fg=white,bg=sintefgrey}
+		\setbeamercolor{block body}{fg=morelightgray,bg=sintefgrey}
+	}{%
+		%\setbeamercolor{normal text}{fg=UFROblue,bg=white} % texto azul
+		\setbeamercolor{normal text}{fg=darkgray,bg=white} % texto gris oscuro
+		\setbeamercolor{structure}{fg=UFROblue}
+		\renewcommand{\@SINTEFlogo}{bluelogo}
+		\setbeamercolor{block title}{fg=UFROblue,bg=morelightgray}
+		\setbeamercolor{block body}{fg=darkgray,bg=morelightgray}
+	}
+}
+\themecolor{white} % Default: tema blanco
+
+\setbeamercolor{title}{fg=UFROblue,bg=white}
+\setbeamercolor{alerted text}{fg=sintefred}
+\setbeamercolor{author}{fg=black}
+\setbeamercolor{date}{fg=black}
+
+\setbeamerfont{author}{size=\small}
+\setbeamerfont{caption}{size=\scriptsize}
+\setbeamerfont{institute}{size=\scriptsize}
+\setbeamerfont{date}{size=\tiny}
+\setbeamerfont{title}{series=\bfseries}
+\setbeamerfont{subtitle}{series=\mdseries,size=\footnotesize}
+\setbeamerfont{frametitle}{series=\bfseries}
+\setbeamerfont{framesubtitle}{series=\mdseries}
+\setbeamerfont{footline}{size=\scriptsize}
+\setbeamerfont{block title}{series=\centering\bfseries}
+\setbeamerfont{block body}{size=\small}
+
+% Bloques más bonitos
+\setbeamertemplate{blocks}[rounded]
+
+% Bullet points con más niveles
+\setbeamertemplate{itemize item}{\textbullet}
+\setbeamertemplate{itemize subitem}{\textemdash}
+\setbeamertemplate{itemize subsubitem}{\ensuremath{\circ}}
+
+\newenvironment{colorblock}[3][white]{%
+	\begingroup
+	\setbeamercolor{block title}{fg=#1,bg=#2}
+	\setbeamercolor{block body} {fg=#1,bg=#2}
+	\begin{block}{#3}
+	}{%
+	\end{block}
+	\endgroup
+}
+
+% Leyendas enumeradas
+\setbeamertemplate{caption}[numbered]
+
+% Comando para definir espacio entre borde superior y título
+\newcommand{\titlespace}{3.5ex}
+
+% Define la disposición de los títulos y subtítulos de las diapositivas
+\setbeamertemplate{frametitle}{%
+    \ifdefstring{\insertframetitle}{}{}{\vspace*{\titlespace}\OGlogo}
+    \begin{beamercolorbox}[leftskip=2.1cm]{frametitle}%
+        \usebeamerfont{frametitle}\insertframetitle\\
+        \usebeamerfont{framesubtitle}\insertframesubtitle
+    \end{beamercolorbox}
+}
+
+% Pone el logo en la esquina superior izquierda
+\setbeamertemplate{headline}{
+    \hspace{0.06\textwidth}
+    \pgfuseimage{\@SINTEFlogo}
+    \shortlogo % El default es el logo chico
+    } 
+
+% Define la página de título
+\setbeamertemplate{title page}{%
+  \OGlogo
+  \vskip0pt plus 1filll%
+  \hspace{-12mm}% Pull back the box in an inelegant way - but it works!
+  \begin{beamercolorbox}[wd=0.7\textwidth,sep=10pt,leftskip=8mm]{title}%
+    {\usebeamerfont{title}\inserttitle}
+  
+    {\usebeamerfont{subtitle}\insertsubtitle}
+    \vspace{1mm}
+    
+    {\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor}
+    \vspace{2mm}
+    
+    {\usebeamerfont{institute}\usebeamercolor[fg]{institute}{\begin{spacing}{1} \insertinstitute \end{spacing}}}
+  
+    {\usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate}
+  \end{beamercolorbox}
+}
+
+% Define la forma de la división de la diapositiva (ej: para título y capítulo)
+\newcommand{\TikzSplitSlide}[1]{%
+  \rule{0.4\paperwidth}{0pt}%
+  \begin{tikzpicture}
+    \clip ( 0\paperwidth,-0.5\paperheight) --
+          ( 0.8\paperwidth,-0.5\paperheight) --
+          ( 0.8\paperwidth, 0.5\paperheight) --
+          ( 0.2\paperwidth, 0.5\paperheight) -- cycle;
+    \node at (0.13\paperwidth,0) {%
+      \includegraphics[height=\paperheight]{#1}%
+    };
+  \end{tikzpicture}
+}
+
+\newbool{splittitle}
+\newcommand{\@TitleBackground}{}
+\newcommand{\titlebackground}{\@ifstar{\SplitBackground}{\FullBackground}}
+\newcommand{\FullBackground}[1]{\renewcommand{\@TitleBackground}{#1}}
+\newcommand{\SplitBackground}[1]{%
+	\booltrue{splittitle}%
+	\renewcommand{\@TitleBackground}{#1}%
+}
+
+\renewcommand{\maketitle}{
+\footlinecolor{}
+\begingroup
+  \ifdefempty{\@TitleBackground}{}{% Omite si \@TitleBackground está vacío
+    \setbeamertemplate{background}{%
+      \ifbool{splittitle}{%
+        \TikzSplitSlide{\@TitleBackground}
+      }{% Fondo normal a pantalla completa
+        \includegraphics[height=\paperheight]{\@TitleBackground}
+      }
+    }
+  }
+  \begin{frame}[noframenumbering]% Título cuenta como Pag. 0
+  \titlepage%
+  \end{frame}%
+\endgroup
+\footlinecolor{UFROblue}
+}
+
+% Define el entorno del capítulo
+\newenvironment{chapter}[3][]{% Args: imagen (opcional), color, título de la diapositiva
+  \begingroup
+  \themecolor{blue}
+  \setbeamertemplate{footline}{}
+  \ifstrempty{#2}{
+    \setbeamercolor{frametitle}{fg=white}
+    \setbeamercolor{normal text}{fg=white,bg=#2}
+  }{
+    \setbeamercolor{frametitle}{fg=white}
+    \setbeamercolor{normal text}{fg=white,bg=#2}
+  }
+  \ifstrempty{#1}{}{\setbeamertemplate{background}{\TikzSplitSlide{#1}}}
+  \setbeamertemplate{frametitle}{%
+    \vspace*{6ex}
+    \begin{beamercolorbox}[wd=0.45\textwidth]{frametitle}
+      \usebeamerfont{frametitle}\insertframetitle\\
+      \usebeamerfont{framesubtitle}\insertframesubtitle
+    \end{beamercolorbox}
+  }
+  \begin{frame}{#3}
+  \hspace*{0.02\textwidth}%
+  \minipage{0.4\textwidth}%
+  \usebeamercolor[fg]{normal text}%
+}{%
+  \endminipage
+  \end{frame}
+  \endgroup
+}
+
+% Define el entorno sidepic (ded imagen lateral)
+\newenvironment{sidepic}[2]{% Args: imagen, título de la diapositiva
+  \begingroup
+  \setbeamertemplate{background}{%
+  \hspace*{0.57\paperwidth}%
+  \includegraphics[height=.94\paperheight]{#1}%
+  }
+  \setbeamertemplate{frametitle}{% Igual que el normal, pero con salto a la derecha
+    \ifdefstring{\insertframetitle}{}{}{\vspace*{3.5ex}\OGlogo}
+    \begin{beamercolorbox}[leftskip=2.1cm,rightskip=0.4\textwidth]{frametitle}%
+      \usebeamerfont{frametitle}\insertframetitle\\
+      \usebeamerfont{framesubtitle}\insertframesubtitle
+    \end{beamercolorbox}
+  }
+  \begin{frame}{#2}
+  \minipage{0.65\textwidth}
+}{
+  \endminipage
+  \end{frame}
+  \endgroup
+}
+
+% Texto de cierre
+\newcommand{\@SINTEFmotto}{Gracias por su atención}
+\newcommand{\setmotto}{\renewcommand{\@SINTEFmotto}}
+
+% Diapositiva de cierre
+\newcommand{\backmatter}{
+\begingroup
+  \setbeamertemplate{footline}{}
+  \themecolor{blue}
+  \begin{frame}[c]
+    \centering
+    \begin{minipage}{0.4\textwidth}
+      \vspace*{-5ex}
+      \usebeamercolor[fg]{normal text}
+      \centering\huge{\@SINTEFmotto}
+    \end{minipage}
+  \end{frame}
+\endgroup
+}
+
+\newcommand{\strtoc}{Table of Contents}
+\newcommand{\strsubsec}{Section \thesection.\thesubsection}
+
+% Estilo de la sección presentada en el índice
+\setbeamertemplate{section in toc}{$\blacktriangleright$~\inserttocsection}
+
+% Estilo de la subsección presentada en el índice (Default: no tiene)
+\setbeamertemplate{subsection in toc}{}
+% \setbeamertemplate{subsection in toc}{\footnotesize\hspace{1.2 em}$\blacktriangleright$~\inserttocsubsection}
+
+% Inserta sección como subtítulo en cada diapositiva
+\makeatletter
+    \pretocmd\beamer@checkframetitle{\framesubtitle{\thesection \, \secname}}
+\makeatother
+
+% Al comienzo de cada sección, agrega tabla de contenidos con la sección actual destacada
+\AtBeginSection[]
+{
+    \renewcommand{\titlespace}{-3.8ex}
+    \begingroup
+    \setbeamertemplate{footline}{}
+    \themecolor{blue}
+    \begin{frame}{Tabla de Contenidos}
+        \tableofcontents[currentsection]
+    \end{frame}
+    \endgroup
+    \renewcommand{\titlespace}{3.5ex}
+}
+
+% Al comienzo de cada subsección, agrega tabla de contenidos con la sección actual destacada (no me gusta como se ve)
+% \AtBeginSubsection[]
+% {
+%     \begin{frame}{\,}{\thesection \, \secname}
+%         \fontfamily{ptm}\selectfont
+%         \centering\textsl{\textbf{\textcolor{UFROblue}{
+%             \large Section \thesection.\thesubsection
+%             \vskip15pt
+%             \LARGE \subsecname
+%         }}}
+%     \end{frame}
+% }
+
+% Deja fuente de ecuaciones más bonita
+\usefonttheme{professionalfonts}
+
+% Hipervínculos con colores
+\newcommand{\hrefcol}[2]{\textcolor{cyan}{\href{#1}{#2}}}
+\newcommand{\hlinkcol}[1]{\hrefcol{#1}{#1}}
+
+% Texto en negrita coloreado
+\newcommand{\ctextbf}[1]{\textbf{\textcolor{UFROblue}{#1}}}
+\newcommand{\btextbf}[1]{\textbf{\textcolor{cyan}{#1}}}
+
+% Texto oblicuo (italic) coloreado
+\newcommand{\ctextsl}[1]{\textsl{\textcolor{UFROblue}{#1}}}
+\newcommand{\btextsl}[1]{\textsl{\textcolor{cyan}{#1}}}
+
+% Texto enfasis coloreado
+\newcommand{\cemph}[1]{\emph{\textcolor{UFROblue}{#1}}}
+\newcommand{\bemph}[1]{\emph{\textcolor{cyan}{#1}}}
+
+% Diapositiva bibliografía
+\newcommand{\bibliographpage}{
+    \section{Referencias}
+    \begingroup
+    \themecolor{blue}
+    \begin{frame}[allowframebreaks]{References}{\,}
+        \tiny
+        \printbibliography[heading=none]
+    \end{frame}
+\endgroup
+}
