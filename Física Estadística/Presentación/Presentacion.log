@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.15)  23 JUN 2026 12:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.15)  23 JUN 2026 23:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -757,9 +757,9 @@ default.sty
 \beamer@dimb=\dimen303
 )
 (C:\Users\simon\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beameroutertheme
-default.sty))) (../../SimonPackage.sty
+default.sty))) (SimonPackage.sty
 
-LaTeX Warning: You have requested package `../../SimonPackage',
+LaTeX Warning: You have requested package `./SimonPackage',
                but the package provides `simonPackage'.
 
 Package: simonPackage 2026/06/15 Custom Layout and Math Commands
@@ -1398,11 +1398,11 @@ LaTeX Font Info:    ... okay on input line 22.
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: includehead includefoot 
 * h-part:(L,W,R)=(31.8704pt, 398.3386pt, 25.03508pt)
-* v-part:(T,H,B)=(0.0pt, 256.0748pt, 0.0pt)
+* v-part:(T,H,B)=(0.0pt, 284.52756pt, 0.0pt)
 * \paperwidth=455.24408pt
-* \paperheight=256.0748pt
+* \paperheight=284.52756pt
 * \textwidth=398.3386pt
-* \textheight=227.62207pt
+* \textheight=256.07483pt
 * \oddsidemargin=-40.39958pt
 * \evensidemargin=-40.39958pt
 * \topmargin=-72.26999pt
@@ -1690,6 +1690,396 @@ LaTeX Font Info:    Font shape `T1/FiraSans-OsF/regular/n' will be
 
 ] [10
 
+] [11
+
+] [12
+
+]
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/n' in size <12> not available
+
+(Font)              Font shape `T1/FiraSans-OsF/regular/n' tried instead on inp
+ut line 111.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/regular/n' will be
+(Font)              scaled to size 12.0pt on input line 111.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/b/n' in size <12> not available
+
+(Font)              Font shape `T1/FiraSans-OsF/bold/n' tried instead on input 
+line 111.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/bold/n' will be
+(Font)              scaled to size 12.0pt on input line 111.
+ [13
+
+] [14
+
+] [15
+
+] [16
+
+] [17
+
+] [18
+
+]
+[19
+
+] [20
+
+] [21
+
+]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 140.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 140.
+
+LaTeX Font Info:    Calculating math sizes for size <6.8> on input line 140.
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <3.4> not available
+(Font)              size <5> substituted on input line 140.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <3.4> not available
+(Font)              size <5> substituted on input line 140.
+
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/n' in size <4.75998> not avai
+lable
+(Font)              Font shape `T1/FiraSans-OsF/regular/n' tried instead on inp
+ut line 140.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/regular/n' will be
+(Font)              scaled to size 4.75998pt on input line 140.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/n' in size <3.4> not availabl
+e
+(Font)              Font shape `T1/FiraSans-OsF/regular/n' tried instead on inp
+ut line 140.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/regular/n' will be
+(Font)              scaled to size 3.4pt on input line 140.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/it' in size <6.8> not availab
+le
+(Font)              Font shape `T1/FiraSans-OsF/regular/it' tried instead on in
+put line 140.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/regular/it' will be
+(Font)              scaled to size 6.8pt on input line 140.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/it' in size <4.75998> not ava
+ilable
+(Font)              Font shape `T1/FiraSans-OsF/regular/it' tried instead on in
+put line 140.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/regular/it' will be
+(Font)              scaled to size 4.75998pt on input line 140.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/it' in size <3.4> not availab
+le
+(Font)              Font shape `T1/FiraSans-OsF/regular/it' tried instead on in
+put line 140.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/regular/it' will be
+(Font)              scaled to size 3.4pt on input line 140.
+LaTeX Font Info:    Calculating math sizes for size <27> on input line 140.
+
+LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <27> not available
+(Font)              size <24.88> substituted on input line 140.
+
+
+LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <18.89992> not available
+(Font)              size <17.28> substituted on input line 140.
+
+
+LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <13.5> not available
+(Font)              size <14.4> substituted on input line 140.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <27> not available
+(Font)              size <24.88> substituted on input line 140.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <18.89992> not available
+(Font)              size <17.28> substituted on input line 140.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <13.5> not available
+(Font)              size <14.4> substituted on input line 140.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <27> not available
+(Font)              size <24.88> substituted on input line 140.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <18.89992> not available
+(Font)              size <17.28> substituted on input line 140.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <13.5> not available
+(Font)              size <14.4> substituted on input line 140.
+
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/n' in size <27> not available
+
+(Font)              Font shape `T1/FiraSans-OsF/regular/n' tried instead on inp
+ut line 140.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/regular/n' will be
+(Font)              scaled to size 27.0pt on input line 140.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/n' in size <18.89992> not ava
+ilable
+(Font)              Font shape `T1/FiraSans-OsF/regular/n' tried instead on inp
+ut line 140.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/regular/n' will be
+(Font)              scaled to size 18.89992pt on input line 140.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/n' in size <13.5> not availab
+le
+(Font)              Font shape `T1/FiraSans-OsF/regular/n' tried instead on inp
+ut line 140.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/regular/n' will be
+(Font)              scaled to size 13.5pt on input line 140.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/it' in size <27> not availabl
+e
+(Font)              Font shape `T1/FiraSans-OsF/regular/it' tried instead on in
+put line 140.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/regular/it' will be
+(Font)              scaled to size 27.0pt on input line 140.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/it' in size <18.89992> not av
+ailable
+(Font)              Font shape `T1/FiraSans-OsF/regular/it' tried instead on in
+put line 140.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/regular/it' will be
+(Font)              scaled to size 18.89992pt on input line 140.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/it' in size <13.5> not availa
+ble
+(Font)              Font shape `T1/FiraSans-OsF/regular/it' tried instead on in
+put line 140.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/regular/it' will be
+(Font)              scaled to size 13.5pt on input line 140.
+[22
+
+]
+LaTeX Font Info:    Calculating math sizes for size <17> on input line 147.
+
+
+LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <8.5> not available
+(Font)              size <8> substituted on input line 147.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <8.5> not available
+(Font)              size <8> substituted on input line 147.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <8.5> not available
+(Font)              size <8> substituted on input line 147.
+
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/n' in size <17> not available
+
+(Font)              Font shape `T1/FiraSans-OsF/regular/n' tried instead on inp
+ut line 147.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/regular/n' will be
+(Font)              scaled to size 17.0pt on input line 147.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/n' in size <11.89995> not ava
+ilable
+(Font)              Font shape `T1/FiraSans-OsF/regular/n' tried instead on inp
+ut line 147.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/regular/n' will be
+(Font)              scaled to size 11.89995pt on input line 147.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/n' in size <8.5> not availabl
+e
+(Font)              Font shape `T1/FiraSans-OsF/regular/n' tried instead on inp
+ut line 147.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/regular/n' will be
+(Font)              scaled to size 8.5pt on input line 147.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/it' in size <17> not availabl
+e
+(Font)              Font shape `T1/FiraSans-OsF/regular/it' tried instead on in
+put line 147.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/regular/it' will be
+(Font)              scaled to size 17.0pt on input line 147.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/it' in size <11.89995> not av
+ailable
+(Font)              Font shape `T1/FiraSans-OsF/regular/it' tried instead on in
+put line 147.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/regular/it' will be
+(Font)              scaled to size 11.89995pt on input line 147.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/it' in size <8.5> not availab
+le
+(Font)              Font shape `T1/FiraSans-OsF/regular/it' tried instead on in
+put line 147.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/regular/it' will be
+(Font)              scaled to size 8.5pt on input line 147.
+[23
+
+] [24
+
+] [25
+
+] [26
+
+] [27
+
+] [28
+
+] [29
+
+] [30
+
+]
+<images/EmitidoIncidente.png, id=305, 1295.84125pt x 434.62375pt>
+File: images/EmitidoIncidente.png Graphic file (type png)
+<use images/EmitidoIncidente.png>
+Package pdftex.def Info: images/EmitidoIncidente.png  used on input line 174.
+(pdftex.def)             Requested size: 278.83578pt x 93.52187pt.
+ [31
+
+ <./images/EmitidoIncidente.png>]
+File: images/EmitidoIncidente.png Graphic file (type png)
+<use images/EmitidoIncidente.png>
+Package pdftex.def Info: images/EmitidoIncidente.png  used on input line 174.
+(pdftex.def)             Requested size: 278.83578pt x 93.52187pt.
+
+[32
+
+]
+File: images/EmitidoIncidente.png Graphic file (type png)
+<use images/EmitidoIncidente.png>
+Package pdftex.def Info: images/EmitidoIncidente.png  used on input line 174.
+(pdftex.def)             Requested size: 278.83578pt x 93.52187pt.
+ [33
+
+]
+File: images/EmitidoIncidente.png Graphic file (type png)
+<use images/EmitidoIncidente.png>
+Package pdftex.def Info: images/EmitidoIncidente.png  used on input line 174.
+(pdftex.def)             Requested size: 278.83578pt x 93.52187pt.
+ [34
+
+]
+File: images/EmitidoIncidente.png Graphic file (type png)
+<use images/EmitidoIncidente.png>
+Package pdftex.def Info: images/EmitidoIncidente.png  used on input line 174.
+(pdftex.def)             Requested size: 278.83578pt x 93.52187pt.
+ [35
+
+] [36
+
+] [37
+
+] [38
+
+]
+<images/Filtro.png, id=379, 1310.8975pt x 831.105pt>
+File: images/Filtro.png Graphic file (type png)
+<use images/Filtro.png>
+Package pdftex.def Info: images/Filtro.png  used on input line 207.
+(pdftex.def)             Requested size: 139.42093pt x 88.39091pt.
+ [39
+
+ <./images/Filtro.png>]
+File: images/Filtro.png Graphic file (type png)
+<use images/Filtro.png>
+Package pdftex.def Info: images/Filtro.png  used on input line 207.
+(pdftex.def)             Requested size: 139.42093pt x 88.39091pt.
+ [40
+
+]
+File: images/Filtro.png Graphic file (type png)
+<use images/Filtro.png>
+Package pdftex.def Info: images/Filtro.png  used on input line 207.
+(pdftex.def)             Requested size: 139.42093pt x 88.39091pt.
+ [41
+
+]
+File: images/Filtro.png Graphic file (type png)
+<use images/Filtro.png>
+Package pdftex.def Info: images/Filtro.png  used on input line 207.
+(pdftex.def)             Requested size: 139.42093pt x 88.39091pt.
+
+[42
+
+] [43
+
+] [44
+
+] [45
+
+] [46
+
+] [47
+
+] [48
+
+] [49
+
+] [50
+
+] [51
+
+]
+<images/EsquemaIncidencia.png, id=502, 406.51875pt x 505.89pt>
+File: images/EsquemaIncidencia.png Graphic file (type png)
+<use images/EsquemaIncidencia.png>
+Package pdftex.def Info: images/EsquemaIncidencia.png  used on input line 273.
+(pdftex.def)             Requested size: 210.79547pt x 262.32062pt.
+
+Overfull \hbox (28.69798pt too wide) in paragraph at lines 273--273
+ | [] 
+ []
+
+[52
+
+ <./images/EsquemaIncidencia.png>]
+File: images/EsquemaIncidencia.png Graphic file (type png)
+<use images/EsquemaIncidencia.png>
+Package pdftex.def Info: images/EsquemaIncidencia.png  used on input line 273.
+(pdftex.def)             Requested size: 210.79547pt x 262.32062pt.
+
+Overfull \hbox (28.69798pt too wide) in paragraph at lines 273--273
+ | [] 
+ []
+
+[53
+
+]
+File: images/EsquemaIncidencia.png Graphic file (type png)
+<use images/EsquemaIncidencia.png>
+Package pdftex.def Info: images/EsquemaIncidencia.png  used on input line 273.
+(pdftex.def)             Requested size: 210.79547pt x 262.32062pt.
+
+Overfull \hbox (28.69798pt too wide) in paragraph at lines 273--273
+ | [] 
+ []
+
+[54
+
+] [55
+
+] [56
+
+] [57
+
+] [58
+
+] [59
+
+] [60
+
+] [61
+
+] [62
+
+] [63
+
+] [64
+
+] [65
+
+] [66
+
+]
+<images/espectro.png, id=658, 673.01437pt x 290.58563pt>
+File: images/espectro.png Graphic file (type png)
+<use images/espectro.png>
+Package pdftex.def Info: images/espectro.png  used on input line 345.
+(pdftex.def)             Requested size: 398.3386pt x 171.98941pt.
+ [67
+
+ <./images/espectro.png>] [68
+
+] [69
+
 ]
 \tf@nav=\write6
 \openout6 = `Presentacion.nav'.
@@ -1705,17 +2095,22 @@ LaTeX Font Info:    Font shape `T1/FiraSans-OsF/regular/n' will be
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-05-26>
  ***********
+
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 2.12pt have occurred.
+
 Package rerunfilecheck Info: File `Presentacion.out' has not changed.
-(rerunfilecheck)             Checksum: 5104E89198399DADC96DF0C6F548BA77;444.
+(rerunfilecheck)             Checksum: 7A6ADA5D24DA0555160C68F25699B2E2;746.
  ) 
 Here is how much of TeX's memory you used:
- 40539 strings out of 467509
- 848587 string characters out of 5408780
- 1359646 words of memory out of 5000000
- 68908 multiletter control sequences out of 15000+600000
- 881255 words of font info for 149 fonts, out of 8000000 for 9000
+ 41314 strings out of 467509
+ 864947 string characters out of 5408780
+ 1363522 words of memory out of 5000000
+ 69410 multiletter control sequences out of 15000+600000
+ 1180505 words of font info for 290 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,16n,123p,1011b,887s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 128i,18n,123p,1011b,1039s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/fira/FiraSan
 s-Bold.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/fir
 a/FiraSans-Italic.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1
@@ -1727,10 +2122,11 @@ Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/
 simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss8.pfb><C
 :/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy
 10.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
-s/cm/cmsy8.pfb>
-Output written on Presentacion.pdf (10 pages, 221156 bytes).
+s/cm/cmsy8.pfb><C:/Users/simon/AppData/Local/Programs/MiKTeX/fonts/type1/public
+/amsfonts/symbols/msbm10.pfb>
+Output written on Presentacion.pdf (69 pages, 1807080 bytes).
 PDF statistics:
- 168 PDF objects out of 1000 (max. 8388607)
- 28 named destinations out of 1000 (max. 500000)
- 58939 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 772 PDF objects out of 1000 (max. 8388607)
+ 157 named destinations out of 1000 (max. 500000)
+ 109661 words of extra memory for PDF output out of 128383 (max. 10000000)
 

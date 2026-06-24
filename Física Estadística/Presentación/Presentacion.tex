@@ -1,7 +1,7 @@
 % !TeX spellcheck = es_CL-SpanishChile
-\documentclass[aspectratio=169]{beamer}
+\documentclass[aspectratio=1610]{beamer}
 
-\usepackage{../../SimonPackage}
+\usepackage{./SimonPackage}
 \newcommand{\Ev}{\Vec{E}}
 \newcommand{\kv}{\Vec{\kappa}}
 
@@ -79,26 +79,299 @@ block=fill
 		\end{equation}
 	\end{itemize}
 \end{frame}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+\begin{frame}
+	\begin{itemize}
+		\item Si ahora cuantizamos la ecuación de onda, llegaremos a las típicas relaciones de momento y energía para un fotón asociado:
+		\begin{equation}
+			\begin{array}{rcl}
+				\epsilon &=& \hbar \omega  \\
+				\Vec{p} &=& \hbar \kv 
+			\end{array},
+			\label{eq:EMom}
+		\end{equation}
+		por lo que, con la ec. \ref{eq:kappa}
+		\begin{equation}
+			|\Vec{p}| = \frac{\hbar \omega}{c}
+		\end{equation}\pause
+		\item Ya que $\kv$ debe ser perpendicular a $\Ev$, tendremos dos polarizaciones disponibles para el campo eléctrico.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Como cualquier partícula cuántica dentro de una caja, solo hay ciertos valores válidos para $\kv$, dependientes de las dimensiones de la caja $L_x,L_y,L_z$.\pause
+		\item Suponemos que la más pequeña de estas dimensiones, $L$, es tan larga para $L \gg \lambda$, donde $\lambda = \frac{2\pi}{\kappa}$ es la mayor longitud de onda en discusión.\pause
+		% Con esto nos evitamos efectos que puedan ocurrir cerca de las paredes de la caja
+		\item Los valores posibles de $\kv$ estarán dados por los de
+	\end{itemize}\pause
+	\begin{block}{Densidad promedio de fotones}
+		$f(\kv)d^3\kv =$ el número promedio de fotones por unidad de volumen, que tienen una dirección específica de polarización, y cuyos vectores de onda existen entre $\kv$ y $\kv+d\kv$.
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Hay, según la ec. \ref{eq:NumEstados}, $(2\pi)^{-3}d^3\kv$ estados para los fotones por unidad de volumen, y, ya que la cantidad de fotones en cada estado de energía vienen dado por la ec. \ref{eq:planck}, tenemos que
+		\begin{equation}
+			f(\kappa) \, d^3\kappa = \frac{1}{e^{\beta \hbar \omega}-1} \frac{d^3\kappa}{(2\pi)^3}
+			\label{eq:DensFot}
+		\end{equation}\pause
+		\item Encontremos ahora el número promedio de fotones por unidad de volumen en ambas direcciones de polarización y con frecuencia en el rango entre $\omega$ y $\omega+d\omega$.\pause
+		\item Podemos encontrarlo si integramos la ec. \ref{eq:DensFot} sobre el volumen del espacio $\kappa$ contenido dentro de una capa esférico de radios $\kappa = \omega/c$ y $\kappa+d\kappa = (\omega+d\omega)/c$. % Y multiplicando por 2 por ambas polarizaciones
+		\begin{equation}
+			2 f(\kappa) \, (4\pi\kappa^2d\kappa) = \dfrac{8\pi}{(2\pi c)^3}\dfrac{\omega^2d\omega}{e^{\beta\hbar\omega}-1}
+		\end{equation}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Denotando con $\bar{u}(\omega,T) \, d\omega$ la energía media por unidad de volumen (es decir, la \emph{densidad de energía} promedio) de fotones en ambas direcciones de polarización en el rango de frecuencias $\omega$ y $\omega+d\omega$.\pause
+		\item Ya que cada fotón de este tipo tiene una energía $\hbar\omega$, se obtiene
+		\begin{equation}
+			\bar{u}(\omega,T)d\omega = (2 f(\kappa)\hspace{1mm}4\pi\kappa^2d\kappa)\hspace{1mm}(\hbar\omega) = \dfrac{8\pi\hbar}{c^3}f(\kappa)\hspace{1mm}\omega^3d\omega
+			\label{eq:DensEnerProm}
+		\end{equation}
+	\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Radiación emitida por un cuerpo a temperatura $T$}
+\begin{frame}{Radiación emitida por un cuerpo a temperatura $T$}
+	\begin{itemize}
+		\item Consideremos un cuerpo mantenido a una temperatura absoluta $T$, por ejemplo, el filamento caliente de una ampolleta.\pause
+		\item Sabemos que este cuerpo emite radiación electromagnética.\pause
+		\item Y estamos interesados en cuanta energía por unidad de tiempo (potencia) $P(\omega)d\omega$ que emite este cuerpo en el rango de frecuencia  entre $\omega$ y $\omega+d\omega$.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Cuerpos como emisores y receptores de radiación}
+	\begin{itemize}
+		\item Consideremos un cuerpo arbitrario a temperatura absoluta $T$.\pause
+		\item La radiación emitida por este cuerpo puede ser descrita en términos de su potencia.\pause
+		\item Podemos definir la \emph{emisividad} como\pause
+		\begin{block}{Emisividad}
+			$\mathcal{P}_e(\kv,\alpha)d\omega d\Omega = $ la potencia, por unidad de área, emitida con polarización $\alpha$ y en el rango alrededor de $\kv$ (es decir, en el rango de frecuencia $\omega + d\omega$, y con un ángulo sólido $d\Omega$ en torno a $\kv$).
+		\end{block}\pause
+		\item La emisividad depende de la naturaleza del material y de su temperatura.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Ahora para un receptor de radiación, consideraremos radiación de polarización $\alpha$ en el rango alrededor $\kv'$.\pause
+		\item Supongamos que la radiación de este tipo es \emph{incidente}, tal que la potencia $\mathcal{P}_i(\kv';\alpha)d\omega d\Omega$ es incidente por unidad de área del cuerpo.\pause
+		\item De esto, solo una fracción $a(\kv,\alpha)$, llamada \emph{absorvencia}, es absorbida por el cuerpo.\pause
+		\item $a(\kv,\alpha)$ es característica de un cuerpo y depende, en general, de la temperatura $T$.\pause
+	\end{itemize}
+	\begin{figure}
+		\centering
+		\includegraphics[width=.7\textwidth]{images/EmitidoIncidente}\caption{Diagrama que ilustra la emisión y absorción de radiaciones por un cuerpo.}
+		\label{fig:EmiAbs}
+	\end{figure}
+	%\citar{[1] Reif, F. (2009). \emph{Fundamentals of statistical and thermal physics}. Waveland Press.}
+\end{frame}
+
+\begin{frame}{El principio de equilibrio detallado}
+	\begin{itemize}
+		\item Imaginemos que el cuerpo estudiado se encuentra encerrado por una caja a la misma temperatura $T$, tal que esté en equilibrio con el campo de radiación interno.\pause
+		\item Bajo estas condiciones, el cuerpo emite radiación. Por otro lado, también absorbe una cierta fracción de la radiación continuamente incidente.\pause
+		\item Debido a la condición de equilibrio, la energía total del cuerpo debe ser constante; por lo tanto, los procesos deben balancearse tal que
+		\begin{block}{}
+			\centering
+			Potencia radiada por el cuerpo = Potencia absorbida por el cuerpo
+		\end{block}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{columns}
+		\column{0.65\textwidth}
+		\begin{itemize}
+			\item Ahora, imaginemos que el cuerpo está rodeado por un filtro, que absorbe toda la radiación, a excepción de un pequeño elemento de área, donde es transparente para radiación de cierta polarización y un rango estrecho de frecuencia $\omega+d\omega$.\pause
+			\item Debido a que la situación de equilibrio puede mantenerse sin importar la presencia del filtro, el balanceo de energía debe cumplirse para este elemento de área, polarización y frecuencia.\pause
+			\item Como el filtro elegido era arbitrario, podemos concluir que
+		\end{itemize}
+		
+		\column{0.35\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[width=\textwidth]{images/Filtro}\caption{Esquema de la situación planteada.}
+			\label{fig:Filtro}
+		\end{figure}    
+	\end{columns}\pause
+	\begin{block}{Principio de equilibrio detallado}
+		En equilibrio, la potencia radiada y absorbida por el cuerpo debe ser igual para cualquier elemento de área del cuerpo, dirección de polarización y rango de frecuencias.
+	\end{block}
+\end{frame}
+
+\begin{frame}{Radiación emitida por un cuerpo}
+	\begin{itemize}
+		\item Si aplicamos el principio de equilibrio detallado a un cuerpo a temperatura $T$ en equilibrio con la radiación dentro de una caja a esta temperatura.\pause
+		\item En una unidad de área del cuerpo tendremos potencia incidente $\mathcal{P}_i(\kv,\alpha)$, de la cual solo una fracción $a(\kv,\alpha)$ es absorbida.\pause
+		\item En este proceso una cantidad de potencia $\mathcal{P}_e(-\kv,\alpha)$ es emitida en sentido contrario.
+		\item Equilibrando ambos procesos\pause
+		\begin{equation}
+			\begin{array}{rcl}
+				\mathcal{P}_e(-\kv,\alpha) &=& a(\kv,\alpha) \mathcal{P}_i(\kv,\alpha) \\
+				\dfrac{\mathcal{P}_e(-\kv,\alpha)}{a(\kv,\alpha)} &=& \mathcal{P}_i(\kv,\alpha)
+			\end{array}
+			\label{eq:PotBal}
+		\end{equation}
+		% A la izquierda, solo términos que dependen de la naturaleza del cuerpo y su temperatura.
+		% A la derecha, solo términos que dependen de la temperatura dde equilibrio
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item A la izquierda de la ecuación \ref{eq:PotBal} solo hay términos dependientes de la naturaleza del cuerpo y su temperatura.
+		\item A la derecha, en cambio, solo hay dependencia de la temperatura de equilibrio.\pause
+		\item Podemos concluir que la razón del lado izquierdo es dependiente solo de la temperatura.\pause
+		% Hay una conexión entre la emisividad y la absorvencia
+	\end{itemize}
+	\begin{block}{Ley de Kirchhoff}
+		\emph{Un buen emisor de radiación es también un buen receptor de emisión, y viceversa}.
+		
+		Esta conclusión refiere solo a las propiedades del cuerpo, por lo cual es generalmente correcta, incluso si el cuerpo no está en equilibrio.
+	\end{block}
+\end{frame}
+
+\begin{frame}{Radiación de un cuerpo}
+	\begin{itemize}
+		\item Un caso particular aparece si consideramos $a(\kv,\alpha) = 1$ para todas las polarizaciones, frecuencias y direcciones de incidencia. Un \emph{cuerpo negro}.\pause
+		\item Para este caso, la ecuación \ref{eq:PotBal} se convierte en
+		\begin{equation}
+			\mathcal{P}_{eb}(-\kv,\alpha) = \mathcal{P}_i(\kv,\alpha)
+		\end{equation}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{figure}
+		\hfill\hspace*{7.6cm}\vspace*{-\textheight}\includegraphics[height=1\textheight]{images/EsquemaIncidencia}
+	\end{figure}
+	\begin{columns}
+		\column{.6\textwidth}
+		\begin{itemize}
+			\item Consideremos todos los fotones con vector de onda entre $\kv$ y $\kv+d\kv$.\pause
+			% \item Hay $2f(\kv)d^3\kv$ fotones de este tipo (de ambas polarizaciones) por unidad de volumen.
+			\item Ya que los fotones se mueven con velocidad $c$ y pueden venir oblicuos al objeto, tendremos que el número promedio de fotones que impactan sobre una unidad de área dependerá del volumen $d^3\kv$ inclinado por un ángulo $\theta$.
+			\item Y por lo tanto vendrá dado por $c\hspace{1mm} dt \cos{\theta} f(\kappa) d^3\kv$, con energía $\hbar\omega$ cada uno.\pause
+			\item Tendremos que la potencia incidente por unidad de área vendrá dada por
+		\end{itemize}
+		\begin{equation}
+			\begin{array}{rl}
+				\mathcal{P}_i(\kv,\alpha)d\omega d\Omega &= \dfrac{d}{dt}(\hbar\omega) (c\hspace{1mm} dt \cos{\theta} f(\kappa) d^3\kv) \\[2ex]
+				&= \hbar\omega\ c \cos{\theta} f(\kappa) d^3\kv
+			\end{array}
+		\end{equation}
+		
+		\column{.4\textwidth}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Expresando el elemento de volumen $d^3\kv$ en coordenadas esféricas, y usando la relación \ref{eq:kappa}, tenemos
+		\begin{equation}
+			d^3\kv = \kappa^2 d\kappa\hspace{1mm} d\Omega = \dfrac{\omega^2}{c^3}d\omega\hspace{1mm} d\Omega
+			\label{eq:KappaEsf}
+		\end{equation}\pause
+		\item Luego,
+		\begin{equation}
+			\mathcal{P}_i(\kv,\alpha) = \dfrac{\hbar\omega^3}{c^2}f(\kappa) \cos{\theta} 
+		\end{equation}\pause
+		\item Este resultado no depende de la dirección de polarización $\alpha$, pero sí del ángulo de incidencia respecto a la normal a la superficie $\theta$.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Considerando el balanceo de la ec. \ref{eq:PotBal}
+		\begin{equation}
+			\mathcal{P}_e(\kv',\alpha)\hspace{1mm}d\omega\hspace{1mm}d\Omega = a(-\kv',\alpha)\hspace{1mm}\dfrac{\hbar\omega^3}{c^2}f(\kappa) \cos{\theta}\hspace{1mm}d\omega\hspace{1mm}d\Omega
+			\label{eq:PotExp}
+		\end{equation}\pause
+		\item Si el cuerpo absorbe isotrópicamente, tal que $a(-\kv',\alpha)$ es independiente de la dirección $\kv'$, se demuestra que la potencia emitida es proporcional al $\cos{\theta}$. Este resultado es conocido como la \emph{Ley de Lambert}.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Encontremos ahora la potencia total $\mathcal{P}_e(\omega)d\omega$ emitida por unidad de área en el intervalo de frecuencias $\omega$ y $\omega+d\omega$ para ambas direcciones de polarización.\pause
+		\item Integrando la ec. \ref{eq:PotExp} sobre todas las direcciones de emisión, multiplicando por 2 para considerar ambas direcciones de polarización, asumiendo $a = a(\omega)$ independiente de la dirección y polarización, y tomando $d\Omega = \sin{\theta} \hspace{1mm} d\theta \hspace{1mm} d\phi$\pause
+		\begin{equation}
+			\begin{array}{rcl}
+				\mathcal{P}_e(\omega)d\omega &=& 2\int_\Omega \mathcal{P}_e(\kv',\alpha) d\omega\hspace{1mm}d\Omega \\[1ex]
+				&=& a(\omega)\dfrac{2\hbar\omega^3}{c^2}f(\kappa)d\omega\left(2\pi\displaystyle\int_0^{\pi/2}\cos{\theta}\sin{\theta}d\theta\right) \\[1ex]\pause
+				\mathcal{P}_e(\omega)d\omega &=& a(\omega)\dfrac{2\pi\hbar\omega^3}{c^2}f(\kappa)d\omega
+			\end{array}
+			\label{eq:PotTot}
+		\end{equation}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Podemos utilizar el resultado de la ec. \ref{eq:DensEnerProm} para escribir la expresión \ref{eq:PotTot} como
+		\begin{equation}
+			\mathcal{P}_e(\omega)d\omega = a(\omega)\left(\frac{1}{4}c\bar{u}(\omega)\hspace{1mm}d\omega\right)
+		\end{equation}\pause
+		\item O la expresión \ref{eq:DensFot} para $f(\kappa)$, con la ec. \ref{eq:KappaEsf} para $d\kappa^3$, para obtener
+		\begin{equation}
+			\mathcal{P}_e(\omega)d\omega = a(\omega)\frac{\hbar}{4\pi^2c^2}\frac{\omega^3d\omega}{e^{\beta\hbar\omega}-1}
+		\end{equation}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Radiación de un cuerpo negro}
+	\begin{itemize}
+		\item Si tenemos que $a(\omega) = 1$, es decir, un cuerpo que absorbe toda la luz de todas las frecuencias, tendremos para la expresión anterior
+		\begin{equation}
+			\mathcal{P}_{eb}(\omega)d\omega = \frac{\hbar}{4\pi^2c^2}\frac{\omega^3d\omega}{e^{\beta\hbar\omega}-1}
+		\end{equation}
+		también conocida como \emph{Ley de Planck para la distribución espectral de radiación de cuerpo negro}.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{figure}
+		\centering
+		\includegraphics[width=\textwidth]{images/espectro}\caption{Espectro de emisión sobre frecuencia angular para 4 cuerpos negros a distinta temperatura.}
+		\label{fig:Espectro}
+	\end{figure}    
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Finalmente, podemos integrar sobre todas las frecuencias para obtener la potencia \emph{total} $\mathcal{P}_e^{(0)}$ emitida por unidad de área.\pause
+		\item Si $a(\omega)$ tiene un valor constante $a$ en los rangos de frecuencias para los que $\mathcal{P}_e$ no es despreciable, tendremos la llamada \emph{Ley de Stefan-Boltzmann}
+		\begin{equation}
+			\mathcal{P}_e^{(0)} = a\left(\frac{1}{4}c\bar{u}\right) = a(\sigma T^4)
+		\end{equation}
+		donde $\sigma$ corresponde a la constante de Stefan-Boltzmann \[\sigma\equiv\dfrac{\pi^2}{60}\dfrac{k_B^4}{c^2\hbar^3} = (5.6697\pm0.0029)\times 10^{-5} \text{erg sec}^{-1}\text{ cm}^{-2}\text{ deg}^{-4}\]
+	\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \end{document}
