@@ -1,6 +1,7 @@
 % !TeX spellcheck = es_CL-SpanishChile
 \documentclass[aspectratio=1610]{beamer}
 
+\usepackage{tikz}
 \usepackage{./SimonPackage}
 \newcommand{\Ev}{\Vec{E}}
 \newcommand{\kv}{\Vec{\kappa}}
@@ -137,7 +138,7 @@ block=fill
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Radiación emitida por un cuerpo a temperatura $T$}
+\section{Radiación emitida a temperatura $T$}
 \begin{frame}{Radiación emitida por un cuerpo a temperatura $T$}
 	\begin{itemize}
 		\item Consideremos un cuerpo mantenido a una temperatura absoluta $T$, por ejemplo, el filamento caliente de una ampolleta.\pause
@@ -167,7 +168,74 @@ block=fill
 	\end{itemize}
 	\begin{figure}
 		\centering
-		\includegraphics[width=.7\textwidth]{images/EmitidoIncidente}\caption{Diagrama que ilustra la emisión y absorción de radiaciones por un cuerpo.}
+		
+		
+		\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+		
+		\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+			%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+			
+			%Straight Lines [id:da6678405234062144] 
+			\draw  [dash pattern={on 4.5pt off 4.5pt}]  (150,160) -- (150,28) ;
+			\draw [shift={(150,25)}, rotate = 90] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+			%Straight Lines [id:da30725018613871535] 
+			\draw    (150,160) -- (222.88,87.12) ;
+			\draw [shift={(225,85)}, rotate = 135] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+			%Shape: Ellipse [id:dp024683953439570194] 
+			\draw  [dash pattern={on 4.5pt off 4.5pt}] (205,90) .. controls (206.83,88.17) and (211.68,90.04) .. (215.82,94.18) .. controls (219.96,98.32) and (221.83,103.17) .. (220,105) .. controls (218.17,106.83) and (213.32,104.96) .. (209.18,100.82) .. controls (205.04,96.68) and (203.17,91.83) .. (205,90) -- cycle ;
+			%Straight Lines [id:da27781945716401235] 
+			\draw [fill={rgb, 255:red, 245; green, 166; blue, 35 }  ,fill opacity=0.4 ] [dash pattern={on 4.5pt off 4.5pt}]  (205,90) -- (150.61,159.23) -- (150,160) -- (220,105) ;
+			%Shape: Path Data [id:dp7177920702073797] 
+			\draw  [draw opacity=0][fill={rgb, 255:red, 245; green, 166; blue, 35 }  ,fill opacity=0.4 ][dash pattern={on 4.5pt off 4.5pt}] (215.12,93.86) .. controls (219.26,98.01) and (221.13,102.85) .. (219.3,104.69) .. controls (219.17,104.81) and (219.04,104.91) .. (218.9,105) -- (219.3,104.69) -- (204.3,89.69) -- (203.98,90.09) .. controls (204.07,89.94) and (204.17,89.81) .. (204.3,89.69) .. controls (206.13,87.85) and (210.97,89.72) .. (215.12,93.86) -- cycle ;
+			%Shape: Arc [id:dp10702653053025535] 
+			\draw  [draw opacity=0] (150,130) .. controls (150,130) and (150,130) .. (150,130) .. controls (158.28,130) and (165.78,133.36) .. (171.21,138.79) -- (150,160) -- cycle ; \draw    (150,130) .. controls (150,130) and (150,130) .. (150,130) .. controls (157.21,130) and (163.82,132.54) .. (168.99,136.78) ; \draw [shift={(171.21,138.79)}, rotate = 214.04] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (5.36,-2.57) -- (0,0) -- (5.36,2.57) -- cycle    ; 
+			%Straight Lines [id:da549387921188401] 
+			\draw [line width=1.5]    (285,20) -- (285,200) ;
+			%Shape: Rectangle [id:dp589233359798815] 
+			\draw  [draw opacity=0][fill={rgb, 255:red, 129; green, 128; blue, 163 }  ,fill opacity=1 ] (325,170) -- (505,170) -- (505,195) -- (325,195) -- cycle ;
+			%Straight Lines [id:da1777224502907243] 
+			\draw  [dash pattern={on 4.5pt off 4.5pt}]  (415,160) -- (415,28) ;
+			\draw [shift={(415,25)}, rotate = 90] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+			%Straight Lines [id:da025460235534299214] 
+			\draw    (415,160) -- (340,85) ;
+			\draw [shift={(382.1,127.1)}, rotate = 225] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+			%Shape: Ellipse [id:dp04887392986368977] 
+			\draw  [dash pattern={on 4.5pt off 4.5pt}] (345,105) .. controls (343.17,103.17) and (345.04,98.32) .. (349.18,94.18) .. controls (353.32,90.04) and (358.17,88.17) .. (360,90) .. controls (361.83,91.83) and (359.96,96.68) .. (355.82,100.82) .. controls (351.68,104.96) and (346.83,106.83) .. (345,105) -- cycle ;
+			%Straight Lines [id:da20083061057194007] 
+			\draw [fill={rgb, 255:red, 245; green, 166; blue, 35 }  ,fill opacity=0.4 ] [dash pattern={on 4.5pt off 4.5pt}]  (360,90) -- (414.39,159.23) -- (415,160) -- (345,105) ;
+			%Shape: Path Data [id:dp896698744356572] 
+			\draw  [draw opacity=0][fill={rgb, 255:red, 245; green, 166; blue, 35 }  ,fill opacity=0.4 ][dash pattern={on 4.5pt off 4.5pt}] (349.88,93.86) .. controls (345.74,98.01) and (343.87,102.85) .. (345.7,104.69) .. controls (345.83,104.81) and (345.96,104.91) .. (346.1,105) -- (345.7,104.69) -- (360.7,89.69) -- (361.02,90.09) .. controls (360.93,89.94) and (360.83,89.81) .. (360.7,89.69) .. controls (358.87,87.85) and (354.03,89.72) .. (349.88,93.86) -- cycle ;
+			%Shape: Arc [id:dp9530324867883474] 
+			\draw  [draw opacity=0] (393.79,138.79) .. controls (399.22,133.36) and (406.72,130) .. (415,130) .. controls (415,130) and (415,130) .. (415,130) -- (415,160) -- cycle ; \draw    (396.1,136.7) .. controls (401.26,132.51) and (407.83,130) .. (415,130) ;  \draw [shift={(393.79,138.79)}, rotate = 326.62] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (5.36,-2.57) -- (0,0) -- (5.36,2.57) -- cycle    ;
+			%Shape: Rectangle [id:dp44786582319245827] 
+			\draw  [draw opacity=0][fill={rgb, 255:red, 129; green, 128; blue, 163 }  ,fill opacity=1 ] (60,170) -- (240,170) -- (240,195) -- (60,195) -- cycle ;
+			%Curve Lines [id:da18595315206886276] 
+			\draw [fill={rgb, 255:red, 129; green, 128; blue, 163 }  ,fill opacity=1 ]   (325,170) .. controls (349.88,162.33) and (381.42,159.82) .. (415,160) .. controls (448.58,160.18) and (481.23,162.67) .. (505,170) ;
+			%Curve Lines [id:da025409644954340282] 
+			\draw [fill={rgb, 255:red, 129; green, 128; blue, 163 }  ,fill opacity=1 ]   (60,170) .. controls (84.88,162.33) and (116.42,159.82) .. (150,160) .. controls (183.58,160.18) and (216.23,162.67) .. (240,170) ;
+			
+			% Text Node
+			\draw (131,28) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \hat{\mathbf{n}}$};
+			% Text Node
+			\draw (155,117) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \theta $};
+			% Text Node
+			\draw (206,77) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \kappa $};
+			% Text Node
+			\draw (206,117) node [anchor=north west][inner sep=0.75pt]   [align=left] {Radiación\\emitida};
+			% Text Node
+			\draw (395,28) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \hat{\mathbf{n}}$};
+			% Text Node
+			\draw (397,117) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \theta $};
+			% Text Node
+			\draw (343,73) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \kappa '$};
+			% Text Node
+			\draw (295,117) node [anchor=north west][inner sep=0.75pt]   [align=left] {Radiación\\incidente};
+			
+			
+		\end{tikzpicture}
+		
+		
+		\caption{Diagrama para la emisión y absorción de radiaciones por un cuerpo.}
 		\label{fig:EmiAbs}
 	\end{figure}
 	%\citar{[1] Reif, F. (2009). \emph{Fundamentals of statistical and thermal physics}. Waveland Press.}
@@ -197,7 +265,39 @@ block=fill
 		\column{0.35\textwidth}
 		\begin{figure}
 			\centering
-			\includegraphics[width=\textwidth]{images/Filtro}\caption{Esquema de la situación planteada.}
+			
+			
+			\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+			
+			\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-.76,xscale=.76]
+				%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+				
+				%Shape: Polygon Curved [id:ds9623296108427087] 
+				\draw  [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][fill={rgb, 255:red, 129; green, 128; blue, 163 }  ,fill opacity=1 ] (124.57,48.55) .. controls (151.46,28.29) and (180.41,49.99) .. (221,53.15) .. controls (261.6,56.31) and (298.89,53.15) .. (309.09,67.88) .. controls (319.29,82.62) and (332.79,104.26) .. (329.49,132.34) .. controls (326.19,160.43) and (300.75,182.62) .. (288.69,194.96) .. controls (276.64,207.3) and (243.52,193.09) .. (203.39,193.12) .. controls (163.25,193.15) and (157.53,202.5) .. (137.55,196.8) .. controls (117.57,191.11) and (89.93,164.08) .. (82.84,153.52) .. controls (75.75,142.96) and (83.09,121.82) .. (92.11,96.43) .. controls (101.14,71.04) and (97.68,68.8) .. (124.57,48.55) -- cycle ;
+				%Shape: Polygon Curved [id:ds7073560916952666] 
+				\draw  [fill={rgb, 255:red, 255; green, 233; blue, 210 }  ,fill opacity=1 ] (131.95,61.48) .. controls (156.15,44.6) and (182.21,62.68) .. (218.75,65.32) .. controls (255.28,67.95) and (288.85,65.32) .. (298.03,77.6) .. controls (307.21,89.87) and (319.36,107.91) .. (316.39,131.31) .. controls (313.42,154.72) and (290.52,173.21) .. (279.67,183.49) .. controls (268.82,193.78) and (239.01,181.94) .. (202.89,181.96) .. controls (166.77,181.98) and (161.62,189.77) .. (143.64,185.03) .. controls (125.65,180.28) and (100.78,157.76) .. (94.4,148.96) .. controls (88.02,140.16) and (94.62,122.55) .. (102.74,101.38) .. controls (110.86,80.22) and (107.75,78.36) .. (131.95,61.48) -- cycle ;
+				%Shape: Ellipse [id:dp9298061901489483] 
+				\draw  [fill={rgb, 255:red, 129; green, 128; blue, 163 }  ,fill opacity=1 ] (136,123) .. controls (136,111.95) and (149.43,103) .. (166,103) .. controls (182.57,103) and (196,111.95) .. (196,123) .. controls (196,134.05) and (182.57,143) .. (166,143) .. controls (149.43,143) and (136,134.05) .. (136,123) -- cycle ;
+				%Shape: Arc [id:dp700197017714294] 
+				\draw  [draw opacity=0][line width=2.25]  (200.44,131.66) .. controls (195.47,142.34) and (182.04,150) .. (166.25,150) .. controls (146.23,150) and (130,137.69) .. (130,122.5) .. controls (130,107.31) and (146.23,95) .. (166.25,95) .. controls (182.04,95) and (195.47,102.66) .. (200.44,113.34) -- (166.25,122.5) -- cycle ; \draw  [line width=2.25]  (200.44,131.66) .. controls (195.47,142.34) and (182.04,150) .. (166.25,150) .. controls (146.23,150) and (130,137.69) .. (130,122.5) .. controls (130,107.31) and (146.23,95) .. (166.25,95) .. controls (182.04,95) and (195.47,102.66) .. (200.44,113.34) ;  
+				%Straight Lines [id:da7431236595180204] 
+				\draw    (200,116) -- (227.15,106.95) ;
+				\draw [shift={(230,106)}, rotate = 161.57] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+				%Straight Lines [id:da28616458461369365] 
+				\draw    (200,129) -- (227.18,138.97) ;
+				\draw [shift={(230,140)}, rotate = 200.14] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+				%Straight Lines [id:da49527499929740704] 
+				\draw    (230,116) -- (202.97,119.6) ;
+				\draw [shift={(200,120)}, rotate = 352.41] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+				%Straight Lines [id:da8217173823490195] 
+				\draw    (230,129) -- (202.97,125.4) ;
+				\draw [shift={(200,125)}, rotate = 7.59] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.04,-3.86) -- (0,0) -- (8.04,3.86) -- (5.34,0) -- cycle    ;
+				
+				
+				
+				
+			\end{tikzpicture}
+			\caption{Esquema del problema.}
 			\label{fig:Filtro}
 		\end{figure}    
 	\end{columns}\pause
@@ -249,11 +349,8 @@ block=fill
 \end{frame}
 
 \begin{frame}
-	\begin{figure}
-		\hfill\hspace*{7.6cm}\vspace*{-\textheight}\includegraphics[height=1\textheight]{images/EsquemaIncidencia}
-	\end{figure}
 	\begin{columns}
-		\column{.6\textwidth}
+		\column{.65\textwidth}
 		\begin{itemize}
 			\item Consideremos todos los fotones con vector de onda entre $\kv$ y $\kv+d\kv$.\pause
 			% \item Hay $2f(\kv)d^3\kv$ fotones de este tipo (de ambas polarizaciones) por unidad de volumen.
@@ -269,6 +366,52 @@ block=fill
 		\end{equation}
 		
 		\column{.4\textwidth}
+		\begin{figure}
+			
+			
+			\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+			
+			\begin{tikzpicture}[x=.87pt,y=.87pt,yscale=-1,xscale=1]
+%				\path (250,450); %set diagram left start at 0, and has height of 300
+				
+				%Shape: Parallelogram [id:dp1431041402530051] 
+				\draw  [draw opacity=0][fill={rgb, 255:red, 255; green, 230; blue, 191 }  ,fill opacity=1 ] (180,174.67) -- (180,70) -- (75,130.33) -- (75,235) -- cycle ;
+				%Shape: Rectangle [id:dp17361772387982444] 
+				\draw  [draw opacity=0][fill={rgb, 255:red, 129; green, 128; blue, 163 }  ,fill opacity=1 ] (180,10) -- (200,10) -- (200,290) -- (180,290) -- cycle ;
+				%Straight Lines [id:da19326483811903972] 
+				\draw    (180,10) -- (180,290) ;
+				%Straight Lines [id:da6614057187747816] 
+				\draw    (75,130.33) -- (180,70) ;
+				\draw [shift={(131.84,97.68)}, rotate = 150.12] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+				%Straight Lines [id:da1962004417735791] 
+				\draw    (75,235) -- (180,174.67) ;
+				\draw [shift={(131.84,202.34)}, rotate = 150.12] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+				%Straight Lines [id:da01881433151269296] 
+				\draw    (75,130) -- (75,235) ;
+				%Straight Lines [id:da9652721303942388] 
+				\draw  [dash pattern={on 4.5pt off 4.5pt}]  (65,70) -- (252,70) ;
+				\draw [shift={(255,70)}, rotate = 180] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+				%Straight Lines [id:da4369262336807771] 
+				\draw    (235,120) -- (220,120) -- (192.68,106.34) ;
+				\draw [shift={(190,105)}, rotate = 26.57] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (8.93,-4.29) -- (0,0) -- (8.93,4.29) -- cycle    ;
+				%Shape: Arc [id:dp6249591048674698] 
+				\draw  [draw opacity=0] (132.36,97.5) .. controls (127.68,89.41) and (125,80.02) .. (125,70) -- (180,70) -- cycle ; \draw    (130.89,94.79) .. controls (127.54,88.16) and (125.49,80.76) .. (125.08,72.92) ; \draw [shift={(125,70)}, rotate = 84.14] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (7.14,-3.43) -- (0,0) -- (7.14,3.43) -- (4.74,0) -- cycle    ; \draw [shift={(132.36,97.5)}, rotate = 246.27] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.08]  [draw opacity=0] (7.14,-3.43) -- (0,0) -- (7.14,3.43) -- (4.74,0) -- cycle    ;
+				
+				% Text Node
+				\draw (107,91) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \kappa $};
+				% Text Node
+				\draw (121,208) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle c\ dt$};
+				% Text Node
+				\draw (231,117) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle dA$};
+				% Text Node
+				\draw (238,73) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle z$};
+				% Text Node
+				\draw (139.5,75) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \theta $};
+				
+				
+			\end{tikzpicture}
+			
+		\end{figure}
 	\end{columns}
 \end{frame}
 
