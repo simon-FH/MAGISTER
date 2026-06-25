@@ -1,0 +1,313 @@
+% !TeX spellcheck = es_CL
+
+\documentclass[]{article}
+\usepackage{geometry,tikz,lipsum,amsmath,amssymb,soul,xcolor,cancel}
+\usepackage[dvipsnames]{xcolor}
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+\numberwithin{equation}{section}
+
+\usepackage{../../../SimonPackage}
+
+%opening
+\title{Certamen 3 Mecánica Clásica Avanzada}
+\author{Simon Fonseca}
+
+\begin{document}
+
+\maketitle
+\section{Problema 1}
+The reference frame $K'$ rotates with respect to inertial (laboratory) reference frame $K$ with angular velocity $\Omega$. A pointlike particle has coordinates and momenta ($\n{q},\n{p}$) in the frame $K'$, and coordinates and momenta $(\n{Q},\n{P})$ in the laboratory frame $K$.
+\begin{enumerate}
+	\item[(a)] Write out explicitly the transformation which relates $(\n{q}, \n{p})$ and $(\n{Q}, \n{P} )$, and demonstrate that it is canonical. Find explicitly the generating function $F_2(\n{q}, \n{P} )$ for this transformation.
+	\resp Asumiendo que la rotación ocurre alrededor del eje $z$, podemos definir la matriz de rotación
+	\begin{equation}
+		R_z = \begin{pmatrix}
+			\cos \Omega t & -\sin \Omega t & 0 \\
+			\sin \Omega t &  \cos \Omega t & 0 \\
+			0 & 0 & 1
+		\end{pmatrix}
+	\end{equation}
+	donde el ángulo de rotación es $\Omega t$. Por lo tanto, las coordenadas $\n{Q}$ del marco $K$ girarán respecto a las coordenadas $\n{q}$ del marco $K'$ como
+	\begin{equation}
+		\n{Q} = R_z \n{q}
+	\end{equation}
+	\begin{equation}
+		\implies Q_1 = q_1 \cos \Omega t - q_2 \sin \Omega t, \quad Q_2 = q_1 \sin \Omega t + q_2 \cos \Omega t, \quad Q_3 = q_3
+	\end{equation}
+	y los momentos
+	\begin{equation}
+		\n{P} = R_z \n{p}
+	\end{equation}
+	\begin{equation}
+		\implies P_1 =p_1 \cos \Omega t - p_2 \sin \Omega t, \quad P_2 = p_1 \sin \Omega t + p_2 \cos \Omega t, \quad P_3 = p_3
+	\end{equation}
+	Para demostrar que la transformación es canónica tomamos el corchete de Poisson en \texttt{Mathematica}
+	\begin{equation}
+		[Q_i,P_j]_{q_k,p_k} = \delta_{ij}
+	\end{equation}
+	Por lo que para una generatriz $F_2(\n{q},\n{P})$ necesitamos escribir $\n{Q} = \n{Q}(\n{q},\n{P})$ y $\n{p} = \n{p}(\n{q},\n{P})$. $\n{Q}$ ya está escrito solo en términos de $\n{q}$, para $\n{p}(\n{P})$
+	\begin{equation}
+		\n{p} = R_z^{-1} \n{P}
+	\end{equation}
+	\begin{equation}
+		\implies p_1 = P_1 \cos \Omega t + P_2 \sin \Omega t, \quad p_2 = - P_1 \sin \Omega t + P_2 \cos \Omega t, \quad p_3 = P_3
+	\end{equation}
+	
+	Tendremos entonces
+	\begin{equation}
+		p_a = \pd{F_2}{q_a} , \qquad Q_a = \pd{F_2}{P_a}
+	\end{equation}
+	por lo que
+	\begin{equation}
+		F_2 = \int \n{Q} \cdot d\n{P} = \n{P}\cdot R_z \n{q}
+	\end{equation}
+	
+	\qed
+	
+	\item[(b)] Assume that in the lab frame a particle moves in the field of the spherically symmetric harmonic oscillator $U = k \n{Q}^2/2$. Find the hamiltonian $\tilde{H}(\n{q}, \n{p})$ of the system in the rotating frame.
+	\resp El hamiltoniano 
+	\begin{equation}
+		H = \frac{1}{2m} \n{P}^2 + k \frac{1}{2} \n{Q}^2
+	\end{equation}
+	como hay dependencia temporal
+	\begin{equation}
+		\pd{F_2}{t} = \n{P}\cdot \dot{R}_z \n{q}
+	\end{equation}
+	por lo que
+	\begin{equation}
+		\tilde{H} = \frac{1}{2m} \left(R_z \n{p}\right)^2 + k \frac{1}{2} \left(R_z \n{q}\right)^2 - R_z \n{p} \cdot \dot{R}_z \n{q}
+	\end{equation}
+	pero (este es un resultado conocido)
+	\begin{equation*}
+		\dot{R}_z \n{q} = \Omega \times \n{Q} \implies \n{P}\times(\Omega \times \n{Q}) = \Omega \times \n{M} 
+	\end{equation*}
+	Así que, como el momento angular se conserva 
+	\begin{equation}
+	\tilde{H} = \frac{1}{2m} \left(R_z \n{p}\right)^2 + k \frac{1}{2} \left(R_z \n{q}\right)^2 - \Omega \times (\n{q} \times \n{p}) 
+	\end{equation}
+	
+	
+	\qed
+	
+	\item[(c)] Write out the canonical equations of motion in terms of the variables $(\n{q}, \n{p})$ in the rotating frame and demonstrate they include contributions corresponding to the fictitious forces discussed in Lectures 10, 11.
+	\resp Las ecuaciones canónicas (considerando que $R_z \, R_z^T = 1$)
+	\begin{equation}
+		\dot{\n{p}} = - \pd{\tilde{H}}{\n{q}} = -k \n{q} - \Omega\times\n{p}, \qquad \dot{\n{q}} = \pd{\tilde{H}}{\n{p}} = \frac{1}{m} \n{p} - \Omega\times\n{q}
+	\end{equation}
+	
+	\qed
+	
+\end{enumerate}
+
+
+
+
+\section{Problema 2}
+A pointlike particle of mass $m$ and charge $q$ moves in the Coulomb field $U = -k/r$ and a homogeneous magnetic field $\n{B} = \mathrm{const}$. The interaction with magnetic field is very weak and may be considered as a small perturbation.
+\begin{enumerate}
+	\item[(a)] Using canonical perturbation theory, analyze how the magnetic field affects the trajectory of the particle and find explicitly the first $\mathcal{O} (\n{B})$-correction to it.
+	\resp El hamiltoniano con todos los potenciales
+	\begin{equation}
+		H = \frac{1}{2m} \left(\n{p} - q\n{A}\right)^2 + \frac{k}{r} = \frac{1}{2m} \left(\n{p} - \frac{1}{2} q \left(\n{B}\times\n{r}\right)\right)^2 + \frac{k}{r}
+	\end{equation}
+	Expandiendo para $\n{B}\to 0$ tenemos
+	\begin{equation}
+		H \approx \frac{\n{p}^2}{2 m} + \frac{k}{2} - \frac{1}{2m} q \n{p} \cdot (\n{B}\times\n{r}) 
+	\end{equation}
+	Ya que el campo magnético es débil, el hamiltoniano base será solo dependiente de $U(r)$
+	\begin{equation}
+		H_0 =  \frac{\n{p}^2}{2 m} + \frac{k}{r}
+	\end{equation}
+	mientras que $\Delta H$ incluirá los efectos magnéticos
+	\begin{equation}
+		\Delta H =  - \frac{1}{2m} q \n{p} \cdot (\n{B}\times\n{r}) =  - \frac{1}{2m} q \n{B} \cdot (\n{p}\times\n{r}) =  - \frac{1}{2m} q \n{B} \cdot \n{M} 
+	\end{equation}
+	Si asumimos que $\n{B} = B\zhat$
+	\begin{equation}
+		\Delta H = - \frac{q B}{2m} M_z
+	\end{equation}
+	Ahora, $H_0$ en variables acción-ángulo:
+	\begin{equation}
+		H_0 = - \frac{2\pi^2 m k^2}{\left(I_r + I_\theta + I_\varphi\right)^2}
+	\end{equation}
+	Las soluciones de $H_0$ son tan solo
+	\begin{align}
+		r &= a(1 - e\cos\psi), & w_r &= \frac{\psi - e\sin\psi}{2\pi}, & a &= \frac{\left(I_r + I_\theta + I_\varphi\right)^2}{4\pi^2 m\kappa}, & e &= \sqrt{1 - \frac{\left(I_\theta + I_\varphi\right)^2}{\left(I_r + I_\theta + I_\varphi\right)^2}}
+	\end{align}
+	donde $a$ es el semieje mayor y $e$ la excentricidad. Las frecuencias conjugadas a la acción serán
+	\begin{equation}
+		\omega_0 = \pd{H_0}{I_r} = \pd{H_0}{I_\theta}  = \pd{H_0}{I_\varphi} =  \frac{4\pi^2 m k^2}{\left(I_r + I_\theta + I_\varphi\right)^3}
+	\end{equation}
+	Así que $\Delta H$ será
+	\begin{equation}
+		\Delta H = - \frac{q B}{2m} I_\varphi
+	\end{equation}
+	por lo que el promedio sobre los ángulos será trivial
+	\begin{equation}
+		\omega_i = \dot{w}_i = \pd{(H_0 + \Delta H)}{I_i}
+	\end{equation}
+	\begin{equation}
+		\dot{w}_r = \omega_0, \qquad \dot{w}_\theta = \omega_0, \qquad \dot{w}_\varphi = \omega_0 - \frac{q B}{2m} 
+	\end{equation}
+	Por lo que el campo magnético actúa cambiando el ángulo azimutal, es decir, una precesión.
+	
+	\qed
+	
+	\item[(b)] It is known that in the limit $\Delta H = 0$ the trajectories in the Kepler problem are plain and closed, so the motion is periodic. Analyze if these properties remain valid in presence of perturbation $\Delta H \neq 0$.
+	
+	- If yes, find the correction to the period of motion of the particle.
+	
+	- If not, find the time-averaged corrections to the shape, size and orientation of the Keplerian orbit, induced by the perturbation $\Delta H$.
+	\resp A menos que el campo magnético sea paralelo al eje de rotación, existirá una fuerza que haga rotar al plano de rotación. Por esto mismo, cuando el radio complete un periodo, la frecuencia azimutal habrá movido el eje, por lo que la órbita no estará cerrada.
+	
+	El cambio en las acciones será
+	\begin{equation}
+		\dot{I}_a = - \pd{H}{w_a} = - \pd{H_0}{w_a} - \pd{\Delta H}{w_a}
+	\end{equation}
+	como ambos términos no dependen de los ángulos,
+	\begin{equation}
+		\dot{I}_a = 0 \implies I_a = \mathrm{const}
+	\end{equation}
+	Es decir, las acciones son constantes. Ya que $a$ y $e$ solo dependen de los ángulos, estos valores también lo serán
+	\begin{align*}
+		a &= \frac{\left(I_r + I_\theta + I_\varphi\right)^2}{4\pi^2 m\kappa} = \mathrm{const}, & e &= \sqrt{1 - \frac{\left(I_\theta + I_\varphi\right)^2}{\left(I_r + I_\theta + I_\varphi\right)^2}} = \mathrm{const}
+	\end{align*}
+	Mientras que la orientación es el valor que ya encontramos:
+	\begin{equation}
+		\Delta\dot{w}_\varphi = - \frac{q B}{2m} 
+	\end{equation}
+	
+	\qed
+	
+
+\end{enumerate}
+
+
+
+
+
+\section{Problema 3}
+A nonrelativistic particle of mass $m$ moves in one-dimensional symmetric power-law potential
+\begin{equation}
+	U(x) = g |x|^\alpha, \qquad g>0, \qquad \alpha>0 
+\end{equation}
+Write out the corresponding canonical Hamiltonian and the Hamilton-Jacobi (HJ) equations. Resolve both equations and demonstrate that they give the same trajectories.
+\resp El hamiltoniano es
+\begin{equation}
+	H = \frac{1}{2 m} p^2 + g |x|^\alpha
+\end{equation}
+por lo que las ecuaciones canónicas
+\begin{equation}
+	\dot{p} = - g \alpha |x|^{\alpha-1}, \qquad \dot{x} = \frac{p}{m}
+\end{equation}
+nos da
+\begin{equation}
+	H = \frac{1}{2} m \dot{x}^2 + g |x|^\alpha = E
+\end{equation}
+\begin{equation}
+	\implies t - t_0 = \int \sqrt{\frac{m}{2 (E - g |x|^\alpha)}} \, dx	
+\end{equation}
+Y también
+\begin{equation}
+	\ddot{x} = -\frac{1}{m} g \alpha |x|^{\alpha-1}
+\end{equation}
+con \texttt{Mathematica}
+\begin{equation}
+	\text{Solve}\left[\frac{x^2 \left(1-\frac{2 g x^{\alpha }}{c_1 m}\right) \, _2F_1\left(\frac{1}{2},\frac{1}{\alpha };1+\frac{1}{\alpha };\frac{2 g x^{\alpha }}{m c_1}\right){}^2}{-\frac{2 g x^{\alpha }}{m}+c_1}=(t+c_2){}^2,x\right]
+\end{equation}
+
+Hamilton-Jacobi, por otro lado, con $S = f - E t$
+\begin{equation}
+	- E +  \frac{1}{2 m} \left(\pd{f}{x}\right)^2 + g |x|^\alpha = 0
+\end{equation}
+\begin{equation}
+	\implies f = \int \sqrt{2 m (E -  g |x|^\alpha)} \, dx = \frac{\sqrt{2} x \, _2F_1\left(-\frac{1}{2},\frac{1}{\alpha };1+\frac{1}{\alpha };\frac{g x^{\alpha }}{E}\right) \sqrt{m \left(E-g x^{\alpha }\right)}}{\sqrt{1-\frac{g x^{\alpha }}{E}}}
+\end{equation}
+Por lo que
+\begin{equation}
+	S = \frac{\sqrt{2} x \, _2F_1\left(-\frac{1}{2},\frac{1}{\alpha };1+\frac{1}{\alpha };\frac{g x^{\alpha }}{E}\right) \sqrt{m \left(E-g x^{\alpha }\right)}}{\sqrt{1-\frac{g x^{\alpha }}{E}}} - E t
+\end{equation}
+Derivando
+\begin{align}
+	\beta_E &= t - \int \pd{f}{E} \, dx\\
+	&= t - \int \frac{m}{\sqrt{2} \sqrt{m \left(E -g x^{\alpha }\right)}} \, dx\\
+	&= \frac{(\alpha +2) E m x \sqrt{2-\frac{2 g x^{\alpha }}{E}} \, _2F_1\left(-\frac{1}{2},\frac{1}{\alpha };1+\frac{1}{\alpha };\frac{g x^{\alpha }}{E}\right)-2 E \left(\alpha  t \sqrt{m \left(E-g x^{\alpha }\right)}+\sqrt{2} m x\right)+2 \sqrt{2} g m x^{\alpha +1}}{2 \alpha  E \sqrt{m \left(E-g x^{\alpha }\right)}}
+\end{align}
+La segunda ecuación prueba que ambos métodos son equivalentes
+
+ \begin{enumerate}
+ 	\item[i.] Assume that the coupling g changes very slowly (adiabatically). Analyze how the particle's energy $E(t)$ will change as a function of time.
+ 	\resp Del hamiltoniano tenemos el momento
+ 	\begin{equation}
+ 		p = \sqrt{2 m \left(E - g |x|^2\right)}
+ 	\end{equation}
+ 	La acción adiabáticamente conservada
+ 	\begin{equation}
+ 		I = \oint p \, dx = \oint \sqrt{2 m \left(E - g |x|^2\right)} \, dx
+ 	\end{equation}
+ 	Ya que $|x|^\alpha = |-x|^\alpha$ tendremos que los puntos de retorno (que son opuestos) serán iguales. Por lo tanto, integrar desde los puntos de retorno $x_{\mathrm{min}}$ a $x_{\mathrm{max}}$ es equivalente a integrar 4 veces desde un punto medio (0) hasta $x_{\mathrm{max}}$. El punto de retorno ocurrirá cuando la energía cinética es cero, desde el hamiltoniano:
+ 	\begin{equation}
+ 		E = g |x_\mathrm{max}|^\alpha \implies x_\mathrm{max} = \left(\frac{E}{g}\right)^{1/\alpha}
+ 	\end{equation}
+ 	Haciendo el cambio de variable para reescalar $x = x_\mathrm{max} \, u \implies dx = x_\mathrm{max} \, du$
+ 	\begin{equation}
+ 		I = 4 \left(\frac{E}{g}\right)^{1/\alpha} \sqrt{2 m } \int_0^{1} \sqrt{E - g \frac{E}{g} u^\alpha} \, du = 4 \left(\frac{E}{g}\right)^{1/\alpha} \sqrt{2 m E} \int_0^{1} \sqrt{1 - u^\alpha} \, du
+ 	\end{equation}
+ 	\begin{equation}
+ 		I =  4 \left(\frac{E}{g}\right)^{1/\alpha} \sqrt{2 m E} \underbrace{\frac{\sqrt{\pi } \Gamma \left(1+\frac{1}{\alpha }\right)}{2 \Gamma \left(\frac{3}{2}+\frac{1}{\alpha }\right)}}_{C} = \mathrm{const}
+ 	\end{equation}
+ 	\begin{equation}
+ 		\implies E(t) = 2^{-\frac{5 \alpha }{\alpha +2}} g^{\frac{2}{\alpha +2}} \left(\frac{I}{C \sqrt{m}}\right)^{\frac{2 \alpha }{\alpha +2}} \propto g^{\frac{2}{\alpha +2}}
+ 	\end{equation}
+ 	
+ 	\qed
+ 	
+ 	\item[ii.] Determine how the period of oscillation $T (t)$ scales with $g(t)$ during this adiabatic transformation.
+ 	\resp Sabemos que el periodo viene de $\lpd{I}{E}$. Con \texttt{Mathematica}
+ 	\begin{equation}
+ 		T = \pd{I}{E} = \frac{2 \sqrt{2} (\alpha +2) C m \left(\frac{E}{g}\right)^{1/\alpha }}{\alpha  \sqrt{E m}} = \frac{2^{4-\frac{10}{\alpha +2}} (\alpha +2) C m g^{-\frac{2}{\alpha +2}} \left(\left(\frac{I}{C \sqrt{m}}\right)^{\frac{2 \alpha }{\alpha +2}}\right)^{1/\alpha }}{\alpha  \sqrt{m \left(\frac{I}{c \sqrt{m}}\right)^{\frac{2 \alpha }{\alpha +2}}}} 
+ 	\end{equation}
+ 	\begin{equation}
+ 		\implies T \propto g^{-\frac{2}{\alpha +2}}
+ 	\end{equation}
+ 	
+ 	\qed
+ 	
+ 	\item[iii.] Show that your results in the limit $\alpha \to 2$ reproduce the well-known scaling laws for the harmonic oscillator
+ 	\resp Tomando $\alpha\to 2$ tendremos
+ 	\begin{equation}
+ 		E \propto g^{\frac{2}{2 +2}} = \sqrt{g}, \qquad T \propto g^{-\frac{2}{2 +2}} = \frac{1}{\sqrt{g}}
+ 	\end{equation}
+ 	Ya que el potencial se transformaría en $U = g x^2$, tendríamos que el resultado es un oscilador armónico, con frecuencia $\omega^2 = 2g/m$. Por lo que
+ 	\begin{equation}
+ 		E \propto \omega, \qquad T \propto \frac{1}{\omega}
+ 	\end{equation}
+ 	Lo cual es lo que esperábamos.
+ 	
+ 	\qed
+ 	
+ \end{enumerate}
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
